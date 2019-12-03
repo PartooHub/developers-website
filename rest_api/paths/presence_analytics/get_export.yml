@@ -1,0 +1,58 @@
+summary: Export analytics
+description: |
+  This endpoint let you export the analytics of your businesses.
+  You need to choose an **email address** on which you will receive a mail to download the **Excel** file generated.
+  To access the analytics of a business, you need to:
+  - have `READ` access on it
+  - have subscribed to **Presence Management** for this business.
+  You can access the analytics from **Google My Business**.
+  Data of the past 5 days are not available because they are not given by GMB.
+
+  You will receive the following analytics:
+  - queries: direct, indirect, branded or discovered
+  - views: maps or search
+  - actions: website, phone or driving direction
+
+  You can use the following filters:
+  - by businesses (businesses id in list or not in list)
+  - by date (analytics before and/or after a date)
+  - by query in business name, zipcode or city
+  - by city.
+
+  The response can be aggregated by:
+  - business
+  - by date: day, week, month or year
+  - business and time
+
+  The response can be ordered by:
+  - business id
+  - by date: day, week, month or year
+  - metrics
+
+  The parameters shall be used the same way than parameters of the endpoint 'Search for analytics'.
+  Please refer to that endpoint for examples.
+
+operationId: exportPresenceAnalytics
+tags:
+   - Presence Analytics
+parameters:
+  - $ref: '../../components/index.yml#/parameters/export_email'
+  - $ref: '../../components/index.yml#/parameters/dimensions'
+  - $ref: '../../components/index.yml#/parameters/order'
+  - $ref: '../../components/index.yml#/parameters/query_business__in'
+  - $ref: '../../components/index.yml#/parameters/query_business__notin'
+  - $ref: '../../components/index.yml#/parameters/query_filter_by_city'
+  - $ref: '../../components/index.yml#/parameters/query_filter_by_fuzzy_query_on_business'
+  - $ref: '../../components/index.yml#/parameters/query_analytics_date__gte'
+  - $ref: '../../components/index.yml#/parameters/query_analytics_date__lte'
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/index.yml#/schemas/RequestStatus'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'

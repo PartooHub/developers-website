@@ -1,0 +1,114 @@
+summary: Analytics
+description: |
+  This endpoint lets you view the **Google My Business** analytics for all your businesses subscribed to
+  **Presence Management**.
+  The API allows you to select what data you're interested in, and how you want it aggregated (daily, monthly,
+  by business, etc). You can also filter the results to limit it to a certain date range, and to certain business.
+
+  Google My Business doesn't provide reliable data for the most recent 5 days.
+
+  You can choose the analytics you want to get among:
+  - queries: direct, indirect, branded or discovery
+  - views: maps or search
+  - actions: website, phone or driving directions
+
+  You can use the following filters:
+  - by businesses (businesses id in list or not in list)
+  - by date (analytics before and/or after a date)
+  - by business query. Will return matches for the business name, zipcode or city
+  - by business city.
+
+  The response can be aggregated by:
+  - business id
+  - by date: either by day, week, month or year
+  - by both business id and date
+
+  The response can be ordered in ascending or descending order by any of the selected dimensions or metrics.
+  See examples for more details.
+
+operationId: getPresenceAnalytics
+tags:
+  - Presence Analytics
+parameters:
+  - $ref: '../../components/index.yml#/parameters/metrics'
+  - $ref: '../../components/index.yml#/parameters/dimensions'
+  - $ref: '../../components/index.yml#/parameters/order'
+  - $ref: '../../components/index.yml#/parameters/query_business__in'
+  - $ref: '../../components/index.yml#/parameters/query_business__notin'
+  - $ref: '../../components/index.yml#/parameters/query_filter_by_city'
+  - $ref: '../../components/index.yml#/parameters/query_filter_by_fuzzy_query_on_business'
+  - $ref: '../../components/index.yml#/parameters/query_analytics_date__gte'
+  - $ref: '../../components/index.yml#/parameters/query_analytics_date__lte'
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/index.yml#/schemas/BaseAnalyticsResponse'
+        examples:
+          metrics=queries_direct,queries_indirect, queries_discovery,queries_branded, views_maps,views_search, actions_website,actions_driving_directions, actions_phone:
+            value:
+              - queries_direct: 100
+                queries_branded: 111
+                queries_discrovery: 222
+                queries_indirect: 333
+                views_maps: 55
+                views_search: 8
+                actions_website: 0
+                actions_phone: 7
+                actions_driving_directions: 22
+          dimensions=business & metrics=queries_direct:
+            value:
+              - queries_direct: 103
+                business_id: 59b2645db12ff60643ef832c
+              - queries_direct: 165
+                business_id: 60b2645fb12ff60643ef8344
+              - queries_direct: 28
+                business_id: 70b2645eb12ff60643ef833c
+          dimensions=month & metrics=views_maps & order=views_maps__asc:
+            value:
+              - views_maps: 57
+                date: '2019-08-01'
+                bucket: month
+              - views_maps: 79
+                date: '2019-09-01'
+                bucket: month
+          dimensions=day,business & metrics=queries_direct & order=day__desc:
+            value:
+            - queries_direct: 48
+              business_id: 59b2645db12ff60643ef832c
+              date: '2019-09-30'
+              bucket: day
+            - queries_direct: 6
+              business_id: 59b2645fb12ff60643ef8344
+              date: '2019-09-30'
+              bucket: day
+            - queries_direct: 11
+              business_id: 59b2645db12ff60643ef832c
+              date: '2019-09-29'
+              bucket: day
+            - queries_direct: 0
+              business_id: 59b2645fb12ff60643ef8344
+              date: '2019-09-29'
+              bucket: day
+            - queries_direct: 2
+              business_id: 59b2645db12ff60643ef832c
+              date: '2019-09-28'
+              bucket: day
+            - queries_direct: 66
+              business_id: 59b2645fb12ff60643ef8344
+              date: '2019-09-28'
+              bucket: day
+          dimensions=week & metrics=queries_direct & filter_date__gte=2019-09-15 & filter_date__lte=2019-09-16:
+            value:
+              - queries_direct: 32
+                date: '2019-09-09'
+                bucket: week
+              - queries_direct: 164
+                date: '2019-09-16'
+                bucket: week
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
