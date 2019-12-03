@@ -1,0 +1,133 @@
+# BOOSTER endpoint
+/review_booster/send_invitation:
+  post:
+    $ref: ./review_booster/send_invitation/post.yml
+/review_booster/invitation_status:
+  get:
+    $ref: ./review_booster/invitation_status/get.yml
+/review_booster/search-invitation:
+  get:
+    $ref: ./review_booster/search-invitation/get.yml
+
+# USER endpoints
+/user/me:
+  get:
+    $ref: ./user/get_me.yml
+/user:
+  post:
+    $ref: ./user/post.yml
+/user/{user_id}:
+  get:
+    $ref: ./user/get_by_id.yml
+  post:
+    $ref: ./user/post_update.yml
+  delete:
+    $ref: ./user/delete.yml
+/user/search:
+  get:
+    $ref: ./user/get_search.yml
+/user/search/count:
+  get:
+    $ref: ./user/get_search_count.yml
+/user/{user_id}/invite:
+  post:
+    $ref: ./user/post_invite.yml
+/user/{user_id}/businesses:
+  get:
+    $ref: ./user/get_businesses.yml
+
+/authorize:
+  post:
+    $ref: ./authorize/post.yml
+/authorize/list:
+  get:
+    $ref: ./authorize/get.yml
+/authorize/revoke:
+  post:
+    $ref: ./authorize/post_revoke.yml
+
+# REVIEWS endpoints
+/reviews:
+  get:
+    $ref: ./reviews/get.yml
+/reviews/qualitative-evolution:
+  get:
+    $ref: ./reviews/get_qualitative_evolution.yml
+/reviews/quantitative-evolution:
+  get:
+    $ref: ./reviews/get_quantitative_evolution.yml
+/reviews/{review_id}/reply/edit:
+  post:
+    $ref: ./reviews/post_reply.yml
+/reviews/{review_id}/reply/delete:
+  delete:
+    $ref: ./reviews/delete_reply.yml
+
+# ORG endpoints
+/org/{org_id}:
+  get:
+    $ref: ./organizations/get_by_id.yml
+  post:
+    $ref: ./organizations/post_update.yml
+  delete:
+    $ref: ./organizations/delete.yml
+/org/search:
+  get:
+    $ref: ./organizations/get_search.yml
+/org:
+  post:
+    $ref: ./organizations/post_create.yml
+
+# BUSINESS endpoints
+/business/search:
+  get:
+    $ref: ./business/get_search.yml
+/business:
+  post:
+    $ref: ./business/post_create.yml
+/business/connections_stats:
+  get:
+    $ref: ./business/get_connections_stats.yml
+/business/{business_id}:
+  get:
+    $ref: ./business/get_by_id.yml
+  post:
+    $ref: ./business/post_update.yml
+  delete:
+    $ref: ./business/delete.yml
+/business/{business_id}/partner_urls:
+  get:
+    $ref: ./business/get_partner_urls.yml
+/business/{business_id}/integration_status:
+  get:
+    $ref: ./business/get_integration_status.yml
+/business/{business_id}/subscription:
+  get:
+    $ref: ./business/get_subscription.yml
+/business/{business_id}/additional_data:
+  get:
+    $ref: ./business/get_additional_data.yml
+  post:
+    $ref: ./business/post_additional_data.yml
+/business/{business_id}/subscribe:
+  post:
+    $ref: ./business/post_subscribe.yml
+/business/{business_id}/unsubscribe:
+  post:
+    $ref: ./business/post_unsubscribe.yml
+
+# CATEGORY endpoints
+/category/search:
+  get:
+    $ref: ./category/get_search.yml
+/category/{category_id}:
+  get:
+    $ref: ./category/get_by_id.yml
+
+# PRESENCE ANALYTICS endpoints
+/presence_analytics:
+  get:
+    $ref: ./presence_analytics/get.yml
+/presence_analytics_export:
+  get:
+    $ref: ./presence_analytics/get_export.yml
