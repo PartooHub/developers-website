@@ -33,33 +33,7 @@ paths:
     post:
       $ref: ./paths/user/post_update.yml
     delete:
-      summary: Delete user
-      description: >
-        This endpoint lets you delete a user.
-        You need to have `WRITE` access to this user.
-      tags:
-        - Users
-      parameters:
-        - $ref: '#/components/parameters/path_user_id'
-      responses:
-        200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    $ref: '#/components/schemas/UserId'
-                  status:
-                    type: string
-                    enum: ["success"]
-        401:
-          $ref: '#/components/responses/401'
-        403:
-          $ref: '#/components/responses/403'
-        404:
-          $ref: '#/components/responses/404'
+      $ref: ./paths/user/delete.yml
   /user/search:
     get:
       $ref: ./paths/user/get_search.yml
