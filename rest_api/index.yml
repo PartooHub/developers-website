@@ -62,66 +62,7 @@ paths:
           $ref: '#/components/responses/404'
   /user/search:
     get:
-      tags:
-        - Users
-      summary: Search for users
-      description: This endpoint lets you search for users using filters
-      operationId: searchUser
-      parameters:
-        - in: query
-          name: email
-          schema:
-            type: string
-            format: email
-          description: Filter by email
-          required: false
-        - in: query
-          name: org_id
-          schema:
-            type: integer
-          description: Filter by org id
-        - in: query
-          name: query
-          schema:
-            type: string
-          description: To perform a fuzzy search on user
-        - in: query
-          name: status
-          schema:
-            $ref: '#/components/schemas/UserStatus'
-          description: Filter users by status
-        - in: query
-          name: display_business_ids
-          schema:
-            type: string
-            enum: ["True", "False"]
-            default: "True"
-          description: The endpoint won’t return the `business_ids` when the value is `False`
-        - in: query
-          name: page
-          schema:
-            type: integer
-            default: 0
-          description: Page number. 30 results per page
-      responses:
-        200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: '#/components/schemas/ListResult'
-                  - type: object
-                    properties:
-                      users:
-                        type: array
-                        description: List of users
-                        items:
-                          $ref: '#/components/schemas/User'
-        400:
-          $ref: '#/components/responses/400'
-        401:
-          $ref: '#/components/responses/401'
+      $ref: ./paths/user/get_search.yml
   /user/search/count:
     get:
       tags:
