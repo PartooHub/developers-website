@@ -1,0 +1,33 @@
+summary: List user API keys
+description: >
+  This endpoint let you list all the current valid tokens for a given user.
+  You need to have `READ` access to this user.
+operationId: listAPIKeys
+tags:
+  - ApiKeys
+parameters:
+  - in: query
+    name: user_id
+    schema:
+      $ref: '../../components/index.yml#/schemas/UserId'
+    description: User id
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            user_id:
+              $ref: '../../components/index.yml#/schemas/UserId'
+            user_authorization_tokens:
+              type: array
+              items:
+                type: string
+  400:
+    $ref: '../../components/index.yml#/responses/400'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'

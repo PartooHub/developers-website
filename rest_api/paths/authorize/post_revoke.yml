@@ -1,0 +1,43 @@
+summary: Revoke API key
+description: This endpoint let you revoke an API key of one of your user.
+operationId: revokeAPIKey
+tags:
+  - ApiKeys
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - user_authorization_token
+          - user_id
+        properties:
+          user_authorization_token:
+            type: string
+            description: The API key you want to revoke
+          user_id:
+            $ref: '../../components/index.yml#/schemas/UserId'
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            user_id:
+              $ref: '../../components/index.yml#/schemas/UserId'
+            user_authorization_tokens:
+              type: array
+              items:
+                type: string
+              description: Remaining valid API keys
+  400:
+    $ref: '../../components/index.yml#/responses/400'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
+  404:
+    $ref: '../../components/index.yml#/responses/404'

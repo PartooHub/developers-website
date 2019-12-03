@@ -49,130 +49,13 @@ paths:
 
   /authorize:
     post:
-      tags:
-        - ApiKeys
-      summary: Generate API key
-      description: >
-        This endpoint lets you generate an API key either permanent (ie. will work until revoked)
-        or consumable (ie. will work only for one connection).
-        If you are generating the API key to log your user in the JS API, it is preferable to generate consumable api key.
-      operationId: generateAPIKey
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-                - user_id
-              properties:
-                user_id:
-                  $ref: '#/components/schemas/UserId'
-                consumable:
-                  type: string
-                  default: "False"
-                  enum: ["True, False"]
-      responses:
-        200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  user_id:
-                    $ref: '#/components/schemas/UserId'
-                  user_authorization_token:
-                    description: New API key
-                    type: string
-        400:
-          $ref: '#/components/responses/400'
-        401:
-          $ref: '#/components/responses/401'
-        403:
-          $ref: '#/components/responses/403'
-        404:
-          $ref: '#/components/responses/404'
+      $ref: ./paths/authorize/post.yml
   /authorize/list:
     get:
-      summary: List user API keys
-      description: >
-        This endpoint let you list all the current valid tokens for a given user.
-        You need to have `READ` access to this user.
-      operationId: listAPIKeys
-      tags:
-        - ApiKeys
-      parameters:
-        - in: query
-          name: user_id
-          schema:
-            $ref: '#/components/schemas/UserId'
-          description: User id
-      responses:
-        200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  user_id:
-                    $ref: '#/components/schemas/UserId'
-                  user_authorization_tokens:
-                    type: array
-                    items:
-                      type: string
-        400:
-          $ref: '#/components/responses/400'
-        401:
-          $ref: '#/components/responses/401'
-        403:
-          $ref: '#/components/responses/403'
+      $ref: ./paths/authorize/get.yml
   /authorize/revoke:
     post:
-      summary: Revoke API key
-      description: This endpoint let you revoke an API key of one of your user.
-      operationId: revokeAPIKey
-      tags:
-        - ApiKeys
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required:
-                - user_authorization_token
-                - user_id
-              properties:
-                user_authorization_token:
-                  type: string
-                  description: The API key you want to revoke
-                user_id:
-                  $ref: '#/components/schemas/UserId'
-      responses:
-        200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  user_id:
-                    $ref: '#/components/schemas/UserId'
-                  user_authorization_tokens:
-                    type: array
-                    items:
-                      type: string
-                    description: Remaining valid API keys
-        400:
-          $ref: '#/components/responses/400'
-        401:
-          $ref: '#/components/responses/401'
-        403:
-          $ref: '#/components/responses/403'
-        404:
-          $ref: '#/components/responses/404'
+      $ref: ./paths/authorize/post_revoke.yml
 
   # REVIEWS endpoints
   /reviews:
