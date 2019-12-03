@@ -22,21 +22,8 @@ paths:
       $ref: ./paths/review_booster/search-invitation/get.yml
   # USER endpoints
   /user/me:
-    get:  
-      tags:
-        - Users
-      summary: Get my user
-      description: This endpoint lets you retrieve all the information about your user
-      operationId: getMyUser
-      responses:
-        200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/User'
-        401:
-          $ref: '#/components/responses/401'
+    get:
+      $ref: ./paths/user/me/get.yml
   /user:
     post:
       tags:
