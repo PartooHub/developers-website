@@ -9,6 +9,6 @@ responses:
     content:
       application/json:
         schema:
-          $ref: '../../../components/index.yml#/schemas/User'
+          $ref: '../../components/index.yml#/schemas/User'
   401:
-    $ref: '../../../components/index.yml#/responses/401'
+    $ref: '../../components/index.yml#/responses/401'

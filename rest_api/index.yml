@@ -23,86 +23,10 @@ paths:
   # USER endpoints
   /user/me:
     get:
-      $ref: ./paths/user/me/get.yml
+      $ref: ./paths/user/get_me.yml
   /user:
     post:
-      tags:
-        - Users
-      summary: Create user
-      description: >
-        This endpoint lets you create a user.
-        You need to have `WRITE` access on the organisation of the user you want to create.
-      operationId: createUser
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              description: Request body to create a user
-              type: object
-              required:
-                - email
-                - first_name
-                - last_name
-              properties:
-                email:
-                  description: User email (must be unique will return otherwise)
-                  type: string
-                  format: email
-                first_name:
-                  $ref: '#/components/schemas/UserFirstName'
-                last_name:
-                  $ref: '#/components/schemas/UserLastName'
-                org_id:
-                  description: >
-                    Id of the organisation to which the user should belong.
-                    If no `org_id` given, the user will have the same organisation as you.
-                  type: integer
-                business_ids:
-                  description: >
-                    The list of business to which the user has access to.
-                    Will be taken into account only if user has `BUSINESS_MANAGER` role.
-                  type: array
-                  items:
-                    type: string
-                phone:
-                  $ref: '#/components/schemas/UserPhone'
-                role:
-                  $ref: '#/components/schemas/Role'
-                sidebar_products:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/Product'
-                send_invitation:
-                  description: Send an invitation email to the User
-                  type: string
-                  enum: ["True", "False"]
-                  default: "False"
-                password:
-                  description: >
-                    The User password.
-                    If no password given, a password will automatically be generated.
-                    Will be ignored if `send_invitation` is set to `True`.
-                  type: string
-                  minLength: 6
-      responses:
-        200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    $ref: '#/components/schemas/UserId'
-                  status:
-                    $ref: '#/components/schemas/RequestStatus'
-        400:
-          $ref: '#/components/responses/400'
-        401:
-          $ref: '#/components/responses/401'
-        403:
-          $ref: '#/components/responses/403'
+      $ref: ./paths/user/post.yml
   /user/{user_id}:
     get:
       tags:
