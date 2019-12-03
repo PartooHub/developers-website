@@ -1,0 +1,4 @@
+- url: https://api.partoo.co/v2
+  description: Production server
+- url: https://sandbox.api.partoo.co/v2
+  description: Sandbox server (dev environment for clients & partners)

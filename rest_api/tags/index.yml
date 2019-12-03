@@ -1,0 +1,24 @@
+- name: ApiKeys
+  description: >
+    In this section you will have all the operation to create/list/revoke api keys
+    that can be used to authenticate user either on the REST API or on the JS API.
+- name: Organisations
+  description: >
+    All the operations you can perform on organisation.
+    An organisation is an entreprise that owns businesses.
+- name: Businesses
+  description: All the operations you can perform on businesses.
+- name: Users
+  description: All operation available on users
+- name: Subscriptions
+  description: >
+    All the operation to subscribe/unsuscribe businesses to Partoo products.
+    You need to have the role `PROVIDER` to be able to perform those operations.
+- name: Reviews
+  description: All operation available on reviews
+- name: Categories
+  description: All operation available on categories
+- name: Boosts
+  description: All operation related to the Review Booster product
+- name: Presence Analytics
+  description: All operation available on Presence Management analytics

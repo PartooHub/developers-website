@@ -1,0 +1,54 @@
+tags:
+  - Boosts
+summary: Send a review invitation
+description: >
+  This endpoint lets you send a SMS to a costumer to help him leave a message on Google My Business.
+  You need to have `WRITE` access on the business.
+  Your business needs to be connected to a Google My Business location and to be subscribed to Review Booster product.
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - business_id
+          - target_phone
+        properties:
+          business_id:
+            $ref: '../../../components/index.yml#/schemas/BusinessId'
+          target_phone:
+            type: string
+            description: Customer phone number
+          target_name:
+            type: string
+            description: Customer fullname
+            maxLength: 255
+          template_id:
+            type: integer
+            description: Id of the SMS template you want to use
+          force:
+            type: string
+            description: To force invitation sending when a SMS has already been sent to the customer
+            enum: ['True', "False"]
+            default: "False"
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            invitation_id:
+              $ref: '../../../components/index.yml#/schemas/InvitationId'
+            status:
+              $ref: '../../../components/index.yml#/schemas/RequestStatus'
+  400:
+    $ref: '../../../components/index.yml#/responses/400'
+  401:
+    $ref: '../../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../../components/index.yml#/responses/403'
+  404:
+    $ref: '../../../components/index.yml#/responses/404'
