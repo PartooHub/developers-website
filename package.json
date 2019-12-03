@@ -1,0 +1,16 @@
+{
+  "name": "developers.partoo.co",
+  "version": "0.1",
+  "description": "Partoo App for developers",
+  "main": "index.js",
+  "author": "Partoo Team",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "watch": "redoc-cli serve swagger.yml -w true --options.expandResponses=\"200,201\" --options.jsonSampleExpandLevel=all",
+    "build": "redoc-cli bundle swagger.yml -t template.hbs -o rest_api/v2/redoc-static.html --options.expandResponses=\"200,201\" --options.jsonSampleExpandLevel=all"
+  },
+  "dependencies": {
+    "redoc-cli": "^0.8.4"
+  }
+}
