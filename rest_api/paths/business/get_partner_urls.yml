@@ -1,0 +1,60 @@
+tags:
+  - Businesses
+operationId: getBusinessPartnerUrls
+summary: Get business urls on publishers
+description: >
+  This endpoint lets you access to the urls corresponding to the business on publisher websites.
+  You need to have `READ` access on this business.
+parameters:
+  - $ref: '../../components/index.yml#/parameters/business_id'
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          type: object
+          description: URL by publisher
+          properties:
+            apple:
+              type: string
+              format: uri
+            le118000:
+              type: string
+              format: uri
+            les_horaires:
+              type: string
+              format: uri
+            wemap:
+              type: string
+              format: uri
+            here:
+              type: string
+              format: uri
+            google_my_business:
+              type: string
+              format: uri
+            hoodspot:
+              type: string
+              format: uri
+            foursquare:
+              type: string
+              format: uri
+            facebook:
+              type: string
+              format: uri
+            justacote:
+              type: string
+              format: uri
+            navmii:
+              type: string
+              format: uri
+            bing_fr:
+              type: string
+              format: uri
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
+  404:
+    $ref: '../../components/index.yml#/responses/404'

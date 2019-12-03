@@ -1,0 +1,48 @@
+tags:
+  - Businesses
+operationId: getBusinessIntegrationStatus
+summary: Get business integration data
+description: >
+  This endpoint lets you access to the data summarizing the integration state of a business on publishers.
+  You need to have `READ` access on this business.
+parameters:
+  - $ref: '../../components/index.yml#/parameters/business_id'
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          type: object
+          description: URL by publisher
+          properties:
+            apple:
+              $ref: '../../components/index.yml#/schemas/IntegrationData'
+            le118000:
+              $ref: '../../components/index.yml#/schemas/IntegrationData'
+            les_horaires:
+              $ref: '../../components/index.yml#/schemas/IntegrationData'
+            wemap:
+              $ref: '../../components/index.yml#/schemas/IntegrationData'
+            here:
+              $ref: '../../components/index.yml#/schemas/IntegrationData'
+            google_my_business:
+              $ref: '../../components/index.yml#/schemas/IntegrationData'
+            hoodspot:
+              $ref: '../../components/index.yml#/schemas/IntegrationData'
+            foursquare:
+              $ref: '../../components/index.yml#/schemas/IntegrationData'
+            facebook:
+              $ref: '../../components/index.yml#/schemas/IntegrationData'
+            justacote:
+              $ref: '../../components/index.yml#/schemas/IntegrationData'
+            navmii:
+              $ref: '../../components/index.yml#/schemas/IntegrationData'
+            bing_fr:
+              $ref: '../../components/index.yml#/schemas/IntegrationData'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
+  404:
+    $ref: '../../components/index.yml#/responses/404'
