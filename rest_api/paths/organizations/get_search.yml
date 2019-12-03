@@ -1,0 +1,35 @@
+tags:
+  - Organisations
+summary: Search for organisations
+description: >
+  This endpoint lets you search for organisations using filters.
+  The response is paginated (30 results per page).
+parameters:
+  - $ref: '../../components/index.yml#/parameters/query_org_id'
+  - $ref: '../../components/index.yml#/parameters/query_page'
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          type: object
+          description: Result object return by the API
+          properties:
+            page:
+              $ref: '../../components/index.yml#/schemas/current_page'
+            max_page:
+              $ref: '../../components/index.yml#/schemas/max_page'
+            count:
+              $ref: '../../components/index.yml#/schemas/count'
+            orgs:
+              type: array
+              description: The organisations complying with filter (30 max per page)
+              items:
+                $ref: '../../components/index.yml#/schemas/Org'
+  400:
+    $ref: '../../components/index.yml#/responses/400'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
