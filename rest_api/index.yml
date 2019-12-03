@@ -43,39 +43,9 @@ paths:
   /user/{user_id}/invite:
     post:
       $ref: ./paths/user/post_invite.yml
-  /api/v2/user/{user_id}/businesses:
+  /user/{user_id}/businesses:
     get:
-      tags:
-      - Users
-      summary: Get user businesses
-      description: >
-        This endpoint lets you retrieve the list of businesses which the selected user has `READ` access to.
-      operationId: getUserBusinesses
-      parameters:
-        - $ref: '#/components/parameters/path_user_id'
-      responses:
-        200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: '#/components/schemas/ListResult'
-                  - type: object
-                    properties:
-                      businesses:
-                        description: User businesses
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/Business'
-        400:
-          $ref: '#/components/responses/400'
-        401:
-          $ref: '#/components/responses/401'
-        403:
-          $ref: '#/components/responses/403'
-        404:
-          $ref: '#/components/responses/404'
+      $ref: ./paths/user/get_businesses.yml
 
   /authorize:
     post:
