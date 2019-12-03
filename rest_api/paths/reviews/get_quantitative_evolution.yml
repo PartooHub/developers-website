@@ -1,0 +1,44 @@
+tags:
+  - Reviews
+summary: Quantitative evolution
+description: Get the sum note in a specific time range
+parameters:
+  - $ref: '../../components/index.yml#/parameters/query_review_bucket'
+  - $ref: '../../components/index.yml#/parameters/query_review_update_date__gte'
+  - $ref: '../../components/index.yml#/parameters/query_review_update_date__lte'
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          allOf:
+            - type: object
+              properties:
+                ReviewQualitativeEvaluation:
+                  type: object
+                  properties:
+                    date:
+                      type: string
+                      format: string
+                      example: '2019-11-29'
+                    added:
+                      type: number
+                      format: integer
+                      example: 50
+                    previous_sum:
+                      type: number
+                      format: float
+                      example: 0
+                    cum_sum:
+                      type: number
+                      format: float
+                      example: 50
+  400:
+    $ref: '../../components/index.yml#/responses/400'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
+  404:
+    $ref: '../../components/index.yml#/responses/404'

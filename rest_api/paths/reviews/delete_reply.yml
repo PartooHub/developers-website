@@ -1,0 +1,26 @@
+tags:
+  - Reviews
+summary: Delete the reply to a review
+description: >
+  This endpoint lets you delete the reply to a review
+parameters:
+  - in: path
+    name: review_id
+    required: true
+    schema:
+      $ref: '../../components/index.yml#/schemas/ReviewId'
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/index.yml#/schemas/Review'
+  400:
+    $ref: '../../components/index.yml#/responses/400'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
+  404:
+    $ref: '../../components/index.yml#/responses/404'
