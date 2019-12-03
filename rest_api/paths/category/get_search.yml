@@ -1,0 +1,28 @@
+summary: Search categories
+tags:
+  - Categories
+description: >
+  This endpoint lets you search through Partoo categories.
+operationId: searchCategories
+parameters:
+  - $ref: '../../components/index.yml#/parameters/query_category_lang'
+  - $ref: '../../components/index.yml#/parameters/query_page'
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/index.yml#/schemas/ListResult'
+            - type: object
+              properties:
+                categories:
+                  type: array
+                  description: List of categories
+                  items:
+                    $ref: '../../components/index.yml#/schemas/Category'
+  400:
+    $ref: '../../components/index.yml#/responses/400'
+  401:
+    $ref: '../../components/index.yml#/responses/401'

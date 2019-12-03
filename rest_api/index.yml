@@ -131,60 +131,10 @@ paths:
   # CATEGORY endpoints
   /category/search:
     get:
-      summary: Search categories
-      tags:
-        - Categories
-      description: >
-        This endpoint lets you search through Partoo categories.
-      operationId: searchCategories
-      parameters:
-        - $ref: '#/components/parameters/query_category_lang'
-        - $ref: '#/components/parameters/query_page'
-      responses:
-        200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                allOf:
-                  - $ref: '#/components/schemas/ListResult'
-                  - type: object
-                    properties:
-                      categories:
-                        type: array
-                        description: List of categories
-                        items:
-                          $ref: '#/components/schemas/Category'
-        400:
-          $ref: '#/components/responses/400'
-        401:
-          $ref: '#/components/responses/401'
+      $ref: ./paths/category/get_search.yml
   /category/{category_id}:
     get:
-      summary: Get category
-      tags:
-        - Categories
-      description: >
-        This endpoint lets you retrieve the data of a specific category.
-      operationId: getCategory
-      parameters:
-        - in: path
-          required: true
-          name: category_id
-          schema:
-            $ref: '#/components/schemas/CategoryId'
-        - $ref: '#/components/parameters/query_category_lang'
-      responses:
-        200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Category'
-        400:
-          $ref: '#/components/responses/400'
-        401:
-          $ref: '#/components/responses/401'
+      $ref: ./paths/category/get_by_id.yml
 
   # PRESENCE ANALYTICS endpoints
   /presence_analytics:

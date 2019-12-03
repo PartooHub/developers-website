@@ -1,0 +1,24 @@
+summary: Get category
+tags:
+  - Categories
+description: >
+  This endpoint lets you retrieve the data of a specific category.
+operationId: getCategory
+parameters:
+  - in: path
+    required: true
+    name: category_id
+    schema:
+      $ref: '../../components/index.yml#/schemas/CategoryId'
+  - $ref: '../../components/index.yml#/parameters/query_category_lang'
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/index.yml#/schemas/Category'
+  400:
+    $ref: '../../components/index.yml#/responses/400'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
