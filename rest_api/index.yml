@@ -39,44 +39,7 @@ paths:
       $ref: ./paths/user/get_search.yml
   /user/search/count:
     get:
-      tags:
-        - Users
-      summary: Count users
-      description: >
-        This endpoint lets you count the users you have `READ` access to.
-        You can apply filters on this request.
-      operationId: searchUserCount
-      parameters:
-        - $ref: '#/components/parameters/query_filter_by_email'
-        - $ref: '#/components/parameters/query_filter_by_org_id'
-        - $ref: '#/components/parameters/query_filter_by_user_status'
-        - in: query
-          name: query
-          schema:
-            type: string
-          description: To perform a fuzzy search on user
-        - in: query
-          name: display_business_ids
-          schema:
-            type: string
-            enum: ["True", "False"]
-            default: "True"
-          description: The endpoint won’t return the `business_ids` when the value is `False`
-        - $ref: '#/components/parameters/query_page'
-      responses:
-        200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  count:
-                    $ref: '#/components/schemas/count'
-        400:
-          $ref: '#/components/responses/400'
-        401:
-          $ref: '#/components/responses/401'
+      $ref: ./paths/user/get_search_count.yml
   /user/{user_id}/invite:
     post:
       tags:
