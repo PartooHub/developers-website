@@ -42,32 +42,7 @@ paths:
       $ref: ./paths/user/get_search_count.yml
   /user/{user_id}/invite:
     post:
-      tags:
-        - Users
-      summary: Re-invite user
-      description: >
-        This endpoint lets you trigger a new invitation email to an `invited` user.
-        You need to have `WRITE` access to this user.
-        The email can only be sent once every 5 minutes.
-      operationId: reinviteUser
-      parameters:
-        - $ref: '#/components/parameters/path_user_id'
-      responses:
-        200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  status:
-                    $ref: '#/components/schemas/RequestStatus'
-        401:
-          $ref: '#/components/responses/401'
-        403:
-          $ref: '#/components/responses/403'
-        404:
-          $ref: '#/components/responses/404'
+      $ref: ./paths/user/post_invite.yml
   /api/v2/user/{user_id}/businesses:
     get:
       tags:
