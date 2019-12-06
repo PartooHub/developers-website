@@ -1,11 +1,12 @@
 securitySchemes:
   ApiKeyAuth:
     description: >
-      The authentication system on Partoo API is using `api_key` param.
+      The authentication system on Partoo API is using API Key that should be put in the header of the request (the name
+      of the header is `x-APIKey`).
       An api_key is linked to a user. This user's role will give you different access level to the API features.
     type: apiKey
-    in: query
-    name: api_key
+    in: header
+    name: x-APIKey
 schemas:
   BaseAnalyticsResponse:
     type: array
