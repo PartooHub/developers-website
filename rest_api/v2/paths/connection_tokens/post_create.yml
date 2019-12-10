@@ -39,7 +39,7 @@ responses:
             expiration_date:
               type: string
               description: Expiration date of the newly created token
-              format: datetime
+              format: date-time
               example: 2019-08-01T19:15:54.256000+02:00
 
   400:

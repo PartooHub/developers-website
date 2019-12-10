@@ -3,6 +3,10 @@
   post:
     $ref: ./connection_tokens/post_create.yml
 
+/connection/revoke_token:
+  post:
+    $ref: ./connection_tokens/post_revoke.yml
+
 # BOOSTER endpoint
 /review_booster/send_invitation:
   post:
