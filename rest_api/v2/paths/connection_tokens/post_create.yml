@@ -23,7 +23,7 @@ requestBody:
             maximum: 86400
             default: 86400
             example: 3600
-            description: Token time to leave in seconds. It can be maximum 1 day.
+            description: Token time to live in seconds. It can be maximum 1 day.
 responses:
   200:
     description: OK
