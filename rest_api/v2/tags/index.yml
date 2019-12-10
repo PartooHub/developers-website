@@ -1,5 +1,6 @@
 - name: ApiKeys
   description: >
+    ⚠️ **This section is deprecated and is going to be sunset on March 1st, 2020**
     In this section you will have all the operation to create/list/revoke api keys
     that can be used to authenticate user either on the REST API or on the JS API.
 - name: Connection Tokens
