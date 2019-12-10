@@ -1,3 +1,8 @@
+# Connection token endpoints
+/connection/generate_token:
+  post:
+    $ref: ./connection_tokens/post_create.yml
+
 # BOOSTER endpoint
 /review_booster/send_invitation:
   post:
