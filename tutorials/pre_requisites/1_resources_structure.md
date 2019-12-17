@@ -17,7 +17,7 @@ An organisation belongs to a `provider`.
 A user belongs to an `organisation` and has a `role` which gives him different levels of access on the different resources on Partoo (see section below).
 4. **Business:** A business represents a listing. It belongs to an `organisation`
 
-![Resource structure](./images/resources_structure.png)
+![Resource structure](../images/resources_structure.png)
 
 There are additional resources that are linked to these **4 main resources**.
 For instance `reviews` and `analytics`(for Presence Management and Review Management) are linked to `businesses`. 
@@ -56,7 +56,7 @@ For now there are 4 roles available:
 | Business	   | Provider | - Can create business, they will share its provider (and its org_id if no org_id given) <br> - Can update businesses that shares its provider |
 | Category	   | not writable	    |                          |
 
-![PROVIDER access](./images/provider.svg)
+![PROVIDER access](../images/provider.svg)
 
 ### ORG_ADMIN
 `ORG_ADMIN` role is meant for client admin user. It can manage its organisation users and businesses.
@@ -77,7 +77,7 @@ For now there are 4 roles available:
 | Business	   | Organisation | - Can create business, it will share its provider and its `org_id` <br> - Can update businesses that shares its `org_id`|
 | Category	   | not writable |                          |
 
-![ORG ADMIN access](./images/org_admin.svg)
+![ORG ADMIN access](../images/org_admin.svg)
 
 ### BUSINESS_MANAGER
 `BUSINESS_MANAGER` role is meant for client business manager. It can manage several businesses.
@@ -98,7 +98,7 @@ For now there are 4 roles available:
 | Business	   | Business | - Can update businesses that it has direct access to <br> - Cannot create business |
 | Category	   | not writable |                          |
 
-![BUSINESS_MANAGER access](./images/business_manager.svg)
+![BUSINESS_MANAGER access](../images/business_manager.svg)
 
 ### PUBLISHER
 `PUBLISHER` role is meant for publisher wanting to use Partoo as a data source. It can read Partoo businesses subscribed to presence management product.
