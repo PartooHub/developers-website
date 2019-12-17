@@ -14,7 +14,12 @@ The endpoint that we will be using are:
 ## STEP 1 - Create an organisation
 
 > **📕 Note:** This step is only necessary if you are a `PROVIDER` user.
-> If you are an `ORG_ADMIN`you cannot create an organization, the users and businesses your are will automatically be linked to your organisation so go the next step.
+> If you are an `ORG_ADMIN`you cannot create an organization, the users 
+> and businesses your are will automatically be linked to your organisation so skip this step and go directly to the next step.
+
+
+> **⚠️ Warning:** As a `PROVIDER` user (ie. as a Partoo reseller), you must create an organization for each new customer when you are a provider otherwise if all the customers 
+> are under the same organization it can lead to buggy behaviour (for instance, customers seeing the businesses of other customers)
 
 Python
 ---------------------------------------------------------------
@@ -49,7 +54,6 @@ Should return:
 ```
 
 ## STEP 2 - Create a business
-
 
 ### If you are a PROVIDER user
 
@@ -214,7 +218,8 @@ Should return:
 
 ### If you are an ORG_ADMIN user
 
-> **📕Note:** When you are an `ORG_ADMIN`, all the resources you create (businesses and users) are automatically linked to your organization. 
+> **📕Note:** When you are an `ORG_ADMIN`, all the resources you create (businesses and users) are automatically linked to your organization.
+> Therefore indicating the `org_id` in the creation payload is not necessary.
 
 We assume you successfully created an organisation and a business linked to it. 
 In this step you will create a user linked to the business and the organisation
