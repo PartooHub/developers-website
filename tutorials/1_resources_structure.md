@@ -1,5 +1,7 @@
 # Resources structure & access
 
+In this chapter, you will learn how the Partoo resources are structured and what are the rules to access them.
+
 ## Resources structure
 
 Partoo data is organised around **4 main resources**:
