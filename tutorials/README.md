@@ -5,7 +5,7 @@ In this section you will find all the tutorial to use and interact with Partoo/L
 ## Prerequisites
 
 1. [Understanding Partoo Data structure](pre_requisites/1_resources_structure.md)
-2. [Understanding Partoo environments]()
+2. [Understanding Partoo environments](pre_requisites/2_environments.md)
 
 ## Chapters
 
