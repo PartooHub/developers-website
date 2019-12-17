@@ -2,7 +2,8 @@
 
 In this chapter, you will learn how to create an organization, a business and a user linked to it using Partoo API.
 
-**📕Note:** All the examples below are using sandbox environment. In production, you will to change the url to use production one. 
+**📕Note:** All the examples below are using sandbox environment ([https://sandbox.api.partoo.co](https://sandbox.api.partoo.co)).
+In production, you will need to change the url to use production one ([https://api.partoo.co](https://api.partoo.co)). 
 
 ## STEP 1 - Create an organisation
 
@@ -71,11 +72,11 @@ response = requests.post(
             '%s/business' % API_BASE_URL,  # resource endpoint
             data={
                     'name': 'Corner shop',
-                    'org_id': organization['org_id'],  # the organization we created in the previous state
+                    'org_id': organization['org_id'],  # the organization we created in the previous step
                     'country': 'FR',
                     'city': 'Paris',
                     'zipcode': 75019,
-                    'categories': [],  # Partoo categories ids, see https://developers.partoo.co/rest_api/v2/#operation/searchCategories
+                    'categories': ["5109c3a237zdc544d8e267378"],  # Partoo categories ids, see https://developers.partoo.co/rest_api/v2/#operation/searchCategories
                   },
             headers={'x-APIKey': API_KEY},   # for authentication
 )
@@ -91,6 +92,8 @@ Should return:
 ```
 
 ### If you are an ORG_ADMIN user
+
+**📕Note:** When you are an `ORG_ADMIN`, all the resources you create (businesses and users) are automatically linked to your organization. 
 
 Python
 -----------------
@@ -115,7 +118,7 @@ response = requests.post(
                     'country': 'FR',
                     'city': 'Paris',
                     'zipcode': 75019,
-                    'categories': [],  # Partoo categories ids, see https://developers.partoo.co/rest_api/v2/#operation/searchCategories
+                    'categories': ["5109c3a237zdc544d8e267378"],  # Partoo categories ids, see https://developers.partoo.co/rest_api/v2/#operation/searchCategories
                   },
             headers={'x-APIKey': API_KEY},   # for authentication
 )
@@ -129,3 +132,4 @@ Should return:
 }
 """
 ```
+
