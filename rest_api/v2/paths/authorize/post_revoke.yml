@@ -1,5 +1,8 @@
 summary: Revoke API key
-description: This endpoint let you revoke an API key of one of your user.
+deprecated: true
+description: >
+  ⚠️ **This endpoint is deprecated and is going to be sun-set on March 1st, 2020**
+  This endpoint let you revoke an API key of one of your user.
 operationId: revokeAPIKey
 tags:
   - ApiKeys

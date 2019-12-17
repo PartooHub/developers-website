@@ -1,3 +1,16 @@
+# Connection token endpoints
+/connection/generate_token:
+  post:
+    $ref: ./connection_tokens/post_create.yml
+
+/connection/revoke_token:
+  post:
+    $ref: ./connection_tokens/post_revoke.yml
+
+/connection/check_token:
+  get:
+    $ref: ./connection_tokens/get_check.yml
+
 # BOOSTER endpoint
 /review_booster/send_invitation:
   post:
