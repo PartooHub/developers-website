@@ -6,6 +6,7 @@ description: >
   This endpoint lets you access to the information of a business.
   You need to have `WRITE` access on this business.
   Only indicated values be taken into account (it works like a `PATCH`).
+  You cannot push fields disabled for your org.
 parameters:
   - $ref: '../../components/index.yml#/parameters/business_id'
 requestBody:
@@ -83,6 +84,29 @@ responses:
   401:
     $ref: '../../components/index.yml#/responses/401'
   403:
-    $ref: '../../components/index.yml#/responses/403'
+    description: >
+      You are not allowed to perform this action
+    content:
+      application/json:
+        schema:
+          description: >
+            Error that occurs when you are authenticated but you are trying to perform an action you are not
+            allowed to perform
+          type: object
+          properties:
+            errors:
+              type: object
+              description: The detail of the error encountered
+              properties:
+                authorization:
+                  type: string
+                  default: "Operation not allowed"
+        example:
+          errors:
+            authorization:
+              name: "edit_not_allowed"
+              open_hours: "edit_not_allowed"
+              photos.primary: "edit_not_allowed"
+              photos.secondary: "edit_not_allowed"
   404:
     $ref: '../../components/index.yml#/responses/404'
