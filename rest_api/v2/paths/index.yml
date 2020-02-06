@@ -129,6 +129,8 @@
   post:
     $ref: ./business/post_unsubscribe.yml
 
+# GROUPS endpoints
+
 # CATEGORY endpoints
 /category/search:
   get:

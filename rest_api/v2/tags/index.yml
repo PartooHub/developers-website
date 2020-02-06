@@ -15,6 +15,9 @@
   description: All the operations you can perform on businesses.
 - name: Users
   description: All operation available on users
+- name: Groups
+  description: >
+    All the operations you can perform on groups.
 - name: Subscriptions
   description: >
     All the operation to subscribe/unsuscribe businesses to Partoo products.
