@@ -241,6 +241,11 @@ schemas:
     description: Date of creation
     format: datetime
     example: 2019-08-01T19:15:54.256000+02:00
+  UpdatedDate:
+    type: string
+    description: Date of creation
+    format: datetime
+    example: 2019-09-01T15:12:35.256000+02:00
   ReviewDeleteDate:
     type: string
     description: Review deletion date
@@ -465,6 +470,43 @@ schemas:
     type: array
     items:
       $ref: '#/schemas/Contact'
+  GroupId:
+    description: Group id
+    type: number
+    example: 42
+  GroupName:
+    description: Group Name
+    type: string
+    example: ComfyZone Paris
+  GroupParentId:
+    description: Group Parent Id
+    type: number
+    exemple: 9
+  GroupProvider:
+    description: Group provider label
+    type: string
+    example: partoo
+  Group:
+    description: Partoo App Group
+    type: object
+    properties:
+      id:
+        $ref: '#/schemas/GroupId'
+      org_id:
+        $ref: '#/schemas/OrgId'
+      parent_id:
+        $ref: '#/schemas/GroupParentId'
+      created:
+        $ref: '#/schemas/CreatedDate'
+      updated:
+        $ref: '#/schemas/UpdatedDate'
+      name:
+        $ref: '#/schemas/GroupName'
+      provider:
+        $ref: '#/schemas/GroupProvider'
+      subgroup:
+        description: Subgroups of the group
+        type: array
   Business:
     description: Partoo App Business
     type: object

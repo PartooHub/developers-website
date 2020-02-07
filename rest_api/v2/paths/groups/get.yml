@@ -10,7 +10,15 @@ responses:
     content:
       application/json:
         schema:
-          $ref: '../../components/index.yml#/schemas/Business'
+          allOf:
+            - $ref: '../../components/index.yml#/schemas/ListResult'
+            - type: object
+              properties:
+                groups:
+                  type: array
+                  description: List of groups
+                  items:
+                    $ref: '../../components/index.yml#/schemas/Group'
   401:
     $ref: '../../components/index.yml#/responses/401'
   403:
