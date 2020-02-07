@@ -130,6 +130,10 @@
     $ref: ./business/post_unsubscribe.yml
 
 # GROUPS endpoints
+/groups:
+  get:
+    $ref: ./groups/get.yml
+
 
 # CATEGORY endpoints
 /category/search:
