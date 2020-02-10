@@ -1,0 +1,42 @@
+tags:
+  - Groups
+operationId: updateManagedBusinesses
+summary: Update Managed Businesses
+description: >
+  This endpoint lets you update the list of businesses managed by a specific group.
+  This API delete and replace the previous list of businesses by the one corresponding to the filter
+  given by the user.
+  You need to have `WRITE` access on the organisation if you want to update managed businesses.
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          business__in:
+            $ref: '../../components/index.yml#/schemas/business_ids'
+          business_query:
+            $ref: '../../components/index.yml#/schemas/Query'
+          business_city:
+            $ref: '../../components/index.yml#/schemas/BusinessCity'
+          business_org_id:
+            $ref: '../../components/index.yml#/schemas/OrgId'
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            ids:
+              $ref: '../../components/index.yml#/schemas/group_business_ids'
+  400:
+    $ref: '../../components/index.yml#/responses/400'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
+  404:
+    $ref: '../../components/index.yml#/responses/404'

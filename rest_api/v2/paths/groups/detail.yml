@@ -1,0 +1,19 @@
+tags:
+  - Groups
+operationId: getGroup
+summary: Get group
+description: >
+  This endpoint lets you access all the information about a specific group.
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/index.yml#/schemas/Group'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
+  404:
+    $ref: '../../components/index.yml#/responses/404'

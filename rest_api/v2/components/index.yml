@@ -8,6 +8,22 @@ securitySchemes:
     in: header
     name: x-APIKey
 schemas:
+  Query:
+    type: string
+    description: Research business by keywords
+    example: "Partoo"
+  group_business_ids:
+    description: List of business ids added to the group after applying all the filter
+    type: array
+    example: ['595badaef348ab6b3530033f', '59d53302b12ff6429f262639']
+    items:
+      $ref: '#/schemas/BusinessId'
+  business_ids:
+    description: List of business ids
+    type: array
+    example: ['5409c35a97bbc544d8e26737', '595badaef348ab6b3530033f', '59d53302b12ff6429f262639']
+    items:
+      $ref: '#/schemas/BusinessId'
   GroupStatistics:
     type: array
     items:

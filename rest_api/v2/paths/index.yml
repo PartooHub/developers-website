@@ -140,9 +140,16 @@
 /groups/stats:
   get:
     $ref: ./groups/get_stats.yml
+/groups/{group_id}:
+  get:
+    $ref: ./groups/detail.yml
+  put:
+    $ref: ./groups/update.yml
 /groups/{group_id}/businesses:
   get:
     $ref: ./groups/get_groups_businesses.yml
+  put:
+    $ref: ./groups/update_managed_businesses.yml
 /groups/remove/{user_id}:
   post:
     $ref: ./groups/remove_user.yml
