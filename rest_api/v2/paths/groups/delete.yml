@@ -1,0 +1,46 @@
+tags:
+  - Groups
+operationId: deleteGroups
+summary: Delete group
+description: >
+  This endpoint lets you delete a group.
+  You need to have `WRITE` access on this group.
+parameters:
+  - $ref: '../../components/index.yml#/schemas/GroupId'
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          description: Response object
+          type: object
+          properties:
+            group_id:
+              $ref: '../../components/index.yml#/schemas/GroupId'
+            parent_id:
+              $ref: '../../components/index.yml#/schemas/GroupParentId'
+  400:
+    $ref: '../../components/index.yml#/responses/400'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    description: >
+      You are not allowed to perform this action (or there are still group manager in this group)
+    content:
+      application/json:
+        schema:
+          description: >
+            Error that occurs when you are authenticated but you are trying to perform an action you are not
+            allowed to perform
+          type: object
+          properties:
+            errors:
+              type: object
+              description: The detail of the error encountered
+              properties:
+                authorization:
+                  type: string
+                  default: "Operation not allowed"
+  404:
+    $ref: '../../components/index.yml#/responses/404'
