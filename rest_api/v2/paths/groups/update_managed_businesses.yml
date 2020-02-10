@@ -32,6 +32,8 @@ responses:
           properties:
             ids:
               $ref: '../../components/index.yml#/schemas/group_business_ids'
+  400:
+    $ref: '../../components/index.yml#/responses/400'
   401:
     $ref: '../../components/index.yml#/responses/401'
   403:
