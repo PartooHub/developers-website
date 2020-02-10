@@ -1,0 +1,19 @@
+tags:
+  - Groups
+operationId: getStats
+summary: Get groups statistics
+description: >
+  This endpoint lets you access statistics about the groups associated to your user.
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/index.yml#/schemas/GroupStatistics'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
+  404:
+    $ref: '../../components/index.yml#/responses/404'

@@ -135,6 +135,9 @@
     $ref: ./groups/get.yml
   post:
     $ref: ./groups/post.yml
+/groups/stats:
+  get:
+    $ref: ./groups/get_stats.yml
 
 # CATEGORY endpoints
 /category/search:
