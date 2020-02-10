@@ -24,6 +24,8 @@ requestBody:
           org_id:
             description: Org to which the user should belong
             type: integer
+          group_id:
+            $ref: '../../components/index.yml#/schemas/GroupId'
           business_ids:
             description: >
               The list of business to which the user has access to.

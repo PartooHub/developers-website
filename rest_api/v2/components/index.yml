@@ -540,6 +540,8 @@ schemas:
         $ref: '#/schemas/BusinessStatus'
       org_id:
         $ref: '#/schemas/BusinessOrgId'
+      group_id:
+        $ref: '#/schemas/GroupId'
       name:
         $ref: '#/schemas/BusinessName'
       address_details:
@@ -665,6 +667,10 @@ schemas:
         type: array
         items:
           $ref: '#/schemas/Report'
+      group_id:
+        description: Group id of the user (it affects only the group manager)
+        type: number
+        example: 42
       role:
         $ref: '#/schemas/Role'
       provider:
@@ -962,6 +968,13 @@ parameters:
       type: integer
     required: false
     description: Filter by organisation id
+  query_filter_by_group_id:
+    in: query
+    name: group_id
+    schema:
+      type: integer
+    required: false
+    description: Filter by group id
   query_filter_by_email:
     in: query
     name: email
