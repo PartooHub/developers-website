@@ -1,22 +1,27 @@
 tags:
   - Groups
-operationId: updateGroups
-summary: Update groups
+operationId: updateManagedBusinesses
+summary: Update Managed Businesses
 description: >
-  This endpoint lets you modify a group.
-  You need to have `WRITE` access on the organisation if you want to update a group.
+  This endpoint lets you update the list of businesses managed by a specific group.
+  This API delete and replace the previous list of businesses by the one corresponding to the filter
+  given by the user.
+  You need to have `WRITE` access on the organisation if you want to update managed businesses.
 requestBody:
   required: true
   content:
     application/json:
       schema:
-        description: Request body to modify a group
         type: object
         properties:
-          name:
-            $ref: '../../components/index.yml#/schemas/GroupName'
-          parent_id:
-            $ref: '../../components/index.yml#/schemas/GroupParentId'
+          business__in:
+            $ref: '../../components/index.yml#/schemas/business_ids'
+          business_query:
+            $ref: '../../components/index.yml#/schemas/Query'
+          business_city:
+            $ref: '../../components/index.yml#/schemas/BusinessCity'
+          business_org_id:
+            $ref: '../../components/index.yml#/schemas/OrgId'
 responses:
   200:
     description: OK
@@ -25,8 +30,8 @@ responses:
         schema:
           type: object
           properties:
-            group:
-              $ref: '../../components/index.yml#/schemas/Group'
+            ids:
+              $ref: '../../components/index.yml#/schemas/group_business_ids'
   401:
     $ref: '../../components/index.yml#/responses/401'
   403:

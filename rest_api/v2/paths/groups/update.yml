@@ -1,19 +1,17 @@
 tags:
   - Groups
-operationId: createGroups
-summary: Create groups
+operationId: updateGroups
+summary: Update groups
 description: >
-  This endpoint lets you create a group.
-  You need to have `WRITE` access on the organisation if you want to create a group.
+  This endpoint lets you modify a group.
+  You need to have `WRITE` access on the organisation if you want to update a group.
 requestBody:
   required: true
   content:
     application/json:
       schema:
-        description: Request body to create a group
+        description: Request body to modify a group
         type: object
-        required:
-          - name
         properties:
           name:
             $ref: '../../components/index.yml#/schemas/GroupName'

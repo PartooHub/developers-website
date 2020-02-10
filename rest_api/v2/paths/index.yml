@@ -138,6 +138,14 @@
 /groups/stats:
   get:
     $ref: ./groups/get_stats.yml
+/groups/{group_id}:
+  get:
+    $ref: ./groups/detail.yml
+  put:
+    $ref: ./groups/update.yml
+/groups/{group_id}/businesses:
+  put:
+    $ref: ./groups/update_managed_businesses.yml
 
 # CATEGORY endpoints
 /category/search:
