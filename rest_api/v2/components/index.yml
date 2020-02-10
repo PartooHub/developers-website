@@ -8,6 +8,19 @@ securitySchemes:
     in: header
     name: x-APIKey
 schemas:
+  GroupStatistics:
+    type: array
+    items:
+      type: object
+      properties:
+        businesses:
+          $ref: '#/schemas/BusinessesCount'
+        id:
+          $ref: '#/schemas/GroupId'
+  BusinessesCount:
+    type: integer
+    example: 10
+    description: Number of businesses in group
   BaseAnalyticsResponse:
     type: array
     items:
