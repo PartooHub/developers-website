@@ -29,6 +29,8 @@ responses:
           properties:
             group:
               $ref: '../../components/index.yml#/schemas/Group'
+  400:
+    $ref: '../../components/index.yml#/responses/400'
   401:
     $ref: '../../components/index.yml#/responses/401'
   403:
