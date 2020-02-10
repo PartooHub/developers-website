@@ -20,8 +20,6 @@ responses:
               $ref: '../../components/index.yml#/schemas/GroupId'
             parent_id:
               $ref: '../../components/index.yml#/schemas/GroupParentId'
-  400:
-    $ref: '../../components/index.yml#/responses/400'
   401:
     $ref: '../../components/index.yml#/responses/401'
   403:

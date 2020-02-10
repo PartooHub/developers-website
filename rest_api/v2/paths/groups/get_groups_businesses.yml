@@ -16,8 +16,6 @@ responses:
               type: array
               description: List of business_id
               example: ['5409c35a97bbc544d8e26737', '5409c35a97bbc544d8e26739']
-  400:
-    $ref: '../../components/index.yml#/responses/400'
   401:
     $ref: '../../components/index.yml#/responses/401'
   403:
