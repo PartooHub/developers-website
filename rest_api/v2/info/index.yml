@@ -37,11 +37,11 @@ description: |
   For instance a user with `BUSINESS_MANAGER` role has `WRITE` access on its own user and `READ` acces to all the users of its organisation.
 
   For now there are 4 roles available:
-    - `PROVIDER` role is maint for reseller admin user. It can manage organisations, users and businesses of a provider
-    - `ORG_ADMIN` role is maint for client admin user. It can manage the user and businesses of its organisation
-    - `GROUP_MANAGER` role is maint for client group manager. It can manage several businesses and users that belong to the group he managed
-    - `BUSINESS_MANAGER` role is maint for client business manager. It can manage several businesses
-    - `PUBLISHER` role is maint for publisher wanting to use Partoo as a data source. It can read Partoo businesses subscribed to presence management product
+    - `PROVIDER` role is meant for reseller admin user. It can manage organisations, users and businesses of a provider
+    - `ORG_ADMIN` role is meant for client admin user. It can manage the user and businesses of its organisation
+    - `GROUP_MANAGER` role is meant for client group manager. It can manage several businesses and users that belong to the group he managed
+    - `BUSINESS_MANAGER` role is meant for client business manager. It can manage several businesses
+    - `PUBLISHER` role is meant for publisher wanting to use Partoo as a data source. It can read Partoo businesses subscribed to presence management product
 
   ## PROVIDER
   `PROVIDER` role is maint for reseller admin user. It can manage its provider organisations, users and businesses.
