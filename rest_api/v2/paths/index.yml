@@ -133,7 +133,8 @@
 /groups:
   get:
     $ref: ./groups/get.yml
-
+  post:
+    $ref: ./groups/post.yml
 
 # CATEGORY endpoints
 /category/search:

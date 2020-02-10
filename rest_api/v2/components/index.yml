@@ -481,7 +481,7 @@ schemas:
   GroupParentId:
     description: Group Parent Id
     type: number
-    exemple: 9
+    example: 9
   GroupProvider:
     description: Group provider label
     type: string
