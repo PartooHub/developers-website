@@ -3,14 +3,14 @@ tags:
 operationId: getGroup
 summary: Get group
 description: >
-  This endpoint lets you access all the information about a specific group.
+  This endpoint returns all the information about a specific group.
 responses:
   200:
     description: OK
     content:
       application/json:
         schema:
-          $ref: '../../components/index.yml#/schemas/Group'
+          $ref: '../../components/index.yml#/schemas/Group_with_subgroup'
   401:
     $ref: '../../components/index.yml#/responses/401'
   403:

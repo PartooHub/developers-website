@@ -3,8 +3,8 @@ tags:
 operationId: createGroups
 summary: Create groups
 description: >
-  This endpoint lets you create a group.
-  You need to have `WRITE` access on the organisation if you want to create a group.
+  This endpoint enables the creation of a group by giving a name.
+  `WRITE` access on the organisation is needed in order to create a group.
 requestBody:
   required: true
   content:

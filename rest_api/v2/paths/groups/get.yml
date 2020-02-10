@@ -3,7 +3,7 @@ tags:
 operationId: getGroups
 summary: Get groups
 description: >
-  This endpoint lets you access all the information about the groups that your user have access to.
+  This endpoint returns all the information about the groups that the user has access to.
 responses:
   200:
     description: OK

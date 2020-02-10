@@ -131,28 +131,28 @@
 
 # GROUPS endpoints
 /groups:
-  get:
-    $ref: ./groups/get.yml
   post:
     $ref: ./groups/post.yml
+  get:
+    $ref: ./groups/get.yml
   delete:
     $ref: ./groups/delete.yml
-/groups/stats:
-  get:
-    $ref: ./groups/get_stats.yml
 /groups/{group_id}:
   get:
     $ref: ./groups/detail.yml
   put:
     $ref: ./groups/update.yml
+/groups/remove/{user_id}:
+  post:
+    $ref: ./groups/remove_user.yml
+/groups/stats:
+  get:
+    $ref: ./groups/get_stats.yml
 /groups/{group_id}/businesses:
   get:
     $ref: ./groups/get_groups_businesses.yml
   put:
     $ref: ./groups/update_managed_businesses.yml
-/groups/remove/{user_id}:
-  post:
-    $ref: ./groups/remove_user.yml
 
 # CATEGORY endpoints
 /category/search:

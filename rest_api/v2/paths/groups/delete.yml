@@ -3,8 +3,8 @@ tags:
 operationId: deleteGroups
 summary: Delete group
 description: >
-  This endpoint lets you delete a group.
-  You need to have `WRITE` access on this group.
+  This endpoint enables the deletion of a group by giving the `group_id`.
+  `WRITE` access on the organisation is needed in order to delete a group. A group manager can not delete a group.
 parameters:
   - $ref: '../../components/index.yml#/schemas/GroupId'
 responses:

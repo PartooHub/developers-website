@@ -3,7 +3,7 @@ tags:
 operationId: getGroupsBusinesses
 summary: Get groups businesses
 description: >
-  This endpoint lets you access the businesses that belongs to a group.
+  This endpoint returns the `business_id` of the businesses that belongs to a specific group.
 responses:
   200:
     description: OK
