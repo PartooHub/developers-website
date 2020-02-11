@@ -3,8 +3,8 @@ tags:
 operationId: updateGroups
 summary: Update groups
 description: >
-  This endpoint lets you modify a group.
-  You need to have `WRITE` access on the organisation if you want to update a group.
+  This endpoint enables the modification of a group.
+  `WRITE` access on the organisation is needed in order to be able to update a group.
 requestBody:
   required: true
   content:

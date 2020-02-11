@@ -1,7 +1,7 @@
 tags:
   - Groups
 operationId: updateManagedBusinesses
-summary: Update Managed Businesses
+summary: Update managed businesses
 description: >
   This endpoint lets you update the list of businesses managed by a specific group.
   This API delete and replace the previous list of businesses by the one corresponding to the filter
