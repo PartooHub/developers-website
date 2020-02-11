@@ -17,10 +17,10 @@
   description: All operation available on users
 - name: Groups
   description: >
-    Groups represent a collection of businesses managed by one or more group managers.
+    **Groups** represent a collection of businesses managed by one or multiple group managers.
     Their purpose is to simulate the clients business hierarchy/organisation and ease the visibility over them.
-    An organisation can have multiple groups and each group can have multiple subgroups.
-    <p>⚠️ A subgroup can have only businesses and no other nested subgroups<p>
+    An organisation can have multiple groups and each group can have multiple **subgroups**.
+    <p>⚠️ A subgroup can have only businesses and no other nested subgroups!<p>
 - name: Subscriptions
   description: >
     All the operation to subscribe/unsuscribe businesses to Partoo products.

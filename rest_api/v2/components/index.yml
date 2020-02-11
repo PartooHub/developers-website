@@ -10,7 +10,7 @@ securitySchemes:
 schemas:
   Query:
     type: string
-    description: Research business by keywords
+    description: Search business by name or address
     example: "Partoo"
   group_business_ids:
     description: List of business ids added to the group after applying all the filter
@@ -182,9 +182,10 @@ schemas:
     description: User role in the application
     type: string
     enum:
-      - BUSINESS_MANAGER
-      - ORG_ADMIN
       - PROVIDER
+      - ORG_ADMIN
+      - GROUP_MANAGER
+      - BUSINESS_MANAGER
       - PUBLISHER
     example: BUSINESS_MANAGER
   Lang:
@@ -495,7 +496,7 @@ schemas:
     type: integer
     example: 42
   BusinessContacts:
-    description: Business Contacts
+    description: Business contacts
     type: array
     items:
       $ref: '#/schemas/Contact'
@@ -504,11 +505,11 @@ schemas:
     type: number
     example: 23
   GroupName:
-    description: Group Name
+    description: Group name
     type: string
     example: ComfyZone Paris
   GroupParentId:
-    description: Group Parent Id. If not null, it means it's a subgroup.
+    description: Group parent Id. If not null, it means it's a subgroup.
     type: number / null
     example: null
   GroupProvider:
@@ -570,7 +571,7 @@ schemas:
       org_id:
         $ref: '#/schemas/OrgId'
       parent_id:
-        description: Group Parent Id. If not null, it means it's a subgroup.
+        description: Group parent Id. If not null, it means it's a subgroup.
         type: number / null
         example: 23
       created:
@@ -578,7 +579,7 @@ schemas:
       updated:
         $ref: '#/schemas/UpdatedDate'
       name:
-        description: Group Name
+        description: Group name
         type: string
         example: SubComfyZone Paris
       provider:

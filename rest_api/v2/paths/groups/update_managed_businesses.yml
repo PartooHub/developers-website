@@ -1,12 +1,12 @@
 tags:
   - Groups
 operationId: updateManagedBusinesses
-summary: Update managed businesses
+summary: Manage businesses
 description: >
-  This endpoint lets you update the list of businesses managed by a specific group.
-  This API delete and replace the previous list of businesses by the one corresponding to the filter
-  given by the user.
-  You need to have `WRITE` access on the organisation if you want to update managed businesses.
+  This endpoint lets you update the list of businesses within a specific group.
+  It replaces the previous list of businesses with a new one.
+  The new list can be directly specified using `business__in` parameter or built through a set of filters.
+  You need to have `WRITE` access on the organisation if you want to update the businesses.
 requestBody:
   required: true
   content:

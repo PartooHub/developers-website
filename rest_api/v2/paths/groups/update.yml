@@ -1,7 +1,7 @@
 tags:
   - Groups
 operationId: updateGroups
-summary: Update groups
+summary: Update group
 description: >
   This endpoint enables the modification of a group.
   `WRITE` access on the organisation is needed in order to be able to update a group.

@@ -1,7 +1,7 @@
 tags:
   - Groups
 operationId: createGroups
-summary: Create groups
+summary: Create group
 description: >
   This endpoint enables the creation of a group by giving a name.
   `WRITE` access on the organisation is needed in order to create a group.
