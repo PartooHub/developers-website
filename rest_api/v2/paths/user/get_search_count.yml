@@ -9,6 +9,7 @@ parameters:
   - $ref: '../../components/index.yml#/parameters/query_filter_by_email'
   - $ref: '../../components/index.yml#/parameters/query_filter_by_org_id'
   - $ref: '../../components/index.yml#/parameters/query_filter_by_user_status'
+  - $ref: '../../components/index.yml#/parameters/query_filter_by_group_id'
   - in: query
     name: query
     schema:

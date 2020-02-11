@@ -1,0 +1,37 @@
+tags:
+  - Groups
+operationId: updateGroups
+summary: Update group
+description: >
+  This endpoint enables the modification of a group.
+  `WRITE` access on the organisation is needed in order to be able to update a group.
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        description: Request body to modify a group
+        type: object
+        properties:
+          name:
+            $ref: '../../components/index.yml#/schemas/GroupName'
+          parent_id:
+            $ref: '../../components/index.yml#/schemas/GroupParentId'
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            group:
+              $ref: '../../components/index.yml#/schemas/Group'
+  400:
+    $ref: '../../components/index.yml#/responses/400'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
+  404:
+    $ref: '../../components/index.yml#/responses/404'

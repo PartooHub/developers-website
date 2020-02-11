@@ -1,0 +1,39 @@
+tags:
+  - Groups
+operationId: createGroups
+summary: Create group
+description: >
+  This endpoint enables the creation of a group by giving a name.
+  `WRITE` access on the organisation is needed in order to create a group.
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        description: Request body to create a group
+        type: object
+        required:
+          - name
+        properties:
+          name:
+            $ref: '../../components/index.yml#/schemas/GroupName'
+          parent_id:
+            $ref: '../../components/index.yml#/schemas/GroupParentId'
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            group:
+              $ref: '../../components/index.yml#/schemas/Group'
+  400:
+    $ref: '../../components/index.yml#/responses/400'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
+  404:
+    $ref: '../../components/index.yml#/responses/404'

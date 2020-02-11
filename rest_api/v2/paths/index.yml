@@ -129,6 +129,25 @@
   post:
     $ref: ./business/post_unsubscribe.yml
 
+# GROUPS endpoints
+/groups:
+  get:
+    $ref: ./groups/get.yml
+  post:
+    $ref: ./groups/post.yml
+/groups/{group_id}:
+  get:
+    $ref: ./groups/detail.yml
+  put:
+    $ref: ./groups/update.yml
+  delete:
+    $ref: ./groups/delete.yml
+/groups/{group_id}/businesses:
+  get:
+    $ref: ./groups/get_groups_businesses.yml
+  put:
+    $ref: ./groups/update_managed_businesses.yml
+
 # CATEGORY endpoints
 /category/search:
   get:

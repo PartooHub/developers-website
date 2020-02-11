@@ -1,0 +1,24 @@
+tags:
+  - Groups
+operationId: getGroupsBusinesses
+summary: Get group businesses
+description: >
+  This endpoint returns a list of ids of the businesses that belong to a specific group.
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            ids:
+              type: array
+              description: List of business_id
+              example: ['5409c35a97bbc544d8e26737', '5409c35a97bbc544d8e26739']
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
+  404:
+    $ref: '../../components/index.yml#/responses/404'

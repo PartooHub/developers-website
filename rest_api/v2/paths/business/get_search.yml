@@ -8,6 +8,7 @@ description: >
 parameters:
   - $ref: '../../components/index.yml#/parameters/query_filter_by_fuzzy_query_on_business'
   - $ref: '../../components/index.yml#/parameters/query_filter_by_org_id'
+  - $ref: '../../components/index.yml#/parameters/query_filter_by_group_id'
   - $ref: '../../components/index.yml#/parameters/query_filter_by_country'
   - $ref: '../../components/index.yml#/parameters/query_filter_by_business_name'
   - $ref: '../../components/index.yml#/parameters/query_filter_by_business_status'
