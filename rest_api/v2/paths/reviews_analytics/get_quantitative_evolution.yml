@@ -1,10 +1,11 @@
 tags:
-  - Reviews
-summary: Qualitative evolution
-description: Get the average note in a specific time range
+  - Reviews Analytics
+summary: Quantitative evolution
+description: Get the sum note in a specific time range
 parameters:
   - $ref: '../../components/index.yml#/parameters/query_review_bucket'
-  - $ref: '../../components/index.yml#/parameters/query_review_cumulative'
+  - $ref: '../../components/index.yml#/parameters/query_review_update_date__gte'
+  - $ref: '../../components/index.yml#/parameters/query_review_update_date__lte'
 responses:
   200:
     description: OK
@@ -15,25 +16,26 @@ responses:
             - type: object
               properties:
                 ReviewQualitativeEvaluation:
-                  description: Qualitative evaluation of the review from the server
                   type: object
                   properties:
                     date:
                       type: string
-                      format: datetime
+                      format: string
                       example: '2019-11-29'
                     added:
                       type: number
                       format: integer
                       example: 50
-                    average:
+                    previous_sum:
                       type: number
                       format: float
-                      example: 4.54
+                      example: 0
                     cum_sum:
                       type: number
                       format: float
-                      example: 50.0
+                      example: 50
+  400:
+    $ref: '../../components/index.yml#/responses/400'
   401:
     $ref: '../../components/index.yml#/responses/401'
   403:

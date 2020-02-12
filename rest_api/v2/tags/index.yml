@@ -5,7 +5,7 @@
     that can be used to authenticate user either on the REST API or on the JS API.
 - name: Connection Tokens
   description: >
-    In this section you will have all the operation to create/check/revoke connection tokens
+    In this section you will have all the operations to create/check/revoke connection tokens
     that can be used to authenticate users on the JS SDK or to build a SSO.
 - name: Organisations
   description: >
@@ -14,7 +14,7 @@
 - name: Businesses
   description: All the operations you can perform on businesses.
 - name: Users
-  description: All operation available on users
+  description: All operations available on users
 - name: Groups
   description: >
     **Groups** represent a collection of businesses managed by one or multiple group managers.
@@ -23,13 +23,15 @@
     <p>⚠️ A subgroup can have only businesses and no other nested subgroups!<p>
 - name: Subscriptions
   description: >
-    All the operation to subscribe/unsuscribe businesses to Partoo products.
+    All the operations to subscribe/unsuscribe businesses to Partoo products.
     You need to have the role `PROVIDER` to be able to perform those operations.
 - name: Reviews
-  description: All operation available on reviews
+  description: All operations available on reviews
+- name: Reviews Analytics
+  description: All the operations to perform analytics on reviews
 - name: Categories
-  description: All operation available on categories
+  description: All operations available on categories
 - name: Boosts
-  description: All operation related to the Review Booster product
+  description: All operations related to the Review Booster product
 - name: Presence Analytics
-  description: All operation available on Presence Management analytics
+  description: All operations available on Presence Management analytics

@@ -63,18 +63,20 @@
 /reviews:
   get:
     $ref: ./reviews/get.yml
-/reviews/qualitative-evolution:
-  get:
-    $ref: ./reviews/get_qualitative_evolution.yml
-/reviews/quantitative-evolution:
-  get:
-    $ref: ./reviews/get_quantitative_evolution.yml
 /reviews/{review_id}/reply/edit:
   post:
     $ref: ./reviews/post_reply.yml
 /reviews/{review_id}/reply/delete:
   delete:
     $ref: ./reviews/delete_reply.yml
+
+# REVIEWS ANALYTICS endpoints
+/reviews/qualitative-evolution:
+  get:
+    $ref: ./reviews_analytics/get_qualitative_evolution.yml
+/reviews/quantitative-evolution:
+  get:
+    $ref: ./reviews_analytics/get_quantitative_evolution.yml
 
 # ORG endpoints
 /org/{org_id}:
