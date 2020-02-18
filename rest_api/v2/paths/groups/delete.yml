@@ -18,8 +18,9 @@ responses:
           properties:
             group_id:
               $ref: '../../components/index.yml#/schemas/GroupId'
-            parent_id:
-              $ref: '../../components/index.yml#/schemas/GroupParentId'
+            status:
+              type: string
+              enum: ["success"]
   401:
     $ref: '../../components/index.yml#/responses/401'
   403:
