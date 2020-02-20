@@ -51,12 +51,7 @@ requestBody:
             enum: ["True", "False"]
             default: "False"
           password:
-            description: >
-              The User password.
-              If no password given, a password will automatically be generated.
-              Will be ignored if `send_invitation` is set to `True`.
-            type: string
-            minLength: 6
+            $ref: '../../components/index.yml#/schemas/Password'
 responses:
   200:
     description: OK
