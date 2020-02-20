@@ -16,7 +16,7 @@ responses:
           description: Response object
           type: object
           properties:
-            group_id:
+            id:
               $ref: '../../components/index.yml#/schemas/GroupId'
             status:
               type: string
