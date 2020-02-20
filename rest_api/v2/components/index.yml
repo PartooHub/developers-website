@@ -157,9 +157,7 @@ schemas:
           - inactive
   Password:
     description: >
-      The User password. If no password given, a password will automatically be generated.
-      The password will be ignored if `send_invitation` is set to `True`.
-
+      The User password. 
       It should comply with the following rules:
 
       - should be at least 8 characters long

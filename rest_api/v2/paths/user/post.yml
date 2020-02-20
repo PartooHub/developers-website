@@ -2,7 +2,8 @@ tags:
   - Users
 summary: Create user
 description: >
-  This endpoint lets you create a user.
+  This endpoint lets you create a user. If no password given, a password will automatically be generated.
+  The password will be ignored if `send_invitation` is set to `True`.
   You need to have `WRITE` access on the organisation of the user you want to create.
 operationId: createUser
 requestBody:
