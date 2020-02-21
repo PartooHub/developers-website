@@ -42,9 +42,7 @@ requestBody:
             items:
               $ref: '../../components/index.yml#/schemas/Product'
           password:
-            description: User password
-            type: string
-            minLength: 6
+            $ref: '../../components/index.yml#/schemas/Password'
           keywords:
             $ref: '../../components/index.yml#/schemas/Keywords'
           review_management_weekly:

@@ -155,6 +155,19 @@ schemas:
         type: string
         enum:
           - inactive
+  Password:
+    description: >
+      The User password. 
+      It should comply with the following rules:
+
+      - should be at least 8 characters long
+
+      - should have one upper case letter and one lower case letter
+
+      - should have one special character
+    type: string
+    format: password
+    minLength: 8
   current_page:
     type: integer
     description: Current page number
