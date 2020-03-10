@@ -683,6 +683,94 @@ schemas:
         $ref: '#/schemas/BusinessNews'
       promos:
         $ref: '#/schemas/BusinessPromos'
+  BusinessWithCustomFields:
+    description: Partoo App Business
+    type: object
+    properties:
+      id:
+        $ref: '#/schemas/BusinessId'
+      created:
+        description: Timestamp (in seconds) of the business creation
+        type: number
+        example: 1409925979.5
+      modified:
+        description: Timestamp (in seconds) of the business last modification
+        type: number
+        example: 1561335111.681374
+      code:
+        $ref: '#/schemas/BusinessCode'
+      status:
+        $ref: '#/schemas/BusinessStatus'
+      org_id:
+        $ref: '#/schemas/BusinessOrgId'
+      group_id:
+        $ref: '#/schemas/GroupId'
+      name:
+        $ref: '#/schemas/BusinessName'
+      address_details:
+        $ref: '#/schemas/AddressDetails'
+      address:
+        description: Business address
+        type: string
+      address2:
+        description: Business address
+        type: string
+      city:
+        $ref: '#/schemas/BusinessCity'
+      zipcode:
+        $ref: '#/schemas/BusinessZipcode'
+      region:
+        $ref: '#/schemas/BusinessRegion'
+      country:
+        $ref: '#/schemas/BusinessCountry'
+      open_hours:
+        $ref: '#/schemas/OpenHours'
+      specific_hours:
+        $ref: '#/schemas/SpecificHours'
+      description_short:
+        $ref: '#/schemas/BusinessShortDescription'
+      description_long:
+        $ref: '#/schemas/BusinessLongDescription'
+      website_url:
+        $ref: '#/schemas/BusinessWebsite'
+      facebook_url:
+        $ref: '#/schemas/BusinessFacebookPage'
+      twitter_url:
+        $ref: '#/schemas/BusinessTwitter'
+      google_location_id:
+        description: Id of GMB Location to which the business is linked
+        type: string
+      facebook_page_id:
+        description: Id of Facebook Location to which the business is linked
+        type: string
+      national_identification_number:
+        $ref: '#/schemas/BusinessNationalIdentificationNumber'
+      logo_url:
+        description: Business LOGO URL
+        type: string
+        format: uri
+      contacts:
+        $ref: '#/schemas/BusinessContacts'
+      photos:
+        $ref: '#/schemas/Photos'
+      lat:
+        $ref: '#/schemas/Latitude'
+      long:
+        $ref: '#/schemas/Longitude'
+      subscriptions:
+        $ref: '#/schemas/Subscriptions'
+      custom_fields:
+        $ref: '#/schemas/CustomFields'
+      videos:
+        $ref: '#/schemas/BusinessVideos'
+      siret:
+        deprecated: true
+        description: Business SIRET (for french businesses)
+        type: string
+      news:
+        $ref: '#/schemas/BusinessNews'
+      promos:
+        $ref: '#/schemas/BusinessPromos'
   UserPhone:
     description: User phone number
     type: string
@@ -920,6 +1008,40 @@ schemas:
     type: string
     description: the exact phone number we would have sent the invitation(s) to
     example: '0701020304'
+  CustomFields:
+    description: Custom Fields (in Beta version)
+    type: array
+    items:
+      deprecated: true
+      properties:
+        custom_fields_type_id:
+          type: number
+        type:
+          type: string
+        value:
+          type: number | string | boolean | array
+        order:
+          type: number
+    example: [
+      {
+        custom_fields_type_id: 1,
+        type: "boolean",
+        value: true,
+        order: 1,
+      },
+      {
+        custom_fields_type_id: 1,
+        type: "string",
+        value: toto,
+        order: 2,
+      },
+      {
+        custom_fields_type_id: 1,
+        type: "integer",
+        value: 2,
+        order: 3,
+      }
+    ]
   # DEPRECATED fields
   Promo:
     deprecated: true

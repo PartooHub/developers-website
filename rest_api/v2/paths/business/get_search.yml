@@ -53,7 +53,7 @@ responses:
                   type: array
                   description: List of Businesses
                   items:
-                    $ref: '../../components/index.yml#/schemas/Business'
+                    $ref: '../../components/index.yml#/schemas/BusinessWithCustomFields'
   400:
     $ref: '../../components/index.yml#/responses/400'
   401:
