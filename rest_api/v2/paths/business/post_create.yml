@@ -70,6 +70,8 @@ requestBody:
             $ref: '../../components/index.yml#/schemas/BusinessVideos'
           news:
             $ref: '../../components/index.yml#/schemas/BusinessNews'
+          custom_fields:
+            $ref: '../../components/index.yml#/schemas/CustomFieldsUpdate'
 responses:
   200:
     description: OK

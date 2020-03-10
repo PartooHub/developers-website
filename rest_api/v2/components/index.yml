@@ -1042,6 +1042,17 @@ schemas:
         order: 3,
       }
     ]
+  CustomFieldsUpdate:
+    description: Custom Fields Values (in Beta version)
+    type: object
+    properties:
+      custom_fields_name:
+        type: number | string | boolean | array
+    example: {
+        Parking: true,
+        ManagerName: 'toto',
+        Surface: 35,
+      }
   # DEPRECATED fields
   Promo:
     deprecated: true
