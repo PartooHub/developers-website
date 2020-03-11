@@ -72,13 +72,20 @@ requestBody:
             $ref: '../../components/index.yml#/schemas/BusinessVideos'
           news:
             $ref: '../../components/index.yml#/schemas/BusinessNews'
+          custom_fields:
+            $ref: '../../components/index.yml#/schemas/CustomFieldsUpdate'
 responses:
   200:
     description: OK
     content:
       application/json:
         schema:
-          $ref: '../../components/index.yml#/schemas/Business'
+          type: object
+          properties:
+            status:
+              $ref: '../../components/index.yml#/schemas/RequestStatus'
+            id:
+              $ref: '../../components/index.yml#/schemas/BusinessId'
   400:
     $ref: '../../components/index.yml#/responses/400'
   401:

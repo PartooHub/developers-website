@@ -13,7 +13,7 @@ responses:
     content:
       application/json:
         schema:
-          $ref: '../../components/index.yml#/schemas/Business'
+          $ref: '../../components/index.yml#/schemas/BusinessWithCustomFields'
   401:
     $ref: '../../components/index.yml#/responses/401'
   403:

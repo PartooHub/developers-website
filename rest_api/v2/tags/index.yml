@@ -12,7 +12,10 @@
     All the operations you can perform on organisation.
     An organisation is an entreprise that owns businesses.
 - name: Businesses
-  description: All the operations you can perform on businesses.
+  description: >
+    All the operations you can perform on businesses.
+    <p> Custom fields can be added to businesses of an org. For creating new fields, please contact you Customer Success Manager.
+    The values of custom fields can be changed through business creation and update APIs and can be read through business get and search APIs.
 - name: Users
   description: All operations available on users
 - name: Groups
