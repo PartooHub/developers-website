@@ -1009,49 +1009,82 @@ schemas:
     description: the exact phone number we would have sent the invitation(s) to
     example: '0701020304'
   CustomFields:
-    description: Custom Fields (in Beta version)
+    description: Custom Fields `BETA`
     type: array
     items:
       deprecated: true
       properties:
         custom_fields_type_id:
+          description: The id of the custom field
           type: number
         type:
+          description: Possible values are "BOOLEAN", "INTEGER", "TEXT", "FLOAT", "SINGLE_SELECT", "MULIPLE_SELECT".
           type: string
         value:
+          description: >
+            The type of the value is depending on the type of the custom field.
+            <p> BOOLEAN: boolean
+            <p> INTEGER: integer
+            <p> TEXT: string, all characters enabled
+            <p> FLOAT: float
+            <p> SINGLE_SELECT: string, one of the string defined in the possible values of the custom field
+            <p> MULTIPLE_SELECT: array of string, string defined in the possible values of the custom field
           type: number | string | boolean | array
         order:
+          description: The relative order for the display in the tab "custom fields"
           type: number
     example: [
       {
         custom_fields_type_id: 1,
-        type: "boolean",
+        type: "BOOLEAN",
         value: true,
         order: 1,
       },
       {
         custom_fields_type_id: 1,
-        type: "string",
+        type: "STRING",
         value: toto,
         order: 2,
       },
       {
         custom_fields_type_id: 1,
-        type: "integer",
+        type: "INTEGER",
         value: 2,
         order: 3,
+      },
+      {
+        custom_fields_type_id: 1,
+        type: "FLOAT",
+        value: 2.55,
+        order: 4,
+      },
+      {
+        custom_fields_type_id: 1,
+        type: "SINGLE_SELECT",
+        value: "two",
+        order: 4,
+      },
+      {
+        custom_fields_type_id: 1,
+        type: "MULTIPLE_SELECT",
+        value: ["one", "two"],
+        order: 5,
       }
     ]
   CustomFieldsUpdate:
-    description: Custom Fields Values (in Beta version)
+    description: Custom Fields Values `BETA`
     type: object
     properties:
       custom_fields_name:
+        description: the "custom_fields_name" shall be replaced by the name of the custom field to update. The value shall be compliant with the type of the custom field.
         type: number | string | boolean | array
     example: {
         Parking: true,
         ManagerName: 'toto',
         Surface: 35,
+        DistanceFromSubway: 1.5,
+        Level: 'one',
+        Services: ['DisabledAccess', 'FreeParking'],
       }
   # DEPRECATED fields
   Promo:
