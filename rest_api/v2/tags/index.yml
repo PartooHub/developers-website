@@ -14,8 +14,7 @@
 - name: Businesses
   description: >
     All the operations you can perform on businesses.
-    <p> Custom fields can be added to businesses of an org. For creating new fields, please contact you Customer Success Manager.
-    The values of custom fields can be changed through business creation and update APIs and can be read through business get and search APIs.
+    <p> ⚠️ Regarding Custom Fields `BETA` they can be configured at an org level only through contacting your dedicated Customer Success Manager. Once created, Custom Fields values can be updated like any other business field.
 - name: Users
   description: All operations available on users
 - name: Groups

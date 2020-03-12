@@ -1015,58 +1015,64 @@ schemas:
       deprecated: true
       properties:
         custom_fields_type_id:
-          description: The id of the custom field
+          description: Id of the custom field
           type: number
         type:
           description: Possible values are "BOOLEAN", "INTEGER", "TEXT", "FLOAT", "SINGLE_SELECT", "MULIPLE_SELECT".
           type: string
         value:
           description: >
-            The type of the value is depending on the type of the custom field.
+            Compliant values depend on the custom field type.
             <p> BOOLEAN: boolean
             <p> INTEGER: integer
             <p> TEXT: string, all characters enabled
             <p> FLOAT: float
-            <p> SINGLE_SELECT: string, one of the string defined in the possible values of the custom field
-            <p> MULTIPLE_SELECT: array of string, string defined in the possible values of the custom field
+            <p> SINGLE_SELECT: string, must comply with the options set
+            <p> MULTIPLE_SELECT: array of string, must comply with the options set
           type: number | string | boolean | array
         order:
-          description: The relative order for the display in the tab "custom fields"
+          description: Describes where the custom field is displayed on the Business Edit view of the Partoo App inside the ”Custom Field” section (/app/business/edit#<business id>)
           type: number
     example: [
       {
         custom_fields_type_id: 1,
         type: "BOOLEAN",
+        name: "Parking",
         value: true,
         order: 1,
       },
       {
         custom_fields_type_id: 1,
         type: "STRING",
+        name: "ManagerName",
         value: toto,
         order: 2,
       },
       {
         custom_fields_type_id: 1,
         type: "INTEGER",
+        name: "Surface",
         value: 2,
         order: 3,
       },
       {
         custom_fields_type_id: 1,
         type: "FLOAT",
+        name: "DistanceFromSubway",
         value: 2.55,
         order: 4,
       },
       {
         custom_fields_type_id: 1,
         type: "SINGLE_SELECT",
+        name: "Level",
         value: "two",
         order: 4,
       },
       {
         custom_fields_type_id: 1,
         type: "MULTIPLE_SELECT",
+        name: "Services",
         value: ["one", "two"],
         order: 5,
       }
@@ -1076,7 +1082,7 @@ schemas:
     type: object
     properties:
       custom_fields_name:
-        description: the "custom_fields_name" shall be replaced by the name of the custom field to update. The value shall be compliant with the type of the custom field.
+        description: Replace <custom_fields_name> with the name of the custom field to update. The value must comply with the custom field type.
         type: number | string | boolean | array
     example: {
         Parking: true,
