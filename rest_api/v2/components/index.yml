@@ -1030,6 +1030,9 @@ schemas:
             <p> SINGLE_SELECT: string, must comply with the options set
             <p> MULTIPLE_SELECT: array of string, must comply with the options set
           type: number | string | boolean | array
+        name:
+          description: Name of the custom field
+          type: string
         order:
           description: Describes where the custom field is displayed on the Business Edit view of the Partoo App inside the ”Custom Field” section (/app/business/edit#<business id>)
           type: number
