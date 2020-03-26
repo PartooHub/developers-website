@@ -157,7 +157,7 @@ schemas:
           - inactive
   Password:
     description: >
-      The User password. 
+      The User password.
       It should comply with the following rules:
 
       - should be at least 8 characters long
@@ -1095,6 +1095,32 @@ schemas:
         Level: 'one',
         Services: ['DisabledAccess', 'FreeParking'],
       }
+  BusinessFieldsPermissionSections:
+    description: Business Fields section permissions
+    type: object
+    properties:
+      name:
+        description: Name of business fields' section
+        type: string
+      fields:
+        type: array
+        items:
+          $ref: '#/schemas/BusinessFieldsPermissions'
+
+  BusinessFieldsPermissions:
+    description: Business Fields permissions
+    type: object
+    properties:
+      name:
+        description: name of the field
+        type: string
+      enabled:
+        description: Permission (enabled | disabled) of the field for the current user
+        type: boolean
+      enabled_for_subroles:
+        description: Permission (enabled | disabled) of the field for the users below the current user
+        type: boolean
+
   # DEPRECATED fields
   Promo:
     deprecated: true
@@ -1185,6 +1211,13 @@ parameters:
     schema:
       type: integer
     description: Organisation id
+  path_provider_label:
+    in: path
+    name: label
+    required: true
+    schema:
+      type: string
+    description: Name of the provider
   path_user_id:
     in: path
     required: true
