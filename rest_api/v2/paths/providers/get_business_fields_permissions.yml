@@ -3,7 +3,8 @@ tags:
 operationId: getBusinessFieldsPermissionForProvider
 summary: Get business fields' permissions for Provider
 description: >
-    This endpoint lets you access the fields' permissions of a provider's businesses
+    This endpoint lets you access the fields' permissions of a provider's businesses.
+     Only PROVIDER users can access this information.
 parameters:
   - $ref: '../../components/index.yml#/parameters/path_provider_label'
 
