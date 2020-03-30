@@ -1096,11 +1096,11 @@ schemas:
         Services: ['DisabledAccess', 'FreeParking'],
       }
   BusinessFieldsPermissionSections:
-    description: Business Fields section permissions
+    description: Business Fields sections permissions
     type: object
     properties:
       name:
-        description: Name of business fields' section
+        description: Name of a business fields section
         type: string
       fields:
         type: array

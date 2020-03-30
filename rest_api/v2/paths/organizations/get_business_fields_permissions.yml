@@ -1,9 +1,9 @@
 tags:
     - Organisations
-operationId: getBusinessFieldsPermissionForOrg
-summary: Get business fields' permissions for Org
+operationId: getBusinessFieldsPermissionsForOrg
+summary: Get business fields permissions for Org
 description: >
-  This endpoint lets you access the fields' permissions of an Organisation businesses.
+  This endpoint lets you access the fields permissions of an Organisation's businesses.
   Only ORG_ADMIN users can access this information.
 parameters:
   - $ref: '../../components/index.yml#/parameters/path_org_id'

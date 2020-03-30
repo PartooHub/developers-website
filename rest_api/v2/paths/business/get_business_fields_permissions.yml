@@ -1,9 +1,9 @@
 tags:
   - Businesses
-operationId: getBusinessFieldsPermission
-summary: Get business fields' permissions
+operationId: getBusinessFieldsPermissions
+summary: Get business fields permissions
 description: >
-  This endpoint lets you access the fields' permissions of a business depending on your role.
+  This endpoint lets you access the fields permissions of a business depending on your role.
 parameters:
   - $ref: '../../components/index.yml#/parameters/business_id'
 
