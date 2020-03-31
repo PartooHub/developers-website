@@ -1,12 +1,14 @@
 tags:
   - Business Fields
-operationId: getBusinessFieldsPermissionsForOrg
-summary: Get business fields permissions for Org
+operationId: getBusinessFieldsPermissionsForProvider
+summary: Get business fields permissions for a Provider
 description: >
-  This endpoint lets you access the fields permissions of an Organisation's businesses.
-  Only ORG_ADMIN users can access this information.
+   This endpoint lets you access the fields permissions for all the businesses of a given Provider.
+
+   
+   Only PROVIDER users can access this information.
 parameters:
-  - $ref: '../../components/index.yml#/parameters/path_org_id'
+  - $ref: '../../components/index.yml#/parameters/path_provider_label'
 
 responses:
   200:

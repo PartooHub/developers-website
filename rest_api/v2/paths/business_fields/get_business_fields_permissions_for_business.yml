@@ -1,7 +1,7 @@
 tags:
   - Business Fields
 operationId: getBusinessFieldsPermissions
-summary: Get business fields permissions
+summary: Get business fields permissions for a Business
 description: >
   This endpoint lets you access the fields permissions of a business depending on your role.
 parameters:

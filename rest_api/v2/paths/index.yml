@@ -136,13 +136,13 @@
 # Business Fields endpoint
 /business/{business_id}/business_fields:
   get:
-    $ref: ./business/get_business_fields_permissions.yml
+    $ref: ./business_fields/get_business_fields_permissions_for_business.yml
 /org/{org_id}/business_fields:
   get:
-    $ref: ./organizations/get_business_fields_permissions.yml
+    $ref: ./business_fields/get_business_fields_permissions_for_org.yml
 /provider/{label}/business_fields:
   get:
-    $ref: ./providers/get_business_fields_permissions.yml
+    $ref: ./business_fields/get_business_fields_permissions_for_provider.yml
 
 
 # GROUPS endpoints

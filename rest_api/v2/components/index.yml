@@ -1112,13 +1112,20 @@ schemas:
     type: object
     properties:
       name:
-        description: name of the field
+        description: Name of the field
         type: string
       enabled:
         description: Permission (enabled | disabled) of the field for the current user
         type: boolean
       enabled_for_subroles:
-        description: Permission (enabled | disabled) of the field for the users below the current user
+        description: >
+          Permission (enabled | disabled) of the field for
+          the users with a more restrictive role compared to the current user. 
+
+
+          E.g. if the user is ORG_ADMIN: enabled_for_subroles describes
+          the permissions of the field for all the GROUP_MANAGER and
+          BUSINESS_MANAGER of the given organization.
         type: boolean
 
   # DEPRECATED fields
