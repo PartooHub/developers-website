@@ -78,6 +78,7 @@
   get:
     $ref: ./reviews_analytics/get_quantitative_evolution.yml
 
+
 # ORG endpoints
 /org/{org_id}:
   get:
@@ -130,6 +131,19 @@
 /business/{business_id}/unsubscribe:
   post:
     $ref: ./business/post_unsubscribe.yml
+
+
+# Business Fields endpoint
+/business/{business_id}/business_fields:
+  get:
+    $ref: ./business_fields/get_business_fields_permissions_for_business.yml
+/org/{org_id}/business_fields:
+  get:
+    $ref: ./business_fields/get_business_fields_permissions_for_org.yml
+/provider/{label}/business_fields:
+  get:
+    $ref: ./business_fields/get_business_fields_permissions_for_provider.yml
+
 
 # GROUPS endpoints
 /groups:

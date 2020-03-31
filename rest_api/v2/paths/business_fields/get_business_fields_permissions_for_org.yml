@@ -1,0 +1,27 @@
+tags:
+  - Business Fields
+operationId: getBusinessFieldsPermissionsForOrg
+summary: Get business fields permissions for an Org
+description: >
+  This endpoint lets you access the fields permissions for all the businesses of a given Organisation.
+  
+  
+  Only ORG_ADMIN users can access this information.
+parameters:
+  - $ref: '../../components/index.yml#/parameters/path_org_id'
+
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: '../../components/index.yml#/schemas/BusinessFieldsPermissionSections'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
+  404:
+    $ref: '../../components/index.yml#/responses/404'
