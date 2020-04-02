@@ -444,7 +444,7 @@ schemas:
   BusinessZipcode:
     description: Business zipcode
     type: string
-    example: 75019
+    example: "75019"
   BusinessNationalIdentificationNumber:
     description: Business National Identification number
     type: string
@@ -931,7 +931,7 @@ schemas:
       number:
         description: Street number
         type: string
-        example: 12
+        example: "12"
       number_supplement:
         description: Street number supplement
         type: string
