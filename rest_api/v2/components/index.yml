@@ -444,7 +444,7 @@ schemas:
   BusinessZipcode:
     description: Business zipcode
     type: string
-    example: 75019
+    example: "75019"
   BusinessNationalIdentificationNumber:
     description: Business National Identification number
     type: string
@@ -547,7 +547,7 @@ schemas:
         $ref: '#/schemas/GroupName'
       provider:
         $ref: '#/schemas/GroupProvider'
-      subgroup:
+      subgroups:
         description: Subgroups of the group. A subgroup can not have subgroups
         type: array
   Group_with_subgroup:
@@ -931,7 +931,7 @@ schemas:
       number:
         description: Street number
         type: string
-        example: 12
+        example: "12"
       number_supplement:
         description: Street number supplement
         type: string
@@ -1239,6 +1239,13 @@ parameters:
       type: integer
       default: 0
     description: Page number. 30 results per page
+  query_page_100:
+    in: query
+    name: page
+    schema:
+      type: integer
+      default: 1
+    description: Page number. Starts at 1. 100 results per page.
   query_org_id:
     in: query
     name: org_id

@@ -4,19 +4,15 @@ operationId: getGroups
 summary: Get groups
 description: >
   This endpoint returns all the information about the groups that the user has access to.
-
-requestBody:
-  required: false
-  content:
-    application/json:
-      schema:
-        description: Request body to search groups
-        type: object
-        properties:
-          name__contains:
-            description: Perform a fuzzy search on groups
-            type: string
-            example: "ComfyZone"
+parameters:
+  - in: query
+    name: name__contains
+    schema:
+      type: string
+    description: Perform a fuzzy search on the group names
+    required: false
+    example: "bakery"
+  - $ref: '../../components/index.yml#/parameters/query_page_100'
 responses:
   200:
     description: OK
