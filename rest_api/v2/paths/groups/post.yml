@@ -25,10 +25,7 @@ responses:
     content:
       application/json:
         schema:
-          type: object
-          properties:
-            group:
-              $ref: '../../components/index.yml#/schemas/Group'
+          $ref: '../../components/index.yml#/schemas/Group_with_subgroup'
   400:
     $ref: '../../components/index.yml#/responses/400'
   401:
