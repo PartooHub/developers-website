@@ -1104,6 +1104,60 @@ schemas:
         type: string
       fields:
         type: array
+        example: [
+          {
+            name: 'adress',
+            fields: [
+              {
+                name: "country",
+                enabled: true,
+                enabled_for_subroles: true
+              },
+               {
+                name: "city",
+                enabled: true,
+                enabled_for_subroles: false
+              },
+            ]
+          },
+           {
+            name: 'description',
+            fields: [
+              {
+                name: "categories",
+                enabled: true,
+                enabled_for_subroles: true
+              },
+              {
+                name: "website_url",
+                enabled: true,
+                enabled_for_subroles: true
+              }
+            ]
+          },
+          {
+            fields: [
+            {
+                name: "parking",
+                enabled_for_subroles: true,
+                custom_fields_type_id: 8,
+                enabled: true,
+                type: "BOOLEAN",
+                order: 10
+            },
+            {
+              name: "2nd phone number",
+              enabled_for_subroles: true,
+              custom_fields_type_id: 5,
+              enabled: true,
+              max_len: 20,
+              type: "TEXT",
+              order: 11
+            }
+        ],
+          name: "custom_fields"
+          }
+        ]
         items:
           $ref: '#/schemas/BusinessFieldsPermissions'
 
@@ -1127,6 +1181,16 @@ schemas:
           the permissions of the field for all the GROUP_MANAGER and
           BUSINESS_MANAGER of the given organization.
         type: boolean
+      < custom field rule >:
+        description: Validation rule for the custom field. Only exists for custom fields.
+        type: integer,
+        example: {max_length: 20}
+      type:
+        description: Type of the custom field (text, boolean, number, etc). Only exists for custom fields.
+        type: string
+      order:
+        description: Priority order of the field. The custom field will be displayed in a position depending of this value. Only exists for custom fields.
+        type: interger
 
   # DEPRECATED fields
   Promo:
