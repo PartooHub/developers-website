@@ -1182,14 +1182,29 @@ schemas:
           BUSINESS_MANAGER of the given organization.
         type: boolean
       < custom field rule >:
-        description: Validation rule for the custom field. Only exists for custom fields.
+        description: >
+          `custom_fields section only`
+
+
+          Validation rule for the custom field.
         type: integer,
         example: {max_length: 20}
       type:
-        description: Type of the custom field (text, boolean, number, etc). Only exists for custom fields.
+        description: >
+          `custom_fields section only`
+
+
+          Type of the custom field.
+
+
+          Possible values are "BOOLEAN", "INTEGER", "TEXT", "FLOAT", "SINGLE_SELECT", "MULIPLE_SELECT".
         type: string
       order:
-        description: Priority order of the field. The custom field will be displayed in a position depending of this value. Only exists for custom fields.
+        description: >
+          `custom_fields section only`
+
+
+          Describes where the custom field is displayed on the Business Edit view of the Partoo App inside the ”Custom Field” section (/app/business/edit#)
         type: interger
 
   # DEPRECATED fields
