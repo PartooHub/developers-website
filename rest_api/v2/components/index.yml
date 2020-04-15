@@ -1255,7 +1255,7 @@ schemas:
       - success
   SubscriptionDetails:
     type: object
-    description: The details on the presence_management subscription
+    description: The details on the product subscription
     properties:
       status:
         type: string

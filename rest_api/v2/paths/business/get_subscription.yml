@@ -20,6 +20,8 @@ responses:
               $ref: '../../components/index.yml#/schemas/SubscriptionDetails'
             review_management:
               $ref: '../../components/index.yml#/schemas/SubscriptionDetails'
+            review_booster:
+              $ref: '../../components/index.yml#/schemas/SubscriptionDetails'
   401:
     $ref: '../../components/index.yml#/responses/401'
   403:
