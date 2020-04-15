@@ -15,7 +15,7 @@ responses:
         schema:
           type: array
           items:
-            $ref: '../../components/index.yml#/schemas/BusinessFieldsPermissionSections'
+            $ref: '../../components/index.yml#/schemas/BusinessFields.Section'
   401:
     $ref: '../../components/index.yml#/responses/401'
   403:

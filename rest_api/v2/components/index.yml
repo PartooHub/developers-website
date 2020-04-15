@@ -1095,7 +1095,8 @@ schemas:
         Level: 'one',
         Services: ['DisabledAccess', 'FreeParking'],
       }
-  BusinessFieldsPermissionSections:
+
+  BusinessFields.Section:
     description: Business Fields sections permissions
     type: object
     properties:
@@ -1159,53 +1160,92 @@ schemas:
           }
         ]
         items:
-          $ref: '#/schemas/BusinessFieldsPermissions'
+          anyOf:
+            - $ref: '#/schemas/BusinessFields.Field'
+            - $ref: '#/schemas/CustomFields.Metadata'
 
-  BusinessFieldsPermissions:
-    description: Business Fields permissions
-    type: object
-    properties:
-      name:
-        description: Name of the field
-        type: string
-      enabled:
-        description: Permission (enabled | disabled) of the field for the current user
-        type: boolean
-      enabled_for_subroles:
-        description: >
-          Permission (enabled | disabled) of the field for
-          the users with a more restrictive role compared to the current user. 
-
-
-          E.g. if the user is ORG_ADMIN: enabled_for_subroles describes
-          the permissions of the field for all the GROUP_MANAGER and
-          BUSINESS_MANAGER of the given organization.
-        type: boolean
-      < custom field rule >:
-        description: >
-          `custom_fields section only`
+  BusinessFields.Field:
+      description: Business Fields permissions
+      type: object
+      properties:
+        name:
+          description: Name of the field
+          type: string
+        enabled:
+          description: Permission (enabled | disabled) of the field for the current user
+          type: boolean
+        enabled_for_subroles:
+          description: >
+            Permission (enabled | disabled) of the field for
+            the users with a more restrictive role compared to the current user.
 
 
-          Validation rule for the custom field.
-        type: integer,
-        example: {max_length: 20}
-      type:
-        description: >
-          `custom_fields section only`
+            E.g. if the user is ORG_ADMIN: enabled_for_subroles describes
+            the permissions of the field for all the GROUP_MANAGER and
+            BUSINESS_MANAGER of the given organization.
+          type: boolean
+
+  CustomFields.Metadata:
+    allOf:
+      - $ref: '#/schemas/BusinessFields.Field'
+      - description: Business Fields permissions
+        type: object
+        properties:
+          type:
+            description: >
+              Type of the custom field.
 
 
-          Type of the custom field.
+              Possible values are "TEXT", "INTEGER", "FLOAT", "BOOLEAN", "SINGLE_SELECT", "MULTIPLE_SELECT".
+            type: string
+            enum: ["TEXT", "INTEGER", "FLOAT", "BOOLEAN", "SINGLE_SELECT", "MULTIPLE_SELECT"]
+          order:
+            description: >
+              Describes where the custom field is displayed on the Business Edit view of the Partoo App inside
+              the ”Custom Field” section (/app/business/edit#)
+            type: interger
+        discriminator:
+          propertyName: type
+          mapping:
+            TEXT: '#/components/schemas/CustomFields.Metadata.Text'
+            INTEGER: '#/components/schemas/CustomFields.Metadata.Number'
+            FLOAT: '#/components/schemas/CustomFields.Metadata.Number'
+            BOOLEAN: '#/components/schemas/CustomFields.Metadata'
+            SINGLE_SELECT: '#/components/schemas/CustomFields.Metadata.Select'
+            MULTIPLE_SELECT: '#/components/schemas/CustomFields.Metadata.Select'
 
+  CustomFields.Metadata.Text:
+    allOf:
+    - $ref: '#/schemas/CustomFields.Metadata'
+    - type: object
+      properties:
+        max_len:
+          type: integer
+          description: If set, maximum number of characters that this Custom Field will accept.
 
-          Possible values are "BOOLEAN", "INTEGER", "TEXT", "FLOAT", "SINGLE_SELECT", "MULIPLE_SELECT".
-        type: string
-      order:
-        description: >
-          `custom_fields section only`
+  CustomFields.Metadata.Number:
+    allOf:
+    - $ref: '#/schemas/CustomFields.Metadata'
+    - type: object
+      properties:
+        min:
+          type: integer
+          description: If set, minimum value that this Custom Field will accept.
+        max:
+          type: integer
+          description: If set, maximum value that this Custom Field will accept.
 
+  CustomFields.Metadata.Select:
+    allOf:
+    - $ref: '#/schemas/CustomFields.Metadata'
+    - type: object
+      properties:
+        possible_values:
+          type: array
+          description: List of values that the select will have
+          items:
+            type: string
 
-          Describes where the custom field is displayed on the Business Edit view of the Partoo App inside the ”Custom Field” section (/app/business/edit#)
-        type: interger
 
   # DEPRECATED fields
   Promo:
