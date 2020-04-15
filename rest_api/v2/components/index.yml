@@ -1103,69 +1103,103 @@ schemas:
       name:
         description: Name of a business fields section
         type: string
-      fields:
-        type: array
-        example: [
-          {
-            name: 'adress',
-            fields: [
-              {
-                name: "country",
-                enabled: true,
-                enabled_for_subroles: true
-              },
-               {
-                name: "city",
-                enabled: true,
-                enabled_for_subroles: false
-              },
-            ]
-          },
-           {
-            name: 'description',
-            fields: [
-              {
-                name: "categories",
-                enabled: true,
-                enabled_for_subroles: true
-              },
-              {
-                name: "website_url",
-                enabled: true,
-                enabled_for_subroles: true
-              }
-            ]
-          },
-          {
-            fields: [
-            {
-                name: "parking",
-                enabled_for_subroles: true,
-                custom_fields_type_id: 8,
-                enabled: true,
-                type: "BOOLEAN",
-                order: 10
-            },
-            {
-              name: "2nd phone number",
-              enabled_for_subroles: true,
-              custom_fields_type_id: 5,
-              enabled: true,
-              max_len: 20,
-              type: "TEXT",
-              order: 11
-            }
-        ],
-          name: "custom_fields"
-          }
-        ]
-        items:
-          anyOf:
-            - $ref: '#/schemas/BusinessFields.Field'
-            - $ref: '#/schemas/CustomFields.Metadata'
+    discriminator:
+      propertyName: name
+      mapping:
+        description: '#/components/schemas/BusinessFields.SectionNormal'
+        hours: '#/components/schemas/BusinessFields.SectionNormal'
+        photos: '#/components/schemas/BusinessFields.SectionNormal'
+        contact: '#/components/schemas/BusinessFields.SectionNormal'
+        address: '#/components/schemas/BusinessFields.SectionNormal'
+        custom_fields: '#/components/schemas/BusinessFields.SectionCustomFields'
+    example: [
+    {
+      name: 'address',
+      fields: [
+      {
+        name: "country",
+        enabled: true,
+        enabled_for_subroles: true
+      },
+      {
+        name: "city",
+        enabled: true,
+        enabled_for_subroles: false
+      },
+      ]
+    },
+    {
+      name: 'description',
+      fields: [
+      {
+        name: "categories",
+        enabled: true,
+        enabled_for_subroles: true
+      },
+      {
+        name: "website_url",
+        enabled: true,
+        enabled_for_subroles: true
+      }
+      ]
+    },
+    {
+      name: "custom_fields",
+      fields: [
+      {
+        name: "has_parking",
+        enabled: true,
+        enabled_for_subroles: true,
+        type: "BOOLEAN",
+        custom_fields_type_id: 8,
+        order: 10
+      },
+      {
+        name: "special_description",
+        enabled: true,
+        enabled_for_subroles: true,
+        type: "TEXT",
+        custom_fields_type_id: 5,
+        order: 11,
+        max_len: 250
+      },
+      {
+        name: "facilities",
+        enabled: true,
+        enabled_for_subroles: true,
+        type: "MULTIPLE_SELECT",
+        custom_fields_type_id: 2,
+        order: 2,
+        possible_values: ["handicapped access", "toilets", "break room"]
+      }
+      ]
+    }
+    ]
+
+  BusinessFields.SectionNormal:
+    allOf:
+      - $ref: '#/schemas/BusinessFields.Section'
+      - description: Business Fields Section
+        type: object
+        properties:
+          fields:
+            type: array
+            items:
+              $ref: '#/schemas/BusinessFields.Field'
+
+  BusinessFields.SectionCustomFields:
+    allOf:
+      - $ref: '#/schemas/BusinessFields.Section'
+      - description: Business Fields Section of Custom Fields
+        type: object
+        properties:
+          fields:
+            type: array
+            items:
+              $ref: '#/schemas/CustomFields.Metadata'
 
   BusinessFields.Field:
-      description: Business Fields permissions
+      description: Business Field
       type: object
       properties:
         name:
@@ -1199,6 +1233,9 @@ schemas:
               Possible values are "TEXT", "INTEGER", "FLOAT", "BOOLEAN", "SINGLE_SELECT", "MULTIPLE_SELECT".
             type: string
             enum: ["TEXT", "INTEGER", "FLOAT", "BOOLEAN", "SINGLE_SELECT", "MULTIPLE_SELECT"]
+          custom_fields_type_id:
+            description: ID of the custom field. Unique only combined with the type. Not used to reference the Custom Field.
+            type: integer
           order:
             description: >
               Describes where the custom field is displayed on the Business Edit view of the Partoo App inside
