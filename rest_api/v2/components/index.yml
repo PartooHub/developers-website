@@ -1279,7 +1279,7 @@ schemas:
 
   CustomFields.Metadata:
     allOf:
-      - $ref: '#/schemas      /BusinessFields.Field'
+      - $ref: '#/schemas/BusinessFields.Field'
       - description: Business Fields permissions
         type: object
         properties:
