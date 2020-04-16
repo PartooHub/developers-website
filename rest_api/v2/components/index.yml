@@ -1010,7 +1010,8 @@ schemas:
     example: '0701020304'
 
   CustomFields.Array:
-    description: Custom Fields
+    description: >
+      `BETA` Custom Fields set for this Business
     type: array
     items:
       $ref: '#/schemas/CustomFields.Field.Base'
@@ -1082,7 +1083,7 @@ schemas:
         description: >
           Describes where the custom field is displayed on the Business Edit view of the Partoo App
           inside the ”Custom Field” section (/app/business/edit#<business id>)
-          The lower the value, the higher the field will be placed.
+          <p> The lower the value, the higher the field will be placed.
         type: number
     discriminator:
       propertyName: type
@@ -1133,14 +1134,15 @@ schemas:
               type: string
 
   CustomFields.Update:
-    description: Custom Fields Values
+    description: >
+      `BETA` Custom Fields key values
     type: object
     properties:
       custom_fields_name:
         description: >
           Replace \<custom_fields_name\> with the name of the custom field to update.
           The value must comply with the custom field type.
-          Set to NULL to empty the field.
+          <p> Set to NULL to empty the field.
         type: number | string | boolean | array | null
     example: {
         Parking: true,
@@ -1159,9 +1161,7 @@ schemas:
         description: >
           Name of a Business Section. They correspond to the tabs in the Business Edit view.
           Each section has an array of Fields that are displayed within it.
-
-
-          The `custom_fields` section contains Fields that have more attributes than the other Fields from other sections.
+          <p> `BETA` The `custom_fields` section contains Fields that have more attributes than the other Fields from other sections.
         type: string
     discriminator:
       propertyName: name
@@ -1272,25 +1272,21 @@ schemas:
           description: >
             Permission (enabled | disabled) of the field for
             the users with a more restrictive role compared to the current user.
-
-
-            E.g. if the user is ORG_ADMIN: enabled_for_subroles describes
+            <p> E.g. if the user is ORG_ADMIN: enabled_for_subroles describes
             the permissions of the field for all the GROUP_MANAGER and
             BUSINESS_MANAGER of the given organization.
           type: boolean
 
   CustomFields.Metadata:
     allOf:
-      - $ref: '#/schemas/BusinessFields.Field'
+      - $ref: '#/schemas      /BusinessFields.Field'
       - description: Business Fields permissions
         type: object
         properties:
           type:
             description: >
               Type of the custom field.
-
-
-              Possible values are "TEXT", "INTEGER", "FLOAT", "BOOLEAN", "SINGLE_SELECT", "MULTIPLE_SELECT".
+              <p> Possible values are "TEXT", "INTEGER", "FLOAT", "BOOLEAN", "SINGLE_SELECT", "MULTIPLE_SELECT".
             type: string
             enum: ["TEXT", "INTEGER", "FLOAT", "BOOLEAN", "SINGLE_SELECT", "MULTIPLE_SELECT"]
           custom_fields_type_id:

@@ -14,7 +14,8 @@
 - name: Businesses
   description: >
     All the operations you can perform on businesses.
-    <p> ⚠️ Regarding Custom Fields `BETA` they can be configured at an org level only through contacting your dedicated Customer Success Manager. Once created, Custom Fields values can be updated like any other business field.
+    <p> ⚠️ Regarding Custom Fields `BETA` they can be configured at an org level only through contacting your dedicated Customer Success Manager.
+    Once created, Custom Fields values can be updated like any other business field.
 - name: Users
   description: All operations available on users
 - name: Groups
