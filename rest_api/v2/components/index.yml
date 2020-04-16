@@ -1101,7 +1101,12 @@ schemas:
     type: object
     properties:
       name:
-        description: Name of a business fields section
+        description: >
+          Name of a Business Section. They correspond to the tabs in the Business Edit view.
+          Each section has an array of Fields that are displayed within it.
+
+
+          The `custom_fields` section contains Fields that have more attributes than the other Fields from other sections.
         type: string
     discriminator:
       propertyName: name
