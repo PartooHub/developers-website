@@ -760,7 +760,7 @@ schemas:
       subscriptions:
         $ref: '#/schemas/Subscriptions'
       custom_fields:
-        $ref: '#/schemas/CustomFields'
+        $ref: '#/schemas/CustomFields.Array'
       videos:
         $ref: '#/schemas/BusinessVideos'
       siret:
@@ -1008,34 +1008,12 @@ schemas:
     type: string
     description: the exact phone number we would have sent the invitation(s) to
     example: '0701020304'
-  CustomFields:
-    description: Custom Fields `BETA`
+
+  CustomFields.Array:
+    description: Custom Fields
     type: array
     items:
-      deprecated: true
-      properties:
-        custom_fields_type_id:
-          description: Id of the custom field
-          type: number
-        type:
-          description: Possible values are "BOOLEAN", "INTEGER", "TEXT", "FLOAT", "SINGLE_SELECT", "MULIPLE_SELECT".
-          type: string
-        value:
-          description: >
-            Compliant values depend on the custom field type.
-            <p> BOOLEAN: boolean
-            <p> INTEGER: integer
-            <p> TEXT: string, all characters enabled
-            <p> FLOAT: float
-            <p> SINGLE_SELECT: string, must comply with the options set
-            <p> MULTIPLE_SELECT: array of string, must comply with the options set
-          type: number | string | boolean | array
-        name:
-          description: Name of the custom field
-          type: string
-        order:
-          description: Describes where the custom field is displayed on the Business Edit view of the Partoo App inside the ”Custom Field” section (/app/business/edit#<business id>)
-          type: number
+      $ref: '#/schemas/CustomFields.Field.Base'
     example: [
       {
         custom_fields_type_id: 1,
@@ -1046,9 +1024,16 @@ schemas:
       },
       {
         custom_fields_type_id: 1,
-        type: "STRING",
+        type: "TEXT",
         name: "ManagerName",
         value: toto,
+        order: 2,
+      },
+      {
+        custom_fields_type_id: 1,
+        type: "TEXT",
+        name: "Supervisor",
+        value: null,
         order: 2,
       },
       {
@@ -1080,6 +1065,7 @@ schemas:
         order: 5,
       }
     ]
+
   CustomFieldsUpdate:
     description: Custom Fields Values `BETA`
     type: object
@@ -1095,6 +1081,72 @@ schemas:
         Level: 'one',
         Services: ['DisabledAccess', 'FreeParking'],
       }
+
+  CustomFields.Field.Base:
+    description: A Custom Field
+    properties:
+      name:
+        description: Name of the custom field
+        type: string
+      type:
+        description: Possible values are "BOOLEAN", "INTEGER", "TEXT", "FLOAT", "SINGLE_SELECT", "MULIPLE_SELECT".
+        type: string
+      custom_fields_type_id:
+        description: Id of the custom field
+        type: number
+      order:
+        description: >
+          Describes where the custom field is displayed on the Business Edit view of the Partoo App
+          inside the ”Custom Field” section (/app/business/edit#<business id>)
+          The lower the value, the higher the field will be placed.
+        type: number
+    discriminator:
+      propertyName: type
+      mapping:
+        TEXT: '#/components/schemas/CustomFields.Field.Text'
+        INTEGER: '#/components/schemas/CustomFields.Field.Number'
+        FLOAT: '#/components/schemas/CustomFields.Field.Number'
+        BOOLEAN: '#/components/schemas/CustomFields.Field.Boolean'
+        SINGLE_SELECT: '#/components/schemas/CustomFields.Field.Text'
+        MULTIPLE_SELECT: '#/components/schemas/CustomFields.Field.MultiSelect'
+
+  CustomFields.Field.Number:
+    allOf:
+      - $ref: '#/schemas/CustomFields.Field.Base'
+      - properties:
+          value:
+            description: >
+              Value for this Custom Field. Can be NULL if not set.
+            type: number | null
+
+  CustomFields.Field.Text:
+    allOf:
+      - $ref: '#/schemas/CustomFields.Field.Base'
+      - properties:
+          value:
+            description: >
+              Value for this Custom Field. Can be NULL if not set.
+            type: string | null
+
+  CustomFields.Field.Boolean:
+    allOf:
+      - $ref: '#/schemas/CustomFields.Field.Base'
+      - properties:
+          value:
+            description: >
+              Value for this Custom Field. Can be NULL if not set.
+            type: boolean | null
+
+  CustomFields.Field.MultiSelect:
+    allOf:
+      - $ref: '#/schemas/CustomFields.Field.Base'
+      - properties:
+          value:
+            description: >
+              Value for this Custom Field. Can be NULL if not set.
+            type: array
+            items:
+              type: string
 
   BusinessFields.Section:
     description: Business Fields sections permissions
