@@ -760,7 +760,7 @@ schemas:
       subscriptions:
         $ref: '#/schemas/Subscriptions'
       custom_fields:
-        $ref: '#/schemas/CustomFields'
+        $ref: '#/schemas/CustomFields.Array'
       videos:
         $ref: '#/schemas/BusinessVideos'
       siret:
@@ -1008,34 +1008,12 @@ schemas:
     type: string
     description: the exact phone number we would have sent the invitation(s) to
     example: '0701020304'
-  CustomFields:
-    description: Custom Fields `BETA`
+
+  CustomFields.Array:
+    description: Custom Fields
     type: array
     items:
-      deprecated: true
-      properties:
-        custom_fields_type_id:
-          description: Id of the custom field
-          type: number
-        type:
-          description: Possible values are "BOOLEAN", "INTEGER", "TEXT", "FLOAT", "SINGLE_SELECT", "MULIPLE_SELECT".
-          type: string
-        value:
-          description: >
-            Compliant values depend on the custom field type.
-            <p> BOOLEAN: boolean
-            <p> INTEGER: integer
-            <p> TEXT: string, all characters enabled
-            <p> FLOAT: float
-            <p> SINGLE_SELECT: string, must comply with the options set
-            <p> MULTIPLE_SELECT: array of string, must comply with the options set
-          type: number | string | boolean | array
-        name:
-          description: Name of the custom field
-          type: string
-        order:
-          description: Describes where the custom field is displayed on the Business Edit view of the Partoo App inside the ”Custom Field” section (/app/business/edit#<business id>)
-          type: number
+      $ref: '#/schemas/CustomFields.Field.Base'
     example: [
       {
         custom_fields_type_id: 1,
@@ -1046,9 +1024,16 @@ schemas:
       },
       {
         custom_fields_type_id: 1,
-        type: "STRING",
+        type: "TEXT",
         name: "ManagerName",
         value: toto,
+        order: 2,
+      },
+      {
+        custom_fields_type_id: 1,
+        type: "TEXT",
+        name: "Supervisor",
+        value: null,
         order: 2,
       },
       {
@@ -1080,13 +1065,83 @@ schemas:
         order: 5,
       }
     ]
-  CustomFieldsUpdate:
-    description: Custom Fields Values `BETA`
+
+  CustomFields.Field.Base:
+    description: A Custom Field
+    properties:
+      name:
+        description: Name of the custom field
+        type: string
+      type:
+        description: Possible values are "BOOLEAN", "INTEGER", "TEXT", "FLOAT", "SINGLE_SELECT", "MULIPLE_SELECT".
+        type: string
+      custom_fields_type_id:
+        description: Id of the custom field
+        type: number
+      order:
+        description: >
+          Describes where the custom field is displayed on the Business Edit view of the Partoo App
+          inside the ”Custom Field” section (/app/business/edit#<business id>)
+          The lower the value, the higher the field will be placed.
+        type: number
+    discriminator:
+      propertyName: type
+      mapping:
+        TEXT: '#/components/schemas/CustomFields.Field.Text'
+        INTEGER: '#/components/schemas/CustomFields.Field.Number'
+        FLOAT: '#/components/schemas/CustomFields.Field.Number'
+        BOOLEAN: '#/components/schemas/CustomFields.Field.Boolean'
+        SINGLE_SELECT: '#/components/schemas/CustomFields.Field.Text'
+        MULTIPLE_SELECT: '#/components/schemas/CustomFields.Field.MultiSelect'
+
+  CustomFields.Field.Number:
+    allOf:
+      - $ref: '#/schemas/CustomFields.Field.Base'
+      - properties:
+          value:
+            description: >
+              Value for this Custom Field. Can be NULL if not set.
+            type: number | null
+
+  CustomFields.Field.Text:
+    allOf:
+      - $ref: '#/schemas/CustomFields.Field.Base'
+      - properties:
+          value:
+            description: >
+              Value for this Custom Field. Can be NULL if not set.
+            type: string | null
+
+  CustomFields.Field.Boolean:
+    allOf:
+      - $ref: '#/schemas/CustomFields.Field.Base'
+      - properties:
+          value:
+            description: >
+              Value for this Custom Field. Can be NULL if not set.
+            type: boolean | null
+
+  CustomFields.Field.MultiSelect:
+    allOf:
+      - $ref: '#/schemas/CustomFields.Field.Base'
+      - properties:
+          value:
+            description: >
+              Value for this Custom Field. Can be NULL if not set.
+            type: array
+            items:
+              type: string
+
+  CustomFields.Update:
+    description: Custom Fields Values
     type: object
     properties:
       custom_fields_name:
-        description: Replace <custom_fields_name> with the name of the custom field to update. The value must comply with the custom field type.
-        type: number | string | boolean | array
+        description: >
+          Replace \<custom_fields_name\> with the name of the custom field to update.
+          The value must comply with the custom field type.
+          Set to NULL to empty the field.
+        type: number | string | boolean | array | null
     example: {
         Parking: true,
         ManagerName: 'toto',
@@ -1095,38 +1150,199 @@ schemas:
         Level: 'one',
         Services: ['DisabledAccess', 'FreeParking'],
       }
-  BusinessFieldsPermissionSections:
+
+  BusinessFields.Section:
     description: Business Fields sections permissions
     type: object
     properties:
       name:
-        description: Name of a business fields section
-        type: string
-      fields:
-        type: array
-        items:
-          $ref: '#/schemas/BusinessFieldsPermissions'
-
-  BusinessFieldsPermissions:
-    description: Business Fields permissions
-    type: object
-    properties:
-      name:
-        description: Name of the field
-        type: string
-      enabled:
-        description: Permission (enabled | disabled) of the field for the current user
-        type: boolean
-      enabled_for_subroles:
         description: >
-          Permission (enabled | disabled) of the field for
-          the users with a more restrictive role compared to the current user. 
+          Name of a Business Section. They correspond to the tabs in the Business Edit view.
+          Each section has an array of Fields that are displayed within it.
 
 
-          E.g. if the user is ORG_ADMIN: enabled_for_subroles describes
-          the permissions of the field for all the GROUP_MANAGER and
-          BUSINESS_MANAGER of the given organization.
-        type: boolean
+          The `custom_fields` section contains Fields that have more attributes than the other Fields from other sections.
+        type: string
+    discriminator:
+      propertyName: name
+      mapping:
+        description: '#/components/schemas/BusinessFields.SectionNormal'
+        hours: '#/components/schemas/BusinessFields.SectionNormal'
+        photos: '#/components/schemas/BusinessFields.SectionNormal'
+        contact: '#/components/schemas/BusinessFields.SectionNormal'
+        address: '#/components/schemas/BusinessFields.SectionNormal'
+        custom_fields: '#/components/schemas/BusinessFields.SectionCustomFields'
+    example: [
+    {
+      name: 'address',
+      fields: [
+      {
+        name: "country",
+        enabled: true,
+        enabled_for_subroles: true
+      },
+      {
+        name: "city",
+        enabled: true,
+        enabled_for_subroles: false
+      },
+      ]
+    },
+    {
+      name: 'description',
+      fields: [
+      {
+        name: "categories",
+        enabled: true,
+        enabled_for_subroles: true
+      },
+      {
+        name: "website_url",
+        enabled: true,
+        enabled_for_subroles: true
+      }
+      ]
+    },
+    {
+      name: "custom_fields",
+      fields: [
+      {
+        name: "has_parking",
+        enabled: true,
+        enabled_for_subroles: true,
+        type: "BOOLEAN",
+        custom_fields_type_id: 8,
+        order: 10
+      },
+      {
+        name: "special_description",
+        enabled: true,
+        enabled_for_subroles: true,
+        type: "TEXT",
+        custom_fields_type_id: 5,
+        order: 11,
+        max_len: 250
+      },
+      {
+        name: "facilities",
+        enabled: true,
+        enabled_for_subroles: true,
+        type: "MULTIPLE_SELECT",
+        custom_fields_type_id: 2,
+        order: 2,
+        possible_values: ["handicapped access", "toilets", "break room"]
+      }
+      ]
+    }
+    ]
+
+  BusinessFields.SectionNormal:
+    allOf:
+      - $ref: '#/schemas/BusinessFields.Section'
+      - description: Business Fields Section
+        type: object
+        properties:
+          fields:
+            type: array
+            items:
+              $ref: '#/schemas/BusinessFields.Field'
+
+  BusinessFields.SectionCustomFields:
+    allOf:
+      - $ref: '#/schemas/BusinessFields.Section'
+      - description: Business Fields Section of Custom Fields
+        type: object
+        properties:
+          fields:
+            type: array
+            items:
+              $ref: '#/schemas/CustomFields.Metadata'
+
+  BusinessFields.Field:
+      description: Business Field
+      type: object
+      properties:
+        name:
+          description: Name of the field
+          type: string
+        enabled:
+          description: Permission (enabled | disabled) of the field for the current user
+          type: boolean
+        enabled_for_subroles:
+          description: >
+            Permission (enabled | disabled) of the field for
+            the users with a more restrictive role compared to the current user.
+
+
+            E.g. if the user is ORG_ADMIN: enabled_for_subroles describes
+            the permissions of the field for all the GROUP_MANAGER and
+            BUSINESS_MANAGER of the given organization.
+          type: boolean
+
+  CustomFields.Metadata:
+    allOf:
+      - $ref: '#/schemas/BusinessFields.Field'
+      - description: Business Fields permissions
+        type: object
+        properties:
+          type:
+            description: >
+              Type of the custom field.
+
+
+              Possible values are "TEXT", "INTEGER", "FLOAT", "BOOLEAN", "SINGLE_SELECT", "MULTIPLE_SELECT".
+            type: string
+            enum: ["TEXT", "INTEGER", "FLOAT", "BOOLEAN", "SINGLE_SELECT", "MULTIPLE_SELECT"]
+          custom_fields_type_id:
+            description: ID of the custom field. Unique only combined with the type. Not used to reference the Custom Field.
+            type: integer
+          order:
+            description: >
+              Describes where the custom field is displayed on the Business Edit view of the Partoo App inside
+              the ”Custom Field” section (/app/business/edit#)
+            type: interger
+        discriminator:
+          propertyName: type
+          mapping:
+            TEXT: '#/components/schemas/CustomFields.Metadata.Text'
+            INTEGER: '#/components/schemas/CustomFields.Metadata.Number'
+            FLOAT: '#/components/schemas/CustomFields.Metadata.Number'
+            BOOLEAN: '#/components/schemas/CustomFields.Metadata'
+            SINGLE_SELECT: '#/components/schemas/CustomFields.Metadata.Select'
+            MULTIPLE_SELECT: '#/components/schemas/CustomFields.Metadata.Select'
+
+  CustomFields.Metadata.Text:
+    allOf:
+    - $ref: '#/schemas/CustomFields.Metadata'
+    - type: object
+      properties:
+        max_len:
+          type: integer
+          description: If set, maximum number of characters that this Custom Field will accept.
+
+  CustomFields.Metadata.Number:
+    allOf:
+    - $ref: '#/schemas/CustomFields.Metadata'
+    - type: object
+      properties:
+        min:
+          type: integer
+          description: If set, minimum value that this Custom Field will accept.
+        max:
+          type: integer
+          description: If set, maximum value that this Custom Field will accept.
+
+  CustomFields.Metadata.Select:
+    allOf:
+    - $ref: '#/schemas/CustomFields.Metadata'
+    - type: object
+      properties:
+        possible_values:
+          type: array
+          description: List of values that the select will have
+          items:
+            type: string
+
 
   # DEPRECATED fields
   Promo:

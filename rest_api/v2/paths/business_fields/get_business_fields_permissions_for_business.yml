@@ -1,9 +1,11 @@
 tags:
   - Business Fields
-operationId: getBusinessFieldsPermissions
-summary: Get business fields permissions for a Business
+operationId: getBusinessFieldsForBusiness
+summary: Get Business Fields Configuration for a Business
 description: >
-  This endpoint lets you access the fields permissions of a business depending on your role.
+  This endpoint gives you the list of all the Fields that are available for a given Business, grouped by section.
+  Includes Custom Fields.
+  Also tells you, for each field, if you have the permission to edit it or not.
 parameters:
   - $ref: '../../components/index.yml#/parameters/business_id'
 
@@ -15,7 +17,7 @@ responses:
         schema:
           type: array
           items:
-            $ref: '../../components/index.yml#/schemas/BusinessFieldsPermissionSections'
+            $ref: '../../components/index.yml#/schemas/BusinessFields.Section'
   401:
     $ref: '../../components/index.yml#/responses/401'
   403:

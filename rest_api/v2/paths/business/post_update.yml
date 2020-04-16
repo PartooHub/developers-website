@@ -73,7 +73,7 @@ requestBody:
           news:
             $ref: '../../components/index.yml#/schemas/BusinessNews'
           custom_fields:
-            $ref: '../../components/index.yml#/schemas/CustomFieldsUpdate'
+            $ref: '../../components/index.yml#/schemas/CustomFields.Update'
 responses:
   200:
     description: OK
