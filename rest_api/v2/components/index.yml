@@ -1066,22 +1066,6 @@ schemas:
       }
     ]
 
-  CustomFieldsUpdate:
-    description: Custom Fields Values `BETA`
-    type: object
-    properties:
-      custom_fields_name:
-        description: Replace <custom_fields_name> with the name of the custom field to update. The value must comply with the custom field type.
-        type: number | string | boolean | array
-    example: {
-        Parking: true,
-        ManagerName: 'toto',
-        Surface: 35,
-        DistanceFromSubway: 1.5,
-        Level: 'one',
-        Services: ['DisabledAccess', 'FreeParking'],
-      }
-
   CustomFields.Field.Base:
     description: A Custom Field
     properties:
@@ -1147,6 +1131,25 @@ schemas:
             type: array
             items:
               type: string
+
+  CustomFields.Update:
+    description: Custom Fields Values
+    type: object
+    properties:
+      custom_fields_name:
+        description: >
+          Replace \<custom_fields_name\> with the name of the custom field to update.
+          The value must comply with the custom field type.
+          Set to NULL to empty the field.
+        type: number | string | boolean | array | null
+    example: {
+        Parking: true,
+        ManagerName: 'toto',
+        Surface: 35,
+        DistanceFromSubway: 1.5,
+        Level: 'one',
+        Services: ['DisabledAccess', 'FreeParking'],
+      }
 
   BusinessFields.Section:
     description: Business Fields sections permissions
