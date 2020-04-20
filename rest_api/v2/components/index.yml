@@ -605,11 +605,13 @@ schemas:
         $ref: '#/schemas/BusinessId'
       created:
         description: Timestamp (in seconds) of the business creation
-        type: integer
+        type: number
+        format: float
         example: 1409925979.5
       modified:
         description: Timestamp (in seconds) of the business last modification
-        type: integer
+        type: number
+        format: float
         example: 1561335111.681374
       code:
         $ref: '#/schemas/BusinessCode'
@@ -1307,12 +1309,12 @@ schemas:
             description: >
               Describes where the custom field is displayed on the Business Edit view of the Partoo App inside
               the ”Custom Field” section (/app/business/edit#)
-            type: interger
+            type: integer
         discriminator:
           propertyName: type
           mapping:
             TEXT: '#/components/schemas/CustomFields.Metadata.Text'
-            INTEGER: '#/components/schemas/CustomFields.Metadata.Number'
+            INTEGER: '#/components/schemas/CustomFields.Metadata.Integer'
             FLOAT: '#/components/schemas/CustomFields.Metadata.Number'
             BOOLEAN: '#/components/schemas/CustomFields.Metadata'
             SINGLE_SELECT: '#/components/schemas/CustomFields.Metadata.Select'
@@ -1387,10 +1389,10 @@ schemas:
         type: string
         description: Promo additional informations
       begin:
-        type: integer
+        type: number
         description: Promo start timestamp
       end:
-        type: integer
+        type: number
         description: Promo end timestamp
       images:
         type: array
@@ -1432,7 +1434,7 @@ schemas:
         type: string
         enum: ["inactive", "active"]
       canceling_date:
-        type: integer
+        type: number
         description: timestamp
   Report:
     description: Report name
@@ -1583,7 +1585,7 @@ parameters:
     name: timestamp
     deprecated: true
     schema:
-      type: integer
+      type: number
     required: false
     description: Filter by modified attribute (modified >= timestamp)
   query_filter_by_business_subscription_to_review_management:

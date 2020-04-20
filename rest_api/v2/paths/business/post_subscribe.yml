@@ -13,7 +13,7 @@ requestBody:
         type: object
         properties:
           subscription_date:
-            type: integer
+            type: number
             description: Timestamp representing the date on which the subscription will start
             example: 1540628702
           products:
