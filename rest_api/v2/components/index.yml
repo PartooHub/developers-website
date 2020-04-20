@@ -1104,7 +1104,7 @@ schemas:
           value:
             description: >
               Value for this Custom Field. Can be NULL if not set.
-            type: Integer | null
+            type: integer | null
 
   CustomFields.Field.Number:
     allOf:
