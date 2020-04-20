@@ -450,11 +450,13 @@ schemas:
     type: string
   Latitude:
     description: Latitude
-    type: float
+    type: number
+    format: float
     example: -3.585993
   Longitude:
     description: Longitude
-    type: float
+    type: number
+    format: float
     example: 47.870341
   BusinessStatus:
     description: Business status
@@ -689,11 +691,13 @@ schemas:
         $ref: '#/schemas/BusinessId'
       created:
         description: Timestamp (in seconds) of the business creation
-        type: float
+        type: number
+        format: float
         example: 1409925979.5
       modified:
         description: Timestamp (in seconds) of the business last modification
-        type: float
+        type: number
+        format: float
         example: 1561335111.681374
       code:
         $ref: '#/schemas/BusinessCode'
@@ -1076,22 +1080,31 @@ schemas:
         type: string
       custom_fields_type_id:
         description: Id of the custom field
-        type: number
+        type: integer
       order:
         description: >
           Describes where the custom field is displayed on the Business Edit view of the Partoo App
           inside the ”Custom Field” section (/app/business/edit#<business id>)
           <p> The lower the value, the higher the field will be placed.
-        type: number
+        type: integer
     discriminator:
       propertyName: type
       mapping:
         TEXT: '#/components/schemas/CustomFields.Field.Text'
-        INTEGER: '#/components/schemas/CustomFields.Field.Number'
+        INTEGER: '#/components/schemas/CustomFields.Field.Integer'
         FLOAT: '#/components/schemas/CustomFields.Field.Number'
         BOOLEAN: '#/components/schemas/CustomFields.Field.Boolean'
         SINGLE_SELECT: '#/components/schemas/CustomFields.Field.Text'
         MULTIPLE_SELECT: '#/components/schemas/CustomFields.Field.MultiSelect'
+
+  CustomFields.Field.Integer:
+    allOf:
+      - $ref: '#/schemas/CustomFields.Field.Base'
+      - properties:
+          value:
+            description: >
+              Value for this Custom Field. Can be NULL if not set.
+            type: Integer | null
 
   CustomFields.Field.Number:
     allOf:
@@ -1141,7 +1154,7 @@ schemas:
           Replace \<custom_fields_name\> with the name of the custom field to update.
           The value must comply with the custom field type.
           <p> Set to NULL to empty the field.
-        type: number | string | boolean | array | null
+        type: integer | number | string | boolean | array | null
     example: {
         Parking: true,
         ManagerName: 'toto',
@@ -1314,7 +1327,7 @@ schemas:
           type: integer
           description: If set, maximum number of characters that this Custom Field will accept.
 
-  CustomFields.Metadata.Number:
+  CustomFields.Metadata.Integer:
     allOf:
     - $ref: '#/schemas/CustomFields.Metadata'
     - type: object
@@ -1325,6 +1338,18 @@ schemas:
         max:
           type: integer
           description: If set, maximum value that this Custom Field will accept.
+
+  CustomFields.Metadata.Number:
+    allOf:
+      - $ref: '#/schemas/CustomFields.Metadata'
+      - type: object
+        properties:
+          min:
+            type: number
+            description: If set, minimum value that this Custom Field will accept.
+          max:
+            type: number
+            description: If set, maximum value that this Custom Field will accept.
 
   CustomFields.Metadata.Select:
     allOf:

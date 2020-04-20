@@ -26,10 +26,12 @@ responses:
                       type: integer
                       example: 50
                     average:
-                      type: float
+                      type: number
+                      format: float
                       example: 4.54
                     cum_sum:
-                      type: float
+                      type: number
+                      format: float
                       example: 50.0
   401:
     $ref: '../../components/index.yml#/responses/401'

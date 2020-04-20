@@ -26,10 +26,12 @@ responses:
                       type: integer
                       example: 50
                     previous_sum:
-                      type: float
+                      type: number
+                      format: float
                       example: 0
                     cum_sum:
-                      type: float
+                      type: number
+                      format: float
                       example: 50
   400:
     $ref: '../../components/index.yml#/responses/400'
