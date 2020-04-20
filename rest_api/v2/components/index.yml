@@ -65,37 +65,37 @@ schemas:
         bucket:
           $ref: '#/schemas/AnalyticsBucket'
   QueriesDirect:
-    type: number
+    type: integer
     example: 100
     description: Customers who find your listing searching for your business name or address
   QueriesBranded:
-    type: number
+    type: integer
     example: 111
     description: Customers who find your listing searching for a brand related to your business
   QueriesDiscovery:
-    type: number
+    type: integer
     example: 222
     description: Customers who find your listing searching for a category, product or service
   QueriesIndirect:
-    type: number
+    type: integer
     example: 333
     description: Sum of the queries branded and discovery
   ViewsMaps:
-    type: number
+    type: integer
     example: 55
     description: Customers who view your listing on Google Maps
   ViewsSearch:
-    type: number
+    type: integer
     example: 8
     description: Customers who view your listing on Google Search
   ActionsWebsite:
-    type: number
+    type: integer
     description: Customers who click on your website link
   ActionsPhone:
-    type: number
+    type: integer
     description: Customers who call your business
   ActionsDrivingDirections:
-    type: number
+    type: integer
     description: Customers who request directions to your business
   AnalyticsDate:
     type: datetime
@@ -137,7 +137,7 @@ schemas:
     type: object
     properties:
       subscription_date:
-        type: number
+        type: integer
         description: Date on which the subscription was activated
         example: 1540628702
       status:
@@ -148,7 +148,7 @@ schemas:
     type: object
     properties:
       canceling_date:
-        type: number
+        type: integer
         description: Date on which the subscription was canceled
         example: 1540628702
       status:
@@ -450,13 +450,11 @@ schemas:
     type: string
   Latitude:
     description: Latitude
-    type: number
-    format: double
+    type: double
     example: -3.585993
   Longitude:
     description: Longitude
-    type: number
-    format: double
+    type: double
     example: 47.870341
   BusinessStatus:
     description: Business status
@@ -515,7 +513,7 @@ schemas:
       $ref: '#/schemas/Contact'
   GroupId:
     description: Group id
-    type: number
+    type: integer
     example: 23
   GroupName:
     description: Group name
@@ -523,7 +521,7 @@ schemas:
     example: ComfyZone Paris
   GroupParentId:
     description: Group parent Id. If not null, it means it's a subgroup.
-    type: number / null
+    type: integer / null
     example: null
   GroupProvider:
     description: Group provider label
@@ -579,13 +577,13 @@ schemas:
     properties:
       id:
         description: Group id
-        type: number
+        type: integer
         example: 46
       org_id:
         $ref: '#/schemas/OrgId'
       parent_id:
         description: Group parent Id. If not null, it means it's a subgroup.
-        type: number / null
+        type: integer / null
         example: 23
       created:
         $ref: '#/schemas/CreatedDate'
@@ -605,11 +603,11 @@ schemas:
         $ref: '#/schemas/BusinessId'
       created:
         description: Timestamp (in seconds) of the business creation
-        type: number
+        type: integer
         example: 1409925979.5
       modified:
         description: Timestamp (in seconds) of the business last modification
-        type: number
+        type: integer
         example: 1561335111.681374
       code:
         $ref: '#/schemas/BusinessCode'
@@ -691,11 +689,11 @@ schemas:
         $ref: '#/schemas/BusinessId'
       created:
         description: Timestamp (in seconds) of the business creation
-        type: number
+        type: float
         example: 1409925979.5
       modified:
         description: Timestamp (in seconds) of the business last modification
-        type: number
+        type: float
         example: 1561335111.681374
       code:
         $ref: '#/schemas/BusinessCode'
@@ -834,7 +832,7 @@ schemas:
           $ref: '#/schemas/Report'
       group_id:
         description: Group id of the user (it affects only the group manager)
-        type: number
+        type: integer
         example: 42
       role:
         $ref: '#/schemas/Role'
