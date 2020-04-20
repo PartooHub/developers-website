@@ -450,11 +450,11 @@ schemas:
     type: string
   Latitude:
     description: Latitude
-    type: double
+    type: float
     example: -3.585993
   Longitude:
     description: Longitude
-    type: double
+    type: float
     example: 47.870341
   BusinessStatus:
     description: Business status
