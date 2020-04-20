@@ -23,16 +23,13 @@ responses:
                       format: datetime
                       example: '2019-11-29'
                     added:
-                      type: number
-                      format: integer
+                      type: integer
                       example: 50
                     average:
-                      type: number
-                      format: float
+                      type: float
                       example: 4.54
                     cum_sum:
-                      type: number
-                      format: float
+                      type: float
                       example: 50.0
   401:
     $ref: '../../components/index.yml#/responses/401'

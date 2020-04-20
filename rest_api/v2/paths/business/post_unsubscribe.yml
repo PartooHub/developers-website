@@ -13,7 +13,7 @@ requestBody:
         type: object
         properties:
           canceling_date:
-            type: number
+            type: integer
             description: Timestamp representing the date on which the subscription will stop to be valid
             example: 1540628702
           products:

@@ -23,16 +23,13 @@ responses:
                       format: string
                       example: '2019-11-29'
                     added:
-                      type: number
-                      format: integer
+                      type: integer
                       example: 50
                     previous_sum:
-                      type: number
-                      format: float
+                      type: float
                       example: 0
                     cum_sum:
-                      type: number
-                      format: float
+                      type: float
                       example: 50
   400:
     $ref: '../../components/index.yml#/responses/400'
