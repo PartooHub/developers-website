@@ -4,7 +4,8 @@ summary: Send a review invitation
 description: >
   This endpoint lets you send a SMS to a costumer to help him leave a message on Google My Business.
   You need to have `WRITE` access on the business.
-  Your business needs to be connected to a Google My Business location and to be subscribed to Review Booster product.
+  <p>Your business needs to be connected to a Google My Business location and to be subscribed to Review Booster product.
+  So this cannot be tested in Sandbox Env.
 requestBody:
   required: true
   content:

@@ -38,6 +38,8 @@
 - name: Categories
   description: All operations available on categories
 - name: Boosts
-  description: All operations related to the Review Booster product
+  description: >
+    All operations related to the Review Booster product.
+    <p>⚠️ SMS send functionality cannot be tested in Sandbox env.
 - name: Presence Analytics
   description: All operations available on Presence Management analytics
