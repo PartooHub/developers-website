@@ -19,7 +19,6 @@ parameters:
   - $ref: '../../components/index.yml#/parameters/query_filter_by_business_subscription_to_review_management'
   - $ref: '../../components/index.yml#/parameters/query_filter_by_business_subscription_to_presence_management'
   - $ref: '../../components/index.yml#/parameters/query_filter_by_business_promo'
-  - $ref: '../../components/index.yml#/parameters/query_filter_by_business_code'
   - $ref: '../../components/index.yml#/parameters/query_page'
   - in: query
     name: connected_to_gmb_location
