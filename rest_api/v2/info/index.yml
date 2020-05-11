@@ -15,7 +15,7 @@ description: |
 
   # JS SDK
 
-  To know how to integrate Partoo views using our JS SDK, please check our [JS SDK documentation](js_sdk/).
+  To know how to integrate Partoo views using our JS SDK, please check our [JS SDK documentation](/js_sdk/).
 
   # Resources structure
   Partoo data is organised around 5 main resources:
