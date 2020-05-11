@@ -1015,7 +1015,7 @@ schemas:
 
   CustomFields.Array:
     description: >
-      `BETA` Custom Fields set for this Business
+      Custom Fields set for this Business
     type: array
     items:
       $ref: '#/schemas/CustomFields.Field.Base'
@@ -1148,7 +1148,7 @@ schemas:
 
   CustomFields.Update:
     description: >
-      `BETA` Custom Fields key values
+      Custom Fields key values
     type: object
     properties:
       custom_fields_name:
@@ -1172,9 +1172,7 @@ schemas:
     properties:
       name:
         description: >
-          Name of a Business Section. They correspond to the tabs in the Business Edit view.
-          Each section has an array of Fields that are displayed within it.
-          <p> `BETA` The `custom_fields` section contains Fields that have more attributes than the other Fields from other sections.
+          Name of a the section
         type: string
     discriminator:
       propertyName: name
@@ -1288,6 +1286,9 @@ schemas:
             <p> E.g. if the user is ORG_ADMIN: enabled_for_subroles describes
             the permissions of the field for all the GROUP_MANAGER and
             BUSINESS_MANAGER of the given organization.
+            <p> E.g. if the user is PROVIDER: enabled_for_subroles describes
+            the permissions of the field for all the ORG_ADMIN, GROUP_MANAGER and
+            BUSINESS_MANAGER of the given provider.
           type: boolean
 
   CustomFields.Metadata:
