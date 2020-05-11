@@ -13,6 +13,10 @@ description: |
     - Create/Subscribe/Manage organisations, users & businesses if you are a **reseller**
     - ...
 
+  # JS SDK
+
+  To know how to integrate Partoo views using our JS SDK, please check our [JS SDK documentation](/js_sdk/).
+
   # Resources structure
   Partoo data is organised around 5 main resources:
   1. **Provider:** A provider represents the entity that signs the contract with the client using Partoo solution & products.
