@@ -1166,23 +1166,11 @@ schemas:
         Services: ['DisabledAccess', 'FreeParking'],
       }
 
-  BusinessFields.Section:
-    description: Business Fields sections permissions
-    type: object
-    properties:
-      name:
-        description: >
-          Name of a the section. The structure of the fields inside it depends of the section and is described below.
-        type: string
-    discriminator:
-      propertyName: name
-      mapping:
-        description: '#/components/schemas/BusinessFields.SectionNormal'
-        hours: '#/components/schemas/BusinessFields.SectionNormal'
-        photos: '#/components/schemas/BusinessFields.SectionNormal'
-        contact: '#/components/schemas/BusinessFields.SectionNormal'
-        address: '#/components/schemas/BusinessFields.SectionNormal'
-        custom_fields: '#/components/schemas/BusinessFields.SectionCustomFields'
+  BusinessFields.SectionArray:
+    description: Business Fields sections array
+    type: array
+    items:
+      $ref: '#/schemas/BusinessFields.Section'
     example: [
     {
       name: 'address',
@@ -1276,6 +1264,24 @@ schemas:
       ]
     }
     ]
+
+  BusinessFields.Section:
+    description: Business Fields sections permissions
+    type: object
+    properties:
+      name:
+        description: >
+          Name of a the section. The structure of the fields inside it depends of the section and is described below.
+        type: string
+    discriminator:
+      propertyName: name
+      mapping:
+        description: '#/components/schemas/BusinessFields.SectionNormal'
+        hours: '#/components/schemas/BusinessFields.SectionNormal'
+        photos: '#/components/schemas/BusinessFields.SectionNormal'
+        contact: '#/components/schemas/BusinessFields.SectionNormal'
+        address: '#/components/schemas/BusinessFields.SectionNormal'
+        custom_fields: '#/components/schemas/BusinessFields.SectionCustomFields'
 
   BusinessFields.SectionNormal:
     allOf:
