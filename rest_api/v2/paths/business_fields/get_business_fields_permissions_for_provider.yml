@@ -15,9 +15,8 @@ responses:
     content:
       application/json:
         schema:
-          type: array
-          items:
-            $ref: '../../components/index.yml#/schemas/BusinessFields.Section'
+          type: object
+          $ref: '../../components/index.yml#/schemas/BusinessFields.SectionArray'
   401:
     $ref: '../../components/index.yml#/responses/401'
   403:
