@@ -1743,10 +1743,12 @@ parameters:
         $ref: '#/schemas/ReviewPublisherLabel'
   query_review_state:
     in: query
-    name: state
+    name: state__in
     description: Filter by state
     schema:
-      $ref: '#/schemas/ReviewState'
+      type: array
+      items:
+        $ref: '#/schemas/ReviewState'
   metrics:
     in: query
     name: metrics
