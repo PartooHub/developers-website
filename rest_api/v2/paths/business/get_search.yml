@@ -7,6 +7,7 @@ description: >
   The response is paginated (30 results per page).
 parameters:
   - $ref: '../../components/index.yml#/parameters/query_filter_by_fuzzy_query_on_business'
+  - $ref: '../../components/index.yml#/parameters/query_business__in'
   - $ref: '../../components/index.yml#/parameters/query_filter_by_org_id'
   - $ref: '../../components/index.yml#/parameters/query_filter_by_group_id'
   - $ref: '../../components/index.yml#/parameters/query_filter_by_country'
