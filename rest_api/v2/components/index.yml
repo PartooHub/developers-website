@@ -1069,7 +1069,7 @@ schemas:
         value: ["one", "two"],
         order: 5,
       },
-      {  
+      {
         custom_fields_type_id: 1,
         type: "MULTIPLE_SELECT_IMAGE",
         name: "BannerImage",
@@ -1153,7 +1153,7 @@ schemas:
             type: array
             items:
               type: string
-    
+
   CustomFields.Field.MultiSelectImage:
     allOf:
       - $ref: '#/schemas/CustomFields.Field.Base'
@@ -1390,7 +1390,7 @@ schemas:
             BOOLEAN: '#/components/schemas/CustomFields.Metadata'
             SINGLE_SELECT: '#/components/schemas/CustomFields.Metadata.Select'
             MULTIPLE_SELECT: '#/components/schemas/CustomFields.Metadata.Select'
-            MULTIPLE_SELECT_IMAGE: '#/components/schemas/CustomFields.Metadata.Select'
+            MULTIPLE_SELECT_IMAGE: '#/components/schemas/CustomFields.Metadata.MultipleSelectImage'
 
   CustomFields.Metadata.Text:
     allOf:
@@ -1435,6 +1435,28 @@ schemas:
           description: List of values that the select will have
           items:
             type: string
+
+  CustomFields.Metadata.MultipleSelectImage:
+    allOf:
+      - $ref: '#/schemas/CustomFields.Metadata'
+      - type: object
+        properties:
+          possible_values:
+            type: array
+            description: List of values that the select will have
+            items:
+              type: string
+          possible_images_labels:
+            type: array
+            description: List of labels corresponding to each value
+            items:
+              type: string
+          possible_images_urls:
+            type: array
+            description: List of image urls corresponding to each value
+            items:
+              type: string
+
 
 
   # DEPRECATED fields
