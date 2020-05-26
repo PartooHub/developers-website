@@ -727,6 +727,8 @@ schemas:
         $ref: '#/schemas/BusinessRegion'
       country:
         $ref: '#/schemas/BusinessCountry'
+      time_slot_reference:
+        $ref: '#/schemas/TimeSlotReference'
       open_hours:
         $ref: '#/schemas/OpenHours'
       specific_hours:
@@ -848,6 +850,11 @@ schemas:
         $ref: '#/schemas/UserStatus'
       keywords:
         $ref: '#/schemas/Keywords'
+  TimeSlotReference:
+    description: Default time period, can be used to set open hours of a day
+    type: array
+    items:
+      $ref: '#/schemas/TimeWindow'
   OpenHours:
     description: Business open hours in a week
     type: object
