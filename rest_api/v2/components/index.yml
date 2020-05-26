@@ -896,9 +896,11 @@ schemas:
             starts_at:
               type: string
               pattern: date
+              example: "2020-01-20"
             ends_at:
               type: string
               pattern: date
+              example: "2020-01-20"
             open_hours:
               type: array
               items:
@@ -911,9 +913,11 @@ schemas:
             starts_at:
               type: string
               pattern: date
+              example: "2020-01-20"
             ends_at:
               type: string
               pattern: date
+              example: "2020-01-22"
   Contact:
     description: Business contact
     type: object
