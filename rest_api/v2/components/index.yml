@@ -1068,6 +1068,13 @@ schemas:
         name: "Services",
         value: ["one", "two"],
         order: 5,
+      },
+      {
+        custom_fields_type_id: 1,
+        type: "MULTIPLE_SELECT_IMAGE",
+        name: "BannerImage",
+        value: ["image 1", "image 2"],
+        order: 6,
       }
     ]
 
@@ -1078,7 +1085,7 @@ schemas:
         description: Name of the custom field
         type: string
       type:
-        description: Possible values are "BOOLEAN", "INTEGER", "TEXT", "FLOAT", "SINGLE_SELECT", "MULIPLE_SELECT".
+        description: Possible values are "BOOLEAN", "INTEGER", "TEXT", "FLOAT", "SINGLE_SELECT", "MULIPLE_SELECT", "MULIPLE_SELECT_IMAGE".
         type: string
       custom_fields_type_id:
         description: Id of the custom field
@@ -1098,6 +1105,7 @@ schemas:
         BOOLEAN: '#/components/schemas/CustomFields.Field.Boolean'
         SINGLE_SELECT: '#/components/schemas/CustomFields.Field.Text'
         MULTIPLE_SELECT: '#/components/schemas/CustomFields.Field.MultiSelect'
+        MULTIPLE_SELECT_IMAGE: '#/components/schemas/CustomFields.Field.MultiSelectImage'
 
   CustomFields.Field.Integer:
     allOf:
@@ -1146,6 +1154,18 @@ schemas:
             items:
               type: string
 
+  CustomFields.Field.MultiSelectImage:
+    allOf:
+      - $ref: '#/schemas/CustomFields.Field.Base'
+      - properties:
+          value:
+            description: >
+              Value for this Custom Field. Can be NULL if not set.
+            type: array
+            items:
+              type: string
+
+
   CustomFields.Update:
     description: >
       Custom Fields key values
@@ -1164,6 +1184,9 @@ schemas:
         DistanceFromSubway: 1.5,
         Level: 'one',
         Services: ['DisabledAccess', 'FreeParking'],
+        BannerImage": ["image 1", "image 2"],
+
+
       }
 
   BusinessFields.SectionArray:
@@ -1260,7 +1283,18 @@ schemas:
         custom_fields_type_id: 2,
         order: 2,
         possible_values: ["handicapped access", "toilets", "break room"]
-      }
+      },
+      {
+        name: "banner image",
+        enabled: true,
+        enabled_for_subroles: true,
+        custom_fields_type_id: 17,
+        type: "MULTIPLE_SELECT_IMAGE",
+        order: 10,
+        possible_values: ["image 1", "image 2", "image 3"],
+        possible_images_labels: ["label image 1", label image 2, label image 3],
+        possible_images_urls: ["url_of_image_1","url_of_image_2","url_of_image_3"],
+      },
       ]
     }
     ]
@@ -1336,9 +1370,9 @@ schemas:
           type:
             description: >
               Type of the custom field.
-              <p> Possible values are "TEXT", "INTEGER", "FLOAT", "BOOLEAN", "SINGLE_SELECT", "MULTIPLE_SELECT".
+              <p> Possible values are "TEXT", "INTEGER", "FLOAT", "BOOLEAN", "SINGLE_SELECT", "MULTIPLE_SELECT", "MULTIPLE_SELECT_IMAGE".
             type: string
-            enum: ["TEXT", "INTEGER", "FLOAT", "BOOLEAN", "SINGLE_SELECT", "MULTIPLE_SELECT"]
+            enum: ["TEXT", "INTEGER", "FLOAT", "BOOLEAN", "SINGLE_SELECT", "MULTIPLE_SELECT", "MULTIPLE_SELECT_IMAGE"]
           custom_fields_type_id:
             description: ID of the custom field. Unique only combined with the type. Not used to reference the Custom Field.
             type: integer
@@ -1356,6 +1390,7 @@ schemas:
             BOOLEAN: '#/components/schemas/CustomFields.Metadata'
             SINGLE_SELECT: '#/components/schemas/CustomFields.Metadata.Select'
             MULTIPLE_SELECT: '#/components/schemas/CustomFields.Metadata.Select'
+            MULTIPLE_SELECT_IMAGE: '#/components/schemas/CustomFields.Metadata.MultipleSelectImage'
 
   CustomFields.Metadata.Text:
     allOf:
@@ -1400,6 +1435,28 @@ schemas:
           description: List of values that the select will have
           items:
             type: string
+
+  CustomFields.Metadata.MultipleSelectImage:
+    allOf:
+      - $ref: '#/schemas/CustomFields.Metadata'
+      - type: object
+        properties:
+          possible_values:
+            type: array
+            description: List of values that the select will have
+            items:
+              type: string
+          possible_images_labels:
+            type: array
+            description: List of labels corresponding to each value
+            items:
+              type: string
+          possible_images_urls:
+            type: array
+            description: List of image urls corresponding to each value
+            items:
+              type: string
+
 
 
   # DEPRECATED fields
