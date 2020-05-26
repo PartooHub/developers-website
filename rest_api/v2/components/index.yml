@@ -65,37 +65,37 @@ schemas:
         bucket:
           $ref: '#/schemas/AnalyticsBucket'
   QueriesDirect:
-    type: number
+    type: integer
     example: 100
     description: Customers who find your listing searching for your business name or address
   QueriesBranded:
-    type: number
+    type: integer
     example: 111
     description: Customers who find your listing searching for a brand related to your business
   QueriesDiscovery:
-    type: number
+    type: integer
     example: 222
     description: Customers who find your listing searching for a category, product or service
   QueriesIndirect:
-    type: number
+    type: integer
     example: 333
     description: Sum of the queries branded and discovery
   ViewsMaps:
-    type: number
+    type: integer
     example: 55
     description: Customers who view your listing on Google Maps
   ViewsSearch:
-    type: number
+    type: integer
     example: 8
     description: Customers who view your listing on Google Search
   ActionsWebsite:
-    type: number
+    type: integer
     description: Customers who click on your website link
   ActionsPhone:
-    type: number
+    type: integer
     description: Customers who call your business
   ActionsDrivingDirections:
-    type: number
+    type: integer
     description: Customers who request directions to your business
   AnalyticsDate:
     type: datetime
@@ -137,7 +137,7 @@ schemas:
     type: object
     properties:
       subscription_date:
-        type: number
+        type: integer
         description: Date on which the subscription was activated
         example: 1540628702
       status:
@@ -148,7 +148,7 @@ schemas:
     type: object
     properties:
       canceling_date:
-        type: number
+        type: integer
         description: Date on which the subscription was canceled
         example: 1540628702
       status:
@@ -515,7 +515,7 @@ schemas:
       $ref: '#/schemas/Contact'
   GroupId:
     description: Group id
-    type: number
+    type: integer
     example: 23
   GroupName:
     description: Group name
@@ -523,7 +523,7 @@ schemas:
     example: ComfyZone Paris
   GroupParentId:
     description: Group parent Id. If not null, it means it's a subgroup.
-    type: number / null
+    type: integer / null
     example: null
   GroupProvider:
     description: Group provider label
@@ -579,13 +579,13 @@ schemas:
     properties:
       id:
         description: Group id
-        type: number
+        type: integer
         example: 46
       org_id:
         $ref: '#/schemas/OrgId'
       parent_id:
         description: Group parent Id. If not null, it means it's a subgroup.
-        type: number / null
+        type: integer / null
         example: 23
       created:
         $ref: '#/schemas/CreatedDate'
@@ -606,10 +606,12 @@ schemas:
       created:
         description: Timestamp (in seconds) of the business creation
         type: number
+        format: float
         example: 1409925979.5
       modified:
         description: Timestamp (in seconds) of the business last modification
         type: number
+        format: float
         example: 1561335111.681374
       code:
         $ref: '#/schemas/BusinessCode'
@@ -692,10 +694,12 @@ schemas:
       created:
         description: Timestamp (in seconds) of the business creation
         type: number
+        format: float
         example: 1409925979.5
       modified:
         description: Timestamp (in seconds) of the business last modification
         type: number
+        format: float
         example: 1561335111.681374
       code:
         $ref: '#/schemas/BusinessCode'
@@ -723,6 +727,8 @@ schemas:
         $ref: '#/schemas/BusinessRegion'
       country:
         $ref: '#/schemas/BusinessCountry'
+      time_slot_reference:
+        $ref: '#/schemas/TimeSlotReference'
       open_hours:
         $ref: '#/schemas/OpenHours'
       specific_hours:
@@ -834,7 +840,7 @@ schemas:
           $ref: '#/schemas/Report'
       group_id:
         description: Group id of the user (it affects only the group manager)
-        type: number
+        type: integer
         example: 42
       role:
         $ref: '#/schemas/Role'
@@ -844,6 +850,11 @@ schemas:
         $ref: '#/schemas/UserStatus'
       keywords:
         $ref: '#/schemas/Keywords'
+  TimeSlotReference:
+    description: Default time period, can be used to set open hours of a day
+    type: array
+    items:
+      $ref: '#/schemas/TimeWindow'
   OpenHours:
     description: Business open hours in a week
     type: object
@@ -1015,7 +1026,7 @@ schemas:
 
   CustomFields.Array:
     description: >
-      `BETA` Custom Fields set for this Business
+      Custom Fields set for this Business
     type: array
     items:
       $ref: '#/schemas/CustomFields.Field.Base'
@@ -1068,6 +1079,13 @@ schemas:
         name: "Services",
         value: ["one", "two"],
         order: 5,
+      },
+      {
+        custom_fields_type_id: 1,
+        type: "MULTIPLE_SELECT_IMAGE",
+        name: "BannerImage",
+        value: ["image 1", "image 2"],
+        order: 6,
       }
     ]
 
@@ -1078,26 +1096,36 @@ schemas:
         description: Name of the custom field
         type: string
       type:
-        description: Possible values are "BOOLEAN", "INTEGER", "TEXT", "FLOAT", "SINGLE_SELECT", "MULIPLE_SELECT".
+        description: Possible values are "BOOLEAN", "INTEGER", "TEXT", "FLOAT", "SINGLE_SELECT", "MULIPLE_SELECT", "MULIPLE_SELECT_IMAGE".
         type: string
       custom_fields_type_id:
         description: Id of the custom field
-        type: number
+        type: integer
       order:
         description: >
           Describes where the custom field is displayed on the Business Edit view of the Partoo App
           inside the ”Custom Field” section (/app/business/edit#<business id>)
           <p> The lower the value, the higher the field will be placed.
-        type: number
+        type: integer
     discriminator:
       propertyName: type
       mapping:
         TEXT: '#/components/schemas/CustomFields.Field.Text'
-        INTEGER: '#/components/schemas/CustomFields.Field.Number'
+        INTEGER: '#/components/schemas/CustomFields.Field.Integer'
         FLOAT: '#/components/schemas/CustomFields.Field.Number'
         BOOLEAN: '#/components/schemas/CustomFields.Field.Boolean'
         SINGLE_SELECT: '#/components/schemas/CustomFields.Field.Text'
         MULTIPLE_SELECT: '#/components/schemas/CustomFields.Field.MultiSelect'
+        MULTIPLE_SELECT_IMAGE: '#/components/schemas/CustomFields.Field.MultiSelectImage'
+
+  CustomFields.Field.Integer:
+    allOf:
+      - $ref: '#/schemas/CustomFields.Field.Base'
+      - properties:
+          value:
+            description: >
+              Value for this Custom Field. Can be NULL if not set.
+            type: integer | null
 
   CustomFields.Field.Number:
     allOf:
@@ -1137,9 +1165,21 @@ schemas:
             items:
               type: string
 
+  CustomFields.Field.MultiSelectImage:
+    allOf:
+      - $ref: '#/schemas/CustomFields.Field.Base'
+      - properties:
+          value:
+            description: >
+              Value for this Custom Field. Can be NULL if not set.
+            type: array
+            items:
+              type: string
+
+
   CustomFields.Update:
     description: >
-      `BETA` Custom Fields key values
+      Custom Fields key values
     type: object
     properties:
       custom_fields_name:
@@ -1147,7 +1187,7 @@ schemas:
           Replace \<custom_fields_name\> with the name of the custom field to update.
           The value must comply with the custom field type.
           <p> Set to NULL to empty the field.
-        type: number | string | boolean | array | null
+        type: integer | number | string | boolean | array | null
     example: {
         Parking: true,
         ManagerName: 'toto',
@@ -1155,27 +1195,16 @@ schemas:
         DistanceFromSubway: 1.5,
         Level: 'one',
         Services: ['DisabledAccess', 'FreeParking'],
+        BannerImage": ["image 1", "image 2"],
+
+
       }
 
-  BusinessFields.Section:
-    description: Business Fields sections permissions
-    type: object
-    properties:
-      name:
-        description: >
-          Name of a Business Section. They correspond to the tabs in the Business Edit view.
-          Each section has an array of Fields that are displayed within it.
-          <p> `BETA` The `custom_fields` section contains Fields that have more attributes than the other Fields from other sections.
-        type: string
-    discriminator:
-      propertyName: name
-      mapping:
-        description: '#/components/schemas/BusinessFields.SectionNormal'
-        hours: '#/components/schemas/BusinessFields.SectionNormal'
-        photos: '#/components/schemas/BusinessFields.SectionNormal'
-        contact: '#/components/schemas/BusinessFields.SectionNormal'
-        address: '#/components/schemas/BusinessFields.SectionNormal'
-        custom_fields: '#/components/schemas/BusinessFields.SectionCustomFields'
+  BusinessFields.SectionArray:
+    description: Business Fields sections array
+    type: array
+    items:
+      $ref: '#/schemas/BusinessFields.Section'
     example: [
     {
       name: 'address',
@@ -1208,6 +1237,36 @@ schemas:
       ]
     },
     {
+      name: "hours",
+      fields: [
+      {
+        name: "open_hours",
+        enabled: true,
+        enabled_for_subroles: true
+      },
+      ]
+    },
+    {
+      name: "photos",
+      fields: [
+      {
+        name: "cover",
+        enabled: false,
+        enabled_for_subroles: false
+      },
+      ]
+    },
+    {
+      name: "contact",
+      fields: [
+      {
+        name: "phone_number",
+        enabled: true,
+        enabled_for_subroles: false
+      },
+      ]
+    },
+    {
       name: "custom_fields",
       fields: [
       {
@@ -1235,10 +1294,39 @@ schemas:
         custom_fields_type_id: 2,
         order: 2,
         possible_values: ["handicapped access", "toilets", "break room"]
-      }
+      },
+      {
+        name: "banner image",
+        enabled: true,
+        enabled_for_subroles: true,
+        custom_fields_type_id: 17,
+        type: "MULTIPLE_SELECT_IMAGE",
+        order: 10,
+        possible_values: ["image 1", "image 2", "image 3"],
+        possible_images_labels: ["label image 1", label image 2, label image 3],
+        possible_images_urls: ["url_of_image_1","url_of_image_2","url_of_image_3"],
+      },
       ]
     }
     ]
+
+  BusinessFields.Section:
+    description: Business Fields sections permissions
+    type: object
+    properties:
+      name:
+        description: >
+          Name of a the section. The structure of the fields inside it depends of the section and is described below.
+        type: string
+    discriminator:
+      propertyName: name
+      mapping:
+        description: '#/components/schemas/BusinessFields.SectionNormal'
+        hours: '#/components/schemas/BusinessFields.SectionNormal'
+        photos: '#/components/schemas/BusinessFields.SectionNormal'
+        contact: '#/components/schemas/BusinessFields.SectionNormal'
+        address: '#/components/schemas/BusinessFields.SectionNormal'
+        custom_fields: '#/components/schemas/BusinessFields.SectionCustomFields'
 
   BusinessFields.SectionNormal:
     allOf:
@@ -1279,6 +1367,9 @@ schemas:
             <p> E.g. if the user is ORG_ADMIN: enabled_for_subroles describes
             the permissions of the field for all the GROUP_MANAGER and
             BUSINESS_MANAGER of the given organization.
+            <p> E.g. if the user is PROVIDER: enabled_for_subroles describes
+            the permissions of the field for all the ORG_ADMIN, GROUP_MANAGER and
+            BUSINESS_MANAGER of the given provider.
           type: boolean
 
   CustomFields.Metadata:
@@ -1290,9 +1381,9 @@ schemas:
           type:
             description: >
               Type of the custom field.
-              <p> Possible values are "TEXT", "INTEGER", "FLOAT", "BOOLEAN", "SINGLE_SELECT", "MULTIPLE_SELECT".
+              <p> Possible values are "TEXT", "INTEGER", "FLOAT", "BOOLEAN", "SINGLE_SELECT", "MULTIPLE_SELECT", "MULTIPLE_SELECT_IMAGE".
             type: string
-            enum: ["TEXT", "INTEGER", "FLOAT", "BOOLEAN", "SINGLE_SELECT", "MULTIPLE_SELECT"]
+            enum: ["TEXT", "INTEGER", "FLOAT", "BOOLEAN", "SINGLE_SELECT", "MULTIPLE_SELECT", "MULTIPLE_SELECT_IMAGE"]
           custom_fields_type_id:
             description: ID of the custom field. Unique only combined with the type. Not used to reference the Custom Field.
             type: integer
@@ -1300,16 +1391,17 @@ schemas:
             description: >
               Describes where the custom field is displayed on the Business Edit view of the Partoo App inside
               the ”Custom Field” section (/app/business/edit#)
-            type: interger
+            type: integer
         discriminator:
           propertyName: type
           mapping:
             TEXT: '#/components/schemas/CustomFields.Metadata.Text'
-            INTEGER: '#/components/schemas/CustomFields.Metadata.Number'
+            INTEGER: '#/components/schemas/CustomFields.Metadata.Integer'
             FLOAT: '#/components/schemas/CustomFields.Metadata.Number'
             BOOLEAN: '#/components/schemas/CustomFields.Metadata'
             SINGLE_SELECT: '#/components/schemas/CustomFields.Metadata.Select'
             MULTIPLE_SELECT: '#/components/schemas/CustomFields.Metadata.Select'
+            MULTIPLE_SELECT_IMAGE: '#/components/schemas/CustomFields.Metadata.MultipleSelectImage'
 
   CustomFields.Metadata.Text:
     allOf:
@@ -1320,7 +1412,7 @@ schemas:
           type: integer
           description: If set, maximum number of characters that this Custom Field will accept.
 
-  CustomFields.Metadata.Number:
+  CustomFields.Metadata.Integer:
     allOf:
     - $ref: '#/schemas/CustomFields.Metadata'
     - type: object
@@ -1332,6 +1424,18 @@ schemas:
           type: integer
           description: If set, maximum value that this Custom Field will accept.
 
+  CustomFields.Metadata.Number:
+    allOf:
+      - $ref: '#/schemas/CustomFields.Metadata'
+      - type: object
+        properties:
+          min:
+            type: number
+            description: If set, minimum value that this Custom Field will accept.
+          max:
+            type: number
+            description: If set, maximum value that this Custom Field will accept.
+
   CustomFields.Metadata.Select:
     allOf:
     - $ref: '#/schemas/CustomFields.Metadata'
@@ -1342,6 +1446,28 @@ schemas:
           description: List of values that the select will have
           items:
             type: string
+
+  CustomFields.Metadata.MultipleSelectImage:
+    allOf:
+      - $ref: '#/schemas/CustomFields.Metadata'
+      - type: object
+        properties:
+          possible_values:
+            type: array
+            description: List of values that the select will have
+            items:
+              type: string
+          possible_images_labels:
+            type: array
+            description: List of labels corresponding to each value
+            items:
+              type: string
+          possible_images_urls:
+            type: array
+            description: List of image urls corresponding to each value
+            items:
+              type: string
+
 
 
   # DEPRECATED fields
@@ -1368,10 +1494,10 @@ schemas:
         type: string
         description: Promo additional informations
       begin:
-        type: integer
+        type: number
         description: Promo start timestamp
       end:
-        type: integer
+        type: number
         description: Promo end timestamp
       images:
         type: array
@@ -1413,7 +1539,7 @@ schemas:
         type: string
         enum: ["inactive", "active"]
       canceling_date:
-        type: integer
+        type: number
         description: timestamp
   Report:
     description: Report name
@@ -1564,7 +1690,7 @@ parameters:
     name: timestamp
     deprecated: true
     schema:
-      type: integer
+      type: number
     required: false
     description: Filter by modified attribute (modified >= timestamp)
   query_filter_by_business_subscription_to_review_management:
@@ -1685,10 +1811,12 @@ parameters:
         $ref: '#/schemas/ReviewPublisherLabel'
   query_review_state:
     in: query
-    name: state
+    name: state__in
     description: Filter by state
     schema:
-      $ref: '#/schemas/ReviewState'
+      type: array
+      items:
+        $ref: '#/schemas/ReviewState'
   metrics:
     in: query
     name: metrics

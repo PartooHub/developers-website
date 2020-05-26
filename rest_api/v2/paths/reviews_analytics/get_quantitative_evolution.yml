@@ -23,8 +23,7 @@ responses:
                       format: string
                       example: '2019-11-29'
                     added:
-                      type: number
-                      format: integer
+                      type: integer
                       example: 50
                     previous_sum:
                       type: number

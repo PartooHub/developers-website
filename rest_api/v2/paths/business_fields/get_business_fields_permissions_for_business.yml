@@ -3,9 +3,8 @@ tags:
 operationId: getBusinessFieldsForBusiness
 summary: Get Business Fields Configuration for a Business
 description: >
-  This endpoint gives you the list of all the Fields that are available for a given Business, grouped by section.
-  Includes Custom Fields.
-  Also tells you, for each field, if you have the permission to edit it or not.
+  This endpoint gives you the list of all the fields that are available for a given Business.
+  <p>It also tells you, for each field, if you have the permission to edit it or not, depending of the permission configured by your ORG_ADMIN and your PROVIDER. 
 parameters:
   - $ref: '../../components/index.yml#/parameters/business_id'
 
@@ -15,9 +14,8 @@ responses:
     content:
       application/json:
         schema:
-          type: array
-          items:
-            $ref: '../../components/index.yml#/schemas/BusinessFields.Section'
+          type: object
+          $ref: '../../components/index.yml#/schemas/BusinessFields.SectionArray'
   401:
     $ref: '../../components/index.yml#/responses/401'
   403:

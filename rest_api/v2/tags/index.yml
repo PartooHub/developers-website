@@ -14,8 +14,29 @@
 - name: Businesses
   description: >
     All the operations you can perform on businesses.
-    <p> ⚠️ Regarding Custom Fields `BETA` they can be configured at an org level only through contacting your dedicated Customer Success Manager.
-    Once created, Custom Fields values can be updated like any other business field.
+    <p> ⚠️**Regarding Custom Fields** They can be configured at an org level only through contacting your dedicated Customer Success Manager.
+    <p>Once created, Custom Fields values can be updated like any other business field.
+    <p>**What are Custom fields ?**
+    <p>Custom Fields allow Enterprise Administrators to add custom data fields to Partoo / Localoo under different formats (List, Text, Number…) in order to create a central datahub for local information and to:
+    <li> Use this data to automatically feed other tools (Store locator, website, CRM, Chatbot...) from Partoo / Localoo
+    <li>Allow local users to fill custom fields in order to transmit data from central to local
+    <p>The APIs will allow you only to read the already defined permissions, the creation and editing APIs will be enabled at a later date (or say why they can't Post and Put them)  
+    <p>See business fields endpoints for more details about custom fields.
+- name: Business Fields
+  description: >
+    These endpoints give you the list of all the fields that are available for the business / organization / provider, grouped by section.
+    <p>A `section` corresponds to the tabs in the Business Edit view of    Partoo UI. **Examples:** *Coordinates, Description, Custom Fields...*
+    <p>Each section contains an array of fields that are displayed within it. **Examples:** *Name, Country, Email...*
+    <p>**For each field**, these endpoints give you the `permissions` for each fields, depending on your role:
+    <li>`enabled` Your right to write on a field, given by roles less restricitves than yours.
+    <li>`enabled_for_rubroles` The right to write on a field you give to roles more restrictives than yours.
+    <p>**For example**:
+    <li>If the user is **ORG_ADMIN**, `enabled_for_subroles` describes the permissions of the field for all the GROUP_MANAGER and BUSINESS_MANAGER of the given organization.
+    <li>If the user is **PROVIDER**, `enabled_for_subroles` describes the permissions of the field for all the ORG_ADMIN, GROUP_MANAGER and BUSINESS_MANAGER of the given provider.
+    <p>**For each `custom_fields`**, these endpoints also give you their `metadata`:
+    <li>Type, custom_fields_type_id and order for all of them
+    <li>Constraints such as minimum and maximum for a number or list of values for a select.
+    <p>See the response schema below for more details about each type metadata.
 - name: Users
   description: All operations available on users
 - name: Groups
@@ -28,9 +49,6 @@
   description: >
     All the operations to subscribe/unsuscribe businesses to Partoo products.
     You need to have the role `PROVIDER` to be able to perform those operations.
-- name: Business Fields
-  description: >
-    Business Fields Configuration endpoint
 - name: Reviews
   description: All operations available on reviews
 - name: Reviews Analytics

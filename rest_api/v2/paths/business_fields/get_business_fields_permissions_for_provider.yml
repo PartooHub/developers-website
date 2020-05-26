@@ -1,12 +1,11 @@
 tags:
   - Business Fields
 operationId: getBusinessFieldsForProvider
-summary: Business Fields Configuration for a Provider
+summary: Get Business Fields Configuration for a Provider
 description: >
-  This endpoint gives you the list of all the Fields that are configured for a given Organization, grouped by section.
-  Also tells you, for each field, if you have the permission to edit it or not.
-
-  Only User roles PROVIDER or ADMIN can access this information.
+  This endpoint gives you the list of all the fields that are available for a given Provider.
+  <p> It also tells you, for each field if you gave the persission to edit it or not for the ORG_ADMIN, BUSINESS_MANAGER and GROUP_MANAGER who have access to the businesses of the provider.
+  <p>Only User roles PROVIDER can access this information.
 parameters:
   - $ref: '../../components/index.yml#/parameters/path_provider_label'
 
@@ -16,9 +15,8 @@ responses:
     content:
       application/json:
         schema:
-          type: array
-          items:
-            $ref: '../../components/index.yml#/schemas/BusinessFields.Section'
+          type: object
+          $ref: '../../components/index.yml#/schemas/BusinessFields.SectionArray'
   401:
     $ref: '../../components/index.yml#/responses/401'
   403:
