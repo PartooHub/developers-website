@@ -12,6 +12,7 @@ parameters:
   - $ref: '../../components/index.yml#/parameters/query_filter_by_group_id'
   - $ref: '../../components/index.yml#/parameters/query_filter_by_country'
   - $ref: '../../components/index.yml#/parameters/query_filter_by_business_name'
+  - $ref: '../../components/index.yml#/parameters/query_filter_by_business_clean_name'
   - $ref: '../../components/index.yml#/parameters/query_filter_by_business_status'
   - $ref: '../../components/index.yml#/parameters/query_filter_by_zipcode'
   - $ref: '../../components/index.yml#/parameters/query_filter_by_city'
