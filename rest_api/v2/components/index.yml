@@ -497,11 +497,15 @@ schemas:
     items:
       $ref: '#/schemas/Promo'
   BusinessLongDescription:
-    description: Business long description
+    description: |
+      <p>Business short description
+      <p>⚠️It is limited to 1000 characters and will be trimmed to 750
     type: string
     example: lorem ipsum dolor sit amet
   BusinessShortDescription:
-    description: Business short description
+    description: |
+      <p>Business short description
+      <p>⚠️It is limited to 200 characters
     type: string
     example: lorem ipsum
   BusinessOrgId:
