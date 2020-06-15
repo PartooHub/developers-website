@@ -19,6 +19,8 @@ requestBody:
         properties:
           name:
             $ref: '../../components/index.yml#/schemas/BusinessName'
+          clean_name:
+            $ref: '../../components/index.yml#/schemas/BusinessCleanName'
           org_id:
             $ref: '../../components/index.yml#/schemas/BusinessOrgId'
           country:
