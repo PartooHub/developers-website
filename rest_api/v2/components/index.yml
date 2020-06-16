@@ -167,7 +167,7 @@ schemas:
     example: 'OK'
   CategorySqlBlockPushLong:
     type: boolean
-    description:  Long description can't be set on GMB if a business own a category with this flag set to True
+    description:  Boolean indicating if the business long description can be pushed to GMB when the business belongs to this category
     example: false
   CategorySql:
     type: object
