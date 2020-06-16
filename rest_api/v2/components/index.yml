@@ -163,7 +163,7 @@ schemas:
     example: ['5109c3a237zdc544d8e267378', 'bf5179d3a237zdc576d8e2673']
   CategorySqlState:
     type: string
-    description: state of category ( OK or DEPRECATED )
+    description: State of category ( OK or DEPRECATED )
     example: 'OK'
   CategorySqlBlockPushLong:
     type: boolean
