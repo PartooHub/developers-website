@@ -171,6 +171,9 @@
 /category/{category_id}:
   get:
     $ref: ./category/get_by_id.yml
+/categories:
+  get:
+    $ref: ./category/get_categories.yml
 
 # PRESENCE ANALYTICS endpoints
 /presence_analytics:
