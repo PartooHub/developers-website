@@ -1,0 +1,29 @@
+summary: Get categories
+tags:
+  - Categories
+description: >
+  This endpoint lets you read and filter through Partoo categories.
+operationId: getCategories
+parameters:
+  - $ref: '../../components/index.yml#/parameters/query_category_country'
+  - $ref: '../../components/index.yml#/parameters/query_category_state'
+  - $ref: '../../components/index.yml#/parameters/query_category_block_push_long'
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          allOf:
+            - $ref: '../../components/index.yml#/schemas/ListResult'
+            - type: object
+              properties:
+                categories:
+                  type: array
+                  description: List of categories
+                  items:
+                    $ref: '../../components/index.yml#/schemas/CategorySql'
+  400:
+    $ref: '../../components/index.yml#/responses/400'
+  401:
+    $ref: '../../components/index.yml#/responses/401'

@@ -133,6 +133,57 @@ schemas:
         $ref: '#/schemas/CategoryName'
       id:
         $ref: '#/schemas/CategoryId'
+  CategorySqlId:
+    type: integer
+    description: Category id
+    example: 42
+  CategorySqlGmbId:
+    type: string
+    description: Google My Business Category Id ( unique )
+    example: 'gcid:climbing_gym'
+  CategorySqlName:
+    type: object
+    properties:
+      name:
+        type: string
+        description: Translated category name
+        example: salle d'escalade
+      country:
+        type: string
+        description: Country code
+        example: 'FR'
+  CategorySqlNames:
+    type: array
+    description: Category name translated for available countries
+    items:
+      $ref: '#/schemas/CategorySqlName'
+  CategorySqlLegacyIds:
+    type: array
+    description: Old related partoo categories id
+    example: ['5109c3a237zdc544d8e267378', 'bf5179d3a237zdc576d8e2673']
+  CategorySqlState:
+    type: string
+    description: State of category ( OK or DEPRECATED )
+    example: 'OK'
+  CategorySqlBlockPushLong:
+    type: boolean
+    description:  Boolean indicating if the business long description can be pushed to GMB when the business belongs to this category
+    example: false
+  CategorySql:
+    type: object
+    properties:
+      id:
+        $ref: '#/schemas/CategorySqlId'
+      gmb_id:
+        $ref: '#/schemas/CategorySqlGmbId'
+      state:
+        $ref: '#/schemas/CategorySqlState'
+      block_push_long_description_on_gmb:
+        $ref: '#/schemas/CategorySqlBlockPushLong'
+      names:
+        $ref: '#/schemas/CategorySqlNames'
+      legacy_ids:
+        $ref: '#/schemas/CategorySqlLegacyIds'
   ProductSubscribeResponseObject:
     type: object
     properties:
@@ -1613,6 +1664,28 @@ parameters:
       type: string
       enum: ['fr', 'es', 'it', 'en', 'de']
     description: Language in which the categories are going to be displayed
+  query_category_country:
+    in: query
+    name: country
+    required: false
+    description: Filter by country where categories are availables
+    schema:
+      type: string
+      enum: ['EN','FR', 'ES', 'IT', 'BR']
+  query_category_state:
+    in: query
+    name: state
+    required: false
+    schema:
+      type: string
+      enum: ['OK', 'DEPRECATED']
+  query_category_block_push_long:
+    in: query
+    name: block_push_long_description_on_gmb
+    description: Filter on `block_push_long_description_on_gmb` param (boolean indicating if the business long description can be pushed to GMB when the business belongs to this category)
+    required: false
+    schema:
+      type: boolean
   query_filter_by_org_id:
     in: query
     name: org_id
