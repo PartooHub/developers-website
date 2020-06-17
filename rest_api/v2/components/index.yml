@@ -1682,7 +1682,7 @@ parameters:
   query_category_block_push_long:
     in: query
     name: block_push_long_description_on_gmb
-    description: Long description can't be set on GMB if a business own a category with this flag set to True
+    description: Filter on `block_push_long_description_on_gmb` param (boolean indicating if the business long description can be pushed to GMB when the business belongs to this category)
     required: false
     schema:
       type: boolean
