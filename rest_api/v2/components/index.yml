@@ -260,6 +260,7 @@ schemas:
       - en
       - es
       - it
+      - pt-br
     example: fr
   UserStatus:
     description: User status in the application
