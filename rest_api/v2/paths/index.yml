@@ -175,6 +175,11 @@
   get:
     $ref: ./category/get_categories.yml
 
+# ADDRESS endpoints
+/address/street_type:
+  get:
+    $ref: ./address/get_street_type.yml
+
 # PRESENCE ANALYTICS endpoints
 /presence_analytics:
   get:
