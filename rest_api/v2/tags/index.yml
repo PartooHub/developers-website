@@ -55,6 +55,8 @@
   description: All the operations to perform analytics on reviews
 - name: Categories
   description: All operations available on categories
+- name: Address
+  description: All operations available on addresses
 - name: Boosts
   description: >
     All operations related to the Review Booster product.
