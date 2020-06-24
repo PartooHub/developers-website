@@ -1037,6 +1037,19 @@ schemas:
         type: string
         example: Street
 
+  AddressNumberSupplement:
+    description: Number supplement object
+    type: object
+    properties:
+      value:
+        description: Number supplement value
+        type: string
+        example: bis
+      label:
+        description: Number supplement label
+        type: string
+        example: Bis
+
   CustomFields.Array:
     description: >
       Custom Fields set for this Business
