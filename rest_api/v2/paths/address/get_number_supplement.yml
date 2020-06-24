@@ -1,0 +1,22 @@
+summary: Get number supplements
+tags:
+  - Address
+description: >
+  This endpoint lets retrieve number supplements for a given country.
+operationId: getNumberSupplements
+parameters:
+  - $ref: '../../components/index.yml#/parameters/query_filter_by_country_required'
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          type: array
+          description: List of number supplements
+          items:
+            $ref: '../../components/index.yml#/schemas/AddressNumberSupplement'
+  400:
+    $ref: '../../components/index.yml#/responses/400'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
