@@ -237,7 +237,8 @@ schemas:
     pattern: '^([0-1][0-9]|2[0-3]):([0-5][0-9])\-([0-1][0-9]|2[0-3]):([0-5][0-9])$'
     example: 10:00-14:00
   Day:
-    description: Open hours (for instance `[10:00-14:00, 16:00-18:00]`)
+    required: true
+    description: Opened in the morning and in the evening `[10:00-14:00, 18:00-00:00]`. Closed the whole day `[]`
     type: array
     items:
       $ref: '#/schemas/TimeWindow'
@@ -473,17 +474,17 @@ schemas:
     type: string
     example: 5409c35a97bbc544d8e26737
   BusinessName:
-    description: Business name
+    description: The name of the business (POI) as it will appear on the publishing platforms
     type: string
     minLength: 1
     example: Corner shop
   BusinessCleanName:
-    description: Business clean name (typically the brand name) used for Apple, Foursquare and Justacote (french only) partners
+    description: The clean name of the business (typically the brand name) used for Apple, Foursquare and Justacote (french only) partners. This should not contain the city name nor any additional descriptive items
     type: string
     minLength: 1
-    example: Partoo
+    examples: Partoo
   BusinessCity:
-    description: Business city
+    description: The city where the business is located
     type: string
     example: Paris
   BusinessCountry:
@@ -491,38 +492,45 @@ schemas:
     type: string
     example: FR
   BusinessRegion:
-    description: Business region
+    description: The region where the business is located
     type: string
     example: Ile-de-France
   BusinessCode:
-    description: Business code
+    description: The unique store code of your business. If not provided, it will be automatically generated
     type: string
     example: CS-75019
   BusinessZipcode:
-    description: Business zipcode
+    description: Zipcode (or postal code) for your business address
     type: string
     example: "75019"
   BusinessNationalIdentificationNumber:
-    description: Business National Identification number
+    description: |
+      <p>The National Identification Number of the business
+      <p> It's a unique number under which the business is registered in a specific country. For example, in France, it's SIRET code or for Ireland it's the CRO
     type: string
+  BusinessCategories:
+    description: A list of category ids mapped to the business. At least one category needs to be provided. For more information see Categories section
+    type: array
   Latitude:
-    description: Latitude
+    description: Latitude. Decimals are separated by a dot and not my comma.
     type: number
     format: double
     example: -3.585993
   Longitude:
-    description: Longitude
+    description: Longitude. Decimals are separated by a dot and not by comma.
     type: number
     format: double
     example: 47.870341
   BusinessStatus:
-    description: Business status
+    description: |
+      <p>Defines the current status of the business. `Open` indicates the business is up and running. `Closed` means that the business has definetly closed it's activity</p>
+      <p>Temporarly closed is determined in the specific hours
     type: string
     enum: [open, closed]
     default: open
     example: open
   BusinessWebsite:
-    description: Business website URL
+    description: The business's own website url or the main url of the company.
     type: string
     format: uri
     example: https://www.corner-shop.co/
@@ -555,27 +563,27 @@ schemas:
       $ref: '#/schemas/Promo'
   BusinessLongDescription:
     description: |
-      <p>Business short description
+      <p>A more detailed description of the business. It needs to be contextualised to the language of country where the business is located. For example, if the business is located in London, then the description needs to be in English.
       <p>⚠️It is limited to 750 characters
     type: string
     example: lorem ipsum dolor sit amet
   BusinessShortDescription:
     description: |
-      <p>Business short description
+      <p>A short description of the business. It needs to be contextualised to the language of country where the business is located. For example, if the business is located in London, then the description needs to be in English.
       <p>⚠️It is limited to 200 characters
     type: string
     example: lorem ipsum
   BusinessOrgId:
-    description: Business organisation id
+    description: Your organisation's unique identifier at Partoo. During onboarding, Partoo creates an organisation where all your businesses will be aggregated
     type: integer
     example: 42
   BusinessContacts:
-    description: Business contacts
+    description: Specify how your clients can reach the persons in charge of the business in case they have questions. When possible, the contact details should be uniquely defined per business
     type: array
     items:
       $ref: '#/schemas/Contact'
   GroupId:
-    description: Group id
+    description: The id of the group the business belongs to. An organisation can have multiple groups that contain one or more businesses. A business can belong to only one group.
     type: integer
     example: 23
   GroupName:
@@ -690,8 +698,7 @@ schemas:
         description: Business address
         type: string
       address2:
-        description: Business address
-        type: string
+        $ref: '#/schemas/Address2'
       city:
         $ref: '#/schemas/BusinessCity'
       zipcode:
@@ -780,8 +787,7 @@ schemas:
         description: Business address
         type: string
       address2:
-        description: Business address
-        type: string
+        $ref: '#/schemas/Address2'
       city:
         $ref: '#/schemas/BusinessCity'
       zipcode:
@@ -919,7 +925,9 @@ schemas:
     items:
       $ref: '#/schemas/TimeWindow'
   OpenHours:
-    description: Business open hours in a week
+    description: |
+      <p>The opening hours of the business.
+      <p>❗ The field is not mandatory, but if not provided then the business will not be pushed on some platforms (example: Google My Business). If provided, then a schedule needs to be sent for each day in particular
     type: object
     required:
       - monday
@@ -945,7 +953,12 @@ schemas:
       sunday:
         $ref: '#/schemas/Day'
   SpecificHours:
-    description: Business exceptional openned/closed periods
+    description: |
+      <p>Exceptional openning or closing times for the business
+      <p>All exceptional days of the year can be specified beforehand or on the go. For example:
+      <ul>
+       <li>Beforehand: bank holidays (like Christmas or Pentecôte)</li>
+      <li>Unpredicted: COVID-19 exceptional situation
     type: object
     required:
       - open
@@ -1001,7 +1014,7 @@ schemas:
           type: string
         example: ['0302060628']
   AddressDetails:
-    description: Business address object
+    description: Business main address. Represents the full address of the business. ⚠️ At least the `street_name` parameter needs to be provided
     type: object
     required:
       - street_name
@@ -1022,6 +1035,9 @@ schemas:
         description: Name of the street
         type: string
         example: du coquelicot
+  Address2:
+    description: Complement of address. Any additional information that could help better find the business location
+    type: string
   Keywords:
     description: Array of keywords
     type: array
@@ -1029,23 +1045,25 @@ schemas:
     items:
       type: string
   Photos:
-    description: Business photos
+    description: |
+      <p>Business photos
+      <p>Each business can have one or more photoes associated
     type: object
     properties:
+      LOGO:
+        description: The logo image of the brand. In case of Google, for businesses that have their basic information (phone number, hours, etc.), the Business Profile will highlight the logo.
+        type: string
+        format: uri
       primary:
-        description: Business main photo URL
+        description: The business's main photo URL. In case of Google, it represents the cover photo to the top of the profile
         type: string
         format: uri
       secondary:
-        description: Business secondary photos urls
+        description: Additional photos that can highlight the features of the business
         type: array
         items:
           type: string
           format: uri
-      LOGO:
-        description: Business logo URL
-        type: string
-        format: uri
   IntegrationStatus:
     description: Business integration status on publisher
     type: string
@@ -1114,8 +1132,10 @@ schemas:
         example: Bis
 
   CustomFields.Array:
-    description: >
-      Custom Fields set for this Business
+    description: |
+      <p>Custom Fields set for this Business
+      <p>They represent configurable fields that can be defined in addition to the normal business fields proposed by Partoo.
+      They are unique to your organisations and can be entitrly adapted to your company's needs.
     type: array
     items:
       $ref: '#/schemas/CustomFields.Field.Base'
@@ -1267,8 +1287,10 @@ schemas:
 
 
   CustomFields.Update:
-    description: >
-      Custom Fields key values
+    description: |
+      <p>Custom Fields set for this Business
+      <p>They represent configurable fields that can be defined in addition to the normal business fields proposed by Partoo.
+      They are unique to your organisations and can be entitrly adapted to your company's needs.
     type: object
     properties:
       custom_fields_name:
