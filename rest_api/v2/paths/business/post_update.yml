@@ -5,7 +5,7 @@ summary: Update business
 description: >
   This endpoint lets you access to the information of a business.
   You need to have `WRITE` access on this business.
-  Only indicated values be taken into account (it works like a `PATCH`).
+  Only indicated values are taken into account (it works like a `PATCH`).
   You cannot push fields disabled for your org.
 parameters:
   - $ref: '../../components/index.yml#/parameters/business_id'
@@ -19,6 +19,8 @@ requestBody:
         properties:
           name:
             $ref: '../../components/index.yml#/schemas/BusinessName'
+          clean_name:
+            $ref: '../../components/index.yml#/schemas/BusinessCleanName'
           org_id:
             $ref: '../../components/index.yml#/schemas/BusinessOrgId'
           country:

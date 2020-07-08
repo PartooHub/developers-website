@@ -1,6 +1,8 @@
 tags:
   - Businesses
 summary: Create business
+description: >
+  This API allows the creation of a new business in the context of your organisation.
 operationId: createBusiness
 requestBody:
   required: true
@@ -18,6 +20,8 @@ requestBody:
         properties:
           name:
             $ref: '../../components/index.yml#/schemas/BusinessName'
+          clean_name:
+            $ref: '../../components/index.yml#/schemas/BusinessCleanName'
           org_id:
             $ref: '../../components/index.yml#/schemas/BusinessOrgId'
           country:
@@ -29,11 +33,7 @@ requestBody:
           region:
             $ref: '../../components/index.yml#/schemas/BusinessRegion'
           categories:
-            description: Array of categories ids
-            type: array
-            minItems: 1
-            items:
-              type: string
+            $ref: '../../components/index.yml#/schemas/BusinessCategories'
           code:
             $ref: '../../components/index.yml#/schemas/BusinessCode'
           status:
@@ -41,7 +41,7 @@ requestBody:
           address_details:
             $ref: '../../components/index.yml#/schemas/AddressDetails'
           address2:
-            type: string
+            $ref: '../../components/index.yml#/schemas/Address2'
           lat:
             $ref: '../../components/index.yml#/schemas/Latitude'
           long:
@@ -70,8 +70,6 @@ requestBody:
             $ref: '../../components/index.yml#/schemas/BusinessVideos'
           news:
             $ref: '../../components/index.yml#/schemas/BusinessNews'
-          custom_fields:
-            $ref: '../../components/index.yml#/schemas/CustomFields.Update'
 responses:
   200:
     description: OK

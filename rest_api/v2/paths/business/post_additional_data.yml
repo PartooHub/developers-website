@@ -4,8 +4,8 @@ operationId: setBusinessAdditionalData
 summary: Set business additional data
 description: >
   This endpoint lets you set additional data on a business.
-  You need to have `WRITE`access on this business.
-  Additional is an flat object with at most 10 keys.
+  You need to have `WRITE` access on this business.
+  Additional is a flat object with at most 10 keys.
 parameters:
   - $ref: '../../components/index.yml#/parameters/business_id'
 requestBody:

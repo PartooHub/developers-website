@@ -171,6 +171,17 @@
 /category/{category_id}:
   get:
     $ref: ./category/get_by_id.yml
+#/categories:
+#  get:
+#    $ref: ./category/get_categories.yml
+
+# ADDRESS endpoints
+/address/street_type:
+  get:
+    $ref: ./address/get_street_type.yml
+/address/number_supplement:
+  get:
+    $ref: ./address/get_number_supplement.yml
 
 # ADDRESS endpoints
 /address/street_type:

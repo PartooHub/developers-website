@@ -53,6 +53,8 @@ requestBody:
             default: "False"
           password:
             $ref: '../../components/index.yml#/schemas/Password'
+          lang:
+            $ref: '../../components/index.yml#/schemas/Lang'
 responses:
   200:
     description: OK
