@@ -479,7 +479,7 @@ schemas:
     minLength: 1
     example: Corner shop
   BusinessCleanName:
-    description: The clean name of the business (typically the brand name) used for Apple, Foursquare and Justacote (french only) partners. This should not contain the city name nor any additional descriptive items
+    description: ❗This field will be soon mandatory. <br />The clean name of the business (typically the brand name) used for Apple, Foursquare and Justacote (french only) partners. This should not contain the city name nor any additional descriptive items
     type: string
     minLength: 1
     examples: Partoo
@@ -496,11 +496,11 @@ schemas:
     type: string
     example: Ile-de-France
   BusinessCode:
-    description: The unique store code of your business. If not provided, it will be automatically generated
+    description: The unique store code of the business. If not provided, it will be automatically generated
     type: string
     example: CS-75019
   BusinessZipcode:
-    description: Zipcode (or postal code) for your business address
+    description: Zipcode (or postal code) for the business address
     type: string
     example: "75019"
   BusinessNationalIdentificationNumber:
@@ -523,8 +523,7 @@ schemas:
     example: 47.870341
   BusinessStatus:
     description: |
-      <p>Defines the current status of the business. `Open` indicates the business is up and running. `Closed` means that the business has definetly closed it's activity</p>
-      <p>Temporarly closed is determined in the specific hours
+      <p>Defines the current status of the business. `Open` indicates the business is up and running. `Closed` means that the business has definitely closed it's activity. For temporarily closed businesses please use the <code>specific_hours</code></p>
     type: string
     enum: [open, closed]
     default: open
@@ -563,22 +562,22 @@ schemas:
       $ref: '#/schemas/Promo'
   BusinessLongDescription:
     description: |
-      <p>A more detailed description of the business. It needs to be contextualised to the language of country where the business is located. For example, if the business is located in London, then the description needs to be in English.
+      <p>A more detailed description of the business. It needs to be in the language of the country where the business is located. For example, if the business is located in London, then the description needs to be in English.
       <p>⚠️It is limited to 750 characters
     type: string
     example: lorem ipsum dolor sit amet
   BusinessShortDescription:
     description: |
-      <p>A short description of the business. It needs to be contextualised to the language of country where the business is located. For example, if the business is located in London, then the description needs to be in English.
+      <p>A short description of the business. It needs to be in the language of the country where the business is located. For example, if the business is located in Madrird, then the description needs to be in Spanish.
       <p>⚠️It is limited to 200 characters
     type: string
     example: lorem ipsum
   BusinessOrgId:
-    description: Your organisation's unique identifier at Partoo. During onboarding, Partoo creates an organisation where all your businesses will be aggregated
+    description: The organisation's unique identifier at Partoo. During onboarding, Partoo creates an organisation where all your businesses will be aggregated
     type: integer
     example: 42
   BusinessContacts:
-    description: Specify how your clients can reach the persons in charge of the business in case they have questions. When possible, the contact details should be uniquely defined per business
+    description: Specify how the clients can reach the persons in charge of the business in case they have questions.
     type: array
     items:
       $ref: '#/schemas/Contact'
@@ -927,7 +926,7 @@ schemas:
   OpenHours:
     description: |
       <p>The opening hours of the business.
-      <p>❗ The field is not mandatory, but if not provided then the business will not be pushed on some platforms (example: Google My Business). If provided, then a schedule needs to be sent for each day in particular
+      <p>❗ This field is not mandatory, but if not provided then the business will not be pushed on some platforms (example: Google My Business). If provided, then a schedule needs to be sent for each day in particular
     type: object
     required:
       - monday
@@ -955,7 +954,7 @@ schemas:
   SpecificHours:
     description: |
       <p>Exceptional openning or closing times for the business
-      <p>All exceptional days of the year can be specified beforehand or on the go. For example:
+      <p>All exceptional days of the year, including temporerly closed, can be specified beforehand or on the go. For example:
       <ul>
        <li>Beforehand: bank holidays (like Christmas or Pentecôte)</li>
       <li>Unpredicted: COVID-19 exceptional situation
@@ -1047,7 +1046,7 @@ schemas:
   Photos:
     description: |
       <p>Business photos
-      <p>Each business can have one or more photoes associated
+      <p>Each business can have one or more photos associated
     type: object
     properties:
       LOGO:
@@ -1135,7 +1134,7 @@ schemas:
     description: |
       <p>Custom Fields set for this Business
       <p>They represent configurable fields that can be defined in addition to the normal business fields proposed by Partoo.
-      They are unique to your organisations and can be entitrly adapted to your company's needs.
+      They are unique to the organisation and can be entitrly adapted to the company's needs.
     type: array
     items:
       $ref: '#/schemas/CustomFields.Field.Base'
@@ -1290,7 +1289,7 @@ schemas:
     description: |
       <p>Custom Fields set for this Business
       <p>They represent configurable fields that can be defined in addition to the normal business fields proposed by Partoo.
-      They are unique to your organisations and can be entitrly adapted to your company's needs.
+      They are unique to the organisation and can be entitrly adapted to the company's needs.
     type: object
     properties:
       custom_fields_name:
