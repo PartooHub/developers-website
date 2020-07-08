@@ -19,7 +19,7 @@
     <p>**What are Custom fields ?**
     <p>Custom Fields allow Enterprise Administrators to add custom data fields to Partoo / Localoo under different formats (List, Text, Number…) in order to create a central datahub for local information and to:
     <li> Use this data to automatically feed other tools (Store locator, website, CRM, Chatbot...) from Partoo / Localoo
-    <li>Allow local users to fill custom fields in order to transmit data from central to local
+    <li>Allow local users to fill custom fields in order to transmit data from local to central
     <p>The APIs will allow you only to read the already defined permissions, the creation and editing APIs will be enabled at a later date (or say why they can't Post and Put them)  
     <p>See business fields endpoints for more details about custom fields.
 - name: Business Fields
