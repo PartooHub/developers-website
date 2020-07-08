@@ -1,7 +1,7 @@
 # Partoo developers website
 
 In this repo, you will find all the source code for Partoo developers website.
-There documentation can be deployed:
+The documentation can be deployed:
 - `master` branch will deploy in [preprod](https://preprod.developers.partoo.co/rest_api/v2/)
 - `prod` branch will deploy in [production](https://developers.partoo.co/rest_api/v2/)
 
