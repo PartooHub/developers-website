@@ -24,5 +24,9 @@ responses:
               type: integer
               description: >
                 Number of businesses linked to Facebook.
+            linked_to_tripadvisor_count:
+              type: integer
+              description: >
+                Number of businesses linked to Tripadvisor.
   401:
     $ref: '../../components/index.yml#/responses/401'
