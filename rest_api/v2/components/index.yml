@@ -537,7 +537,7 @@ schemas:
     format: double
     example: -3.5867712
   RawLongitude:
-    description: Raw Longitude. Longitude sent by users to Partoo for this business. Decimals are separated by a dot and not my comma.
+    description: Raw Longitude. Longitude sent by clients via API for this business. Decimals are separated by a dot and not my comma.
     type: number
     format: double
     example: 47.8693748
