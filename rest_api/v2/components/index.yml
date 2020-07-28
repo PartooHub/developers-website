@@ -532,7 +532,7 @@ schemas:
     format: double
     example: 47.8693748
   RawLatitude:
-    description: Raw Latitude. Latitude sent by users to Partoo for this business. Decimals are separated by a dot and not my comma.
+    description: Raw Latitude. Latitude sent by clients via API for this business. Decimals are separated by a dot and not my comma.
     type: number
     format: double
     example: -3.5867712
