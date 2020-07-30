@@ -171,7 +171,8 @@
 /category/{category_id}:
   get:
     $ref: ./category/get_by_id.yml
-#/categories:
+# WIP (HIDE FROM PROD)
+# /categories:
 #  get:
 #    $ref: ./category/get_categories.yml
 

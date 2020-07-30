@@ -1777,6 +1777,29 @@ parameters:
     required: false
     schema:
       type: boolean
+  query_category_search_query:
+    in: query
+    name: search_query
+    description: Fuzzy search on gmb_id and names translations
+    required: false
+    schema:
+      type: string
+  query_category_sort_by:
+    in: query
+    name: sort_by
+    description: Sort query by gmb_id
+    required: false
+    schema:
+      type: string
+      enum: ['gmb_id']
+  query_category_order_by:
+    in: query
+    name: order_by
+    description: Order query by asc or desc
+    required: false
+    schema:
+      type: string
+      enum: ['asc', 'desc']
   query_filter_by_org_id:
     in: query
     name: org_id
