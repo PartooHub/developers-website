@@ -511,6 +511,16 @@ schemas:
   BusinessCategories:
     description: A list of category ids mapped to the business. At least one category needs to be provided. For more information see Categories section
     type: array
+  BusinessLatitude:
+    description: Latitude. Decimals are separated by a dot and not my comma.
+    type: number
+    format: double
+    example: -3.585993
+  BusinessLongitude:
+    description: Longitude. Decimals are separated by a dot and not by comma.
+    type: number
+    format: double
+    example: 47.870341
   Latitude:
     description: Latitude. Automatically calculated latitude. Decimals are separated by a dot and not my comma.
     type: number
