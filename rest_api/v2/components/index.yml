@@ -511,16 +511,46 @@ schemas:
   BusinessCategories:
     description: A list of category ids mapped to the business. At least one category needs to be provided. For more information see Categories section
     type: array
-  Latitude:
+  BusinessLatitude:
     description: Latitude. Decimals are separated by a dot and not my comma.
     type: number
     format: double
     example: -3.585993
-  Longitude:
+  BusinessLongitude:
     description: Longitude. Decimals are separated by a dot and not by comma.
     type: number
     format: double
     example: 47.870341
+  Latitude:
+    description: Latitude. Automatically calculated latitude. Decimals are separated by a dot and not my comma.
+    type: number
+    format: double
+    example: -3.585993
+  Longitude:
+    description: Longitude. Automatically calculated latitude. Decimals are separated by a dot and not by comma.
+    type: number
+    format: double
+    example: 47.870341
+  ManualLatitude:
+    description: Manual Latitude. Result of the adjusted pin in Partoo app. Decimals are separated by a dot and not my comma.
+    type: number
+    format: double
+    example: -3.5867712
+  ManualLongitude:
+    description: Manual Longitude. Result of the adjusted pin in Partoo app. Decimals are separated by a dot and not my comma.
+    type: number
+    format: double
+    example: 47.8693748
+  RawLatitude:
+    description: Raw Latitude. Latitude sent by clients via API for this business. Decimals are separated by a dot and not my comma.
+    type: number
+    format: double
+    example: -3.5867712
+  RawLongitude:
+    description: Raw Longitude. Longitude sent by clients via API for this business. Decimals are separated by a dot and not my comma.
+    type: number
+    format: double
+    example: 47.8693748
   BusinessStatus:
     description: |
       <p>Defines the current status of the business. `Open` indicates the business is up and running. `Closed` means that the business has definitely closed it's activity. For temporarily closed businesses please use the <code>specific_hours</code></p>
@@ -740,6 +770,14 @@ schemas:
         $ref: '#/schemas/Latitude'
       long:
         $ref: '#/schemas/Longitude'
+      manual_lat:
+        $ref: '#/schemas/ManualLatitude'
+      manual_long:
+        $ref: '#/schemas/ManualLongitude'
+      raw_lat:
+        $ref: '#/schemas/RawLatitude'
+      raw_long:
+        $ref: '#/schemas/RawLongitude'
       subscriptions:
         $ref: '#/schemas/Subscriptions'
       videos:
@@ -831,6 +869,14 @@ schemas:
         $ref: '#/schemas/Latitude'
       long:
         $ref: '#/schemas/Longitude'
+      manual_lat:
+        $ref: '#/schemas/ManualLatitude'
+      manual_long:
+        $ref: '#/schemas/ManualLongitude'
+      raw_lat:
+        $ref: '#/schemas/RawLatitude'
+      raw_long:
+        $ref: '#/schemas/RawLongitude'
       subscriptions:
         $ref: '#/schemas/Subscriptions'
       custom_fields:
@@ -1741,6 +1787,29 @@ parameters:
     required: false
     schema:
       type: boolean
+  query_category_search_query:
+    in: query
+    name: search_query
+    description: Fuzzy search on gmb_id and names translations
+    required: false
+    schema:
+      type: string
+  query_category_sort_by:
+    in: query
+    name: sort_by
+    description: Sort query by gmb_id
+    required: false
+    schema:
+      type: string
+      enum: ['gmb_id']
+  query_category_order_by:
+    in: query
+    name: order_by
+    description: Order query by asc or desc
+    required: false
+    schema:
+      type: string
+      enum: ['asc', 'desc']
   query_filter_by_org_id:
     in: query
     name: org_id

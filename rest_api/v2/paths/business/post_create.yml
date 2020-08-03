@@ -43,9 +43,9 @@ requestBody:
           address2:
             $ref: '../../components/index.yml#/schemas/Address2'
           lat:
-            $ref: '../../components/index.yml#/schemas/Latitude'
+            $ref: '../../components/index.yml#/schemas/BusinessLatitude'
           long:
-            $ref: '../../components/index.yml#/schemas/Longitude'
+            $ref: '../../components/index.yml#/schemas/BusinessLongitude'
           website_url:
             $ref: '../../components/index.yml#/schemas/BusinessWebsite'
           facebook_url:
