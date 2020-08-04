@@ -1,0 +1,23 @@
+summary: Get a reply template by id
+description: >
+  This endpoint let you access a reply template given its id.
+operationId: getTemplate
+tags:
+  - Reply Templates
+
+
+parameters:
+  - $ref: '../../components/index.yml#/parameters/business_id'
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/index.yml#/schemas/Template'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
+  404:
+    $ref: '../../components/index.yml#/responses/404'

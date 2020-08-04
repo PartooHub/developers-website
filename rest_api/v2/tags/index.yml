@@ -52,6 +52,8 @@
     You need to have the role `PROVIDER` to be able to perform those operations.
 - name: Reviews
   description: All operations available on reviews
+- name: Reply Templates
+  description: All operations available on reply templates for reviews.
 - name: Reviews Analytics
   description: All the operations to perform analytics on reviews
 - name: Categories

@@ -1623,8 +1623,74 @@ schemas:
             description: List of image urls corresponding to each value
             items:
               type: string
+  TemplateId:
+    type: integer
+    description: Template id
+    example: 34
+  TemplateUpdateDate:
+    type: string
+    description: Template update date
+    format: datetime
+    example: 2017-08-01T19:15:54.256000+02:00
+  TemplateCreationDate:
+    type: string
+    description: Template creation date
+    format: datetime
+    example: 2017-08-01T19:15:54.256000+02:00
+  TemplateLanguage:
+    type: string
+    description: Template language
+    enum: ['fr', 'es', 'it', 'en', 'pt-br']
+  TemplateTitle:
+    type: string
+    description: Template title
+  TemplateText:
+    description:  |
+      The content of the reply.
 
+      Placeholders are recognisable within the text by this exact markup `@[](name_of_the_placeholder)`.
+      Where `name_of_the_placeholder` is a value taken from the 'get placeholders' operation.
 
+      example of usable placeholders: `client_full_name`, `client_first_name`, `business_name`, `my_first_name`.
+    type: string
+    example: "hello @[](client_full_name),
+
+    Thanks from the team at @[](business_name).
+
+    @[](my_first_name)"
+  TemplateNegative:
+    type: boolean
+    description: Template is made for negative reviews (ex from 1 to 2 stars on gmb)
+  TemplateNeutral:
+    type: boolean
+    description: Template is made for neutral reviews (ex 3 stars on gmb)
+  TemplatePositive:
+    type: boolean
+    description: Template is made for positive reviews (ex from 4 to 5 stars on gmb)
+  Template:
+    description: Review's reply tempate
+    type: object
+    properties:
+      id:
+        $ref: '#/schemas/TemplateId'
+      org_id:
+        $ref: '#/schemas/OrgId'
+      update_date:
+        $ref: '#/schemas/TemplateUpdateDate'
+      creation_date:
+        $ref: '#/schemas/TemplateCreationDate'
+      language:
+        $ref: '#/schemas/TemplateLanguage'
+      title:
+        $ref: '#/schemas/TemplateTitle'
+      text:
+        $ref: '#/schemas/TemplateText'
+      negative:
+        $ref: '#/schemas/TemplateNegative'
+      neutral:
+        $ref: '#/schemas/TemplateNeutral'
+      positive:
+        $ref: '#/schemas/TemplatePositive'
 
   # DEPRECATED fields
   Promo:
@@ -1790,7 +1856,7 @@ parameters:
   query_category_search_query:
     in: query
     name: search_query
-    description: Fuzzy search on gmb_id and names translations
+    description: Fuzzy search stars on gmb_id and names translations
     required: false
     schema:
       type: string
@@ -2068,6 +2134,58 @@ parameters:
       format: email
       example: perceval@kaamelott.com
       description: email address the export will be sent to
+  path_template_id:
+    in: path
+    name: tempate_id
+    required: true
+    schema:
+      type: number
+    description: Template id
+  query_positive_template:
+    in: query
+    name: positive
+    description: Filter on templates made to answer positive reviews (ex from 4 to 5 stars on gmb).
+    required: false
+    schema:
+      type: boolean
+  query_neutral_template:
+    in: query
+    name: neutral
+    description: Filter on templates made to answer neutral reviews (ex from 4 to 5 stars on gmb).
+    required: false
+    schema:
+      type: boolean
+  query_negative_template:
+    in: query
+    name: negative
+    description: Filter on templates made to answer negative reviews (ex from 4 to 5 stars on gmb).
+    required: false
+    schema:
+      type: boolean
+  query_language__in:
+    in: query
+    name: language__in
+    description: Filter on templates in the specified languages.
+    required: false
+    schema:
+      type: array
+      items:
+        $ref: '#/schemas/TemplateLanguage'
+      example: fr,it
+  query_title_query:
+    in: query
+    name: title_query
+    schema:
+      type: string
+    required: false
+    description: Filter on templates based on their title
+  query_text_query:
+    in: query
+    name: text_query
+    schema:
+      type: string
+    required: false
+    description: Filter on templates based on their text
 responses:
   400:
     description: Your request is incorrect
