@@ -1,0 +1,27 @@
+summary: Delete a reply template
+description: >
+  This endpoint lets you delete a reply template given its id.
+operationId: deleteTemplate
+tags:
+  - Reply Templates
+
+
+parameters:
+  - $ref: '../../components/index.yml#/parameters/path_template_id'
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          description: Response object
+          type: object
+          properties:
+            status:
+              $ref: '../../components/index.yml#/schemas/RequestStatus'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
+  404:
+    $ref: '../../components/index.yml#/responses/404'

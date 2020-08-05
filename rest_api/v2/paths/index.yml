@@ -78,6 +78,19 @@
   get:
     $ref: ./reviews_analytics/get_quantitative_evolution.yml
 
+# REVIEWS REPLY TEMPLATE endpoints
+/reviews/templates/search:
+  get:
+    $ref: ./reply_templates/search.yml
+/reviews/template:
+  post:
+    $ref: ./reply_templates/post.yml
+/reviews/template/{template_id}:
+  delete:
+    $ref: ./reply_templates/delete.yml
+/reviews/templates/placeholders:
+  get:
+    $ref: ./reply_templates/placeholders.yml
 
 # ORG endpoints
 /org/{org_id}:
