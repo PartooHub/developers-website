@@ -12,10 +12,16 @@ requestBody:
       schema:
         description: Request body to post/edit a reply
         type: object
+        required:
+          - language
+          - negative
+          - neutral
+          - positive
+          - text
+          - title
         properties:
           language:
-            allOf:
-              - $ref: '../../components/index.yml#/schemas/TemplateLanguage'
+            $ref: '../../components/index.yml#/schemas/TemplateLanguage'
           negative:
             $ref: '../../components/index.yml#/schemas/TemplateNegative'
           neutral:

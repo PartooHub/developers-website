@@ -56,8 +56,8 @@
   description: |
     All operations available on review reply templates.
 
-    The reply templates are not meant to be used outside of the Partoo application.
-    For that reason it is not possible to access a _formatted_ template, with prefilled placeholders from the API.
+    Reply templates are not meant to be used outside the Partoo application.
+    For this reason it is not possible to access a _formatted_ template, with prefilled placeholders from the API.
 
     However it is still possible to browse through, create or delete reply templates from the Partoo API.
 - name: Reviews Analytics

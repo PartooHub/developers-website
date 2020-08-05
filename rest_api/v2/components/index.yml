@@ -229,7 +229,7 @@ schemas:
     example: 10
   count:
     type: integer
-    description: Number of resources compliying with filters
+    description: Number of resources complying with filters
     example: 287
   TimeWindow:
     description: Time window
@@ -1651,7 +1651,7 @@ schemas:
       Placeholders are recognisable within the text by this exact markup `@[](name_of_the_placeholder)`.
       Where `name_of_the_placeholder` is the `value` field taken from the `GET placeholders` operation.
 
-      example of usable placeholder values: `client_full_name`, `client_first_name`, `business_name`, `my_first_name`.
+      Example of usable placeholder values: `client_full_name`, `client_first_name`, `business_name`, `my_first_name`.
     type: string
     example: "hello @[](client_full_name),
 
@@ -1706,7 +1706,7 @@ schemas:
         description: |
           Placeholder value
 
-          This value must be used within the placeholder markup `@[](placeholder_value)` within a template `text` in order for it to work properly.
+          This value must be used within the placeholder markup `@[](placeholder_value)` in a template `text` in order to work properly.
         example: "my_first_name"
 
 
@@ -2154,7 +2154,7 @@ parameters:
       description: email address the export will be sent to
   path_template_id:
     in: path
-    name: tempate_id
+    name: template_id
     required: true
     schema:
       type: number
@@ -2169,14 +2169,14 @@ parameters:
   query_neutral_template:
     in: query
     name: neutral
-    description: Filter on templates made to answer neutral reviews (ex from 4 to 5 stars on gmb).
+    description: Filter on templates made to answer neutral reviews (ex 3 stars on gmb).
     required: false
     schema:
       type: boolean
   query_negative_template:
     in: query
     name: negative
-    description: Filter on templates made to answer negative reviews (ex from 4 to 5 stars on gmb).
+    description: Filter on templates made to answer negative reviews (ex from 1 to 2 stars on gmb).
     required: false
     schema:
       type: boolean
