@@ -1646,7 +1646,7 @@ schemas:
     description: Template title
   TemplateText:
     description:  |
-      The content of the reply.
+      The content of the reply template.
 
       Placeholders are recognisable within the text by this exact markup `@[](name_of_the_placeholder)`.
       Where `name_of_the_placeholder` is the `value` field taken from the `GET placeholders` operation.
