@@ -1649,9 +1649,9 @@ schemas:
       The content of the reply.
 
       Placeholders are recognisable within the text by this exact markup `@[](name_of_the_placeholder)`.
-      Where `name_of_the_placeholder` is a value taken from the 'get placeholders' operation.
+      Where `name_of_the_placeholder` is the `value` field taken from the `GET placeholders` operation.
 
-      example of usable placeholders: `client_full_name`, `client_first_name`, `business_name`, `my_first_name`.
+      example of usable placeholder values: `client_full_name`, `client_first_name`, `business_name`, `my_first_name`.
     type: string
     example: "hello @[](client_full_name),
 
@@ -1691,6 +1691,24 @@ schemas:
         $ref: '#/schemas/TemplateNeutral'
       positive:
         $ref: '#/schemas/TemplatePositive'
+  TemplatePlaceholder:
+    description: |
+      Reply tempates available placeholders.
+      A template placeholder is a dynamically updated word depending on the context.
+    type: object
+    properties:
+      id:
+        type: integer
+        description: Placeholder id
+        example: 2
+      value:
+        type: string
+        description: |
+          Placeholder value
+
+          This value must be used within the placeholder markup `@[](placeholder_value)` within a template `text` in order for it to work properly.
+        example: "my_first_name"
+
 
   # DEPRECATED fields
   Promo:

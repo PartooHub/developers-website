@@ -1,4 +1,4 @@
-summary: Delete a reply template by id
+summary: Delete a reply template
 description: >
   This endpoint lets you delete a reply template given its id.
 operationId: deleteTemplate

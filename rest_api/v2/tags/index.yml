@@ -53,7 +53,13 @@
 - name: Reviews
   description: All operations available on reviews
 - name: Reply Templates
-  description: All operations available on reply templates for reviews.
+  description: |
+    All operations available on review reply templates.
+
+    The reply templates are not meant to be used outside of the Partoo application.
+    For that reason it is not possible to access a _formatted_ template, with prefilled placeholders from the API.
+
+    However it is still possible to browse through, create or delete reply templates from the Partoo API.
 - name: Reviews Analytics
   description: All the operations to perform analytics on reviews
 - name: Categories

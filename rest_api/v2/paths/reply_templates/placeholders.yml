@@ -1,20 +1,20 @@
-summary: Get a reply template by id
-description: >
-  This endpoint let you access a reply template given its id.
-operationId: getTemplate
+summary: Get all available placeholders
+description: |
+  This endpoint lets you access all of the available placeholders for reply templates.
+  A template placeholder is a dynamically updated word within the Partoo app depending on the context.
+
+  Ex: Once used to answer a review, if a template has a `client_first_name` placeholder, the placeholder will take the value of the reviewer's first name.
+operationId: getTemplatePlaceholders
 tags:
   - Reply Templates
 
-
-parameters:
-  - $ref: '../../components/index.yml#/parameters/business_id'
 responses:
   200:
     description: OK
     content:
       application/json:
         schema:
-          $ref: '../../components/index.yml#/schemas/Template'
+          $ref: '../../components/index.yml#/schemas/TemplatePlaceholder'
   401:
     $ref: '../../components/index.yml#/responses/401'
   403:
