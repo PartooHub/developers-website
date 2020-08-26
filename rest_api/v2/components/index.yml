@@ -479,7 +479,8 @@ schemas:
     minLength: 1
     example: Corner shop
   BusinessCleanName:
-    description: ❗This field will be soon mandatory. <br />The clean name of the business (typically the brand name) used for Apple, Foursquare and Justacote (french only) partners. This should not contain the city name nor any additional descriptive items
+    deprecated: True
+    description: <code>It will be removed in November 2020</code> <br />The clean name of the business (typically the brand name) used for Apple, Foursquare and Justacote (french only) partners. This should not contain the city name nor any additional descriptive items
     type: string
     minLength: 1
     examples: Partoo
@@ -1967,7 +1968,8 @@ parameters:
     schema:
       type: string
     required: false
-    description: Filter by clean name
+    deprecated: true
+    description:  <p><code>It will be removed in November 2020</code>. Filter by clean name.</p>
   query_filter_by_country:
     in: query
     name: country
