@@ -35,7 +35,7 @@
     <li>If the user is **ORG_ADMIN**, `enabled_for_subroles` describes the permissions of the field for all the GROUP_MANAGER and BUSINESS_MANAGER of the given organization.
     <li>If the user is **PROVIDER**, `enabled_for_subroles` describes the permissions of the field for all the ORG_ADMIN, GROUP_MANAGER and BUSINESS_MANAGER of the given provider.
     <p>**For each `custom_fields`**, these endpoints also give you their `metadata`:
-    <li>Type, custom_fields_type_id and order for all of them
+    <li>Type, id and order for all of them
     <li>Constraints such as minimum and maximum for a number or list of values for a select.
     <p>See the response schema below for more details about each type metadata.
 - name: Users
