@@ -1187,56 +1187,56 @@ schemas:
       $ref: '#/schemas/CustomFields.Field.Base'
     example: [
       {
-        custom_fields_type_id: 1,
+        id: 1,
         type: "BOOLEAN",
         name: "Parking",
         value: true,
         order: 1,
       },
       {
-        custom_fields_type_id: 1,
+        id: 2,
         type: "TEXT",
         name: "ManagerName",
         value: toto,
         order: 2,
       },
       {
-        custom_fields_type_id: 1,
+        id: 3,
         type: "TEXT",
         name: "Supervisor",
         value: null,
         order: 2,
       },
       {
-        custom_fields_type_id: 1,
+        id: 4,
         type: "INTEGER",
         name: "Surface",
         value: 2,
         order: 3,
       },
       {
-        custom_fields_type_id: 1,
+        id: 5,
         type: "FLOAT",
         name: "DistanceFromSubway",
         value: 2.55,
         order: 4,
       },
       {
-        custom_fields_type_id: 1,
+        id: 6,
         type: "SINGLE_SELECT",
         name: "Level",
         value: "two",
         order: 4,
       },
       {
-        custom_fields_type_id: 1,
+        id: 7,
         type: "MULTIPLE_SELECT",
         name: "Services",
         value: ["one", "two"],
         order: 5,
       },
       {
-        custom_fields_type_id: 1,
+        id: 8,
         type: "MULTIPLE_SELECT_IMAGE",
         name: "BannerImage",
         value: ["image 1", "image 2"],
@@ -1253,7 +1253,7 @@ schemas:
       type:
         description: Possible values are "BOOLEAN", "INTEGER", "TEXT", "FLOAT", "SINGLE_SELECT", "MULIPLE_SELECT", "MULIPLE_SELECT_IMAGE".
         type: string
-      custom_fields_type_id:
+      id:
         description: Id of the custom field
         type: integer
       order:
@@ -1431,7 +1431,7 @@ schemas:
         enabled: true,
         enabled_for_subroles: true,
         type: "BOOLEAN",
-        custom_fields_type_id: 8,
+        id: 1,
         order: 10
       },
       {
@@ -1439,7 +1439,7 @@ schemas:
         enabled: true,
         enabled_for_subroles: true,
         type: "TEXT",
-        custom_fields_type_id: 5,
+        id: 2,
         order: 11,
         max_len: 250
       },
@@ -1448,7 +1448,7 @@ schemas:
         enabled: true,
         enabled_for_subroles: true,
         type: "MULTIPLE_SELECT",
-        custom_fields_type_id: 2,
+        id: 3,
         order: 2,
         possible_values: ["handicapped access", "toilets", "break room"]
       },
@@ -1456,7 +1456,7 @@ schemas:
         name: "banner image",
         enabled: true,
         enabled_for_subroles: true,
-        custom_fields_type_id: 17,
+        id: 4,
         type: "MULTIPLE_SELECT_IMAGE",
         order: 10,
         possible_values: ["image 1", "image 2", "image 3"],
@@ -1541,8 +1541,8 @@ schemas:
               <p> Possible values are "TEXT", "INTEGER", "FLOAT", "BOOLEAN", "SINGLE_SELECT", "MULTIPLE_SELECT", "MULTIPLE_SELECT_IMAGE".
             type: string
             enum: ["TEXT", "INTEGER", "FLOAT", "BOOLEAN", "SINGLE_SELECT", "MULTIPLE_SELECT", "MULTIPLE_SELECT_IMAGE"]
-          custom_fields_type_id:
-            description: ID of the custom field. Unique only combined with the type. Not used to reference the Custom Field.
+          id:
+            description: ID of the custom field.
             type: integer
           order:
             description: >
