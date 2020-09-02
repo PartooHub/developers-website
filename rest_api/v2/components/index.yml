@@ -513,42 +513,42 @@ schemas:
     description: A list of category ids mapped to the business. At least one category needs to be provided. For more information see Categories section
     type: array
   BusinessLatitude:
-    description: Latitude. Decimals are separated by a dot and not my comma.
+    description: Latitude. Decimals are separated by a dot and not by a comma. Latitude will be saved on raw_lat
     type: number
     format: double
     example: -3.585993
   BusinessLongitude:
-    description: Longitude. Decimals are separated by a dot and not by comma.
+    description: Longitude. Decimals are separated by a dot and not by a comma. Longitude will be saved on raw_long
     type: number
     format: double
     example: 47.870341
   Latitude:
-    description: Latitude. Automatically calculated latitude. Decimals are separated by a dot and not my comma.
+    description: Latitude. Automatically calculated latitude by Partoo geocoding tools. Decimals are separated by a dot and not by a comma.
     type: number
     format: double
     example: -3.585993
   Longitude:
-    description: Longitude. Automatically calculated latitude. Decimals are separated by a dot and not by comma.
+    description: Longitude. Automatically calculated longitude by Partoo geocoding tools. Decimals are separated by a dot and not by a comma.
     type: number
     format: double
     example: 47.870341
   ManualLatitude:
-    description: Manual Latitude. Result of the adjusted pin in Partoo app. Decimals are separated by a dot and not my comma.
+    description: Manual Latitude. Result of the adjusted pin in Partoo app. Decimals are separated by a dot and not by a comma.
     type: number
     format: double
     example: -3.5867712
   ManualLongitude:
-    description: Manual Longitude. Result of the adjusted pin in Partoo app. Decimals are separated by a dot and not my comma.
+    description: Manual Longitude. Result of the adjusted pin in Partoo app. Decimals are separated by a dot and not by a comma.
     type: number
     format: double
     example: 47.8693748
   RawLatitude:
-    description: Raw Latitude. Latitude sent by clients via API for this business. Decimals are separated by a dot and not my comma.
+    description: Raw Latitude. Latitude sent by clients via API/puller for this business. Decimals are separated by a dot and not by a comma.
     type: number
     format: double
     example: -3.5867712
   RawLongitude:
-    description: Raw Longitude. Longitude sent by clients via API for this business. Decimals are separated by a dot and not my comma.
+    description: Raw Longitude. Longitude sent by clients via API/puller for this business. Decimals are separated by a dot and not by a comma.
     type: number
     format: double
     example: 47.8693748
