@@ -479,7 +479,8 @@ schemas:
     minLength: 1
     example: Corner shop
   BusinessCleanName:
-    description: ❗This field will be soon mandatory. <br />The clean name of the business (typically the brand name) used for Apple, Foursquare and Justacote (french only) partners. This should not contain the city name nor any additional descriptive items
+    deprecated: True
+    description: <code>It will be removed in November 2020</code> <br />The clean name of the business (typically the brand name) used for Apple, Foursquare and Justacote (french only) partners. This should not contain the city name nor any additional descriptive items
     type: string
     minLength: 1
     examples: Partoo
@@ -512,42 +513,42 @@ schemas:
     description: A list of category ids mapped to the business. At least one category needs to be provided. For more information see Categories section
     type: array
   BusinessLatitude:
-    description: Latitude. Decimals are separated by a dot and not my comma.
+    description: Latitude. Decimals are separated by a dot and not by a comma. Latitude will be saved on raw_lat
     type: number
     format: double
     example: -3.585993
   BusinessLongitude:
-    description: Longitude. Decimals are separated by a dot and not by comma.
+    description: Longitude. Decimals are separated by a dot and not by a comma. Longitude will be saved on raw_long
     type: number
     format: double
     example: 47.870341
   Latitude:
-    description: Latitude. Automatically calculated latitude. Decimals are separated by a dot and not my comma.
+    description: Latitude. Automatically calculated latitude by Partoo geocoding tools. Decimals are separated by a dot and not by a comma.
     type: number
     format: double
     example: -3.585993
   Longitude:
-    description: Longitude. Automatically calculated latitude. Decimals are separated by a dot and not by comma.
+    description: Longitude. Automatically calculated longitude by Partoo geocoding tools. Decimals are separated by a dot and not by a comma.
     type: number
     format: double
     example: 47.870341
   ManualLatitude:
-    description: Manual Latitude. Result of the adjusted pin in Partoo app. Decimals are separated by a dot and not my comma.
+    description: Manual Latitude. Result of the adjusted pin in Partoo app. Decimals are separated by a dot and not by a comma.
     type: number
     format: double
     example: -3.5867712
   ManualLongitude:
-    description: Manual Longitude. Result of the adjusted pin in Partoo app. Decimals are separated by a dot and not my comma.
+    description: Manual Longitude. Result of the adjusted pin in Partoo app. Decimals are separated by a dot and not by a comma.
     type: number
     format: double
     example: 47.8693748
   RawLatitude:
-    description: Raw Latitude. Latitude sent by clients via API for this business. Decimals are separated by a dot and not my comma.
+    description: Raw Latitude. Latitude sent by clients via API/puller for this business. Decimals are separated by a dot and not by a comma.
     type: number
     format: double
     example: -3.5867712
   RawLongitude:
-    description: Raw Longitude. Longitude sent by clients via API for this business. Decimals are separated by a dot and not my comma.
+    description: Raw Longitude. Longitude sent by clients via API/puller for this business. Decimals are separated by a dot and not by a comma.
     type: number
     format: double
     example: 47.8693748
@@ -1186,56 +1187,56 @@ schemas:
       $ref: '#/schemas/CustomFields.Field.Base'
     example: [
       {
-        custom_fields_type_id: 1,
+        id: 1,
         type: "BOOLEAN",
         name: "Parking",
         value: true,
         order: 1,
       },
       {
-        custom_fields_type_id: 1,
+        id: 2,
         type: "TEXT",
         name: "ManagerName",
         value: toto,
         order: 2,
       },
       {
-        custom_fields_type_id: 1,
+        id: 3,
         type: "TEXT",
         name: "Supervisor",
         value: null,
         order: 2,
       },
       {
-        custom_fields_type_id: 1,
+        id: 4,
         type: "INTEGER",
         name: "Surface",
         value: 2,
         order: 3,
       },
       {
-        custom_fields_type_id: 1,
+        id: 5,
         type: "FLOAT",
         name: "DistanceFromSubway",
         value: 2.55,
         order: 4,
       },
       {
-        custom_fields_type_id: 1,
+        id: 6,
         type: "SINGLE_SELECT",
         name: "Level",
         value: "two",
         order: 4,
       },
       {
-        custom_fields_type_id: 1,
+        id: 7,
         type: "MULTIPLE_SELECT",
         name: "Services",
         value: ["one", "two"],
         order: 5,
       },
       {
-        custom_fields_type_id: 1,
+        id: 8,
         type: "MULTIPLE_SELECT_IMAGE",
         name: "BannerImage",
         value: ["image 1", "image 2"],
@@ -1252,7 +1253,7 @@ schemas:
       type:
         description: Possible values are "BOOLEAN", "INTEGER", "TEXT", "FLOAT", "SINGLE_SELECT", "MULIPLE_SELECT", "MULIPLE_SELECT_IMAGE".
         type: string
-      custom_fields_type_id:
+      id:
         description: Id of the custom field
         type: integer
       order:
@@ -1430,7 +1431,7 @@ schemas:
         enabled: true,
         enabled_for_subroles: true,
         type: "BOOLEAN",
-        custom_fields_type_id: 8,
+        id: 1,
         order: 10
       },
       {
@@ -1438,7 +1439,7 @@ schemas:
         enabled: true,
         enabled_for_subroles: true,
         type: "TEXT",
-        custom_fields_type_id: 5,
+        id: 2,
         order: 11,
         max_len: 250
       },
@@ -1447,7 +1448,7 @@ schemas:
         enabled: true,
         enabled_for_subroles: true,
         type: "MULTIPLE_SELECT",
-        custom_fields_type_id: 2,
+        id: 3,
         order: 2,
         possible_values: ["handicapped access", "toilets", "break room"]
       },
@@ -1455,7 +1456,7 @@ schemas:
         name: "banner image",
         enabled: true,
         enabled_for_subroles: true,
-        custom_fields_type_id: 17,
+        id: 4,
         type: "MULTIPLE_SELECT_IMAGE",
         order: 10,
         possible_values: ["image 1", "image 2", "image 3"],
@@ -1540,8 +1541,8 @@ schemas:
               <p> Possible values are "TEXT", "INTEGER", "FLOAT", "BOOLEAN", "SINGLE_SELECT", "MULTIPLE_SELECT", "MULTIPLE_SELECT_IMAGE".
             type: string
             enum: ["TEXT", "INTEGER", "FLOAT", "BOOLEAN", "SINGLE_SELECT", "MULTIPLE_SELECT", "MULTIPLE_SELECT_IMAGE"]
-          custom_fields_type_id:
-            description: ID of the custom field. Unique only combined with the type. Not used to reference the Custom Field.
+          id:
+            description: ID of the custom field.
             type: integer
           order:
             description: >
@@ -1967,7 +1968,8 @@ parameters:
     schema:
       type: string
     required: false
-    description: Filter by clean name
+    deprecated: true
+    description:  <p><code>It will be removed in November 2020</code>. Filter by clean name.</p>
   query_filter_by_country:
     in: query
     name: country
