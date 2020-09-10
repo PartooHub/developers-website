@@ -11,13 +11,14 @@ parameters:
     schema:
       $ref: '../../components/index.yml#/schemas/CategoryId'
   - $ref: '../../components/index.yml#/parameters/query_category_lang'
+  - $ref: '../../components/index.yml#/parameters/query_category_return_live'
 responses:
   200:
     description: OK
     content:
       application/json:
         schema:
-          $ref: '../../components/index.yml#/schemas/Category'
+          $ref: '../../components/index.yml#/schemas/CategorySql'
   400:
     $ref: '../../components/index.yml#/responses/400'
   401:

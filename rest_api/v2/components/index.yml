@@ -125,7 +125,7 @@ schemas:
   CategoryId:
     type: string
     description: Category id
-    example: 5109c3a237zdc544d8e267378
+    example: '5109c3a237zdc544d8e267378 or gcid:climbing_gym'
   Category:
     type: object
     properties:
@@ -139,7 +139,7 @@ schemas:
     example: 42
   CategorySqlGmbId:
     type: string
-    description: Google My Business Category Id ( unique )
+    description: Category Id ( unique )
     example: 'gcid:climbing_gym'
   CategorySqlName:
     type: object
@@ -169,21 +169,27 @@ schemas:
     type: boolean
     description:  Boolean indicating if the business long description can be pushed to GMB when the business belongs to this category
     example: false
+  CategorySqlLiveId:
+    type: string
+    description: Live category id to which the category is mapped (deprecated categories are mapped to the closest category)
+    example: 'gcid:sport_club'
   CategorySql:
     type: object
     properties:
       id:
-        $ref: '#/schemas/CategorySqlId'
-      gmb_id:
         $ref: '#/schemas/CategorySqlGmbId'
+      name:
+        type: string
+        description: Category name in the requested language
+        example: salle d'escalade
       state:
         $ref: '#/schemas/CategorySqlState'
-      block_push_long_description_on_gmb:
+      block_long_description_on_gmb:
         $ref: '#/schemas/CategorySqlBlockPushLong'
-      names:
-        $ref: '#/schemas/CategorySqlNames'
       legacy_ids:
         $ref: '#/schemas/CategorySqlLegacyIds'
+      live_id:
+        $ref: '#/schemas/CategorySqlLiveId'
   ProductSubscribeResponseObject:
     type: object
     properties:
@@ -1895,6 +1901,13 @@ parameters:
     schema:
       type: string
       enum: ['asc', 'desc']
+  query_category_return_live:
+    in: query
+    name: return_live
+    description: Return the corresponding live category instead of the requested category
+    required: false
+    schema:
+      type: boolean
   query_filter_by_org_id:
     in: query
     name: org_id
