@@ -18,7 +18,7 @@ responses:
     content:
       application/json:
         schema:
-          $ref: '../../components/index.yml#/schemas/CategorySql'
+          $ref: '../../components/index.yml#/schemas/CategorySqlByLang'
   400:
     $ref: '../../components/index.yml#/responses/400'
   401:

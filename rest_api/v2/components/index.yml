@@ -139,7 +139,7 @@ schemas:
     example: 42
   CategorySqlGmbId:
     type: string
-    description: Category Id ( unique )
+    description: Google My Business Category Id ( unique )
     example: 'gcid:climbing_gym'
   CategorySqlName:
     type: object
@@ -177,6 +177,21 @@ schemas:
     type: object
     properties:
       id:
+        $ref: '#/schemas/CategorySqlId'
+      gmb_id:
+        $ref: '#/schemas/CategorySqlGmbId'
+      names:
+        $ref: '#/schemas/CategorySqlNames'
+      state:
+        $ref: '#/schemas/CategorySqlState'
+      block_push_long_description_on_gmb:
+        $ref: '#/schemas/CategorySqlBlockPushLong'
+      legacy_ids:
+        $ref: '#/schemas/CategorySqlLegacyIds'
+  CategorySqlByLang:
+    type: object
+    properties:
+      id:
         $ref: '#/schemas/CategorySqlGmbId'
       name:
         type: string
@@ -184,7 +199,7 @@ schemas:
         example: salle d'escalade
       state:
         $ref: '#/schemas/CategorySqlState'
-      block_long_description_on_gmb:
+      block_push_long_description_on_gmb:
         $ref: '#/schemas/CategorySqlBlockPushLong'
       legacy_ids:
         $ref: '#/schemas/CategorySqlLegacyIds'
