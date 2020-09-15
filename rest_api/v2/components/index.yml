@@ -1896,7 +1896,7 @@ parameters:
   query_category_search_query:
     in: query
     name: search_query
-    description: Fuzzy search stars on gmb_id and names translations
+    description: Fuzzy search on gmb_id and names translations
     required: false
     schema:
       type: string
