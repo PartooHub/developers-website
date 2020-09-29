@@ -184,10 +184,9 @@
 /category/{category_id}:
   get:
     $ref: ./category/get_by_id.yml
-# WIP (HIDE FROM PROD)
-# /categories:
-#  get:
-#    $ref: ./category/get_categories.yml
+/categories:
+ get:
+   $ref: ./category/get_categories.yml
 
 # ADDRESS endpoints
 /address/street_type:
