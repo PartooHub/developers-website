@@ -1,11 +1,18 @@
 summary: Search categories
 tags:
   - Categories
-description: >
+description: ⚠️ <strong>This endpoint is deprecated and is going to be sunset on July 15th, 2021. Please use /categories instead</strong></br>
   This endpoint lets you search through Partoo categories.
+deprecated: true
 operationId: searchCategories
 parameters:
   - $ref: '../../components/index.yml#/parameters/query_category_lang'
+  - in: query
+    name: name
+    description: Fuzzy search on category id, name or legacy id
+    required: false
+    schema:
+      type: string
   - $ref: '../../components/index.yml#/parameters/query_page'
 responses:
   200:
@@ -21,7 +28,7 @@ responses:
                   type: array
                   description: List of categories
                   items:
-                    $ref: '../../components/index.yml#/schemas/Category'
+                    $ref: '../../components/index.yml#/schemas/CategorySqlByLang'
   400:
     $ref: '../../components/index.yml#/responses/400'
   401:
