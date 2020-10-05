@@ -15,14 +15,6 @@
   description: >
     <p>A <code>business</code> object contains all the details related to a local store. All the businesses created will be grouped under your <code>organisation</code>. The organisation is created at the onboarding phase, by Partoo.
     <p>In this section, is explained how a business can be created, updated or retrieved.
-    <p> <b> Details on the GPS coordinates data </b>
-    <p>There are three types of GPS coordinates data:
-    <li>Manual long/lat
-    <li>Automatic long/lat
-    <li>Raw long/lat
-    <p>Manual long & lat are the most qualitative coordinates data and we will push them in priority.
-    If we don’t have this data, we push automatic long & lat.
-    If we have none of them, we push raw_lat and raw_long
     <p>⚠️ <b>What are Custom fields ?</b>
     <p>Custom Fields allow Enterprise Administrators to add custom data fields to Partoo / Localoo under different formats (List, Text, Number…) in order to create a central datahub for local information and to:
     <li> Use this data to automatically feed other tools (Store locator, website, CRM, Chatbot...) from Partoo / Localoo
