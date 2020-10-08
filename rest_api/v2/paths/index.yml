@@ -63,10 +63,12 @@
 /reviews:
   get:
     $ref: ./reviews/get.yml
-/reviews/{review_id}/reply/edit:
+/comments:
   post:
     $ref: ./reviews/post_reply.yml
-/reviews/{review_id}/reply/delete:
+/comments/{comment_id}:
+  put:
+    $ref: ./reviews/modify_reply.yml
   delete:
     $ref: ./reviews/delete_reply.yml
 

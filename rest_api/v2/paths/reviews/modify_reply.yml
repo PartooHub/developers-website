@@ -1,14 +1,20 @@
 tags:
   - Reviews
-summary: Post a Reply to a review
-description: This endpoint lets you reply to a given review.
-operationId: ReplyToReview
+summary: Modify a Reply to a review
+description: This endpoint lets you modify a given reply to a review.
+operationId: ModifyReplyOfReview
+parameters:
+  - in: path
+    name: comment_id
+    required: true
+    schema:
+      $ref: '../../components/index.yml#/schemas/CommentId'
 requestBody:
   required: true
   content:
     application/json:
       schema:
-        description: Request body to post a reply
+        description: Request body to modify a reply
         type: object
         required:
           - review_id
