@@ -19,7 +19,7 @@ requestBody:
               type: number
               example: 34
             parent_id:
-              description: ID of the comment you want to reply, it is for Facebook where it can have a thread of comments under a review
+              description: Only useful for Facebook. ID of the comment you want to reply, as in Facebook you can comment on a comment.
               type: number
             content:
               description: Content of your Reply

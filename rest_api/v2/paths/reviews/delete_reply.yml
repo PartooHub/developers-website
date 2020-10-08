@@ -5,10 +5,10 @@ description: >
   This endpoint lets you delete the reply to a review
 parameters:
   - in: path
-    name: review_id
+    name: comment_id
     required: true
     schema:
-      $ref: '../../components/index.yml#/schemas/ReviewId'
+      $ref: '../../components/index.yml#/schemas/CommentId'
 responses:
   200:
     description: OK
