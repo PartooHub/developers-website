@@ -534,45 +534,25 @@ schemas:
     description: A list of category ids mapped to the business. At least one category needs to be provided. For more information see Categories section
     type: array
   BusinessLatitude:
-    description: Latitude. Decimals are separated by a dot and not by a comma. Latitude will be saved on raw_lat
+    description: Latitude. Decimals are separated by a dot and not by a comma.
     type: number
     format: double
     example: -3.585993
   BusinessLongitude:
-    description: Longitude. Decimals are separated by a dot and not by a comma. Longitude will be saved on raw_long
+    description: Longitude. Decimals are separated by a dot and not by a comma.
     type: number
     format: double
     example: 47.870341
   Latitude:
-    description: Latitude. Automatically calculated latitude by Partoo geocoding tools. Decimals are separated by a dot and not by a comma.
+    description: Latitude pushed on publishers. Decimals are separated by a dot and not by a comma.
     type: number
     format: double
     example: -3.585993
   Longitude:
-    description: Longitude. Automatically calculated longitude by Partoo geocoding tools. Decimals are separated by a dot and not by a comma.
+    description: Longitude pushed on publishers. Decimals are separated by a dot and not by a comma.
     type: number
     format: double
     example: 47.870341
-  ManualLatitude:
-    description: Manual Latitude. Result of the adjusted pin in Partoo app. Decimals are separated by a dot and not by a comma.
-    type: number
-    format: double
-    example: -3.5867712
-  ManualLongitude:
-    description: Manual Longitude. Result of the adjusted pin in Partoo app. Decimals are separated by a dot and not by a comma.
-    type: number
-    format: double
-    example: 47.8693748
-  RawLatitude:
-    description: Raw Latitude. Latitude sent by clients via API/puller for this business. Decimals are separated by a dot and not by a comma.
-    type: number
-    format: double
-    example: -3.5867712
-  RawLongitude:
-    description: Raw Longitude. Longitude sent by clients via API/puller for this business. Decimals are separated by a dot and not by a comma.
-    type: number
-    format: double
-    example: 47.8693748
   BusinessStatus:
     description: |
       <p>Defines the current status of the business. `Open` indicates the business is up and running. `Closed` means that the business has definitely closed it's activity. For temporarily closed businesses please use the <code>specific_hours</code></p>
@@ -792,14 +772,6 @@ schemas:
         $ref: '#/schemas/Latitude'
       long:
         $ref: '#/schemas/Longitude'
-      manual_lat:
-        $ref: '#/schemas/ManualLatitude'
-      manual_long:
-        $ref: '#/schemas/ManualLongitude'
-      raw_lat:
-        $ref: '#/schemas/RawLatitude'
-      raw_long:
-        $ref: '#/schemas/RawLongitude'
       subscriptions:
         $ref: '#/schemas/Subscriptions'
       videos:
@@ -891,14 +863,6 @@ schemas:
         $ref: '#/schemas/Latitude'
       long:
         $ref: '#/schemas/Longitude'
-      manual_lat:
-        $ref: '#/schemas/ManualLatitude'
-      manual_long:
-        $ref: '#/schemas/ManualLongitude'
-      raw_lat:
-        $ref: '#/schemas/RawLatitude'
-      raw_long:
-        $ref: '#/schemas/RawLongitude'
       subscriptions:
         $ref: '#/schemas/Subscriptions'
       custom_fields:
