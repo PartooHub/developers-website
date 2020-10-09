@@ -13,7 +13,6 @@ parameters:
   - $ref: '../../components/index.yml#/parameters/query_content__isnull'
   - $ref: '../../components/index.yml#/parameters/query_review_update_date__gte'
   - $ref: '../../components/index.yml#/parameters/query_review_update_date__lte'
-  - $ref: '../../components/index.yml#/parameters/query_review_rating__in'
   - $ref: '../../components/index.yml#/parameters/query_review_state'
   - $ref: '../../components/index.yml#/parameters/query_page'
 responses:
