@@ -2085,15 +2085,6 @@ parameters:
     schema:
       type: string
       format: datetime
-  query_review_rating__in:
-    in: query
-    name: rating__in
-    description: >
-      Filter by `rating`.
-    schema:
-      type: array
-      items:
-        $ref: '#/schemas/ReviewRating'
   query_partner__in:
     in: query
     name: partner__in
