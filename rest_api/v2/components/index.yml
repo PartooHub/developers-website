@@ -97,6 +97,54 @@ schemas:
   ActionsDrivingDirections:
     type: integer
     description: Customers who request directions to your business
+  ApiKeys:
+    ApiKey:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 3245
+        created_at:
+          type: string
+          pattern: date
+          example: "2018-03-12 11:49:03.399475+00"
+        modified_at:
+          type: string
+          pattern: date
+          example: "2020-10-20 11:46:38.914467+00"
+        created_by:
+          $ref: '#/schemas/UserId'
+        user_id:
+          $ref: '#/schemas/UserId'
+        disabled:
+          type: boolean
+          example: false
+        disabled_by:
+          $ref: '#/schemas/UserId'
+        label:
+          type: string
+          example: "API key name"
+          description: "Name given to recognize the Api key"
+        disabled_at:
+          type: string
+          pattern: date
+          example: "2020-10-20 11:46:38.914467+00"
+        expiration_date:
+          type: string
+          pattern: date
+          example: "2022-06-05"
+        last_used_at:
+          type: string
+          pattern: date
+          example: "2019-08-22 11:46:38.914467+00"
+    StatusDisabled:
+      type: boolean
+      example: True
+      description: Keys disabled
+    StatusExpired:
+      type: boolean
+      example: True
+      description: Keys expired
   AnalyticsDate:
     type: datetime
     description: First day of the aggregation
