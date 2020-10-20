@@ -1708,7 +1708,7 @@ schemas:
   GooglePostSummary:
     description: Summary of the google post
     type: string
-    example: You're business will now open until 20pm
+    example: Your business will now open until 20:00
 
   GooglePostMediaUrl:
     description: Url of the photo of the google post
@@ -1727,7 +1727,8 @@ schemas:
     example: https://www.partoo.co
 
   GooglePostScheduledStartTime:
-    description: Date of publication of the google post
+    description: if you don't want to publish it right away (will be publish immediatly by default).
+      The timezone is mandatory
     type: string
     example: 2020-01-01T12:00:00+02:00
 
@@ -1737,12 +1738,12 @@ schemas:
     example: Big sales
 
   GooglePostStartDatetime:
-    description: Event start time
+    description: Event start time. The timezone is mandatory
     type: string
     example: 2020-01-02T12:00:00+02:00
 
   GooglePostEndDatetime:
-    description: Event end time
+    description: Event end time. The timezone is mandatory
     type: string
     example: 2020-01-015T12:00:00+02:00
 
@@ -1762,7 +1763,7 @@ schemas:
     example: These are the conditions
 
   GooglePostEvent:
-    description: Google Post Event, required only for topic type event and offer
+    description: Google Post Event, required only for event and offer topic types
     type: object
     required:
       - title
@@ -1777,7 +1778,7 @@ schemas:
         $ref: '#/schemas/GooglePostEndDatetime'
 
   GooglePostOffer:
-    description: Google Post Offer, required only for topic type offer
+    description: Google Post Offer, required only for offer topic type
     type: object
     properties:
       coupon_code:

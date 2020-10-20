@@ -1,6 +1,6 @@
 summary: Get a specific Google Post
 description: >
-  This endpoint lets you  a google post.
+  This endpoint lets you access a google post.
 operationId: getGooglePost
 tags:
   - Google Post
