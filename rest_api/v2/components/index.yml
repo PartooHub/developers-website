@@ -1695,6 +1695,199 @@ schemas:
           This value must be used within the placeholder markup `@[](placeholder_value)` in a template `text` in order to work properly.
         example: "my_first_name"
 
+  GooglePostId:
+    description: Google Post id
+    type: integer
+    example: 34
+
+  GooglePostTopicType:
+    description: Topic type of the google post, news/event/offer
+    type: string
+    example: news
+
+  GooglePostSummary:
+    description: Summary of the google post
+    type: string
+    example: You're business will now open until 20pm
+
+  GooglePostMediaUrl:
+    description: Url of the photo of the google post
+    type: string
+    example: https://www.my-photo.jpeg
+
+  GooglePostCallToActionType:
+    description: Button you want to put on the google post, book/order/shop/learn_more/sign_up/call/no_cta
+    type: string
+    example: no_cta
+
+  GooglePostCallToActionUrl:
+    description: Url that will be used for redirection when clicking on the call to action button.
+      In case of call or no_cta call_to_action_type, no call_to_action_url is needed.
+    type: string
+    example: https://www.partoo.co
+
+  GooglePostScheduledStartTime:
+    description: Date of publication of the google post
+    type: string
+    example: 2020-01-01T12:00:00+02:00
+
+  GooglePostTitle:
+    description: Name of the event
+    type: string
+    example: Big sales
+
+  GooglePostStartDatetime:
+    description: Event start time
+    type: string
+    example: 2020-01-02T12:00:00+02:00
+
+  GooglePostEndDatetime:
+    description: Event end time
+    type: string
+    example: 2020-01-015T12:00:00+02:00
+
+  GooglePostCouponCode:
+    description: Offer code that is usable in store or online
+    type: string
+    example: PROMO25
+
+  GooglePostRedeemOnlineUrl:
+    description: Online link to redeem offer
+    type: string
+    example: https://www.partoo.co
+
+  GooglePostTermsConditions:
+    description: Terms and conditions of the offer
+    type: string
+    example: These are the conditions
+
+  GooglePostEvent:
+    description: Google Post Event, required only for topic type event and offer
+    type: object
+    required:
+      - title
+      - start_datetime
+      - end_datetime
+    properties:
+      title:
+        $ref: '#/schemas/GooglePostTitle'
+      start_datetime:
+        $ref: '#/schemas/GooglePostStartDatetime'
+      end_datetime:
+        $ref: '#/schemas/GooglePostEndDatetime'
+
+  GooglePostOffer:
+    description: Google Post Offer, required only for topic type offer
+    type: object
+    properties:
+      coupon_code:
+        $ref: '#/schemas/GooglePostCouponCode'
+      redeem_online_url:
+        $ref: '#/schemas/GooglePostRedeemOnlineUrl'
+      terms_conditions:
+        $ref: '#/schemas/GooglePostTermsConditions'
+
+  GooglePostMediaFormat:
+    description: type of the media, can only be of type PHOTO
+    type: string
+    example: PHOTO
+
+  GooglePostMedia:
+    description: Media
+    type: object
+    properties:
+      media_url:
+        $ref: '#/schemas/GooglePostMediaUrl'
+      media_format:
+        $ref: '#/schemas/GooglePostMediaFormat'
+
+  GooglePostLanguageCode:
+    description: The language of the google post
+    type: string
+
+  GooglePostViewCount:
+    description: The number of times the local post was viewed on Google Search
+    type: integer
+    example: 200
+
+  GooglePostClickCount:
+    description: The number of times the local post was viewed on Google Search
+    type: integer
+    example: 155
+
+  GooglePostState:
+    description: The state of the post, indicating what part of its lifecycle it is in
+    type: string
+    example: pending
+
+  GooglePostCreatedOnPartoo:
+    description: Whether or not the post was created on partoo
+    type: boolean
+
+  GooglePostUpdatedOnPartoo:
+    description: Whether or not the post was updated on partoo
+    type: boolean
+
+  GooglePostSearchUrl:
+    description: The link to the local post in Google search
+    type: string
+
+  GooglePostBusinessInfo:
+    description: The name and address of the business
+    type: string
+
+  GooglePostGoogleCreationDate:
+    description: Time of the creation of the post on Google
+    type: string
+
+  GooglePostIsExpired:
+    description: Whether or not the post is expired
+    type: boolean
+
+  GooglePost:
+    description: Google Post
+    type: object
+    properties:
+      id:
+        $ref: '#/schemas/GooglePostId'
+      business_id:
+        $ref: '#/schemas/BusinessId'
+      topic_type:
+        $ref: '#/schemas/GooglePostTopicType'
+      summary:
+        $ref: '#/schemas/GooglePostSummary'
+      scheduled_start_time:
+        $ref: '#/schemas/GooglePostScheduledStartTime'
+      google_post_event:
+        $ref: '#/schemas/GooglePostEvent'
+      google_post_offer:
+        $ref: '#/schemas/GooglePostOffer'
+      google_post_media:
+        $ref: '#/schemas/GooglePostMedia'
+      created_at:
+        $ref: '#/schemas/CreatedDate'
+      updated_at:
+        $ref: '#/schemas/UpdatedDate'
+      language_code:
+        $ref: '#/schemas/GooglePostLanguageCode'
+      view_count:
+        $ref: '#/schemas/GooglePostViewCount'
+      click_count:
+        $ref: '#/schemas/GooglePostClickCount'
+      state:
+        $ref: '#/schemas/GooglePostState'
+      created_on_partoo:
+        $ref: '#/schemas/GooglePostCreatedOnPartoo'
+      updated_on_partoo:
+        $ref: '#/schemas/GooglePostUpdatedOnPartoo'
+      search_url:
+        $ref: '#/schemas/GooglePostSearchUrl'
+      business_info:
+        $ref: '#/schemas/GooglePostBusinessInfo'
+      google_creation_date:
+        $ref: '#/schemas/GooglePostGoogleCreationDate'
+      is_expired:
+        $ref: '#/schemas/GooglePostIsExpired'
 
   # DEPRECATED fields
   Promo:
@@ -2189,6 +2382,48 @@ parameters:
       type: string
     required: false
     description: Filter on templates based on their text
+  path_google_post_id:
+    in: path
+    name: google_post_id
+    required: true
+    schema:
+      type: number
+    description: Google Post id
+  query_google_post_title_query:
+    in: query
+    name: title_query
+    schema:
+      type: string
+    required: false
+    description: Filter google post based on their title
+  query_google_post_summary_query:
+    in: query
+    name: summary_query
+    schema:
+      type: string
+    required: false
+    description: Filter google post based on their summary
+  query_google_post_start_datetime:
+    in: query
+    name: start_datetime
+    schema:
+      type: string
+    required: false
+    description: Filter google post based on their start time
+  query_google_post_end_datetime:
+    in: query
+    name: end_datetime
+    schema:
+      type: string
+    required: false
+    description: Filter google post based on their end time
+  query_google_post_is_expired:
+    in: query
+    name: is_expired
+    schema:
+      type: boolean
+    required: false
+    description: Filter google post based on whether or not it is expired
 responses:
   400:
     description: Your request is incorrect
