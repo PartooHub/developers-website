@@ -950,6 +950,10 @@ schemas:
         $ref: '#/schemas/UserStatus'
       keywords:
         $ref: '#/schemas/Keywords'
+      has_active_api_keys:
+        type: boolean
+        example: true
+        description: Returns true if the user has at least one API Key that is not disabled and not expired
   TimeSlotReference:
     description: Default time period, can be used to set open hours of a day
     type: array
