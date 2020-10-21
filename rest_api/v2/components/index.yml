@@ -137,14 +137,11 @@ schemas:
           type: string
           pattern: date
           example: "2019-08-22 11:46:38.914467+00"
-    StatusDisabled:
-      type: boolean
-      example: True
-      description: Keys disabled
-    StatusExpired:
-      type: boolean
-      example: True
-      description: Keys expired
+    Status:
+      type: string
+      example: 'active'
+      description: filter api_keys by status
+      enum: ['active', 'disabled', 'expired']
   AnalyticsDate:
     type: datetime
     description: First day of the aggregation
