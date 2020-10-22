@@ -59,6 +59,20 @@
   post:
     $ref: ./authorize/post_revoke.yml
 
+# GOOGLE POST endpoints
+/google_post:
+  get:
+    $ref: ./google_post/search.yml
+  post:
+    $ref: ./google_post/create.yml
+/google_post/{google_post_id}:
+  get:
+    $ref: ./google_post/get.yml
+  patch:
+    $ref: ./google_post/update.yml
+  delete:
+    $ref: ./google_post/delete.yml
+
 # REVIEWS endpoints
 /reviews:
   get:

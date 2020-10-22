@@ -1,0 +1,24 @@
+summary: Get a specific Google Post
+description: >
+  This endpoint lets you access a google post.
+operationId: getGooglePost
+tags:
+  - Google Post
+
+parameters:
+      - $ref: '../../components/index.yml#/parameters/path_google_post_id'
+
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/index.yml#/schemas/GooglePost'
+
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
+  404:
+    $ref: '../../components/index.yml#/responses/404'
