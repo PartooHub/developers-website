@@ -42,7 +42,7 @@ business            null                   {businessId: string}   the business e
 add                 null                   null                   the add business view                         Yes
 analytics           null                   null                   the analytics page                            Yes
 presenceManagement  null                   null                   the presence management view                  Yes
-googlePosts         null                   null                   the google post view
+googlePosts         null                   null                   the google post view                          Yes
 reviewManagement    null                   null                   the review management view                    Yes
 reviewAnalytics     null                   null                   the review analytics view                    	Yes
 reviewBooster       null                   null                   the review booster view                    	Yes
