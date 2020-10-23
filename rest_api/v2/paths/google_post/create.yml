@@ -1,0 +1,58 @@
+summary: Create a Google Post
+description: >
+  This endpoint lets you create a google post.
+operationId: createGooglePost
+tags:
+  - Google Post
+
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        description: Request body to create a google post
+        type: object
+        required:
+          - business_id
+          - topic_type
+          - summary
+          - google_post_event
+          - google_post_offer
+        properties:
+          business_id:
+            $ref: '../../components/index.yml#/schemas/BusinessId'
+          topic_type:
+            $ref: '../../components/index.yml#/schemas/GooglePostTopicType'
+          summary:
+            $ref: '../../components/index.yml#/schemas/GooglePostSummary'
+          media_url:
+            $ref: '../../components/index.yml#/schemas/GooglePostMediaUrl'
+          call_to_action_type:
+            $ref: '../../components/index.yml#/schemas/GooglePostCallToActionType'
+          call_to_action_url:
+            $ref: '../../components/index.yml#/schemas/GooglePostCallToActionUrl'
+          scheduled_start_time:
+            $ref: '../../components/index.yml#/schemas/GooglePostScheduledStartTime'
+          google_post_event:
+            $ref: '../../components/index.yml#/schemas/GooglePostEvent'
+          google_post_offer:
+            $ref: '../../components/index.yml#/schemas/GooglePostOffer'
+
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          description: Response object
+          type: object
+          properties:
+            status:
+              $ref: '../../components/index.yml#/schemas/RequestStatus'
+
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
+  404:
+    $ref: '../../components/index.yml#/responses/404'
