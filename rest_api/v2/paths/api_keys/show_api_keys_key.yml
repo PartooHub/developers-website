@@ -1,0 +1,34 @@
+summary: Show API Key
+deprecated: false
+description: This endpoint shows the key asked.
+  The API Key must be linked to your user.
+operationId: showApiKeysKey
+tags:
+  - ApiKeys
+parameters:
+  - in: query
+    name: api_key_id
+    schema:
+      $ref: '../../components/index.yml#/schemas/ApiKeys/id'
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            id:
+              $ref: '../../components/index.yml#/schemas/ApiKeys/id'
+            api_key:
+              type: string
+              example: "YOUR API_KEY"
+              description: List of API keys
+  400:
+    $ref: '../../components/index.yml#/responses/400'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
+  404:
+    $ref: '../../components/index.yml#/responses/404'
