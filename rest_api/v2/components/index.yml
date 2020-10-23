@@ -101,6 +101,15 @@ schemas:
     id:
       type: integer
       example: 3245
+    label:
+      type: string
+      example: "API key name"
+      description: "Name given to recognize the Api key"
+    expiration_date:
+      type: string
+      pattern: "yyyy-mm-dd"
+      example: "2022-06-05"
+      description: ""
     ApiKey:
       type: object
       properties:
@@ -110,10 +119,6 @@ schemas:
           type: string
           pattern: date
           example: "2018-03-12 11:49:03.399475+00"
-        modified_at:
-          type: string
-          pattern: date
-          example: "2020-10-20 11:46:38.914467+00"
         created_by:
           $ref: '#/schemas/UserId'
         user_id:
@@ -124,17 +129,13 @@ schemas:
         disabled_by:
           $ref: '#/schemas/UserId'
         label:
-          type: string
-          example: "API key name"
-          description: "Name given to recognize the Api key"
+          $ref: '#/schemas/ApiKeys/label'
         disabled_at:
           type: string
           pattern: date
           example: "2020-10-20 11:46:38.914467+00"
         expiration_date:
-          type: string
-          pattern: date
-          example: "2022-06-05"
+          $ref: '#/schemas/ApiKeys/expiration_date'
         last_used_at:
           type: string
           pattern: date
