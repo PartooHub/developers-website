@@ -58,6 +58,9 @@
 /authorize/revoke:
   post:
     $ref: ./authorize/post_revoke.yml
+/api_keys:
+  get:
+    $ref: ./api_keys/get_api_keys.yml
 
 # REVIEWS endpoints
 /reviews:
