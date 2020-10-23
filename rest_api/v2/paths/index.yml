@@ -61,6 +61,9 @@
 /api_keys:
   get:
     $ref: ./api_keys/get_api_keys.yml
+/api_keys/key/{api_key_id}:
+  get:
+    $ref: ./api_keys/show_api_keys_key.yml
 
 # REVIEWS endpoints
 /reviews:

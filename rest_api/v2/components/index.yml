@@ -98,12 +98,14 @@ schemas:
     type: integer
     description: Customers who request directions to your business
   ApiKeys:
+    id:
+      type: integer
+      example: 3245
     ApiKey:
       type: object
       properties:
         id:
-          type: integer
-          example: 3245
+          $ref: '#/schemas/ApiKeys/id'
         created_at:
           type: string
           pattern: date
