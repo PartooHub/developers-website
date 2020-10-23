@@ -73,4 +73,4 @@
 - name: Presence Analytics
   description: All operations available on Presence Management analytics
 - name: Google Post
-  description: Feature available only for independent businesses
+  description: Feature only available for independent business

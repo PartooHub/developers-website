@@ -1728,7 +1728,7 @@ schemas:
 
   GooglePostScheduledStartTime:
     description: if you don't want to publish it right away (will be publish immediatly by default).
-      The timezone is mandatory
+      The timezone is mandatory. This field can be modify only if the post has not been created yet.
     type: string
     example: 2020-01-01T12:00:00+02:00
 
