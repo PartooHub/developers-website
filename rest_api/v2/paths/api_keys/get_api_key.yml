@@ -7,7 +7,7 @@ tags:
   - ApiKeys
 parameters:
   - in: query
-    name: key_id
+    name: api_key_id
     schema:
       $ref: '../../components/index.yml#/schemas/ApiKeys/ApiKey/properties/id'
     description: Key ID
