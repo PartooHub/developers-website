@@ -104,39 +104,56 @@ schemas:
         id:
           type: integer
           example: 3245
+          description: Key ID
         created_at:
           type: string
           pattern: date
           example: "2018-03-12 11:49:03.399475+00"
+          description: Date of creation
         modified_at:
           type: string
           pattern: date
           example: "2020-10-20 11:46:38.914467+00"
+          description: Date of last modification
         created_by:
-          $ref: '#/schemas/UserId'
+          type: string
+          example: "5309c3a237bbc544d8e26737"
+          description: ID of the user who created the key
         user_id:
-          $ref: '#/schemas/UserId'
+          type: string
+          example: "5309c3a237bbc544d8e26737"
+          description: ID of the user who owns the key
         disabled:
           type: boolean
-          example: false
+          example: False
+          description: The API key is disabled when someone revokes it
         disabled_by:
-          $ref: '#/schemas/UserId'
+          type: string
+          example: "5309c3a237bbc544d8e26737"
+          description: ID of the user who revoked the key
         label:
           type: string
           example: "API key name"
           description: "Name given to recognize the Api key"
-        disabled_at:
+        revoked_at:
           type: string
           pattern: date
           example: "2020-10-20 11:46:38.914467+00"
+          description: Date of revokation
         expiration_date:
           type: string
           pattern: date
           example: "2022-06-05"
+          description: Date after which the key is no longer usable
         last_used_at:
           type: string
           pattern: date
           example: "2019-08-22 11:46:38.914467+00"
+          description: Date of last usage of the key
+        auto_expires_after_use:
+          type: boolean
+          example: False
+          description: Is true for keys that can be only used once
     StatusDisabled:
       type: boolean
       example: True
