@@ -115,31 +115,31 @@ schemas:
       properties:
         id:
           $ref: '#/schemas/ApiKeys/id'
-        created_at:
-          type: string
-          pattern: date
-          example: "2018-03-12 11:49:03.399475+00"
-        created_by:
-          $ref: '#/schemas/UserId'
+        label:
+          $ref: '#/schemas/ApiKeys/label'
         user_id:
           $ref: '#/schemas/UserId'
         disabled:
           type: boolean
           example: false
-        disabled_by:
-          $ref: '#/schemas/UserId'
-        label:
-          $ref: '#/schemas/ApiKeys/label'
-        disabled_at:
-          type: string
-          pattern: date
-          example: "2020-10-20 11:46:38.914467+00"
         expiration_date:
           $ref: '#/schemas/ApiKeys/expiration_date'
         last_used_at:
           type: string
           pattern: date
           example: "2019-08-22 11:46:38.914467+00"
+        created_at:
+          type: string
+          pattern: date
+          example: "2018-03-12 11:49:03.399475+00"
+        created_by:
+          $ref: '#/schemas/UserId'
+        revoked_by:
+          $ref: '#/schemas/UserId'
+        revoked_at:
+          type: string
+          pattern: date
+          example: "2020-10-20 11:46:38.914467+00"
     Status:
       type: string
       example: 'active'
