@@ -131,6 +131,8 @@ schemas:
           type: string
           example: "5309c3a237bbc544d8e26737"
           description: ID of the user who created the key
+        label:
+          $ref: '#/schemas/ApiKeys/label'
         user_id:
           type: string
           example: "5309c3a237bbc544d8e26737"
