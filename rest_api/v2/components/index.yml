@@ -101,6 +101,15 @@ schemas:
     id:
       type: integer
       example: 3245
+    label:
+      type: string
+      example: "API key name"
+      description: "Name given to recognize the Api key"
+    expiration_date:
+      type: string
+      pattern: "yyyy-mm-dd"
+      example: "2022-06-05"
+      description: "Must be at least the day after today. If you want it to expire today you must revoke it."
     ApiKey:
       type: object
       properties:
