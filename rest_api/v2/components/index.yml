@@ -109,7 +109,7 @@ schemas:
       type: string
       pattern: "yyyy-mm-dd"
       example: "2022-06-05"
-      description: ""
+      description: "Must be at least the day after today. If you want it to expire today you must revoke it."
     ApiKey:
       type: object
       properties:
