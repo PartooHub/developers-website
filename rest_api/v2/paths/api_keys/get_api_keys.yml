@@ -7,18 +7,9 @@ tags:
   - ApiKeys
 parameters:
   - in: query
-    name: key_type
+    name: status
     schema:
-      $ref: '../../components/index.yml#/schemas/UserId'
-    description: Type of key
-  - in: query
-    name: status_disabled
-    schema:
-      $ref: '../../components/index.yml#/schemas/ApiKeys/StatusDisabled'
-  - in: query
-    name: status_expired
-    schema:
-      $ref: '../../components/index.yml#/schemas/ApiKeys/StatusExpired'
+      $ref: '../../components/index.yml#/schemas/ApiKeys/Status'
 responses:
   200:
     description: OK

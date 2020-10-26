@@ -98,6 +98,9 @@ schemas:
     type: integer
     description: Customers who request directions to your business
   ApiKeys:
+    id:
+      type: integer
+      example: 3245
     ApiKey:
       type: object
       properties:
@@ -162,6 +165,11 @@ schemas:
       type: boolean
       example: True
       description: Keys expired
+    Status:
+      type: string
+      example: 'active'
+      description: filter api_keys by status
+      enum: ['active', 'disabled', 'expired']
   AnalyticsDate:
     type: datetime
     description: First day of the aggregation
