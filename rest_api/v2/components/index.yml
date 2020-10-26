@@ -360,7 +360,7 @@ schemas:
     example: 2019-08-01T19:15:54.256000+02:00
   UpdatedDate:
     type: string
-    description: Date of creation
+    description: Date of update
     format: datetime
     example: 2019-09-01T15:12:35.256000+02:00
   ReviewDeleteDate:
@@ -493,7 +493,7 @@ schemas:
   BusinessId:
     description: Business id
     type: string
-    example: 5409c35a97bbc544d8e26737
+    example: 5409c35a97bbc544d8e26737,7bbc544d8e25409c35a96737
   BusinessName:
     description: The name of the business (POI) as it will appear on the publishing platforms
     type: string
@@ -1696,54 +1696,59 @@ schemas:
         example: "my_first_name"
 
   GooglePostId:
-    description: Google Post id
+    description: The Google Post id.
     type: integer
     example: 34
 
   GooglePostTopicType:
-    description: Topic type of the google post, news/event/offer
+    description: The topic type of the Google Post.
     type: string
-    example: news
+    enum: ['NEWS', 'EVENT', 'OFFER']
+    example: OFFER
 
   GooglePostSummary:
-    description: Summary of the google post
+    description: The description of the Google Post.
     type: string
     example: Your business will now open until 20:00
 
   GooglePostMediaUrl:
-    description: Url of the photo of the google post
+    description: The url of the photo of the Google Post.
     type: string
     example: https://www.my-photo.jpeg
 
   GooglePostCallToActionType:
-    description: Button you want to put on the google post, book/order/shop/learn_more/sign_up/call/no_cta
+    description: >
+      Google Posts can have an additional button displayed so that the user can book a reservation or order online.
+      The `no_cta` option means that you do not want a call to action button.
     type: string
-    example: no_cta
+    enum: ['book', 'order', 'shop', 'learn_more', 'sign_up', 'call', 'no_cta']
+    default: learn_more
 
   GooglePostCallToActionUrl:
-    description: Url that will be used for redirection when clicking on the call to action button.
-      In case of call or no_cta call_to_action_type, no call_to_action_url is needed.
+    description: The url that will be used for redirection when clicking on the call to action button.
+      In case of `call` or `no_cta` for `call_to_action_type`, this parameter is not needed.
     type: string
     example: https://www.partoo.co
 
   GooglePostScheduledStartTime:
-    description: if you don't want to publish it right away (will be publish immediatly by default).
-      The timezone is mandatory. This field can be modify only if the post has not been created yet.
+    description: The date when the Google Post will be published (will be publish immediatly by default).
+      The timezone is mandatory. This field can be modify only if the Google Post has not been created yet.
     type: string
     example: 2020-01-01T12:00:00+02:00
+    default: null
 
   GooglePostTitle:
-    description: Name of the event
+    description: The name of the event
     type: string
     example: Big sales
 
   GooglePostStartDatetime:
-    description: Event start time. The timezone is mandatory
+    description: The event's start date. The timezone is mandatory
     type: string
     example: 2020-01-02T12:00:00+02:00
 
   GooglePostEndDatetime:
-    description: Event end time. The timezone is mandatory
+    description: The event's end date. The timezone is mandatory
     type: string
     example: 2020-01-015T12:00:00+02:00
 
@@ -1789,12 +1794,12 @@ schemas:
         $ref: '#/schemas/GooglePostTermsConditions'
 
   GooglePostMediaFormat:
-    description: type of the media, can only be of type PHOTO
+    description: Type of the media, can only be of type PHOTO
     type: string
     example: PHOTO
 
   GooglePostMedia:
-    description: Media
+    description: The photo that will be on the Google Post
     type: object
     properties:
       media_url:
@@ -1803,7 +1808,7 @@ schemas:
         $ref: '#/schemas/GooglePostMediaFormat'
 
   GooglePostLanguageCode:
-    description: The language of the google post
+    description: The language of the Google Post
     type: string
 
   GooglePostViewCount:
@@ -1819,18 +1824,18 @@ schemas:
   GooglePostState:
     description: The state of the post, indicating what part of its lifecycle it is in
     type: string
-    example: pending
+    enum: ['live', 'pending', 'to_configure', 'expired']
 
   GooglePostCreatedOnPartoo:
-    description: Whether or not the post was created on partoo
+    description: Indicates whether or not the Google Post was created using Partoo App/API
     type: boolean
 
   GooglePostUpdatedOnPartoo:
-    description: Whether or not the post was updated on partoo
+    description: Indicates whether or not the Google Post was updated using Partoo App/API
     type: boolean
 
   GooglePostSearchUrl:
-    description: The link to the local post in Google search
+    description: The link that Google will generate to access the Google Post on Google Search
     type: string
 
   GooglePostBusinessInfo:
@@ -1842,7 +1847,7 @@ schemas:
     type: string
 
   GooglePostIsExpired:
-    description: Whether or not the post is expired
+    description: Whether or not the post has expired
     type: boolean
 
   GooglePost:
@@ -1858,11 +1863,35 @@ schemas:
       summary:
         $ref: '#/schemas/GooglePostSummary'
       scheduled_start_time:
-        $ref: '#/schemas/GooglePostScheduledStartTime'
+        description: Date when the Google Post will be published.
+          No scheduled start time means that the Google Post will be published immediatly.
+        type: string
+        example: 2020-01-01T12:00:00+02:00
+        default: null
       google_post_event:
-        $ref: '#/schemas/GooglePostEvent'
+        description: Google Post Event, only for event and offer topic types
+        type: object
+        properties:
+          title:
+            $ref: '../../components/index.yml#/schemas/GooglePostTitle'
+          start_datetime:
+            description: The event's start date.
+            type: string
+            example: 2020-01-02T12:00:00+02:00
+          end_datetime:
+            description: The event's end date.
+            type: string
+            example: 2020-01-015T12:00:00+02:00
       google_post_offer:
-        $ref: '#/schemas/GooglePostOffer'
+        description: Google Post Offer, only for offer topic type
+        type: object
+        properties:
+          coupon_code:
+            $ref: '#/schemas/GooglePostCouponCode'
+          redeem_online_url:
+            $ref: '#/schemas/GooglePostRedeemOnlineUrl'
+          terms_conditions:
+            $ref: '#/schemas/GooglePostTermsConditions'
       google_post_media:
         $ref: '#/schemas/GooglePostMedia'
       created_at:
@@ -2390,41 +2419,71 @@ parameters:
     schema:
       type: number
     description: Google Post id
-  query_google_post_title_query:
+  query_google_post_title:
     in: query
-    name: title_query
+    name: title
     schema:
       type: string
     required: false
-    description: Filter google post based on their title
-  query_google_post_summary_query:
+    description: Filter Google Post based on their title. Will do a contain search, the text do not have to match perfectly.
+  query_google_post_summary:
     in: query
-    name: summary_query
+    name: summary
     schema:
       type: string
     required: false
-    description: Filter google post based on their summary
+    description: Filter Google Post based on their description. Will do a contain search, the text do not have to match perfectly.
   query_google_post_start_datetime:
     in: query
     name: start_datetime
     schema:
       type: string
     required: false
-    description: Filter google post based on their start time
+    description: >
+      Filter Google Post based on their start date. The start date represents the date on which the Google Post of type event/offer
+      will begin. As there is no start date for a Google Post of type news, if you search based on the start date,
+      it will be compare to the creation date of the Google Post.
   query_google_post_end_datetime:
     in: query
     name: end_datetime
     schema:
       type: string
     required: false
-    description: Filter google post based on their end time
+    description: >
+      Filter Google Post based on their end date. The end date represents the date on which the Google Post of type event/offer
+      will end. As there is no end date for a Google Post of type news, if you search based on the end date,
+      it will be compare to exactly one week after the creation date of the Google Post.
   query_google_post_is_expired:
     in: query
     name: is_expired
     schema:
       type: boolean
     required: false
-    description: Filter google post based on whether or not it is expired
+    description: Filter Google Post based on whether or not it has expired
+  query_google_post_state_in:
+    in: query
+    name: state__in
+    schema:
+      type: string
+      enum: ['LIVE','PARTOO_PENDING', 'PARTOO_PENDING_DELETE', 'PROCESSING', 'REJECTED', 'PARTOO_SCHEDULED', 'PARTOO_ERROR']
+    required: false
+    description: Filter Google Post based on it's state
+  query_google_post_topic_type:
+    in: query
+    name: topic_type
+    schema:
+      type: string
+      enum: ['NEWS', 'EVENT', 'OFFER']
+    required: false
+    description: Filter Google Post based on it's type
+  query_google_post_topic_type_in:
+    in: query
+    name: topic_type__in
+    schema:
+      type: string
+      enum: ['NEWS', 'EVENT', 'OFFER']
+    required: false
+    description: Filter Google Post based on different type
 responses:
   400:
     description: Your request is incorrect

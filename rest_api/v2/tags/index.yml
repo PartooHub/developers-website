@@ -73,4 +73,10 @@
 - name: Presence Analytics
   description: All operations available on Presence Management analytics
 - name: Google Post
-  description: Feature only available for independent business
+  description: |
+    Google Post is a feature that allow businesses to create content directly on Google. The Google Post appears in
+    Google Search which will boost results for the business.
+
+    <b>Feature only available for independent business.</b>
+    On Partner Connection all the Google Post will be automatically imported, on business disconnection the Google Post
+    published on Google will be deleted from the database.

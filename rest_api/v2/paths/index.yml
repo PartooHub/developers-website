@@ -60,12 +60,12 @@
     $ref: ./authorize/post_revoke.yml
 
 # GOOGLE POST endpoints
-/google_post:
+/google_posts:
   get:
     $ref: ./google_post/search.yml
   post:
     $ref: ./google_post/create.yml
-/google_post/{google_post_id}:
+/google_posts/{google_post_id}:
   get:
     $ref: ./google_post/get.yml
   patch:
