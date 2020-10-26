@@ -64,6 +64,9 @@
 /api_keys/key/{api_key_id}:
   get:
     $ref: ./api_keys/show_api_keys_key.yml
+/api_keys/{api_key_id}:
+  patch:
+    $ref: ./api_keys/update_api_keys.yml
 /api_keys/revoke/{api_key_id}:
   post:
     $ref: ./api_keys/revoke_api_key.yml
