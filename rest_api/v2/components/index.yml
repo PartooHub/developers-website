@@ -164,10 +164,6 @@ schemas:
           pattern: date
           example: "2019-08-22 11:46:38.914467+00"
           description: Date of last usage of the key
-        auto_expires_after_use:
-          type: boolean
-          example: False
-          description: Is true for keys that can be only used once
     StatusDisabled:
       type: boolean
       example: True
