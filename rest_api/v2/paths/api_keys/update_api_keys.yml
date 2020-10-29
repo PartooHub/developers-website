@@ -1,4 +1,4 @@
-summary: Update user API keys
+summary: Update API keys
 deprecated: false
 description: This endpoint let you update API keys.
   You need to have rights to access those API keys.
