@@ -709,7 +709,7 @@ schemas:
         format: float
         example: 1409925979.5
       modified:
-        description: Timestamp (in seconds) of the business last modification
+        description: Timestamp (in seconds) of the business last modification. Doesn’t take into account changes to the Custom Fields or related objects.
         type: number
         format: float
         example: 1561335111.681374
@@ -796,7 +796,7 @@ schemas:
         format: float
         example: 1409925979.5
       modified:
-        description: Timestamp (in seconds) of the business last modification
+        description: Timestamp (in seconds) of the business last modification. Doesn’t take into account changes to the Custom Fields or related objects.
         type: number
         format: float
         example: 1561335111.681374
@@ -2178,12 +2178,12 @@ parameters:
     description: Retrieve only businesses having promotional offers
   query_filter_by_business_modification_timestamp:
     in: query
-    name: timestamp
-    deprecated: true
+    name: modified_gte
+    deprecated: false
     schema:
-      type: number
+      type: timestamp
     required: false
-    description: Filter by modified attribute (modified >= timestamp)
+    description: Filter by modified attribute (modified >= modified_gte)
   query_filter_by_business_subscription_to_review_management:
     in: query
     deprecated: true
