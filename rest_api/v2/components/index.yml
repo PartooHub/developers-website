@@ -2178,7 +2178,7 @@ parameters:
     description: Retrieve only businesses having promotional offers
   query_filter_by_business_modification_timestamp:
     in: query
-    name: modified_gte
+    name: modified__gte
     deprecated: false
     schema:
       type: timestamp
