@@ -119,6 +119,12 @@ schemas:
           $ref: '#/schemas/ApiKeys/label'
         user_id:
           $ref: '#/schemas/UserId'
+        user_first_name:
+          $ref: '#/schemas/UserFirstName'
+        user_last_name:
+          $ref: '#/schemas/UserLastName'
+        user_role:
+          $ref: '#/schemas/Role'
         disabled:
           type: boolean
           example: false
@@ -144,7 +150,7 @@ schemas:
       type: string
       example: 'active'
       description: filter api_keys by status
-      enum: ['active', 'disabled', 'expired']
+      enum: ['active', 'inactive', 'disabled', 'expired']
   AnalyticsDate:
     type: datetime
     description: First day of the aggregation
