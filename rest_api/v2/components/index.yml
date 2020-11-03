@@ -149,7 +149,7 @@ schemas:
     Status:
       type: string
       example: 'active'
-      description: Filter api_keys by status. A key is inactive when expired or revoke.
+      description: Filter api_keys by status. A key is inactive when expired or disabled.
       enum: ['active', 'inactive', 'disabled', 'expired']
   AnalyticsDate:
     type: datetime
