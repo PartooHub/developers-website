@@ -1,8 +1,8 @@
-summary: Update API keys
+summary: Read one API key
 deprecated: false
-description: This endpoint let you update API keys.
-  You need to have rights to access those API keys.
-operationId: updateApiKeys
+description: Given an API key ID, this endpoint gives you information about that key.
+  You need to have the right permission to access this API key.
+operationId: getApiKey
 tags:
   - ApiKeys
 parameters:
@@ -11,16 +11,6 @@ parameters:
     schema:
       $ref: '../../components/index.yml#/schemas/ApiKeys/ApiKey/properties/id'
     description: Key ID
-requestBody:
-  content:
-    application/json:
-      schema:
-        type: object
-        properties:
-          label:
-            $ref: '../../components/index.yml#/schemas/ApiKeys/label'
-          expiration_date:
-            $ref: '../../components/index.yml#/schemas/ApiKeys/expiration_date'
 responses:
   200:
     description: OK
