@@ -146,14 +146,6 @@ schemas:
           type: string
           pattern: date
           example: "2020-10-20 11:46:38.914467+00"
-    StatusDisabled:
-      type: boolean
-      example: True
-      description: Keys disabled
-    StatusExpired:
-      type: boolean
-      example: True
-      description: Keys expired
     Status:
       type: string
       example: 'active'
