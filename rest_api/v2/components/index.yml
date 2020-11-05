@@ -128,6 +128,7 @@ schemas:
         disabled:
           type: boolean
           example: false
+          description: "Is true if someone revoked the key."
         expiration_date:
           $ref: '#/schemas/ApiKeys/expiration_date'
         last_used_at:
