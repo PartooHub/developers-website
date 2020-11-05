@@ -1,10 +1,16 @@
-summary: Update API keys
+summary: Update API key
 deprecated: false
 description: This endpoint let you update API keys.
-  You need to have rights to access those API keys.
+  You need to have rights to access this API key.
 operationId: updateApiKeys
 tags:
   - ApiKeys
+parameters:
+  - in: query
+    name: api_key_id
+    schema:
+      $ref: '../../components/index.yml#/schemas/ApiKeys/ApiKey/properties/id'
+    description: Key ID
 requestBody:
   content:
     application/json:
