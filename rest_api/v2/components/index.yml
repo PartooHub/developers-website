@@ -143,6 +143,9 @@ schemas:
           $ref: '#/schemas/UserId'
         revoked_by:
           $ref: '#/schemas/UserId'
+        revoked_by_name:
+          type: string
+          example: "John Smith"
         revoked_at:
           type: string
           pattern: date
