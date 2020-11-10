@@ -64,7 +64,7 @@
 /api_keys/{api_key_id}:
   get:
     $ref: ./api_keys/get_api_key.yml
-  patch:
+  put:
     $ref: ./api_keys/update_api_keys.yml
 /api_keys/key/{api_key_id}:
   get:
