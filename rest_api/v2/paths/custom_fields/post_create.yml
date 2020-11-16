@@ -1,0 +1,38 @@
+tags:
+  - Custom Fields
+summary: Create custom field
+description: >
+  This endpoint enables you to create custom fields for your organization as an ORG_ADMIN
+operationId: postCreateCustomFields
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        description: Request object
+        type: object
+        required:
+          - name
+          - type
+        properties:
+          name:
+            $ref: '../../components/index.yml#/schemas/CustomFieldName'
+          type:
+            $ref: '../../components/index.yml#/schemas/CustomFieldType'
+
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            id:
+              $ref: '../../components/index.yml#/schemas/CustomFieldId'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
+  404:
+    $ref: '../../components/index.yml#/responses/404'

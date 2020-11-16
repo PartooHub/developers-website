@@ -72,3 +72,5 @@
     <p>⚠️ SMS send functionality cannot be tested in Sandbox env.
 - name: Presence Analytics
   description: All operations available on Presence Management analytics
+- name: Custom Fields
+  description: All operations available on Custom Fields metadata

@@ -1969,6 +1969,34 @@ schemas:
     description: Report name
     type: string
     example: "review_management_weekly"
+  CustomFieldName:
+    description: The name of the custom field
+    type: string
+    minLength: 1
+    example: Click and collect
+  CustomFieldType:
+    description: Type of the custom field
+    type: string
+    enum:
+      - BOOLEAN
+      - TEXT
+      - INTEGER
+      - FLOAT
+      - SINGLE_SELECT
+      - MULTIPLE_SELECT
+      - MULTIPLE_SELECT_IMAGE
+  CustomField:
+    description: Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldType'
+  CustomFieldId:
+    description: Id of the custom field
+    type: integer
+    example: 42
 parameters:
   query_filter_by_country_required:
     in: query
@@ -2429,6 +2457,27 @@ parameters:
       type: boolean
     required: false
     description: Filter google post based on whether or not it is expired
+  custom_field_name:
+    in: query
+    name: name
+    required: true
+    schema:
+      type: string
+    description: The name of the custom field
+  custom_field_type:
+    in: query
+    name: type
+    description: Type of the custom field
+    schema:
+      type: string
+      enum:
+        - BOOLEAN
+        - TEXT
+        - INTEGER
+        - FLOAT
+        - SINGLE_SELECT
+        - MULTIPLE_SELECT
+        - MULTIPLE_SELECT_IMAGE
 responses:
   400:
     description: Your request is incorrect

@@ -219,3 +219,8 @@
 /presence_analytics_export:
   get:
     $ref: ./presence_analytics/get_export.yml
+
+# CUSTOM FIELDS endpoints
+/custom_fields:
+  post:
+    $ref: ./custom_fields/post_create.yml
