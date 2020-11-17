@@ -2039,6 +2039,10 @@ schemas:
     description: list of available values to add to SINGLE_SELECT, MULIPLE_SELECT and MULTIPLE_SELECT_IMAGE
     type: array
     example: [{'label': 'new label', 'url': 'https://new_url', 'value': 'new value', 'old_value': 'Image 1'}]
+  CustomFieldOrders:
+    description: Describes where the custom fields are displayed on the Business Edit view of the Partoo App
+    type: array
+    example: [{'id': 1, 'order': 1}, {'id': 2, 'order': 10}]
   CustomFieldTypeBool:
     description: Boolean Custom Field
     type: object
