@@ -1703,7 +1703,7 @@ schemas:
   GooglePostTopicType:
     description: The topic type of the Google Post.
     type: string
-    enum: ['NEWS', 'EVENT', 'OFFER']
+    enum: ['NEWS', 'EVENT', 'OFFER', 'ALERT']
     example: OFFER
 
   GooglePostSummary:
@@ -2473,7 +2473,7 @@ parameters:
     name: topic_type
     schema:
       type: string
-      enum: ['NEWS', 'EVENT', 'OFFER']
+      enum: ['NEWS', 'EVENT', 'OFFER', 'ALERT']
     required: false
     description: Filter Google Post based on it's type
   query_google_post_topic_type_in:
@@ -2481,7 +2481,7 @@ parameters:
     name: topic_type__in
     schema:
       type: string
-      enum: ['NEWS', 'EVENT', 'OFFER']
+      enum: ['NEWS', 'EVENT', 'OFFER', 'ALERT']
     required: false
     description: Filter Google Post based on different type
 responses:

@@ -68,7 +68,7 @@
 /google_posts/{google_post_id}:
   get:
     $ref: ./google_post/get.yml
-  patch:
+  put:
     $ref: ./google_post/update.yml
   delete:
     $ref: ./google_post/delete.yml
