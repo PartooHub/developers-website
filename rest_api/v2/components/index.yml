@@ -2242,6 +2242,102 @@ schemas:
     description: Id of the custom field
     type: integer
     example: 42
+  CustomFieldBusinessesCount:
+    description: Number of businesses in error
+    type: integer
+    example: 2
+  CustomFieldSimpleDescription:
+    description: Error description
+    type: text
+    example:
+      "At least one business does not respect the new constraints, please send forced_update=true to force update."
+  CustomFieldTextConstraint:
+    description: constraints in error
+    type: array
+    example:
+      ["max_len"]
+  CustomFieldNumberConstraint:
+    description: constraints in error
+    type: array
+    example:
+      ["min", "max"]
+  CustomFieldSelectDescription:
+    description: Error description
+    type: text
+    example:
+      "At least one business had one of these values, please send forced_update=true to force update."
+  CustomFieldSelectConstraint:
+    description: options in error
+    type: array
+    example:
+      ["free parking"]
+  CustomFieldDeleteDescription:
+    description: custom fields in error
+    type: array
+    example:
+      "At least one business has this custom field, please send forced_update=true to force update."
+  CustomFieldTextError:
+    description: New max_len is not respected by some business
+    type: object
+    properties:
+      errors:
+        type: object
+        properties:
+          json:
+            type: object
+            properties:
+              businesses_count:
+                $ref:  '#/schemas/CustomFieldBusinessesCount'
+              description:
+                $ref:  '#/schemas/CustomFieldSimpleDescription'
+              constraints:
+                $ref:  '#/schemas/CustomFieldTextConstraint'
+  CustomFieldNumberError:
+    description: New max or min is not respected by some business
+    type: object
+    properties:
+      errors:
+        type: object
+        properties:
+          json:
+            type: object
+            properties:
+              businesses_count:
+                $ref:  '#/schemas/CustomFieldBusinessesCount'
+              description:
+                $ref:  '#/schemas/CustomFieldSimpleDescription'
+              constraints:
+                $ref:  '#/schemas/CustomFieldNumberConstraint'
+  CustomFieldSelectError:
+    description: Option deleted is used by a business
+    type: object
+    properties:
+      errors:
+        type: object
+        properties:
+          json:
+            type: object
+            properties:
+              businesses_count:
+                $ref:  '#/schemas/CustomFieldBusinessesCount'
+              description:
+                $ref:  '#/schemas/CustomFieldSelectDescription'
+              options:
+                $ref:  '#/schemas/CustomFieldSelectConstraint'
+  CustomFieldDeleteError:
+    description: Custom field is defined for a business
+    type: object
+    properties:
+      errors:
+        type: object
+        properties:
+          json:
+            type: object
+            properties:
+              businesses_count:
+                $ref:  '#/schemas/CustomFieldBusinessesCount'
+              description:
+                $ref:  '#/schemas/CustomFieldDeleteDescription'
 parameters:
   query_filter_by_country_required:
     in: query

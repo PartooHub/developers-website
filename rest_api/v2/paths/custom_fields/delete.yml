@@ -27,6 +27,12 @@ responses:
           properties:
             id:
               $ref: '../../components/index.yml#/schemas/RequestStatus'
+  400:
+    description: Custom field value is defined for a business
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/index.yml#/schemas/CustomFieldDeleteError'
   401:
     $ref: '../../components/index.yml#/responses/401'
   403:

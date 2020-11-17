@@ -28,6 +28,15 @@ responses:
           properties:
             id:
               $ref: '../../components/index.yml#/schemas/RequestStatus'
+  400:
+    description: New constraints are not respected for some businesses
+    content:
+      application/json:
+        schema:
+          anyOf:
+            - $ref: '../../components/index.yml#/schemas/CustomFieldTextError'
+            - $ref: '../../components/index.yml#/schemas/CustomFieldNumberError'
+            - $ref: '../../components/index.yml#/schemas/CustomFieldSelectError'
   401:
     $ref: '../../components/index.yml#/responses/401'
   403:
