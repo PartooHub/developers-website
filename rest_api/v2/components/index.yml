@@ -1977,6 +1977,7 @@ schemas:
   CustomFieldType:
     description: Type of the custom field
     type: string
+    minLength: 1
     enum:
       - BOOLEAN
       - TEXT
@@ -1985,14 +1986,109 @@ schemas:
       - SINGLE_SELECT
       - MULTIPLE_SELECT
       - MULTIPLE_SELECT_IMAGE
-  CustomField:
-    description: Custom Field
+  CustomFieldMaxLen:
+    description: maximum lenght for TEXT field
+    type: integer
+    example: 10
+  CustomFieldMin:
+    description: minimum value for INTEGER and FLOAT fields
+    type: integer
+    example: 0
+  CustomFieldMax:
+    description: maximum value for INTEGER and FLOAT fields
+    type: integer
+    example: 100
+  CustomFieldPossibleValues:
+    minLength: 1
+    description: list of available values required for SINGLE_SELECT, MULIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    type: array
+    example: ['free parking', 'disabled access']
+  CustomFieldPossibleImagesUrls:
+    minLength: 1
+    description: list of available urls required for MULTIPLE_SELECT_IMAGE
+    type: array
+    example: ['https://image1', 'https://image2']
+  CustomFieldPossibleImagesLabels:
+    minLength: 1
+    description: list of available labels required for MULTIPLE_SELECT_IMAGE
+    type: array
+    example: ['Image 1', 'Image 2']
+  CustomFieldTypeBool:
+    description: Boolean Custom Field
     type: object
     properties:
       name:
         $ref:  '#/schemas/CustomFieldName'
       type:
         $ref:  '#/schemas/CustomFieldType'
+  CustomFieldTypeText:
+    description: Text Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldType'
+      max_len:
+        $ref:  '#/schemas/CustomFieldMaxLen'
+  CustomFieldTypeInteger:
+    description: Integer Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldType'
+      min:
+        $ref:  '#/schemas/CustomFieldMin'
+      max:
+        $ref:  '#/schemas/CustomFieldMax'
+  CustomFieldTypeFloat:
+    description: Float Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldType'
+      min:
+        $ref:  '#/schemas/CustomFieldMin'
+      max:
+        $ref:  '#/schemas/CustomFieldMax'
+  CustomFieldTypeSingleSelect:
+    description: Single Select Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldType'
+      possible_values:
+        $ref:  '#/schemas/CustomFieldPossibleValues'
+  CustomFieldTypeMultipleSelect:
+    description: Multple Select Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldType'
+      possible_values:
+        $ref:  '#/schemas/CustomFieldPossibleValues'
+  CustomFieldTypeMultipleSelectImage:
+    description: Multple Select Image Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldType'
+      possible_values:
+        $ref:  '#/schemas/CustomFieldPossibleValues'
+      possible_images_urls:
+        $ref:  '#/schemas/CustomFieldPossibleImagesUrls'
+      possible_images_labels:
+        $ref:  '#/schemas/CustomFieldPossibleImagesLabels'
   CustomFieldId:
     description: Id of the custom field
     type: integer

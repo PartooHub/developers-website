@@ -9,16 +9,14 @@ requestBody:
   content:
     application/json:
       schema:
-        description: Request object
-        type: object
-        required:
-          - name
-          - type
-        properties:
-          name:
-            $ref: '../../components/index.yml#/schemas/CustomFieldName'
-          type:
-            $ref: '../../components/index.yml#/schemas/CustomFieldType'
+        anyOf:
+          - $ref: '../../components/index.yml#/schemas/CustomFieldTypeBool'
+          - $ref: '../../components/index.yml#/schemas/CustomFieldTypeText'
+          - $ref: '../../components/index.yml#/schemas/CustomFieldTypeInteger'
+          - $ref: '../../components/index.yml#/schemas/CustomFieldTypeFloat'
+          - $ref: '../../components/index.yml#/schemas/CustomFieldTypeSingleSelect'
+          - $ref: '../../components/index.yml#/schemas/CustomFieldTypeMultipleSelect'
+          - $ref: '../../components/index.yml#/schemas/CustomFieldTypeMultipleSelectImage'
 
 responses:
   200:
