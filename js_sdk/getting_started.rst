@@ -28,6 +28,7 @@ Step 2 - Generate a connection token to authenticate your user
 
 To display a Partoo app view, you need to authenticate your user by generating a connection token.
 The API endpoint documentation can be found `here <https://developers.partoo.co/rest_api/v2/#operation/generateConnectionToken>`_.
+Once you obtain the token pass it to `connectionToken` variable as shown on step 3.
 
 Step 3 - Display your first page
 -------------------------------------------------------------------
@@ -48,7 +49,7 @@ Then to display you first Partoo App view inside your HTML page:
         'startPage': 'presenceManagement', // here the user will be redirected to the presenceManagement view after logging
         'displayIntercom': false, // true by default
         'displayUserParams': false, // true by default
-        'displayAddButton': false, // true by detault
+        'displayAddButton': false, // true by default
     };
 
     const partooPage = Partoo.init(
