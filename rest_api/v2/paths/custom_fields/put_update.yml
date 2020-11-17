@@ -1,0 +1,36 @@
+tags:
+  - Custom Fields
+summary: Create custom field
+description: >
+  This endpoint enables you to update custom fields for your organization as an ORG_ADMIN
+operationId: putUpdateCustomFields
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        anyOf:
+          - $ref: '../../components/index.yml#/schemas/CustomFieldEditTypeBool'
+          - $ref: '../../components/index.yml#/schemas/CustomFieldEditTypeText'
+          - $ref: '../../components/index.yml#/schemas/CustomFieldEditTypeInteger'
+          - $ref: '../../components/index.yml#/schemas/CustomFieldEditTypeFloat'
+          - $ref: '../../components/index.yml#/schemas/CustomFieldTypeEditSingleSelect'
+          - $ref: '../../components/index.yml#/schemas/CustomFieldTypeEditMultipleSelect'
+          - $ref: '../../components/index.yml#/schemas/CustomFieldTypeEditMultipleSelectImage'
+
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            id:
+              $ref: '../../components/index.yml#/schemas/RequestStatus'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
+  404:
+    $ref: '../../components/index.yml#/responses/404'

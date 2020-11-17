@@ -1973,6 +1973,7 @@ schemas:
     description: The name of the custom field
     type: string
     minLength: 1
+    maxLength: 50
     example: Click and collect
   CustomFieldType:
     description: Type of the custom field
@@ -1986,6 +1987,11 @@ schemas:
       - SINGLE_SELECT
       - MULTIPLE_SELECT
       - MULTIPLE_SELECT_IMAGE
+  CustomFieldOrder:
+    description: Describes where the custom field is displayed on the Business Edit view of the Partoo App
+    type: integer
+    default: 10
+    example: 30
   CustomFieldMaxLen:
     description: maximum lenght for TEXT field
     type: integer
@@ -2013,6 +2019,26 @@ schemas:
     description: list of available labels required for MULTIPLE_SELECT_IMAGE
     type: array
     example: ['Image 1', 'Image 2']
+  CustomFieldCreatedValues:
+    description: list of available values to add to SINGLE_SELECT, MULIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    type: array
+    example: ['Image 3']
+  CustomFieldCreatedValuesMSI:
+    description: list of available values to add to SINGLE_SELECT, MULIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    type: array
+    example: [{'label': 'Image 3', 'url': 'https://image3', 'value': 'Image 3'}]
+  CustomFieldDeletedValues:
+    description: list of available values to remove from SINGLE_SELECT, MULIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    type: array
+    example: ['Image 1']
+  CustomFieldRenamedValues:
+    description: list of available values to rename for SINGLE_SELECT, MULIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    type: array
+    example: [{'old_value': 'Image 1', 'new_value': 'Draw 1'}, {'old_value': 'Image 2', 'new_value': 'Photo 2'}]
+  CustomFieldRenamedValuesMSI:
+    description: list of available values to add to SINGLE_SELECT, MULIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    type: array
+    example: [{'label': 'new label', 'url': 'https://new_url', 'value': 'new value', 'old_value': 'Image 1'}]
   CustomFieldTypeBool:
     description: Boolean Custom Field
     type: object
@@ -2021,6 +2047,8 @@ schemas:
         $ref:  '#/schemas/CustomFieldName'
       type:
         $ref:  '#/schemas/CustomFieldType'
+      order:
+        $ref:  '#/schemas/CustomFieldOrder'
   CustomFieldTypeText:
     description: Text Custom Field
     type: object
@@ -2031,6 +2059,8 @@ schemas:
         $ref:  '#/schemas/CustomFieldType'
       max_len:
         $ref:  '#/schemas/CustomFieldMaxLen'
+      order:
+        $ref:  '#/schemas/CustomFieldOrder'
   CustomFieldTypeInteger:
     description: Integer Custom Field
     type: object
@@ -2043,6 +2073,8 @@ schemas:
         $ref:  '#/schemas/CustomFieldMin'
       max:
         $ref:  '#/schemas/CustomFieldMax'
+      order:
+        $ref:  '#/schemas/CustomFieldOrder'
   CustomFieldTypeFloat:
     description: Float Custom Field
     type: object
@@ -2055,6 +2087,8 @@ schemas:
         $ref:  '#/schemas/CustomFieldMin'
       max:
         $ref:  '#/schemas/CustomFieldMax'
+      order:
+        $ref:  '#/schemas/CustomFieldOrder'
   CustomFieldTypeSingleSelect:
     description: Single Select Custom Field
     type: object
@@ -2065,6 +2099,8 @@ schemas:
         $ref:  '#/schemas/CustomFieldType'
       possible_values:
         $ref:  '#/schemas/CustomFieldPossibleValues'
+      order:
+        $ref:  '#/schemas/CustomFieldOrder'
   CustomFieldTypeMultipleSelect:
     description: Multple Select Custom Field
     type: object
@@ -2075,6 +2111,8 @@ schemas:
         $ref:  '#/schemas/CustomFieldType'
       possible_values:
         $ref:  '#/schemas/CustomFieldPossibleValues'
+      order:
+        $ref:  '#/schemas/CustomFieldOrder'
   CustomFieldTypeMultipleSelectImage:
     description: Multple Select Image Custom Field
     type: object
@@ -2089,6 +2127,92 @@ schemas:
         $ref:  '#/schemas/CustomFieldPossibleImagesUrls'
       possible_images_labels:
         $ref:  '#/schemas/CustomFieldPossibleImagesLabels'
+      order:
+        $ref:  '#/schemas/CustomFieldOrder'
+  CustomFieldEditTypeBool:
+    description: Boolean Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldType'
+  CustomFieldEditTypeText:
+    description: Text Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldType'
+      max_len:
+        $ref:  '#/schemas/CustomFieldMaxLen'
+  CustomFieldEditTypeInteger:
+    description: Integer Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldType'
+      min:
+        $ref:  '#/schemas/CustomFieldMin'
+      max:
+        $ref:  '#/schemas/CustomFieldMax'
+  CustomFieldEditTypeFloat:
+    description: Float Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldType'
+      min:
+        $ref:  '#/schemas/CustomFieldMin'
+      max:
+        $ref:  '#/schemas/CustomFieldMax'
+  CustomFieldTypeEditSingleSelect:
+    description: Single Select Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldType'
+      created_values:
+        $ref:  '#/schemas/CustomFieldCreatedValues'
+      deleted_values:
+        $ref:  '#/schemas/CustomFieldDeletedValues'
+      renamed_values:
+        $ref:  '#/schemas/CustomFieldRenamedValues'
+  CustomFieldTypeEditMultipleSelect:
+    description: Multple Select Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldType'
+      created_values:
+        $ref:  '#/schemas/CustomFieldCreatedValues'
+      deleted_values:
+        $ref:  '#/schemas/CustomFieldDeletedValues'
+      renamed_values:
+        $ref:  '#/schemas/CustomFieldRenamedValues'
+  CustomFieldTypeEditMultipleSelectImage:
+    description: Multple Select Image Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldType'
+      created_values:
+        $ref:  '#/schemas/CustomFieldCreatedValuesMSI'
+      deleted_values:
+        $ref:  '#/schemas/CustomFieldDeletedValues'
+      renamed_values:
+        $ref:  '#/schemas/CustomFieldRenamedValuesMSI'
   CustomFieldId:
     description: Id of the custom field
     type: integer

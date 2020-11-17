@@ -224,3 +224,5 @@
 /custom_fields:
   post:
     $ref: ./custom_fields/post_create.yml
+  put:
+    $ref: ./custom_fields/put_update.yml
