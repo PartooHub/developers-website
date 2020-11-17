@@ -227,6 +227,8 @@
 /custom_fields/{custom_field_id}:
   put:
     $ref: ./custom_fields/put_update.yml
+  delete:
+    $ref: ./custom_fields/delete.yml
 /custom_fields/order:
   post:
     $ref: ./custom_fields/post_order.yml

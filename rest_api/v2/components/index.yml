@@ -1992,6 +1992,13 @@ schemas:
     type: integer
     default: 10
     example: 30
+  CustomFieldForcedUpdate:
+    description: >
+      The deletion of a custom field or the update of its metadata can have impacts on custom fields which are already set for businesses.
+      If forced_update is set to false, only no destructive updates/deletions will be performed. If the modification is destructive, an exception will be returned with the list of new constraints not respected by businesses.
+      If forced_update is set to true, destructive modification will be performed and businesses values will be modified accordingly.
+    type: boolean
+    default: false
   CustomFieldMaxLen:
     description: maximum lenght for TEXT field
     type: integer
@@ -2141,6 +2148,8 @@ schemas:
         $ref:  '#/schemas/CustomFieldName'
       type:
         $ref:  '#/schemas/CustomFieldType'
+      forced_update:
+        $ref:  '#/schemas/CustomFieldForcedUpdate'
   CustomFieldEditTypeText:
     description: Text Custom Field
     type: object
@@ -2151,6 +2160,8 @@ schemas:
         $ref:  '#/schemas/CustomFieldType'
       max_len:
         $ref:  '#/schemas/CustomFieldMaxLen'
+      forced_update:
+        $ref:  '#/schemas/CustomFieldForcedUpdate'
   CustomFieldEditTypeInteger:
     description: Integer Custom Field
     type: object
@@ -2163,6 +2174,8 @@ schemas:
         $ref:  '#/schemas/CustomFieldMin'
       max:
         $ref:  '#/schemas/CustomFieldMax'
+      forced_update:
+        $ref:  '#/schemas/CustomFieldForcedUpdate'
   CustomFieldEditTypeFloat:
     description: Float Custom Field
     type: object
@@ -2175,6 +2188,8 @@ schemas:
         $ref:  '#/schemas/CustomFieldMin'
       max:
         $ref:  '#/schemas/CustomFieldMax'
+      forced_update:
+        $ref:  '#/schemas/CustomFieldForcedUpdate'
   CustomFieldTypeEditSingleSelect:
     description: Single Select Custom Field
     type: object
@@ -2189,6 +2204,8 @@ schemas:
         $ref:  '#/schemas/CustomFieldDeletedValues'
       renamed_values:
         $ref:  '#/schemas/CustomFieldRenamedValues'
+      forced_update:
+        $ref:  '#/schemas/CustomFieldForcedUpdate'
   CustomFieldTypeEditMultipleSelect:
     description: Multple Select Custom Field
     type: object
@@ -2203,6 +2220,8 @@ schemas:
         $ref:  '#/schemas/CustomFieldDeletedValues'
       renamed_values:
         $ref:  '#/schemas/CustomFieldRenamedValues'
+      forced_update:
+        $ref:  '#/schemas/CustomFieldForcedUpdate'
   CustomFieldTypeEditMultipleSelectImage:
     description: Multple Select Image Custom Field
     type: object
@@ -2217,6 +2236,8 @@ schemas:
         $ref:  '#/schemas/CustomFieldDeletedValues'
       renamed_values:
         $ref:  '#/schemas/CustomFieldRenamedValuesMSI'
+      forced_update:
+        $ref:  '#/schemas/CustomFieldForcedUpdate'
   CustomFieldId:
     description: Id of the custom field
     type: integer
