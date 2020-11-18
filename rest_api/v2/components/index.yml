@@ -1994,9 +1994,10 @@ schemas:
     example: 30
   CustomFieldForcedUpdate:
     description: >
-      The deletion of a custom field or the update of its metadata can have impacts on custom fields which are already set for businesses.
-      If forced_update is set to false, only no destructive updates/deletions will be performed. If the modification is destructive, an exception will be returned with the list of new constraints not respected by businesses.
-      If forced_update is set to true, destructive modification will be performed and businesses values will be modified accordingly.
+      <p>The deletion of a custom field or the update of its metadata can have impacts on custom fields which are already set for businesses.
+      <ul>
+        <li>If <code>forced_update</code> is set to false, only no destructive updates/deletions will be performed. If the modification is destructive, an exception will be returned with the list of new constraints which are not respected by some businesses.
+        <li>If <code>forced_update</code> is set to true, destructive modification will be performed and businesses values will be deleted accordingly.
     type: boolean
     default: false
   CustomFieldMaxLen:
@@ -2016,6 +2017,11 @@ schemas:
     description: list of available values required for SINGLE_SELECT, MULIPLE_SELECT and MULTIPLE_SELECT_IMAGE
     type: array
     example: ['free parking', 'disabled access']
+  CustomFieldPossibleValuesMSI:
+    minLength: 1
+    description: list of available values required for SINGLE_SELECT, MULIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    type: array
+    example: ['first image', 'second image']
   CustomFieldPossibleImagesUrls:
     minLength: 1
     description: list of available urls required for MULTIPLE_SELECT_IMAGE
@@ -2133,7 +2139,7 @@ schemas:
       type:
         $ref:  '#/schemas/CustomFieldType'
       possible_values:
-        $ref:  '#/schemas/CustomFieldPossibleValues'
+        $ref:  '#/schemas/CustomFieldPossibleValuesMSI'
       possible_images_urls:
         $ref:  '#/schemas/CustomFieldPossibleImagesUrls'
       possible_images_labels:
@@ -2325,7 +2331,6 @@ schemas:
               options:
                 $ref:  '#/schemas/CustomFieldSelectConstraint'
   CustomFieldDeleteError:
-    description: Custom field is defined for a business
     type: object
     properties:
       errors:

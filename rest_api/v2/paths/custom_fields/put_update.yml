@@ -1,8 +1,9 @@
 tags:
   - Custom Fields
-summary: Create custom field
+summary: Update custom field
 description: >
-  This endpoint enables you to update custom fields for your organization as an ORG_ADMIN
+  <p>This endpoint enables you to update custom fields for your organization as an ORG_ADMIN using it's id.
+  <p>Name and constraints can be updated. The type of a custom field cannot be modified.
 operationId: putUpdateCustomFields
 requestBody:
   required: true
