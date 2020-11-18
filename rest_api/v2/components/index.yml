@@ -510,7 +510,7 @@ schemas:
     type: string
     example: Paris
   BusinessCountry:
-    description: Business country - use ISO 3166 alpha2 code
+    description: Business country - use ISO 3166 alpha2 (i.e. use “FR” for France)
     type: string
     example: FR
   BusinessRegion:
@@ -1043,11 +1043,11 @@ schemas:
         format: email
         example: hubert@oss117.fr
       phone_numbers:
-        description: Contact phone numbers
+        description: Contact phone numbers - Preferably in the format E.164 ('+33302060628' instead of '0302060628')
         type: array
         items:
           type: string
-        example: ['0302060628']
+        example: ['+33302060628']
   AddressDetails:
     description: Business main address. Represents the full address of the business. ⚠️ At least the `street_name` parameter needs to be provided
     type: object
