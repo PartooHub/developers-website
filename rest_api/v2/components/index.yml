@@ -510,7 +510,7 @@ schemas:
     type: string
     example: Paris
   BusinessCountry:
-    description: Business country - use ISO 3166 alpha2 (i.e. use “FR” for France)
+    description: Business country - use ISO 3166 alpha2 code (i.e. use “FR” for France)
     type: string
     example: FR
   BusinessRegion:
