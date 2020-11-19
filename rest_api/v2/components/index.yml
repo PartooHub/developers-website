@@ -1240,7 +1240,7 @@ schemas:
         description: Name of the custom field
         type: string
       type:
-        description: Possible values are "BOOLEAN", "INTEGER", "TEXT", "FLOAT", "SINGLE_SELECT", "MULIPLE_SELECT", "MULIPLE_SELECT_IMAGE".
+        description: Possible values are "BOOLEAN", "INTEGER", "TEXT", "FLOAT", "SINGLE_SELECT", "MULTIPLE_SELECT", "MULTIPLE_SELECT_IMAGE".
         type: string
       id:
         description: Id of the custom field
@@ -1987,6 +1987,41 @@ schemas:
       - SINGLE_SELECT
       - MULTIPLE_SELECT
       - MULTIPLE_SELECT_IMAGE
+  CustomFieldTypeBool:
+    description: BOOLEAN
+    minLength: 1
+    type: string
+    example: BOOLEAN
+  CustomFieldTypeText:
+    description: TEXT
+    minLength: 1
+    type: string
+    example: TEXT
+  CustomFieldTypeInteger:
+    description: INTEGER
+    minLength: 1
+    type: string
+    example: INTEGER
+  CustomFieldTypeFloat:
+    description: FLOAT
+    minLength: 1
+    type: string
+    example: FLOAT
+  CustomFieldTypeSingleSelect:
+    description: SINGLE_SELECT
+    minLength: 1
+    type: string
+    example: SINGLE_SELECT
+  CustomFieldTypeMultipleSelect:
+    description: MULTIPLE_SELECT
+    minLength: 1
+    type: string
+    example: MULTIPLE_SELECT
+  CustomFieldTypeMultipleSelectImage:
+    description: MULTIPLE_SELECT_IMAGE
+    minLength: 1
+    type: string
+    example: MULTIPLE_SELECT_IMAGE
   CustomFieldOrder:
     description: Describes where the custom field is displayed on the Business Edit view of the Partoo App
     type: integer
@@ -2022,12 +2057,12 @@ schemas:
     example: 10.5
   CustomFieldPossibleValues:
     minLength: 1
-    description: list of available values required for SINGLE_SELECT, MULIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    description: list of available values required for SINGLE_SELECT, MULTIPLE_SELECT and MULTIPLE_SELECT_IMAGE
     type: array of string
     example: ['free parking', 'disabled access']
   CustomFieldPossibleValuesMSI:
     minLength: 1
-    description: list of available values required for SINGLE_SELECT, MULIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    description: list of available values required for SINGLE_SELECT, MULTIPLE_SELECT and MULTIPLE_SELECT_IMAGE
     type: array of string
     example: ['first image', 'second image']
   CustomFieldPossibleImagesUrls:
@@ -2041,23 +2076,23 @@ schemas:
     type: array of string
     example: ['Image 1', 'Image 2']
   CustomFieldCreatedValues:
-    description: list of available values to add to SINGLE_SELECT, MULIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    description: list of available values to add to SINGLE_SELECT, MULTIPLE_SELECT and MULTIPLE_SELECT_IMAGE
     type: array of string
     example: ['Image 3']
   CustomFieldCreatedValuesMSI:
-    description: list of available values to add to SINGLE_SELECT, MULIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    description: list of available values to add to SINGLE_SELECT, MULTIPLE_SELECT and MULTIPLE_SELECT_IMAGE
     type: array of string
     example: [{'label': 'Image 3', 'url': 'https://image3', 'value': 'Image 3'}]
   CustomFieldDeletedValues:
-    description: list of available values to remove from SINGLE_SELECT, MULIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    description: list of available values to remove from SINGLE_SELECT, MULTIPLE_SELECT and MULTIPLE_SELECT_IMAGE
     type: array of string
     example: ['Image 1']
   CustomFieldRenamedValues:
-    description: list of available values to rename for SINGLE_SELECT, MULIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    description: list of available values to rename for SINGLE_SELECT, MULTIPLE_SELECT and MULTIPLE_SELECT_IMAGE
     type: array of object
     example: [{'old_value': 'Image 1', 'new_value': 'Draw 1'}, {'old_value': 'Image 2', 'new_value': 'Photo 2'}]
   CustomFieldRenamedValuesMSI:
-    description: list of available values to add to SINGLE_SELECT, MULIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    description: list of available values to add to SINGLE_SELECT, MULTIPLE_SELECT and MULTIPLE_SELECT_IMAGE
     type: array of object
     example: [{'label': 'new label', 'url': 'https://new_url', 'value': 'new value', 'old_value': 'Image 1'}]
   CustomFieldOrdersObject:
@@ -2072,88 +2107,88 @@ schemas:
     type: array
     items:
         $ref: '#/schemas/CustomFieldOrdersObject'
-  CustomFieldTypeBool:
+  CustomFieldBool:
     description: Boolean Custom Field
     type: object
     properties:
       name:
         $ref:  '#/schemas/CustomFieldName'
       type:
-        $ref:  '#/schemas/CustomFieldType'
+        $ref:  '#/schemas/CustomFieldTypeBool'
       order:
         $ref:  '#/schemas/CustomFieldOrder'
-  CustomFieldTypeText:
+  CustomFieldText:
     description: Text Custom Field
     type: object
     properties:
       name:
         $ref:  '#/schemas/CustomFieldName'
       type:
-        $ref:  '#/schemas/CustomFieldType'
+        $ref:  '#/schemas/CustomFieldTypeText'
       max_len:
         $ref:  '#/schemas/CustomFieldMaxLen'
       order:
         $ref:  '#/schemas/CustomFieldOrder'
-  CustomFieldTypeInteger:
+  CustomFieldInteger:
     description: Integer Custom Field
     type: object
     properties:
       name:
         $ref:  '#/schemas/CustomFieldName'
       type:
-        $ref:  '#/schemas/CustomFieldType'
+        $ref:  '#/schemas/CustomFieldTypeInteger'
       min:
         $ref:  '#/schemas/CustomFieldMin'
       max:
         $ref:  '#/schemas/CustomFieldMax'
       order:
         $ref:  '#/schemas/CustomFieldOrder'
-  CustomFieldTypeFloat:
+  CustomFieldFloat:
     description: Float Custom Field
     type: object
     properties:
       name:
         $ref:  '#/schemas/CustomFieldName'
       type:
-        $ref:  '#/schemas/CustomFieldType'
+        $ref:  '#/schemas/CustomFieldTypeFloat'
       min:
         $ref:  '#/schemas/CustomFieldFloatMin'
       max:
         $ref:  '#/schemas/CustomFieldFloatMax'
       order:
         $ref:  '#/schemas/CustomFieldOrder'
-  CustomFieldTypeSingleSelect:
+  CustomFieldSingleSelect:
     description: Single Select Custom Field
     type: object
     properties:
       name:
         $ref:  '#/schemas/CustomFieldName'
       type:
-        $ref:  '#/schemas/CustomFieldType'
+        $ref:  '#/schemas/CustomFieldTypeSingleSelect'
       possible_values:
         $ref:  '#/schemas/CustomFieldPossibleValues'
       order:
         $ref:  '#/schemas/CustomFieldOrder'
-  CustomFieldTypeMultipleSelect:
+  CustomFieldMultipleSelect:
     description: Multple Select Custom Field
     type: object
     properties:
       name:
         $ref:  '#/schemas/CustomFieldName'
       type:
-        $ref:  '#/schemas/CustomFieldType'
+        $ref:  '#/schemas/CustomFieldTypeMultipleSelect'
       possible_values:
         $ref:  '#/schemas/CustomFieldPossibleValues'
       order:
         $ref:  '#/schemas/CustomFieldOrder'
-  CustomFieldTypeMultipleSelectImage:
+  CustomFieldMultipleSelectImage:
     description: Multple Select Image Custom Field
     type: object
     properties:
       name:
         $ref:  '#/schemas/CustomFieldName'
       type:
-        $ref:  '#/schemas/CustomFieldType'
+        $ref:  '#/schemas/CustomFieldTypeMultipleSelectImage'
       possible_values:
         $ref:  '#/schemas/CustomFieldPossibleValuesMSI'
       possible_images_urls:
@@ -2169,7 +2204,7 @@ schemas:
       name:
         $ref:  '#/schemas/CustomFieldName'
       type:
-        $ref:  '#/schemas/CustomFieldType'
+        $ref:  '#/schemas/CustomFieldTypeBool'
       forced_update:
         $ref:  '#/schemas/CustomFieldForcedUpdate'
   CustomFieldEditTypeText:
@@ -2179,7 +2214,7 @@ schemas:
       name:
         $ref:  '#/schemas/CustomFieldName'
       type:
-        $ref:  '#/schemas/CustomFieldType'
+        $ref:  '#/schemas/CustomFieldTypeText'
       max_len:
         $ref:  '#/schemas/CustomFieldMaxLen'
       forced_update:
@@ -2191,7 +2226,7 @@ schemas:
       name:
         $ref:  '#/schemas/CustomFieldName'
       type:
-        $ref:  '#/schemas/CustomFieldType'
+        $ref:  '#/schemas/CustomFieldTypeInteger'
       min:
         $ref:  '#/schemas/CustomFieldMin'
       max:
@@ -2205,7 +2240,7 @@ schemas:
       name:
         $ref:  '#/schemas/CustomFieldName'
       type:
-        $ref:  '#/schemas/CustomFieldType'
+        $ref:  '#/schemas/CustomFieldTypeFloat'
       min:
         $ref:  '#/schemas/CustomFieldMin'
       max:
@@ -2219,7 +2254,7 @@ schemas:
       name:
         $ref:  '#/schemas/CustomFieldName'
       type:
-        $ref:  '#/schemas/CustomFieldType'
+        $ref:  '#/schemas/CustomFieldTypeSingleSelect'
       created_values:
         $ref:  '#/schemas/CustomFieldCreatedValues'
       deleted_values:
@@ -2235,7 +2270,7 @@ schemas:
       name:
         $ref:  '#/schemas/CustomFieldName'
       type:
-        $ref:  '#/schemas/CustomFieldType'
+        $ref:  '#/schemas/CustomFieldTypeMultipleSelect'
       created_values:
         $ref:  '#/schemas/CustomFieldCreatedValues'
       deleted_values:
@@ -2251,7 +2286,7 @@ schemas:
       name:
         $ref:  '#/schemas/CustomFieldName'
       type:
-        $ref:  '#/schemas/CustomFieldType'
+        $ref:  '#/schemas/CustomFieldTypeMultipleSelectImage'
       created_values:
         $ref:  '#/schemas/CustomFieldCreatedValuesMSI'
       deleted_values:

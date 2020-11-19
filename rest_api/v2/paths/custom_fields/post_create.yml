@@ -10,13 +10,13 @@ requestBody:
     application/json:
       schema:
         anyOf:
-          - $ref: '../../components/index.yml#/schemas/CustomFieldTypeBool'
-          - $ref: '../../components/index.yml#/schemas/CustomFieldTypeText'
-          - $ref: '../../components/index.yml#/schemas/CustomFieldTypeInteger'
-          - $ref: '../../components/index.yml#/schemas/CustomFieldTypeFloat'
-          - $ref: '../../components/index.yml#/schemas/CustomFieldTypeSingleSelect'
-          - $ref: '../../components/index.yml#/schemas/CustomFieldTypeMultipleSelect'
-          - $ref: '../../components/index.yml#/schemas/CustomFieldTypeMultipleSelectImage'
+          - $ref: '../../components/index.yml#/schemas/CustomFieldBool'
+          - $ref: '../../components/index.yml#/schemas/CustomFieldText'
+          - $ref: '../../components/index.yml#/schemas/CustomFieldInteger'
+          - $ref: '../../components/index.yml#/schemas/CustomFieldFloat'
+          - $ref: '../../components/index.yml#/schemas/CustomFieldSingleSelect'
+          - $ref: '../../components/index.yml#/schemas/CustomFieldMultipleSelect'
+          - $ref: '../../components/index.yml#/schemas/CustomFieldMultipleSelectImage'
 
 responses:
   200:
