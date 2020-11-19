@@ -2005,57 +2005,73 @@ schemas:
     type: integer
     example: 10
   CustomFieldMin:
-    description: minimum value for INTEGER and FLOAT fields
+    description: minimum value for INTEGER field
     type: integer
     example: 0
   CustomFieldMax:
-    description: maximum value for INTEGER and FLOAT fields
+    description: maximum value for INTEGER field
     type: integer
     example: 100
+  CustomFieldFloatMin:
+    description: minimum value for FLOAT field
+    type: float
+    example: 0.0
+  CustomFieldFloatMax:
+    description: maximum value for FLOAT field
+    type: float
+    example: 10.5
   CustomFieldPossibleValues:
     minLength: 1
     description: list of available values required for SINGLE_SELECT, MULIPLE_SELECT and MULTIPLE_SELECT_IMAGE
-    type: array
+    type: array of string
     example: ['free parking', 'disabled access']
   CustomFieldPossibleValuesMSI:
     minLength: 1
     description: list of available values required for SINGLE_SELECT, MULIPLE_SELECT and MULTIPLE_SELECT_IMAGE
-    type: array
+    type: array of string
     example: ['first image', 'second image']
   CustomFieldPossibleImagesUrls:
     minLength: 1
     description: list of available urls required for MULTIPLE_SELECT_IMAGE
-    type: array
+    type: array of string
     example: ['https://image1', 'https://image2']
   CustomFieldPossibleImagesLabels:
     minLength: 1
     description: list of available labels required for MULTIPLE_SELECT_IMAGE
-    type: array
+    type: array of string
     example: ['Image 1', 'Image 2']
   CustomFieldCreatedValues:
     description: list of available values to add to SINGLE_SELECT, MULIPLE_SELECT and MULTIPLE_SELECT_IMAGE
-    type: array
+    type: array of string
     example: ['Image 3']
   CustomFieldCreatedValuesMSI:
     description: list of available values to add to SINGLE_SELECT, MULIPLE_SELECT and MULTIPLE_SELECT_IMAGE
-    type: array
+    type: array of string
     example: [{'label': 'Image 3', 'url': 'https://image3', 'value': 'Image 3'}]
   CustomFieldDeletedValues:
     description: list of available values to remove from SINGLE_SELECT, MULIPLE_SELECT and MULTIPLE_SELECT_IMAGE
-    type: array
+    type: array of string
     example: ['Image 1']
   CustomFieldRenamedValues:
     description: list of available values to rename for SINGLE_SELECT, MULIPLE_SELECT and MULTIPLE_SELECT_IMAGE
-    type: array
+    type: array of object
     example: [{'old_value': 'Image 1', 'new_value': 'Draw 1'}, {'old_value': 'Image 2', 'new_value': 'Photo 2'}]
   CustomFieldRenamedValuesMSI:
     description: list of available values to add to SINGLE_SELECT, MULIPLE_SELECT and MULTIPLE_SELECT_IMAGE
-    type: array
+    type: array of object
     example: [{'label': 'new label', 'url': 'https://new_url', 'value': 'new value', 'old_value': 'Image 1'}]
+  CustomFieldOrdersObject:
+    type: object
+    properties:
+      id:
+        $ref:  '#/schemas/CustomFieldId'
+      order:
+        $ref:  '#/schemas/CustomFieldOrder'
   CustomFieldOrders:
     description: Describes where the custom fields are displayed on the Business Edit view of the Partoo App
     type: array
-    example: [{'id': 1, 'order': 1}, {'id': 2, 'order': 10}]
+    items:
+        $ref: '#/schemas/CustomFieldOrdersObject'
   CustomFieldTypeBool:
     description: Boolean Custom Field
     type: object
@@ -2101,9 +2117,9 @@ schemas:
       type:
         $ref:  '#/schemas/CustomFieldType'
       min:
-        $ref:  '#/schemas/CustomFieldMin'
+        $ref:  '#/schemas/CustomFieldFloatMin'
       max:
-        $ref:  '#/schemas/CustomFieldMax'
+        $ref:  '#/schemas/CustomFieldFloatMax'
       order:
         $ref:  '#/schemas/CustomFieldOrder'
   CustomFieldTypeSingleSelect:
@@ -2245,7 +2261,7 @@ schemas:
       forced_update:
         $ref:  '#/schemas/CustomFieldForcedUpdate'
   CustomFieldId:
-    description: Id of the custom field
+    description: Id of the custom field, received when creating it
     type: integer
     example: 42
   CustomFieldBusinessesCount:
@@ -2824,6 +2840,12 @@ parameters:
         - SINGLE_SELECT
         - MULTIPLE_SELECT
         - MULTIPLE_SELECT_IMAGE
+  custom_field_id:
+    in: path
+    name: custom_field_id
+    required: true
+    schema:
+      $ref: '#/schemas/CustomFieldId'
 responses:
   400:
     description: Your request is incorrect

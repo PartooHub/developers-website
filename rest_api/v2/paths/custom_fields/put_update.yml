@@ -5,6 +5,8 @@ description: >
   <p>This endpoint enables you to update custom fields for your organization as an ORG_ADMIN using it's id.
   <p>Name and constraints can be updated. The type of a custom field cannot be modified.
 operationId: putUpdateCustomFields
+parameters:
+  - $ref: '../../components/index.yml#/parameters/custom_field_id'
 requestBody:
   required: true
   content:

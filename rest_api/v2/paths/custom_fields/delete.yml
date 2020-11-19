@@ -4,6 +4,8 @@ summary: Delete custom field
 description: >
   This endpoint enables you to delete a custom field for your organization as an ORG_ADMIN
 operationId: deleteCustomFields
+parameters:
+  - $ref: '../../components/index.yml#/parameters/custom_field_id'
 requestBody:
   required: true
   content:
@@ -11,8 +13,6 @@ requestBody:
       schema:
         description: Request object
         type: object
-        required:
-          - forced_update
         properties:
           forced_update:
             $ref: '../../components/index.yml#/schemas/CustomFieldForcedUpdate'
