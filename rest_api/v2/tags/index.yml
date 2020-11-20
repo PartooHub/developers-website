@@ -72,5 +72,5 @@
     <li> Use this data to automatically feed other tools (Store locator, website, CRM, Chatbot...) from Partoo / Localoo.
     <li>Allow local users to fill custom fields in order to transmit data from local to central.
     <p>Once created, Custom Fields values can be updated like any other business field.
-    <p>To handle custom fields values for businesses, <a href="#tag/businesses">see business endpoints</a>.
+    <p>To handle custom fields values for businesses, <a href="#tag/Businesses">see business endpoints</a>.
     <p>To recover the list of custom fields available for a business and their ids <a href="#operation/getBusinessFieldsForOrg">see GET business fields endpoint</a>.
