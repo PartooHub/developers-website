@@ -334,7 +334,7 @@ schemas:
     enum:
       - google_my_business
       - facebook
-      - foursquare
+      - tripadvisor
   ReviewPublisherId:
     type: string
     description: Review id on publisher
@@ -2227,12 +2227,11 @@ parameters:
     name: content__isnull
     description: >
       Filter by content.
-      If set to `true`, the endpoint will only return wih no content.
+      If set to `true`, the endpoint will return all the review with only a rating and no content.
     schema:
       type: string
-      enum:
-        - true
-        - false
+      enum: [true, false]
+      example: false
   query_review_bucket:
     in: query
     name: bucket
@@ -2274,6 +2273,7 @@ parameters:
     schema:
       type: string
       format: datetime
+      example: 2017-08-01T00:00:00
   query_review_update_date__lte:
     in: query
     name: update_date__lte
@@ -2283,14 +2283,61 @@ parameters:
     schema:
       type: string
       format: datetime
+      example: 2017-08-02T00:00:00
   query_partner__in:
     in: query
     name: partner__in
-    description: Filter by `partner`
+    description: Filter by publisher
     schema:
       type: array
       items:
         $ref: '#/schemas/ReviewPublisherLabel'
+      example: google_my_business,facebook
+  query_gmb_rating__in:
+    in: query
+    name: gmb_rating__in
+    description: >
+      Filter by Google My Business rating.
+      You will need to put the parameter `partner__in=google_my_business` to filter only these reviews.
+    schema:
+      type: array
+      items:
+        type: number
+        enum: [ 1, 2, 3, 4, 5 ]
+      example: 4,5
+  query_tripadvisor_rating__in:
+    in: query
+    name: tripadvisor_rating__in
+    description: >
+      Filter by Tripadvisor rating.
+      You will need to put the parameter `partner__in=tripadvisor` to filter only these reviews.
+    schema:
+      type: array
+      items:
+        type: number
+        enum: [ 1, 2, 3, 4, 5 ]
+      example: 1,2
+  query_recommended__in:
+    in: query
+    name: recommended__in
+    description: >
+      Filter by Facebook recommendation.
+      You will need to put the parameter `partner__in=facebook` to filter only these reviews.
+    schema:
+      type: array
+      items:
+        type: boolean
+        enum: [ true, false ]
+      example: false
+  query_keywords:
+    in: query
+    name: keywords
+    description: Filter by keywords. It will return reviews that contain the provided keywords.
+    schema:
+      type: array
+      items:
+        type: string
+      example: good,service
   query_review_state:
     in: query
     name: state__in
@@ -2299,6 +2346,7 @@ parameters:
       type: array
       items:
         $ref: '#/schemas/ReviewState'
+      example: treated,not_treated
   metrics:
     in: query
     name: metrics
