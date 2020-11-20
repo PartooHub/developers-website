@@ -1240,7 +1240,7 @@ schemas:
         description: Name of the custom field
         type: string
       type:
-        description: Possible values are "BOOLEAN", "INTEGER", "TEXT", "FLOAT", "SINGLE_SELECT", "MULIPLE_SELECT", "MULIPLE_SELECT_IMAGE".
+        description: Possible values are "BOOLEAN", "INTEGER", "TEXT", "FLOAT", "SINGLE_SELECT", "MULTIPLE_SELECT", "MULTIPLE_SELECT_IMAGE".
         type: string
       id:
         description: Id of the custom field
@@ -1969,6 +1969,431 @@ schemas:
     description: Report name
     type: string
     example: "review_management_weekly"
+  CustomFieldName:
+    description: The name of the custom field
+    type: string
+    minLength: 1
+    maxLength: 50
+    example: Click and collect
+  CustomFieldType:
+    description: Type of the custom field
+    type: string
+    minLength: 1
+    enum:
+      - BOOLEAN
+      - TEXT
+      - INTEGER
+      - FLOAT
+      - SINGLE_SELECT
+      - MULTIPLE_SELECT
+      - MULTIPLE_SELECT_IMAGE
+  CustomFieldTypeBool:
+    description: BOOLEAN
+    minLength: 1
+    type: string
+    example: BOOLEAN
+  CustomFieldTypeText:
+    description: TEXT
+    minLength: 1
+    type: string
+    example: TEXT
+  CustomFieldTypeInteger:
+    description: INTEGER
+    minLength: 1
+    type: string
+    example: INTEGER
+  CustomFieldTypeFloat:
+    description: FLOAT
+    minLength: 1
+    type: string
+    example: FLOAT
+  CustomFieldTypeSingleSelect:
+    description: SINGLE_SELECT
+    minLength: 1
+    type: string
+    example: SINGLE_SELECT
+  CustomFieldTypeMultipleSelect:
+    description: MULTIPLE_SELECT
+    minLength: 1
+    type: string
+    example: MULTIPLE_SELECT
+  CustomFieldTypeMultipleSelectImage:
+    description: MULTIPLE_SELECT_IMAGE
+    minLength: 1
+    type: string
+    example: MULTIPLE_SELECT_IMAGE
+  CustomFieldOrder:
+    description: Describes where the custom field is displayed on the Business Edit view of the Partoo App
+    type: integer
+    default: 10
+    example: 30
+  CustomFieldForcedUpdate:
+    description: >
+      <p>The deletion of a custom field or the update of its metadata can have impacts on custom fields which are already set for businesses.
+      <ul>
+        <li>If <code>forced_update</code> is set to false, only no destructive updates/deletions will be performed. If the modification is destructive, an exception will be returned with the list of new constraints which are not respected by some businesses.
+        <li>If <code>forced_update</code> is set to true, destructive modification will be performed and businesses values will be deleted accordingly.
+    type: boolean
+    default: false
+  CustomFieldMaxLen:
+    description: maximum lenght for TEXT field
+    type: integer
+    example: 10
+  CustomFieldMin:
+    description: minimum value for INTEGER field
+    type: integer
+    example: 0
+  CustomFieldMax:
+    description: maximum value for INTEGER field
+    type: integer
+    example: 100
+  CustomFieldFloatMin:
+    description: minimum value for FLOAT field
+    type: float
+    example: 0.0
+  CustomFieldFloatMax:
+    description: maximum value for FLOAT field
+    type: float
+    example: 10.5
+  CustomFieldPossibleValues:
+    minLength: 1
+    description: list of available values required for SINGLE_SELECT, MULTIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    type: array of string
+    example: ['free parking', 'disabled access']
+  CustomFieldPossibleValuesMSI:
+    minLength: 1
+    description: list of available values required for SINGLE_SELECT, MULTIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    type: array of string
+    example: ['first image', 'second image']
+  CustomFieldPossibleImagesUrls:
+    minLength: 1
+    description: list of available urls required for MULTIPLE_SELECT_IMAGE
+    type: array of string
+    example: ['https://image1', 'https://image2']
+  CustomFieldPossibleImagesLabels:
+    minLength: 1
+    description: list of available labels required for MULTIPLE_SELECT_IMAGE
+    type: array of string
+    example: ['Image 1', 'Image 2']
+  CustomFieldCreatedValues:
+    description: list of available values to add to SINGLE_SELECT, MULTIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    type: array of string
+    example: ['Image 3']
+  CustomFieldCreatedValuesMSI:
+    description: list of available values to add to SINGLE_SELECT, MULTIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    type: array of string
+    example: [{'label': 'Image 3', 'url': 'https://image3', 'value': 'Image 3'}]
+  CustomFieldDeletedValues:
+    description: list of available values to remove from SINGLE_SELECT, MULTIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    type: array of string
+    example: ['Image 1']
+  CustomFieldRenamedValues:
+    description: list of available values to rename for SINGLE_SELECT, MULTIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    type: array of object
+    example: [{'old_value': 'Image 1', 'new_value': 'Draw 1'}, {'old_value': 'Image 2', 'new_value': 'Photo 2'}]
+  CustomFieldRenamedValuesMSI:
+    description: list of available values to add to SINGLE_SELECT, MULTIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    type: array of object
+    example: [{'label': 'new label', 'url': 'https://new_url', 'value': 'new value', 'old_value': 'Image 1'}]
+  CustomFieldOrdersObject:
+    type: object
+    properties:
+      id:
+        $ref:  '#/schemas/CustomFieldId'
+      order:
+        $ref:  '#/schemas/CustomFieldOrder'
+  CustomFieldOrders:
+    description: Describes where the custom fields are displayed on the Business Edit view of the Partoo App
+    type: array
+    items:
+        $ref: '#/schemas/CustomFieldOrdersObject'
+  CustomFieldBool:
+    description: Boolean Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldTypeBool'
+      order:
+        $ref:  '#/schemas/CustomFieldOrder'
+  CustomFieldText:
+    description: Text Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldTypeText'
+      max_len:
+        $ref:  '#/schemas/CustomFieldMaxLen'
+      order:
+        $ref:  '#/schemas/CustomFieldOrder'
+  CustomFieldInteger:
+    description: Integer Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldTypeInteger'
+      min:
+        $ref:  '#/schemas/CustomFieldMin'
+      max:
+        $ref:  '#/schemas/CustomFieldMax'
+      order:
+        $ref:  '#/schemas/CustomFieldOrder'
+  CustomFieldFloat:
+    description: Float Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldTypeFloat'
+      min:
+        $ref:  '#/schemas/CustomFieldFloatMin'
+      max:
+        $ref:  '#/schemas/CustomFieldFloatMax'
+      order:
+        $ref:  '#/schemas/CustomFieldOrder'
+  CustomFieldSingleSelect:
+    description: Single Select Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldTypeSingleSelect'
+      possible_values:
+        $ref:  '#/schemas/CustomFieldPossibleValues'
+      order:
+        $ref:  '#/schemas/CustomFieldOrder'
+  CustomFieldMultipleSelect:
+    description: Multple Select Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldTypeMultipleSelect'
+      possible_values:
+        $ref:  '#/schemas/CustomFieldPossibleValues'
+      order:
+        $ref:  '#/schemas/CustomFieldOrder'
+  CustomFieldMultipleSelectImage:
+    description: Multple Select Image Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldTypeMultipleSelectImage'
+      possible_values:
+        $ref:  '#/schemas/CustomFieldPossibleValuesMSI'
+      possible_images_urls:
+        $ref:  '#/schemas/CustomFieldPossibleImagesUrls'
+      possible_images_labels:
+        $ref:  '#/schemas/CustomFieldPossibleImagesLabels'
+      order:
+        $ref:  '#/schemas/CustomFieldOrder'
+  CustomFieldEditTypeBool:
+    description: Boolean Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldTypeBool'
+      forced_update:
+        $ref:  '#/schemas/CustomFieldForcedUpdate'
+  CustomFieldEditTypeText:
+    description: Text Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldTypeText'
+      max_len:
+        $ref:  '#/schemas/CustomFieldMaxLen'
+      forced_update:
+        $ref:  '#/schemas/CustomFieldForcedUpdate'
+  CustomFieldEditTypeInteger:
+    description: Integer Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldTypeInteger'
+      min:
+        $ref:  '#/schemas/CustomFieldMin'
+      max:
+        $ref:  '#/schemas/CustomFieldMax'
+      forced_update:
+        $ref:  '#/schemas/CustomFieldForcedUpdate'
+  CustomFieldEditTypeFloat:
+    description: Float Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldTypeFloat'
+      min:
+        $ref:  '#/schemas/CustomFieldMin'
+      max:
+        $ref:  '#/schemas/CustomFieldMax'
+      forced_update:
+        $ref:  '#/schemas/CustomFieldForcedUpdate'
+  CustomFieldTypeEditSingleSelect:
+    description: Single Select Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldTypeSingleSelect'
+      created_values:
+        $ref:  '#/schemas/CustomFieldCreatedValues'
+      deleted_values:
+        $ref:  '#/schemas/CustomFieldDeletedValues'
+      renamed_values:
+        $ref:  '#/schemas/CustomFieldRenamedValues'
+      forced_update:
+        $ref:  '#/schemas/CustomFieldForcedUpdate'
+  CustomFieldTypeEditMultipleSelect:
+    description: Multple Select Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldTypeMultipleSelect'
+      created_values:
+        $ref:  '#/schemas/CustomFieldCreatedValues'
+      deleted_values:
+        $ref:  '#/schemas/CustomFieldDeletedValues'
+      renamed_values:
+        $ref:  '#/schemas/CustomFieldRenamedValues'
+      forced_update:
+        $ref:  '#/schemas/CustomFieldForcedUpdate'
+  CustomFieldTypeEditMultipleSelectImage:
+    description: Multple Select Image Custom Field
+    type: object
+    properties:
+      name:
+        $ref:  '#/schemas/CustomFieldName'
+      type:
+        $ref:  '#/schemas/CustomFieldTypeMultipleSelectImage'
+      created_values:
+        $ref:  '#/schemas/CustomFieldCreatedValuesMSI'
+      deleted_values:
+        $ref:  '#/schemas/CustomFieldDeletedValues'
+      renamed_values:
+        $ref:  '#/schemas/CustomFieldRenamedValuesMSI'
+      forced_update:
+        $ref:  '#/schemas/CustomFieldForcedUpdate'
+  CustomFieldId:
+    description: Id of the custom field, received when creating it
+    type: integer
+    example: 42
+  CustomFieldBusinessesCount:
+    description: Number of businesses in error
+    type: integer
+    example: 2
+  CustomFieldSimpleDescription:
+    description: Error description
+    type: text
+    example:
+      "At least one business does not respect the new constraints, please send forced_update=true to force update."
+  CustomFieldTextConstraint:
+    description: constraints in error
+    type: array
+    example:
+      ["max_len"]
+  CustomFieldNumberConstraint:
+    description: constraints in error
+    type: array
+    example:
+      ["min", "max"]
+  CustomFieldSelectDescription:
+    description: Error description
+    type: text
+    example:
+      "At least one business had one of these values, please send forced_update=true to force update."
+  CustomFieldSelectConstraint:
+    description: options in error
+    type: array
+    example:
+      ["free parking"]
+  CustomFieldDeleteDescription:
+    description: custom fields in error
+    type: array
+    example:
+      "At least one business has this custom field, please send forced_update=true to force update."
+  CustomFieldTextError:
+    description: New max_len is not respected by some business
+    type: object
+    properties:
+      errors:
+        type: object
+        properties:
+          json:
+            type: object
+            properties:
+              businesses_count:
+                $ref:  '#/schemas/CustomFieldBusinessesCount'
+              description:
+                $ref:  '#/schemas/CustomFieldSimpleDescription'
+              constraints:
+                $ref:  '#/schemas/CustomFieldTextConstraint'
+  CustomFieldNumberError:
+    description: New max or min is not respected by some business
+    type: object
+    properties:
+      errors:
+        type: object
+        properties:
+          json:
+            type: object
+            properties:
+              businesses_count:
+                $ref:  '#/schemas/CustomFieldBusinessesCount'
+              description:
+                $ref:  '#/schemas/CustomFieldSimpleDescription'
+              constraints:
+                $ref:  '#/schemas/CustomFieldNumberConstraint'
+  CustomFieldSelectError:
+    description: Option deleted is used by a business
+    type: object
+    properties:
+      errors:
+        type: object
+        properties:
+          json:
+            type: object
+            properties:
+              businesses_count:
+                $ref:  '#/schemas/CustomFieldBusinessesCount'
+              description:
+                $ref:  '#/schemas/CustomFieldSelectDescription'
+              options:
+                $ref:  '#/schemas/CustomFieldSelectConstraint'
+  CustomFieldDeleteError:
+    type: object
+    properties:
+      errors:
+        type: object
+        properties:
+          json:
+            type: object
+            properties:
+              businesses_count:
+                $ref:  '#/schemas/CustomFieldBusinessesCount'
+              description:
+                $ref:  '#/schemas/CustomFieldDeleteDescription'
 parameters:
   query_filter_by_country_required:
     in: query
@@ -2429,6 +2854,33 @@ parameters:
       type: boolean
     required: false
     description: Filter google post based on whether or not it is expired
+  custom_field_name:
+    in: query
+    name: name
+    required: true
+    schema:
+      type: string
+    description: The name of the custom field
+  custom_field_type:
+    in: query
+    name: type
+    description: Type of the custom field
+    schema:
+      type: string
+      enum:
+        - BOOLEAN
+        - TEXT
+        - INTEGER
+        - FLOAT
+        - SINGLE_SELECT
+        - MULTIPLE_SELECT
+        - MULTIPLE_SELECT_IMAGE
+  custom_field_id:
+    in: path
+    name: custom_field_id
+    required: true
+    schema:
+      $ref: '#/schemas/CustomFieldId'
 responses:
   400:
     description: Your request is incorrect
