@@ -66,11 +66,11 @@
   description: All operations available on Presence Management analytics
 - name: Custom Fields
   description: >
-    <p>All operations available on Custom Fields metadata : creation, update and deletion of custom fields
+    <p>All operations available on Custom Fields metadata : creation, update and deletion of custom fields.
     <p>⚠️ <b>What are Custom fields ?</b>
     <p>Custom Fields allow Enterprise Administrators to add custom data fields to Partoo / Localoo under different formats (List, Text, Number…) in order to create a central datahub for local information and to:
-    <li> Use this data to automatically feed other tools (Store locator, website, CRM, Chatbot...) from Partoo / Localoo
-    <li>Allow local users to fill custom fields in order to transmit data from local to central
+    <li> Use this data to automatically feed other tools (Store locator, website, CRM, Chatbot...) from Partoo / Localoo.
+    <li>Allow local users to fill custom fields in order to transmit data from local to central.
     <p>Once created, Custom Fields values can be updated like any other business field.
-    <p>See business fields endpoints for more details about custom fields business values.
-    <p>To recover the list of custom fields available for a business and their ids, you can use the GET business fields endpoint: Get Business Fields Configuration for an Organization
+    <p>To handle custom fields values for businesses, <a href="#tag/businesses">see business endpoints</a>.
+    <p>To recover the list of custom fields available for a business and their ids <a href="#operation/getBusinessFieldsForOrg">see GET business fields endpoint</a>.
