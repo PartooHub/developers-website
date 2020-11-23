@@ -961,7 +961,7 @@ schemas:
       $ref: '#/schemas/TimeWindow'
   OpenHours:
     description: |
-      <p>The opening hours of the business.
+      <p>The opening hours of the business in its timezone.
       <p>❗ This field is not mandatory, but if not provided then the business will not be pushed on some platforms (example: Google My Business). If provided, then a schedule needs to be sent for each day in particular
     type: object
     required:
