@@ -42,6 +42,7 @@ business            null                   {businessId: string}   the business e
 add                 null                   null                   the add business view                         Yes
 analytics           null                   null                   the analytics page                            Yes
 presenceManagement  null                   null                   the presence management view                  Yes
+googlePosts         null                   null                   the google post view                          Yes
 reviewManagement    null                   null                   the review management view                    Yes
 reviewAnalytics     null                   null                   the review analytics view                    	Yes
 reviewBooster       null                   null                   the review booster view                    	Yes
@@ -223,6 +224,27 @@ You can integrate this page by doing:
 The are 2 available callbacks:
  - Go to edit click callback :ref:`callbacks_go_to_edit_callback`
  - Go to partner connection click callback :ref:`callbacks_go_to_partner_connection_callback`
+
+.. _pages_integration_gp_page:
+
+Google Post Page
+-----------------------------------
+
+**Integrating**
+
+You can integrate this page by doing:
+
+.. code-block:: javascript
+
+    var partooPage = Partoo('partoo-container', {});
+    var userToken = 'serverSideGeneratedToken';
+
+    partooPage.login(userToken); // authentication is mandatory access add page
+    partooPage.navigate('googlePosts');
+
+**Available callbacks**
+
+❌ No available callback.
 
 .. _pages_integration_rm_page:
 

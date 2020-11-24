@@ -64,6 +64,18 @@
     <p>⚠️ SMS send functionality cannot be tested in Sandbox env.
 - name: Presence Analytics
   description: All operations available on Presence Management analytics
+- name: Google Post
+  description: |
+    <b>⚠️Feature only available for small and midsize businesses (SMBs)⚠️</b>
+
+    Google Posts is a feature that allows businesses to create and share announcements, offers,
+    new or popular items in stock, or event details directly with the customers.
+    The post will appear on Google Search and Maps, which will boost the results for the business.
+
+    When a business is connected to a Google My Business location (action performed in Partoo app on
+    <a href="https://app.partoo.co/knowledge/connections">Partner Connection</a> page),
+    all the Google Posts will be automatically imported.
+    When a business is disconnected the Google Posts published on Google will be deleted from Partoo database.
 - name: Custom Fields
   description: >
     <p>All operations available on Custom Fields metadata : creation, update and deletion of custom fields.

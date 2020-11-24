@@ -1,6 +1,6 @@
 summary: Update a Google Post
 description: >
-  This endpoint lets you update a google post.
+  This endpoint lets you update a Google Post. The update will not happen in real time and might take a few minutes
 operationId: updateGooglePost
 tags:
   - Google Post
@@ -12,7 +12,7 @@ requestBody:
   content:
     application/json:
       schema:
-        description: Request body to update a google post
+        description: Request body to update a Google Post
         type: object
         properties:
           summary:
@@ -24,7 +24,10 @@ requestBody:
           call_to_action_url:
             $ref: '../../components/index.yml#/schemas/GooglePostCallToActionUrl'
           scheduled_start_time:
-            $ref: '../../components/index.yml#/schemas/GooglePostScheduledStartTime'
+            description: Date when the Google Post will be published (will be publish immediatly by default).
+              The timezone is mandatory. This field can be modify only if the post has not been created yet.
+            type: string
+            example: 2020-01-01T12:00:00+02:00
           google_post_event:
             $ref: '../../components/index.yml#/schemas/GooglePostEvent'
           google_post_offer:
