@@ -15,14 +15,6 @@
   description: >
     <p>A <code>business</code> object contains all the details related to a local store. All the businesses created will be grouped under your <code>organisation</code>. The organisation is created at the onboarding phase, by Partoo.
     <p>In this section, is explained how a business can be created, updated or retrieved.
-    <p>⚠️ <b>What are Custom fields ?</b>
-    <p>Custom Fields allow Enterprise Administrators to add custom data fields to Partoo / Localoo under different formats (List, Text, Number…) in order to create a central datahub for local information and to:
-    <li> Use this data to automatically feed other tools (Store locator, website, CRM, Chatbot...) from Partoo / Localoo
-    <li>Allow local users to fill custom fields in order to transmit data from local to central
-    <p>The APIs will allow you only to read the already defined permissions, the creation and editing APIs will be enabled at a later date (or say why they can't Post and Put them)
-    <p>They can be configured at an org level only through contacting your dedicated Customer Success Manager.
-    <p>Once created, Custom Fields values can be updated like any other business field.
-    <p>See business fields endpoints for more details about custom fields.
 - name: Business Fields
   description: >
     These endpoints give you the list of all the fields that are available for the business / organization / provider, grouped by section.
@@ -84,3 +76,13 @@
     <a href="https://app.partoo.co/knowledge/connections">Partner Connection</a> page),
     all the Google Posts will be automatically imported.
     When a business is disconnected the Google Posts published on Google will be deleted from Partoo database.
+- name: Custom Fields
+  description: >
+    <p>All operations available on Custom Fields metadata : creation, update and deletion of custom fields.
+    <p>⚠️ <b>What are Custom fields ?</b>
+    <p>Custom Fields allow Enterprise Administrators to add custom data fields to Partoo / Localoo under different formats (List, Text, Number…) in order to create a central datahub for local information and to:
+    <li> Use this data to automatically feed other tools (Store locator, website, CRM, Chatbot...) from Partoo / Localoo.
+    <li>Allow local users to fill custom fields in order to transmit data from local to central.
+    <p>Once created, Custom Fields values can be updated like any other business field.
+    <p>To handle custom fields values for businesses, <a href="#tag/Businesses">see business endpoints</a>.
+    <p>To recover the list of custom fields available for a business and their ids <a href="#operation/getBusinessFieldsForOrg">see GET business fields endpoint</a>.

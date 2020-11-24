@@ -221,3 +221,16 @@
 /presence_analytics_export:
   get:
     $ref: ./presence_analytics/get_export.yml
+
+# CUSTOM FIELDS endpoints
+/custom_fields:
+  post:
+    $ref: ./custom_fields/post_create.yml
+/custom_fields/{custom_field_id}:
+  put:
+    $ref: ./custom_fields/put_update.yml
+  delete:
+    $ref: ./custom_fields/delete.yml
+/custom_fields/order:
+  post:
+    $ref: ./custom_fields/post_order.yml
