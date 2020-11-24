@@ -1,6 +1,8 @@
 summary: Create a Google Post
-description: >
-  This endpoint lets you create a google post.
+description: |
+  This endpoint lets you create a Google Post.
+
+  The creation will not happen in real time and might take a few minutes.
 operationId: createGooglePost
 tags:
   - Google Post
@@ -10,7 +12,7 @@ requestBody:
   content:
     application/json:
       schema:
-        description: Request body to create a google post
+        description: Request body to create a Google Post
         type: object
         required:
           - business_id
@@ -32,7 +34,13 @@ requestBody:
           call_to_action_url:
             $ref: '../../components/index.yml#/schemas/GooglePostCallToActionUrl'
           scheduled_start_time:
-            $ref: '../../components/index.yml#/schemas/GooglePostScheduledStartTime'
+            description: |
+              Date when the Google Post will be published.
+
+              If not given, the default value is `now`, therefore the Google Post will be published immediatly.
+              The timezone is mandatory.
+            type: string
+            example: 2020-01-01T12:00:00+02:00
           google_post_event:
             $ref: '../../components/index.yml#/schemas/GooglePostEvent'
           google_post_offer:
