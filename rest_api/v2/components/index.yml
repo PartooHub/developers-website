@@ -961,7 +961,7 @@ schemas:
       $ref: '#/schemas/TimeWindow'
   OpenHours:
     description: |
-      <p>The opening hours of the business.
+      <p>The opening hours of the business (in its timezone).
       <p>❗ This field is not mandatory, but if not provided then the business will not be pushed on some platforms (example: Google My Business). If provided, then a schedule needs to be sent for each day in particular
     type: object
     required:
@@ -989,7 +989,7 @@ schemas:
         $ref: '#/schemas/Day'
   SpecificHours:
     description: |
-      <p>Exceptional openning or closing times for the business
+      <p>Exceptional opening or closing times for the business (in its timezone).
       <p>All exceptional days of the year, including temporerly closed, can be specified beforehand or on the go. For example:
       <ul>
        <li>Beforehand: bank holidays (like Christmas or Pentecôte)</li>
