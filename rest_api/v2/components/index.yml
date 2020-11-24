@@ -355,12 +355,12 @@ schemas:
     example: 2017-08-01T19:15:54.256000+02:00
   CreatedDate:
     type: string
-    description: Date of creation
+    description: Creation date on Partoo
     format: datetime
     example: 2019-08-01T19:15:54.256000+02:00
   UpdatedDate:
     type: string
-    description: Date of update
+    description: Last update date (either on Partoo or on Partner platform)
     format: datetime
     example: 2019-09-01T15:12:35.256000+02:00
   ReviewDeleteDate:
@@ -1696,12 +1696,12 @@ schemas:
         example: "my_first_name"
 
   GooglePostId:
-    description: The Google Post id.
+    description: The Google Post id
     type: integer
     example: 34
 
   GooglePostTopicType:
-    description: The topic type of the Google Post.
+    description: The type of the Google Post. A Google Post cannot have multiple types.
     type: string
     enum: ['NEWS', 'EVENT', 'OFFER', 'ALERT']
     example: OFFER
@@ -1768,7 +1768,7 @@ schemas:
     example: These are the conditions
 
   GooglePostEvent:
-    description: Google Post Event, required only for event and offer topic types
+    description: Google Post Event, required only for event and offer topic types.
     type: object
     required:
       - title
@@ -1783,7 +1783,7 @@ schemas:
         $ref: '#/schemas/GooglePostEndDatetime'
 
   GooglePostOffer:
-    description: Google Post Offer, required only for offer topic type
+    description: Google Post Offer, required only for offer topic type.
     type: object
     properties:
       coupon_code:
@@ -1822,7 +1822,7 @@ schemas:
     example: 155
 
   GooglePostState:
-    description: The state of the post, indicating what part of its lifecycle it is in
+    description: The state of the post, indicating at which lifecycle stage it is currently.
     type: string
     enum: ['live', 'pending', 'to_configure', 'expired']
 
@@ -2425,41 +2425,55 @@ parameters:
     schema:
       type: string
     required: false
-    description: Filter Google Post based on their title. Will do a contain search, the text do not have to match perfectly.
+    description: |
+      Filter Google Posts based on their title.
+
+      It returns Google Posts that contain in their title the given string.
+      The text does not have to match perfectly.
   query_google_post_summary:
     in: query
     name: summary
     schema:
       type: string
     required: false
-    description: Filter Google Post based on their description. Will do a contain search, the text do not have to match perfectly.
+    description: |
+      Filter Google Posts based on their description.
+
+      It returns Google Posts that contain in their description the given string.
+      The text does not have to match perfectly.
   query_google_post_start_datetime:
     in: query
     name: start_datetime
     schema:
       type: string
     required: false
-    description: >
-      Filter Google Post based on their start date. The start date represents the date on which the Google Post of type event/offer
-      will begin. As there is no start date for a Google Post of type news, if you search based on the start date,
-      it will be compare to the creation date of the Google Post.
+    description: |
+      Filters Google Posts based on their start date.
+
+      The start date represents the moment on which a Google Post of type <b>event/offer</b>
+      will become available. In case of Google Posts of type <b>news</b>, the `start_datetime`
+      it will be compare to the creation date of the Google Post, as the field is not
+      present in this context.
   query_google_post_end_datetime:
     in: query
     name: end_datetime
     schema:
       type: string
     required: false
-    description: >
-      Filter Google Post based on their end date. The end date represents the date on which the Google Post of type event/offer
-      will end. As there is no end date for a Google Post of type news, if you search based on the end date,
-      it will be compare to exactly one week after the creation date of the Google Post.
+    description: |
+      Filter Google Posts based on their end date.
+
+      The end date represents the date on which the Google Post of type <b>event/offer</b>
+      will expire. In case of Google Posts of type <b>news</b>, the `end_datetime`
+      it will be compare to exactly one week after the creation date of the Google Post,
+      as the field is not present in this context.
   query_google_post_is_expired:
     in: query
     name: is_expired
     schema:
       type: boolean
     required: false
-    description: Filter Google Post based on whether or not it has expired
+    description: Filter Google Posts based on whether or not it has expired.
   query_google_post_state_in:
     in: query
     name: state__in
@@ -2467,7 +2481,7 @@ parameters:
       type: string
       enum: ['LIVE','PARTOO_PENDING', 'PARTOO_PENDING_DELETE', 'PROCESSING', 'REJECTED', 'PARTOO_SCHEDULED', 'PARTOO_ERROR']
     required: false
-    description: Filter Google Post based on it's state
+    description: Filter Google Posts based on it's state.
   query_google_post_topic_type:
     in: query
     name: topic_type
@@ -2475,7 +2489,7 @@ parameters:
       type: string
       enum: ['NEWS', 'EVENT', 'OFFER', 'ALERT']
     required: false
-    description: Filter Google Post based on it's type
+    description: Filter Google Posts based on it's type.
   query_google_post_topic_type_in:
     in: query
     name: topic_type__in
@@ -2483,7 +2497,7 @@ parameters:
       type: string
       enum: ['NEWS', 'EVENT', 'OFFER', 'ALERT']
     required: false
-    description: Filter Google Post based on different type
+    description: Filter Google Posts based on a list of different types.
 responses:
   400:
     description: Your request is incorrect

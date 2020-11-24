@@ -1,6 +1,8 @@
 summary: Delete a Google Post
-description: >
-  This endpoint lets you delete a Google Post. The deletion will not happen in real time and might take a few minutes
+description: |
+  This endpoint lets you delete a Google Post.
+
+  The deletion will not happen in real time and might take a few minutes.
 operationId: deleteGooglePost
 tags:
   - Google Post
