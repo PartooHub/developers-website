@@ -709,7 +709,7 @@ schemas:
         format: float
         example: 1409925979.5
       modified:
-        description: Timestamp (in seconds) of the business last modification
+        description: Timestamp (in seconds) of the business last modification. Doesn’t take into account changes to the Custom Fields or related objects.
         type: number
         format: float
         example: 1561335111.681374
@@ -796,7 +796,7 @@ schemas:
         format: float
         example: 1409925979.5
       modified:
-        description: Timestamp (in seconds) of the business last modification
+        description: Timestamp (in seconds) of the business last modification. Doesn’t take into account changes to the Custom Fields or related objects.
         type: number
         format: float
         example: 1561335111.681374
@@ -1703,7 +1703,7 @@ schemas:
   GooglePostTopicType:
     description: The topic type of the Google Post.
     type: string
-    enum: ['NEWS', 'EVENT', 'OFFER']
+    enum: ['NEWS', 'EVENT', 'OFFER', 'ALERT']
     example: OFFER
 
   GooglePostSummary:
@@ -2203,12 +2203,12 @@ parameters:
     description: Retrieve only businesses having promotional offers
   query_filter_by_business_modification_timestamp:
     in: query
-    name: timestamp
-    deprecated: true
+    name: modified__gte
+    deprecated: false
     schema:
-      type: number
+      type: timestamp
     required: false
-    description: Filter by modified attribute (modified >= timestamp)
+    description: Filter by modified attribute (modified >= modified_gte)
   query_filter_by_business_subscription_to_review_management:
     in: query
     deprecated: true
@@ -2473,7 +2473,7 @@ parameters:
     name: topic_type
     schema:
       type: string
-      enum: ['NEWS', 'EVENT', 'OFFER']
+      enum: ['NEWS', 'EVENT', 'OFFER', 'ALERT']
     required: false
     description: Filter Google Post based on it's type
   query_google_post_topic_type_in:
@@ -2481,7 +2481,7 @@ parameters:
     name: topic_type__in
     schema:
       type: string
-      enum: ['NEWS', 'EVENT', 'OFFER']
+      enum: ['NEWS', 'EVENT', 'OFFER', 'ALERT']
     required: false
     description: Filter Google Post based on different type
 responses:
