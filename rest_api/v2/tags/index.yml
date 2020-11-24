@@ -74,9 +74,13 @@
   description: All operations available on Presence Management analytics
 - name: Google Post
   description: |
-    Google Post is a feature that allow businesses to create content directly on Google. The Google Post appears in
-    Google Search which will boost results for the business.
+    <b>⚠️Feature only available for small and midsize businesses (SMBs)⚠️</b>
 
-    <b>Feature only available for independent business.</b>
-    On Partner Connection all the Google Post will be automatically imported, on business disconnection the Google Post
-    published on Google will be deleted from the database.
+    Google Posts is a feature that allows businesses to create and share announcements, offers,
+    new or popular items in stock, or event details directly with the customers.
+    The post will appear on Google Search and Maps, which will boost the results for the business.
+
+    When a business is connected to a Google My Business location (action performed in Partoo app on
+    <a href="https://app.partoo.co/knowledge/connections">Partner Connection</a> page),
+    all the Google Posts will be automatically imported.
+    When a business is disconnected the Google Posts published on Google will be deleted from Partoo database.
