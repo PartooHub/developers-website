@@ -1,8 +1,8 @@
 summary: Search for reviews
-description: >
-  This endpoint let you search for the reviews of your businesses.
+description: |
+  This endpoint lets you search for the reviews of your businesses.
+
   To access the reviews of a business you need to have `READ` access on it.
-  You can access reviews from **Google My Business**, **Facebook** & **Tripadvisor**.
   The response is paginated (30 results per page).
 operationId: searchReviews
 tags:
