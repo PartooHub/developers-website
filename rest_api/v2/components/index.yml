@@ -327,21 +327,24 @@ schemas:
   CommentId:
     type: integer
     description: Comment id
-    example: 666
+    example: 82938
   ReviewPublisherLabel:
     type: string
     description: Publisher label
     enum:
       - google_my_business
       - facebook
-      - foursquare
+      - tripadvisor
   ReviewPublisherId:
     type: string
     description: Review id on publisher
     example: accounts/114063712393225091258/locations/74805271119400652054
   ReviewAuthorName:
     type: string
-    description: Author name
+    description: |
+      The author name of the review.
+
+      **Note:** Replies don't have an author.
     example: Castorche
   ReviewCreationDate:
     type: string
@@ -419,6 +422,11 @@ schemas:
         $ref: '#/schemas/ReviewUpdateDate'
       can_edit:
         type: boolean
+        description: |
+          If the current user can or cannot edit a reply
+
+          **Note:** This applies on Facebook replies only.
+          A reply left by an external user on Facebook cannot be edited.
         example: true
       review_id:
         $ref: '#/schemas/ReviewId'
@@ -2667,7 +2675,7 @@ parameters:
   query_business__notin:
     in: query
     name: business__notin
-    description: Filter out by business ids
+    description: Filter by all allowed businesses except the ones given in `business__notin`
     schema:
       type: array
       items:
@@ -2675,14 +2683,16 @@ parameters:
   query_content__isnull:
     in: query
     name: content__isnull
-    description: >
-      Filter by content.
-      If set to `true`, the endpoint will only return wih no content.
+    description: |
+      Filter by review's content
+
+      If set to `true`, the endpoint will return all the reviews without content.
+
+      **Note:** This is the content of the review and not the content of the reply.
     schema:
       type: string
-      enum:
-        - true
-        - false
+      enum: [true, false]
+      example: false
   query_review_bucket:
     in: query
     name: bucket
@@ -2700,8 +2710,9 @@ parameters:
   query_analytics_date__gte:
     in: query
     name: filter_date__gte
-    description: >
-      Filter by `date`.
+    description: |
+      Filter by `date`
+
       Return all the analytics whose `date` >= `given_date`.
     schema:
       type: string
@@ -2718,29 +2729,95 @@ parameters:
   query_review_update_date__gte:
     in: query
     name: update_date__gte
-    description: >
-      Filter by `update_date`.
-      Return all the reviews whose `update_date` >= `given_date`.
+    description: |
+      Filter by `update_date`
+
+      Return all the reviews whose `update_date` is grater than the given date
     schema:
       type: string
       format: datetime
+      example: 2017-08-01T00:00:00
   query_review_update_date__lte:
     in: query
     name: update_date__lte
-    description: >
-      Filter by `update_date`.
-      Return all the reviews whose `update_date` <= `given_date`.
+    description: |
+      Filter by `update_date`
+
+      Return all the reviews whose `update_date` is lower than the given date.
     schema:
       type: string
       format: datetime
+      example: 2017-08-02T00:00:00
   query_partner__in:
     in: query
     name: partner__in
-    description: Filter by `partner`
+    description: Filter by publisher
     schema:
       type: array
       items:
         $ref: '#/schemas/ReviewPublisherLabel'
+      example: google_my_business,facebook
+  query_gmb_rating__in:
+    in: query
+    name: gmb_rating__in
+    description: |
+      Filter only by Google ratings
+
+    schema:
+      type: array
+      items:
+        type: number
+        enum: [ 1, 2, 3, 4, 5 ]
+      example: 4,5
+  query_tripadvisor_rating__in:
+    in: query
+    name: tripadvisor_rating__in
+    description: >
+      Filter only by Tripadvisor ratings
+    schema:
+      type: array
+      items:
+        type: number
+        enum: [ 1, 2, 3, 4, 5 ]
+      example: 1,2
+  query_recommended__in:
+    in: query
+    name: recommended__in
+    description: >
+      Filter only by Facebook recommendation
+    schema:
+      type: array
+      items:
+        type: boolean
+        enum: [ true, false ]
+      example: false
+  query_keywords:
+    in: query
+    name: keywords
+    description: |
+      Filter by keywords
+
+      Return all the reviews with not-nullable content, that contain the provided list of keywords.
+
+      **Note:** This is the content of the review and not the content of the reply.
+
+      The filter accepts both simple and composed words.
+      To indicate it's a composed keyword, add the `+` as separator.
+      For example:
+
+       `keywords=bonjour` returns all reviews containing the keyword `bonjour`
+
+       `keywords=good+service` returns all reviews containing the
+       combined keyword **good service**, without splitting the keyword.
+       No reviews containing just **good** or just **service** will be returned.
+
+       `keywords=bonjour,good+service`: returns all reviews that contain either just **bonjour**,
+       either just **good service** or both keywords at the same time.
+    schema:
+      type: array
+      items:
+        type: string
+      example: bonjour,good+service
   query_review_state:
     in: query
     name: state__in
@@ -2749,6 +2826,7 @@ parameters:
       type: array
       items:
         $ref: '#/schemas/ReviewState'
+      example: treated,not_treated
   metrics:
     in: query
     name: metrics
