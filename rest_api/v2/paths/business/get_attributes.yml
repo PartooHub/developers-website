@@ -1,6 +1,6 @@
 summary: Get Google attributes for your Business
 description: >
-  This endpoint allows you to view the **Google attributes** set for your business
+  This endpoint allows you to view the **Google attributes** set for your business as an **ORG_ADMIN**.
 
 operationId: getBusinessAttributes
 tags:

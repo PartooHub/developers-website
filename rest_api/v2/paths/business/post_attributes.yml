@@ -1,6 +1,6 @@
 summary: Set Google attributes for your Business
 description: >
-  This endpoint allows you to set **Google attributes** for your business
+  This endpoint allows you to set **Google attributes** for your business as an **ORG_ADMIN**
 
 operationId: postBusinessAttributes
 

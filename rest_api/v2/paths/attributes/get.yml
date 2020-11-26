@@ -1,6 +1,7 @@
 summary: GMB Attributes
 description: |
   This endpoint allows you to view the **Google My Business** attributes available for a given Category.
+  Only **ORG_ADMIN** Users can use this endpoint.
 
 operationId: getAttributes
 tags:
