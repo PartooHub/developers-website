@@ -2090,42 +2090,47 @@ schemas:
     example: 10.5
   CustomFieldPossibleValues:
     minLength: 1
-    description: list of available values required for SINGLE_SELECT, MULTIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    description: list of available values
     type: array of string
     example: ['free parking', 'disabled access']
   CustomFieldPossibleValuesMSI:
     minLength: 1
-    description: list of available values required for SINGLE_SELECT, MULTIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    description: >
+      <p>List of available values.
+      <p>Each element correspond to one of possible_images_urls and possible_images_labels.
+      <p>Hence the 3 lists shall have the same size.
     type: array of string
     example: ['first image', 'second image']
   CustomFieldPossibleImagesUrls:
     minLength: 1
-    description: list of available urls required for MULTIPLE_SELECT_IMAGE
+    description: List of available urls
     type: array of string
     example: ['https://image1', 'https://image2']
   CustomFieldPossibleImagesLabels:
     minLength: 1
-    description: list of available labels required for MULTIPLE_SELECT_IMAGE
+    description: >
+      <p>List of available labels.
+      <p>Can be set to null but shall always have the same number of elements than possible_values and possible_images_urls.
     type: array of string
     example: ['Image 1', 'Image 2']
   CustomFieldCreatedValues:
-    description: list of available values to add to SINGLE_SELECT, MULTIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    description: list of available values to add
     type: array of string
     example: ['Image 3']
   CustomFieldCreatedValuesMSI:
-    description: list of available values to add to SINGLE_SELECT, MULTIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    description: list of available values to add
     type: array of string
     example: [{'label': 'Image 3', 'url': 'https://image3', 'value': 'Image 3'}]
   CustomFieldDeletedValues:
-    description: list of available values to remove from SINGLE_SELECT, MULTIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    description: list of available values to remove
     type: array of string
     example: ['Image 1']
   CustomFieldRenamedValues:
-    description: list of available values to rename for SINGLE_SELECT, MULTIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    description: list of available values to rename
     type: array of object
     example: [{'old_value': 'Image 1', 'new_value': 'Draw 1'}, {'old_value': 'Image 2', 'new_value': 'Photo 2'}]
   CustomFieldRenamedValuesMSI:
-    description: list of available values to add to SINGLE_SELECT, MULTIPLE_SELECT and MULTIPLE_SELECT_IMAGE
+    description: list of available values to add
     type: array of object
     example: [{'label': 'new label', 'url': 'https://new_url', 'value': 'new value', 'old_value': 'Image 1'}]
   CustomFieldOrdersObject:
