@@ -17,16 +17,8 @@ requestBody:
         description: Request body to modify a reply
         type: object
         required:
-          - review_id
           - content
         properties:
-            review_id:
-              description: ID of the review you want to reply
-              type: number
-              example: 34
-            parent_id:
-              description: Only useful for Facebook. ID of the comment you want to reply, as in Facebook you can comment on a comment.
-              type: number
             content:
               description: Content of your Reply
               type: string
