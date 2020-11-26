@@ -1,0 +1,33 @@
+summary: GMB Attributes
+description: |
+  This endpoint allows you to view the **Google My Business** attributes available for a given Category.
+
+operationId: getAttributes
+tags:
+  - GMB Attributes
+parameters:
+  - $ref: '../../components/index.yml#/parameters/attributes_lang'
+  - $ref: '../../components/index.yml#/parameters/attributes_category_name'
+  - $ref: '../../components/index.yml#/parameters/attributes_country'
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/index.yml#/schemas/AttributesGroupResponse'
+  400:
+    description: Wrong or missing parameters
+    content:
+      application/json:
+        schema:
+          anyOf:
+            - $ref: '../../components/index.yml#/schemas/AttributesMissingParametersError'
+            - $ref: '../../components/index.yml#/schemas/AttributesWrongCategoryError'
+            - $ref: '../../components/index.yml#/schemas/AttributesWrongLangError'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
+  404:
+    $ref: '../../components/index.yml#/responses/404'
