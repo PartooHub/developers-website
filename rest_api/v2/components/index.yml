@@ -119,10 +119,8 @@ schemas:
           $ref: '#/schemas/ApiKeys/label'
         user_id:
           $ref: '#/schemas/UserId'
-        user_first_name:
-          $ref: '#/schemas/UserFirstName'
-        user_last_name:
-          $ref: '#/schemas/UserLastName'
+        user_name:
+          $ref: '#/schemas/UserName'
         user_role:
           $ref: '#/schemas/Role'
         disabled:
@@ -135,12 +133,15 @@ schemas:
           type: string
           pattern: date
           example: "2019-08-22 11:46:38.914467+00"
+        created_by:
+          $ref: '#/schemas/UserId'
+        created_by_name:
+          type: string
+          example: "John Smith"
         created_at:
           type: string
           pattern: date
           example: "2018-03-12 11:49:03.399475+00"
-        created_by:
-          $ref: '#/schemas/UserId'
         revoked_by:
           $ref: '#/schemas/UserId'
         revoked_by_name:
@@ -938,6 +939,10 @@ schemas:
   UserPhone:
     description: User phone number
     type: string
+  UserName:
+    description: User first name and last name concatenated
+    type: string
+    example: Perceval de Galles
   UserFirstName:
     description: User first name
     type: string
