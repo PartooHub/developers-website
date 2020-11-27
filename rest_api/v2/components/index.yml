@@ -3267,7 +3267,7 @@ parameters:
       example: '2020-11-06T23:59:59'
     required: false
     description: |
-      Filters Google Posts based on their start date time.
+      Filters Google Posts based on their start datetime.
 
       The start datetime represents the moment on which a Google Post of type <b>event/offer</b>
       will become available. In case of Google Posts of type <b>news</b>, the `start_datetime`
@@ -3281,7 +3281,7 @@ parameters:
       example: '2020-11-06T23:59:59'
     required: false
     description: |
-      Filter Google Posts based on their end date time.
+      Filter Google Posts based on their end datetime.
 
       The end datetime represents the date on which the Google Post of type <b>event/offer</b>
       will expire. In case of Google Posts of type <b>news</b>, the `end_datetime`
