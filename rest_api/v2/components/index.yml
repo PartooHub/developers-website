@@ -921,13 +921,13 @@ schemas:
                 type: array
                 description: >
                   Options which are true for the Attribute. Can be empty.
-                item:
+                items:
                   type: string
               unset_values:
                 type: array
                 description: >
                   Options which are false for the Attributes. Can be empty
-                item:
+                items:
                   type: string
   Attributes.Field.REPEATABLE_URL:
     allOf:
@@ -937,7 +937,7 @@ schemas:
             description: >
               Value for this Attribute. Can be null if not set
             type: array
-            item:
+            items:
               type: string
   Attributes.Field.URL:
     allOf:
@@ -2605,11 +2605,11 @@ schemas:
       - ENUM
       - REPEATABLE_ENUM
   AttributeGmbId:
-    description: Google mu Business Id of the attribute
+    description: Google my Business Id of the attribute
     type: string
     example: 'gcid:restaurant'
   AttributeName:
-    description: Name of the attribute
+    description: Name of the attribute in the chosen language
     type: string
     example: 'Delivery'
   AttributeOrder:
@@ -2640,7 +2640,7 @@ schemas:
     properties:
       attributes:
         type: array
-        description: List of Google Attributes by Group
+        description: List of Google Attributes
         items:
           $ref: '#/schemas/Attribute'
       name:
@@ -2649,7 +2649,7 @@ schemas:
         $ref: '#/schemas/AttributesGroupOrder'
   AttributesGroupList:
     type: array
-    description: List of Google Attributes
+    description: List of Google Groups
     items:
       $ref:  '#/schemas/AttributesGroup'
   AttributesGroupResponse:
@@ -3195,14 +3195,22 @@ parameters:
     in: path
     name: attribute_lang
     required: true
-    shema:
+    schema:
       type: string
       enum: ['fr', 'es', 'it', 'en', 'de', 'pt', 'pt-BR']
-    description: Language in which the attributes will be be fetched
+    description: Language in which the attributes name and groups name will be translated
   attributes_category_name:
     in: path
     name: attributes_category_name
     required: true
+    schema:
+      type: string
+      example: 'gcid:restaurant'
+    description: Category for which availabe attributes will be fetched
+  attributes_category_name_optional:
+    in: path
+    name: attributes_category_name
+    required: false
     schema:
       type: string
       example: 'gcid:restaurant'
@@ -3213,7 +3221,9 @@ parameters:
     required: false
     schema:
       type: string
-    description: Country for which available attributes will be fetched - use ISO 3166 alpha2 code (i.e. use “FR” for France)
+    description: >
+      <p>Country for which available attributes will be fetched - use ISO 3166 alpha2 code ("FR", "EN", "IT").
+      <p>If country is not specified, attributes available in all countries will be returned.
 responses:
   400:
     description: Your request is incorrect

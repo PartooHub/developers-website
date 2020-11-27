@@ -1,6 +1,6 @@
 summary: Set Google attributes for your Business
 description: >
-  This endpoint allows you to set **Google attributes** for your business as an **ORG_ADMIN**
+  This endpoint allows you to set **Google attributes** for your business.
 
 operationId: postBusinessAttributes
 
@@ -24,7 +24,7 @@ responses:
         schema:
           type: object
           properties:
-            id:
+            status:
               $ref: '../../components/index.yml#/schemas/RequestStatus'
   400:
     description: Wrong request Body

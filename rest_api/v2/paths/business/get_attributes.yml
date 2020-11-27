@@ -1,12 +1,14 @@
 summary: Get Google attributes for your Business
 description: >
-  This endpoint allows you to view the **Google attributes** set for your business as an **ORG_ADMIN**.
+  This endpoint allows you to view the **Google attributes** set for your business.
 
 operationId: getBusinessAttributes
 tags:
   - Businesses
 parameters:
   - $ref: '../../components/index.yml#/parameters/business_id'
+  - $ref: '../../components/index.yml#/parameters/attributes_category_name_optional'
+  - $ref: '../../components/index.yml#/parameters/attributes_country'
 responses:
   200:
     description: OK
