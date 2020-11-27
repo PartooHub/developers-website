@@ -43,10 +43,26 @@
     All the operations to subscribe/unsuscribe businesses to Partoo products.
     You need to have the role `PROVIDER` to be able to perform those operations.
 - name: Reviews
-  description: All operations available on reviews
+  description: |
+    Partoo centralises all businesses reviews from Google, Facebook and TripAdvisor platforms.
+
+    ⚠️ This feature is available only for businesses subscribed to Review Management. ⚠️
+
+    The reviews are fetched once per day (over night), therefore a it is expected to have a delay of maximum 24h.
+    The Partoo APIs enable a simple way of replying to any new reviews, update an existing reply or delete a reply.
+    A review can have one of the following status:
+    - `treated`: has a reply/comment or it was manually marked as treated in the Partoo UI
+    - `not-treated`: it doesn't have a reply/comment and it was not manually marked as treated in the Partoo UI
+    - `deleted`: the review was removed by the user on the original platfrom.
+
+    **Note:** the review itself cannot be altered nor deleted via the APIs.
+
 - name: Reply Templates
   description: |
-    All operations available on review reply templates.
+    Reply templates allow business managers to gain time in replying to the reviews,
+    via a predefined answer which can be easily selected and sent.
+
+    ⚠️ This feature is available only for businesses subscribed to Review Management. ⚠️
 
     Reply templates are not meant to be used outside the Partoo application.
     For this reason it is not possible to access a _formatted_ template, with prefilled placeholders from the API.
@@ -64,6 +80,18 @@
     <p>⚠️ SMS send functionality cannot be tested in Sandbox env.
 - name: Presence Analytics
   description: All operations available on Presence Management analytics
+- name: Google Post
+  description: |
+    <b>⚠️Feature only available for small and midsize businesses (SMBs)⚠️</b>
+
+    Google Posts is a feature that allows businesses to create and share announcements, offers,
+    new or popular items in stock, or event details directly with the customers.
+    The post will appear on Google Search and Maps, which will boost the results for the business.
+
+    When a business is connected to a Google My Business location (action performed in Partoo app on
+    <a href="https://app.partoo.co/knowledge/connections">Partner Connection</a> page),
+    all the Google Posts will be automatically imported.
+    When a business is disconnected the Google Posts published on Google will be deleted from Partoo database.
 - name: Custom Fields
   description: >
     <p>All operations available on Custom Fields metadata : creation, update and deletion of custom fields.
