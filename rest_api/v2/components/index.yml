@@ -3264,11 +3264,12 @@ parameters:
     name: start_datetime
     schema:
       type: string
+      example: '2020-11-06T23:59:59'
     required: false
     description: |
-      Filters Google Posts based on their start date.
+      Filters Google Posts based on their start datetime.
 
-      The start date represents the moment on which a Google Post of type <b>event/offer</b>
+      The start datetime represents the moment on which a Google Post of type <b>event/offer</b>
       will become available. In case of Google Posts of type <b>news</b>, the `start_datetime`
       it will be compare to the creation date of the Google Post, as the field is not
       present in this context.
@@ -3277,11 +3278,12 @@ parameters:
     name: end_datetime
     schema:
       type: string
+      example: '2020-11-06T23:59:59'
     required: false
     description: |
-      Filter Google Posts based on their end date.
+      Filter Google Posts based on their end datetime.
 
-      The end date represents the date on which the Google Post of type <b>event/offer</b>
+      The end datetime represents the date on which the Google Post of type <b>event/offer</b>
       will expire. In case of Google Posts of type <b>news</b>, the `end_datetime`
       it will be compare to exactly one week after the creation date of the Google Post,
       as the field is not present in this context.
