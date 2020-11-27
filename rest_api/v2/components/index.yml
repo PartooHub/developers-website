@@ -3376,6 +3376,7 @@ parameters:
     description: >
       <p>Country for which available attributes will be fetched - use ISO 3166 alpha2 code ("FR", "EN", "IT").
       <p>If country is not specified, attributes available in all countries will be returned.
+    example: "FR"
 responses:
   400:
     description: Your request is incorrect
