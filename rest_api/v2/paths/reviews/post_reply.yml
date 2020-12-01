@@ -19,10 +19,15 @@ requestBody:
               type: number
               example: 34
             parent_id:
-              description: Only useful for Facebook. ID of the comment you want to reply, as in Facebook you can comment on a comment.
+              description: |
+                The id of the parent comment you want to reply
+
+                Works only for Facebook comments, since it's possible to reply to a comment (depth max is 2).
+                Google and TripAdvisor don't accept this behaviour.
               type: number
+              example: 1234
             content:
-              description: Content of your Reply
+              description: Content of your reply
               type: string
               format: text
               example: Merci ❤️

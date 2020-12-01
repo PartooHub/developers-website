@@ -59,19 +59,21 @@
   post:
     $ref: ./authorize/post_revoke.yml
 
-## GOOGLE POST endpoints
-#/google_post:
-#  get:
-#    $ref: ./google_post/search.yml
-#  post:
-#    $ref: ./google_post/create.yml
-#/google_post/{google_post_id}:
-#  get:
-#    $ref: ./google_post/get.yml
-#  patch:
-#    $ref: ./google_post/update.yml
-#  delete:
-#    $ref: ./google_post/delete.yml
+
+# GOOGLE POST endpoints
+/google_posts:
+  get:
+    $ref: ./google_post/search.yml
+  post:
+    $ref: ./google_post/create.yml
+/google_posts/{google_post_id}:
+  get:
+    $ref: ./google_post/get.yml
+  put:
+    $ref: ./google_post/update.yml
+  delete:
+    $ref: ./google_post/delete.yml
+
 
 # REVIEWS endpoints
 /reviews:
@@ -160,6 +162,11 @@
 /business/{business_id}/unsubscribe:
   post:
     $ref: ./business/post_unsubscribe.yml
+/business/{business_id}/attributes:
+  get:
+    $ref: ./business/get_attributes.yml
+  post:
+    $ref: ./business/post_attributes.yml
 
 
 # Business Fields endpoint
@@ -219,3 +226,21 @@
 /presence_analytics_export:
   get:
     $ref: ./presence_analytics/get_export.yml
+
+# CUSTOM FIELDS endpoints
+/custom_fields:
+  post:
+    $ref: ./custom_fields/post_create.yml
+/custom_fields/{custom_field_id}:
+  put:
+    $ref: ./custom_fields/put_update.yml
+  delete:
+    $ref: ./custom_fields/delete.yml
+/custom_fields/order:
+  post:
+    $ref: ./custom_fields/post_order.yml
+
+# GMB Attributes endpoints
+/attributes/list:
+  get:
+    $ref: ./attributes/get.yml

@@ -1,8 +1,8 @@
 summary: Search for reviews
-description: >
-  This endpoint let you search for the reviews of your businesses.
+description: |
+  This endpoint lets you search for the reviews of your businesses.
+
   To access the reviews of a business you need to have `READ` access on it.
-  You can access reviews from **Google My Business**, **Facebook** & **Foursquare**.
   The response is paginated (30 results per page).
 operationId: searchReviews
 tags:
@@ -11,9 +11,14 @@ parameters:
   - $ref: '../../components/index.yml#/parameters/query_business__in'
   - $ref: '../../components/index.yml#/parameters/query_business__notin'
   - $ref: '../../components/index.yml#/parameters/query_content__isnull'
+  - $ref: '../../components/index.yml#/parameters/query_partner__in'
+  - $ref: '../../components/index.yml#/parameters/query_gmb_rating__in'
+  - $ref: '../../components/index.yml#/parameters/query_tripadvisor_rating__in'
+  - $ref: '../../components/index.yml#/parameters/query_recommended__in'
   - $ref: '../../components/index.yml#/parameters/query_review_update_date__gte'
   - $ref: '../../components/index.yml#/parameters/query_review_update_date__lte'
   - $ref: '../../components/index.yml#/parameters/query_review_state'
+  - $ref: '../../components/index.yml#/parameters/query_keywords'
   - $ref: '../../components/index.yml#/parameters/query_page'
 responses:
   200:

@@ -1,6 +1,6 @@
 summary: Search Google Post
 description: >
-  This endpoint lets you browse through all your google posts.
+  This endpoint lets you browse through all your Google Posts.
 operationId: searchGooglePost
 tags:
   - Google Post
@@ -11,8 +11,11 @@ parameters:
   - $ref: '../../components/index.yml#/parameters/query_google_post_start_datetime'
   - $ref: '../../components/index.yml#/parameters/query_google_post_end_datetime'
   - $ref: '../../components/index.yml#/parameters/query_google_post_is_expired'
-  - $ref: '../../components/index.yml#/parameters/query_google_post_title_query'
-  - $ref: '../../components/index.yml#/parameters/query_google_post_summary_query'
+  - $ref: '../../components/index.yml#/parameters/query_google_post_title'
+  - $ref: '../../components/index.yml#/parameters/query_google_post_summary'
+  - $ref: '../../components/index.yml#/parameters/query_google_post_state_in'
+  - $ref: '../../components/index.yml#/parameters/query_google_post_topic_type'
+  - $ref: '../../components/index.yml#/parameters/query_google_post_topic_type_in'
 responses:
   200:
     description: OK
@@ -25,7 +28,7 @@ responses:
               properties:
                 google_post:
                   type: array
-                  description: List of google post
+                  description: List of Google Post
                   items:
                     $ref: '../../components/index.yml#/schemas/GooglePost'
   401:
