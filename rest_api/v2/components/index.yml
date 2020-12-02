@@ -2258,7 +2258,8 @@ schemas:
     description: >
       <p>The deletion of a custom field or the update of its metadata can have impacts on custom fields which are already set for businesses.
       <ul>
-        <li>If <code>forced_update</code> is set to false, only no destructive updates/deletions will be performed. If the modification is destructive, an exception will be returned with the list of new constraints which are not respected by some businesses.
+        <li>If <code>forced_update</code> is set to false, updates/deletions will be performed only if they are non destructive. 
+        If some businesses would be impacted by the update/deletion, an exception will be returned
         <li>If <code>forced_update</code> is set to true, destructive modification will be performed and businesses values will be deleted accordingly.
     type: boolean
     default: false

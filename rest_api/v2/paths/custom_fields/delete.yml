@@ -2,7 +2,7 @@ tags:
   - Custom Fields
 summary: Delete custom field
 description: >
-  This endpoint enables you to delete custom fields for your organization as an ORG_ADMIN using it’s id.
+  This endpoint enables you to delete custom fields for your organization as an ORG_ADMIN using its id.
 operationId: deleteCustomFields
 parameters:
   - $ref: '../../components/index.yml#/parameters/custom_field_id'
