@@ -1453,10 +1453,6 @@ schemas:
         description: Id of the custom field
         type: integer
       order:
-        description: >
-          Describes where the custom field is displayed on the Business Edit view of the Partoo App
-          inside the ”Custom Field” section (/app/business/edit#<business id>)
-          <p> The lower the value, the higher the field will be placed.
         type: integer
     discriminator:
       propertyName: type
@@ -1739,9 +1735,6 @@ schemas:
             description: ID of the custom field.
             type: integer
           order:
-            description: >
-              Describes where the custom field is displayed on the Business Edit view of the Partoo App inside
-              the ”Custom Field” section (/app/business/edit#)
             type: integer
         discriminator:
           propertyName: type
@@ -2342,7 +2335,9 @@ schemas:
       order:
         $ref:  '#/schemas/CustomFieldOrder'
   CustomFieldOrders:
-    description: Describes where the custom fields are displayed on the Business Edit view of the Partoo App
+    description: >
+      <p>On the Business Edit view of the Partoo App, custom fields will be displayed depending on their order. 
+      <p>The lowest number will be the first.
     type: array
     items:
         $ref: '#/schemas/CustomFieldOrdersObject'
@@ -2535,7 +2530,7 @@ schemas:
       forced_update:
         $ref:  '#/schemas/CustomFieldForcedUpdate'
   CustomFieldId:
-    description: Id of the custom field, received when creating it
+    description: Id of the custom field
     type: integer
     example: 42
   CustomFieldBusinessesCount:
@@ -2652,8 +2647,7 @@ schemas:
     example: 'Delivery'
   AttributeOrder:
     type: integer
-    description:  Order in the which in the Attribute will be displayed on the Business Edit view of the Partoo App
-    example: '1'
+    example: 1
   Attribute:
     type: object
     properties:
@@ -2671,7 +2665,6 @@ schemas:
     example: "Services disponibles"
   AttributesGroupOrder:
     type: Integer
-    description: Order in the which in the Attribute Group will be displayed on the Business Edit view of the Partoo App
     example: 5
   AttributesGroup:
     type: object
