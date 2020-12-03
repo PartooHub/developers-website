@@ -509,7 +509,7 @@ schemas:
     example: Corner shop
   BusinessCleanName:
     deprecated: True
-    description: <code>It will be removed in November 2020</code> <br />The clean name of the business (typically the brand name) used for Apple, Foursquare and Justacote (french only) partners. This should not contain the city name nor any additional descriptive items
+    description: <code>It will be removed by November 2020</code> <br />The clean name of the business (typically the brand name) used for Apple, Foursquare and Justacote (French only) partners. This should not contain the city name nor any additional descriptive items
     type: string
     minLength: 1
     examples: Partoo
@@ -536,7 +536,7 @@ schemas:
   BusinessNationalIdentificationNumber:
     description: |
       <p>The National Identification Number of the business
-      <p> It's a unique number under which the business is registered in a specific country. For example, in France, it's SIRET code or for Ireland it's the CRO
+      <p> It describes a unique number for which the business is registered in a specific country. For example, in France, it's SIRET code or for Ireland it's the CRO
     type: string
   BusinessCategories:
     description: A list of category ids mapped to the business. At least one category needs to be provided. For more information see Categories section
@@ -563,13 +563,13 @@ schemas:
     example: 47.870341
   BusinessStatus:
     description: |
-      <p>Defines the current status of the business. `Open` indicates the business is up and running. `Closed` means that the business has definitely closed it's activity. For temporarily closed businesses please use the <code>specific_hours</code></p>
+      <p>Defines the current status of the business. `Open` indicates the business is up and running. `Closed` means that the business has definitely closed. For temporarily closed businesses please use the <code>specific_hours</code></p>
     type: string
     enum: [open, closed]
     default: open
     example: open
   BusinessWebsite:
-    description: The business's own website url or the main url of the company.
+    description: The business own website url or the main url of the company.
     type: string
     format: uri
     example: https://www.corner-shop.co/
@@ -613,7 +613,7 @@ schemas:
     type: string
     example: lorem ipsum
   BusinessOrgId:
-    description: The organisation's unique identifier at Partoo. During onboarding, Partoo creates an organisation where all your businesses will be aggregated
+    description: The organisation unique identifier at Partoo. During onboarding, Partoo creates an organisation where all your businesses will be aggregated
     type: integer
     example: 42
   BusinessContacts:
@@ -717,7 +717,7 @@ schemas:
         format: float
         example: 1409925979.5
       modified:
-        description: Timestamp (in seconds) of the business last modification. Doesn’t take into account changes to the Custom Fields or related objects.
+        description: Timestamp (in seconds) of the business last modification. It doesn’t take into account changes to the Custom Fields or related objects.
         type: number
         format: float
         example: 1561335111.681374
@@ -1528,7 +1528,7 @@ schemas:
     description: |
       <p>Custom Fields set for this Business
       <p>They represent configurable fields that can be defined in addition to the normal business fields proposed by Partoo.
-      They are unique to the organisation and can be entitrly adapted to the company's needs.
+      They are unique to the organisation and should suit your company needs.
     type: object
     properties:
       custom_fields_name:
@@ -3295,7 +3295,7 @@ parameters:
       type: string
       enum: ['LIVE','PARTOO_PENDING', 'PARTOO_PENDING_DELETE', 'PROCESSING', 'REJECTED', 'PARTOO_SCHEDULED', 'PARTOO_ERROR']
     required: false
-    description: Filter Google Posts based on it's state.
+    description: Filter Google Posts based on its state.
   query_google_post_topic_type:
     in: query
     name: topic_type
@@ -3303,7 +3303,7 @@ parameters:
       type: string
       enum: ['NEWS', 'EVENT', 'OFFER', 'ALERT']
     required: false
-    description: Filter Google Posts based on it's type.
+    description: Filter Google Posts based on its type.
   query_google_post_topic_type_in:
     in: query
     name: topic_type__in
