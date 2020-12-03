@@ -616,6 +616,11 @@ schemas:
     description: The organisation's unique identifier at Partoo. During onboarding, Partoo creates an organisation where all your businesses will be aggregated
     type: integer
     example: 42
+  BusinessCreateContacts:
+    description: Specify how the clients can reach the persons in charge of the business in case they have questions.
+    type: array
+    items:
+      $ref: '#/schemas/ContactWithPhone'
   BusinessContacts:
     description: Specify how the clients can reach the persons in charge of the business in case they have questions.
     type: array
@@ -1239,6 +1244,26 @@ schemas:
   Contact:
     description: Business contact
     type: object
+    properties:
+      name:
+        description: Contact full name
+        type: string
+        example: Hubert Bonisseur de la Bath
+      email:
+        description: Contact email
+        type: string
+        format: email
+        example: hubert@oss117.fr
+      phone_numbers:
+        description: Contact phone numbers - Preferably in the format E.164 ('+33302060628' instead of '0302060628')
+        type: array
+        items:
+          type: string
+        example: ['+33302060628']
+  ContactWithPhone:
+    description: Business contact
+    type: object
+    required: phone_numbers
     properties:
       name:
         description: Contact full name

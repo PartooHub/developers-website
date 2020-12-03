@@ -17,6 +17,7 @@ requestBody:
           - zipcode
           - city
           - categories
+          - contacts
         properties:
           name:
             $ref: '../../components/index.yml#/schemas/BusinessName'
@@ -61,7 +62,7 @@ requestBody:
           specific_hours:
             $ref: '../../components/index.yml#/schemas/SpecificHours'
           contacts:
-            $ref: '../../components/index.yml#/schemas/BusinessContacts'
+            $ref: '../../components/index.yml#/schemas/BusinessCreateContacts'
           photos:
             $ref: '../../components/index.yml#/schemas/Photos'
           national_identification_number:
