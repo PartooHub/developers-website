@@ -162,6 +162,12 @@
 /business/{business_id}/unsubscribe:
   post:
     $ref: ./business/post_unsubscribe.yml
+# TODO: For attributes release
+#/business/{business_id}/attributes:
+#  get:
+#    $ref: ./business/get_attributes.yml
+#  post:
+#    $ref: ./business/post_attributes.yml
 
 
 # Business Fields endpoint
@@ -234,3 +240,9 @@
 /custom_fields/order:
   post:
     $ref: ./custom_fields/post_order.yml
+
+# TODO: For attributes release
+# GMB Attributes endpoints
+#/attributes/list:
+#  get:
+#    $ref: ./attributes/get.yml

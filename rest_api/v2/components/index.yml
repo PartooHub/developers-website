@@ -885,6 +885,209 @@ schemas:
         $ref: '#/schemas/BusinessNews'
       promos:
         $ref: '#/schemas/BusinessPromos'
+  Attributes.Field.Base:
+    description: A Google Attribute
+    properties:
+      gmb_id:
+        description: Google id of the attribute
+        type: string
+      type:
+        description: Possible values are "BOOL", "ENUM", "REPEATABLE_ENUM", "URL", "REPEATABLE_URL".
+        type: string
+    discriminator:
+      propertyName: type
+      mapping:
+        BOOL: '#/components/schemas/Attributes.Field.BOOL'
+        ENUM: '#/components/schemas/Attributes.Field.ENUM'
+        REPEATABLE_ENUM: '#/components/schemas/Attributes.Field.REPEATABLE_ENUM'
+        URL: '#/components/schemas/Attributes.Field.URL'
+        REPEATABLE_URL: '#/components/schemas/Attributes.Field.REPEATABLE_URL'
+  Attributes.Field.BOOL:
+    allOf:
+      - $ref: '#/schemas/Attributes.Field.Base'
+      - properties:
+          value:
+            description: >
+              Value for this Attribute. Can be null if not set
+            type: boolean | null
+  Attributes.Field.ENUM:
+    allOf:
+      - $ref: '#/schemas/Attributes.Field.Base'
+      - properties:
+          value:
+            description: >
+              Value for this Attribute. Can be null if not set
+            type: string | null
+  Attributes.Field.REPEATABLE_ENUM:
+    allOf:
+      - $ref: '#/schemas/Attributes.Field.Base'
+      - properties:
+          value:
+            type: object
+            properties:
+              set_values:
+                type: array
+                description: >
+                  Options which are true for the Attribute. Can be empty.
+                items:
+                  type: string
+              unset_values:
+                type: array
+                description: >
+                  Options which are false for the Attributes. Can be empty
+                items:
+                  type: string
+  Attributes.Field.REPEATABLE_URL:
+    allOf:
+      - $ref: '#/schemas/Attributes.Field.Base'
+      - properties:
+          value:
+            description: >
+              Value for this Attribute. Can be null if not set
+            type: array
+            items:
+              type: string
+  Attributes.Field.URL:
+    allOf:
+      - $ref: '#/schemas/Attributes.Field.Base'
+      - properties:
+          value:
+            description: >
+              Value for this Attribute. Can be null if not set
+            type: string | null
+  Attributes.Array:
+    description: List of Business Attributes
+    type: array
+    items:
+      $ref: '#/schemas/Attributes.Field.Base'
+    example: [
+      {
+        "type": "BOOL",
+        "gmb_id": "has_curbside_pickup",
+        "value": false
+      },
+      {
+        "type": "BOOL",
+        "gmb_id": "has_delivery",
+        "value": true
+      },
+      {
+        "type": "ENUM",
+        "gmb_id": "wi_fi",
+        "value": "free_wi_fi"
+      },
+      {
+        "type": "REPEATABLE_ENUM",
+        "gmb_id": "pay_credit_card_types_accepted",
+        "value": {
+          "set_values": [
+              "american_express",
+              "discover"
+          ],
+          "unset_values": []
+        }
+      },
+      {
+        "type": "URL",
+        "gmb_id": "url_menu",
+        "value": "https://www.test.fr"
+      },
+      {
+        "type": "REPEATABLE_URL",
+        "gmb_id": "url_order_ahead",
+        "value": null
+      },
+      {
+        "type": "REPEATABLE_URL",
+        "gmb_id": "url_reservations",
+        "value": [
+            "https://www.test1.fr",
+            "https://www.test2.fr"
+        ]
+      },
+    ]
+  PostAttributes.Array:
+    description: List of Business Attributes
+    type: array
+    items:
+      $ref: '#/schemas/Attributes.Field.Base'
+    example: [
+      {
+        "type": "BOOL",
+        "gmb_id": "has_curbside_pickup",
+        "value": false
+      },
+      {
+        "type": "ENUM",
+        "gmb_id": "wi_fi",
+        "value": "free_wi_fi"
+      },
+      {
+        "type": "REPEATABLE_ENUM",
+        "gmb_id": "pay_credit_card_types_accepted",
+        "value": {
+          "set_values": [
+              "american_express",
+              "discover"
+          ],
+          "unset_values": [ ]
+        }
+      },
+      {
+        "type": "REPEATABLE_URL",
+        "gmb_id": "url_reservations",
+        "value": [
+            "https://www.test1.fr",
+            "https://www.test2.fr"
+        ]
+      },
+    ]
+  BusinessPostAttributesBody:
+    type: object
+    properties:
+      attributes:
+        $ref: '#/schemas/PostAttributes.Array'
+  BusinessAttributesResponse:
+    type: object
+    properties:
+      attributes:
+        $ref: '#/schemas/Attributes.Array'
+  BusinessPostUnknownAttributesError:
+    description: At least one of the attributes in the request body does not exist in our Database
+    type: object
+    properties:
+      errors:
+        type: object
+        properties:
+          json:
+            type: object
+    example: {
+      "errors": {
+        "json": {
+          "unknown_attribute": "does not exist in DB"
+        }
+      }
+    }
+  BusinessPostWrongAttributesValuesError:
+    description: At least one of the attributes values in the request body is incorrect
+    type: object
+    properties:
+      errors:
+        type: object
+        properties:
+          json:
+            type: object
+    example: {
+      "errors": {
+        "json": {
+          "wi_fi": "must be a string",
+          "has_curbside_pickup": "must be a bool",
+          "url_reservations": "must be a list",
+          "url_menu": "must be a valid url",
+          "pay_credit_card_types_accepted": "must contain set_values and unset_values"
+        }
+      }
+    }
   UserPhone:
     description: User phone number
     type: string
@@ -1250,10 +1453,6 @@ schemas:
         description: Id of the custom field
         type: integer
       order:
-        description: >
-          Describes where the custom field is displayed on the Business Edit view of the Partoo App
-          inside the ”Custom Field” section (/app/business/edit#<business id>)
-          <p> The lower the value, the higher the field will be placed.
         type: integer
     discriminator:
       propertyName: type
@@ -1346,8 +1545,6 @@ schemas:
         Level: 'one',
         Services: ['DisabledAccess', 'FreeParking'],
         BannerImage": ["image 1", "image 2"],
-
-
       }
 
   BusinessFields.SectionArray:
@@ -1538,9 +1735,6 @@ schemas:
             description: ID of the custom field.
             type: integer
           order:
-            description: >
-              Describes where the custom field is displayed on the Business Edit view of the Partoo App inside
-              the ”Custom Field” section (/app/business/edit#)
             type: integer
         discriminator:
           propertyName: type
@@ -2064,7 +2258,8 @@ schemas:
     description: >
       <p>The deletion of a custom field or the update of its metadata can have impacts on custom fields which are already set for businesses.
       <ul>
-        <li>If <code>forced_update</code> is set to false, only no destructive updates/deletions will be performed. If the modification is destructive, an exception will be returned with the list of new constraints which are not respected by some businesses.
+        <li>If <code>forced_update</code> is set to false, updates/deletions will be performed only if they are non destructive. 
+        If some businesses would be impacted by the update/deletion, an exception will be returned
         <li>If <code>forced_update</code> is set to true, destructive modification will be performed and businesses values will be deleted accordingly.
     type: boolean
     default: false
@@ -2141,7 +2336,9 @@ schemas:
       order:
         $ref:  '#/schemas/CustomFieldOrder'
   CustomFieldOrders:
-    description: Describes where the custom fields are displayed on the Business Edit view of the Partoo App
+    description: >
+      <p>On the Business Edit view of the Partoo App, custom fields will be displayed depending on their order. 
+      <p>The lowest number will be the first.
     type: array
     items:
         $ref: '#/schemas/CustomFieldOrdersObject'
@@ -2334,7 +2531,7 @@ schemas:
       forced_update:
         $ref:  '#/schemas/CustomFieldForcedUpdate'
   CustomFieldId:
-    description: Id of the custom field, received when creating it
+    description: Id of the custom field
     type: integer
     example: 42
   CustomFieldBusinessesCount:
@@ -2432,6 +2629,113 @@ schemas:
                 $ref:  '#/schemas/CustomFieldBusinessesCount'
               description:
                 $ref:  '#/schemas/CustomFieldDeleteDescription'
+  AttributeType:
+    description: Type of the Attribute
+    type: string
+    enum:
+      - URL
+      - REPEATABLE_URL
+      - BOOL
+      - ENUM
+      - REPEATABLE_ENUM
+  AttributeGmbId:
+    description: Google my Business Id of the attribute
+    type: string
+    example: 'gcid:restaurant'
+  AttributeName:
+    description: Name of the attribute in the chosen language
+    type: string
+    example: 'Delivery'
+  AttributeOrder:
+    type: integer
+    example: 1
+  Attribute:
+    type: object
+    properties:
+      type:
+        $ref: '#/schemas/AttributeType'
+      gmb_id:
+        $ref: '#/schemas/AttributeGmbId'
+      name:
+        $ref: '#/schemas/AttributeName'
+      order:
+        $ref: '#/schemas/AttributeOrder'
+  AttributesGroupName:
+    type: string,
+    description: Name of the attribute group
+    example: "Services disponibles"
+  AttributesGroupOrder:
+    type: Integer
+    example: 5
+  AttributesGroup:
+    type: object
+    properties:
+      attributes:
+        type: array
+        description: List of Google Attributes
+        items:
+          $ref: '#/schemas/Attribute'
+      name:
+        $ref: '#/schemas/AttributesGroupName'
+      order:
+        $ref: '#/schemas/AttributesGroupOrder'
+  AttributesGroupList:
+    type: array
+    description: List of Google Groups
+    items:
+      $ref:  '#/schemas/AttributesGroup'
+  AttributesGroupResponse:
+    type: object
+    properties:
+      groups:
+        $ref:  '#/schemas/AttributesGroupList'
+  AttributesWrongCategoryError:
+    type: object
+    properties:
+      errors:
+        type: object
+        properties:
+          json:
+            type: string
+            description: "Category name not found in DB"
+            example: "Category name not found in DB"
+  AttributesWrongLangError:
+    type: object
+    properties:
+      errors:
+        type: object
+        properties:
+          json:
+            type: object
+            properties:
+              lang:
+                type: object
+                properties:
+                  explanation:
+                    description: "incorrect value inputed in lang parameter"
+                    type: string
+                    example: "xx is an incorrect value"
+                  choices:
+                    type: array
+                    description: languages choices available
+                    example: ["DE", "EN", "ES", "FR", "IT", "PT", "PT_BR"]
+  AttributesMissingParametersError:
+    type: object
+    properties:
+      errors:
+        type: object
+        properties:
+          json:
+            type: object
+            properties:
+              lang:
+                description: "lang parameter is required"
+                type: string
+                example: "is required"
+              category_name:
+                description: "category_name parameter is required"
+                type: string
+                example: "is required"
 parameters:
   query_filter_by_country_required:
     in: query
@@ -2954,11 +3258,12 @@ parameters:
     name: start_datetime
     schema:
       type: string
+      example: '2020-11-06T23:59:59'
     required: false
     description: |
-      Filters Google Posts based on their start date.
+      Filters Google Posts based on their start datetime.
 
-      The start date represents the moment on which a Google Post of type <b>event/offer</b>
+      The start datetime represents the moment on which a Google Post of type <b>event/offer</b>
       will become available. In case of Google Posts of type <b>news</b>, the `start_datetime`
       it will be compare to the creation date of the Google Post, as the field is not
       present in this context.
@@ -2967,11 +3272,12 @@ parameters:
     name: end_datetime
     schema:
       type: string
+      example: '2020-11-06T23:59:59'
     required: false
     description: |
-      Filter Google Posts based on their end date.
+      Filter Google Posts based on their end datetime.
 
-      The end date represents the date on which the Google Post of type <b>event/offer</b>
+      The end datetime represents the date on which the Google Post of type <b>event/offer</b>
       will expire. In case of Google Posts of type <b>news</b>, the `end_datetime`
       it will be compare to exactly one week after the creation date of the Google Post,
       as the field is not present in this context.
@@ -3033,6 +3339,40 @@ parameters:
     required: true
     schema:
       $ref: '#/schemas/CustomFieldId'
+  attributes_lang:
+    in: path
+    name: attribute_lang
+    required: true
+    schema:
+      type: string
+      enum: ['fr', 'es', 'it', 'en', 'de', 'pt', 'pt-BR']
+    description: Language in which the attributes name and groups name will be translated
+  attributes_category_name:
+    in: path
+    name: attributes_category_name
+    required: true
+    schema:
+      type: string
+      example: 'gcid:restaurant'
+    description: Category for which availabe attributes will be fetched
+  attributes_category_name_optional:
+    in: path
+    name: attributes_category_name
+    required: false
+    schema:
+      type: string
+      example: 'gcid:restaurant'
+    description: Category for which availabe attributes will be fetched
+  attributes_country:
+    in: path
+    name: attributes_country
+    required: false
+    schema:
+      type: string
+    description: >
+      <p>Country for which available attributes will be fetched - use ISO 3166 alpha2 code ("FR", "EN", "IT").
+      <p>If country is not specified, attributes available in all countries will be returned.
+    example: "FR"
 responses:
   400:
     description: Your request is incorrect
