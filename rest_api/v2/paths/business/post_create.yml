@@ -17,6 +17,7 @@ requestBody:
           - zipcode
           - city
           - categories
+          - contacts
         properties:
           name:
             $ref: '../../components/index.yml#/schemas/BusinessName'
@@ -34,6 +35,8 @@ requestBody:
             $ref: '../../components/index.yml#/schemas/BusinessRegion'
           categories:
             $ref: '../../components/index.yml#/schemas/BusinessCategories'
+          contacts:
+            $ref: '../../components/index.yml#/schemas/BusinessCreateContacts'
           code:
             $ref: '../../components/index.yml#/schemas/BusinessCode'
           status:
@@ -60,8 +63,6 @@ requestBody:
             $ref: '../../components/index.yml#/schemas/OpenHours'
           specific_hours:
             $ref: '../../components/index.yml#/schemas/SpecificHours'
-          contacts:
-            $ref: '../../components/index.yml#/schemas/BusinessContacts'
           photos:
             $ref: '../../components/index.yml#/schemas/Photos'
           national_identification_number:
