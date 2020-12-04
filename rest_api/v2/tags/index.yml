@@ -96,12 +96,13 @@
   description: >
     <p>All operations available on Custom Fields metadata : creation, update and deletion of custom fields.
     <p>⚠️ <b>What are Custom fields ?</b>
-    <p>Custom Fields allow Enterprise Administrators to add custom data fields to Partoo / Localoo under different formats (List, Text, Number…) in order to create a central datahub for local information and to:
-    <li> Use this data to automatically feed other tools (Store locator, website, CRM, Chatbot...) from Partoo / Localoo.
+    <p>Custom Fields allow Enterprise Administrators to add custom data fields to businesses in Partoo / Localoo under different formats (List, Text, Number…) 
+    in order to create a central datahub for local information. These fields can be used to:
+    <li>Automatically feed other tools (Store locator, website, CRM, Chatbot...) from Partoo / Localoo.
     <li>Allow local users to fill custom fields in order to transmit data from local to central.
     <p>Once created, Custom Fields values can be updated like any other business field.
     <p>To handle custom fields values for businesses, <a href="#tag/Businesses">see business endpoints</a>.
-    <p>To recover the list of custom fields available for a business and their ids <a href="#operation/getBusinessFieldsForOrg">see GET business fields endpoint</a>.
+    <p>To recover the list of custom fields available for a business <a href="#operation/getBusinessFieldsForOrg">see GET business fields endpoint</a>.
 # TODO: For attributes release
 #- name: GMB Attributes
 #  description: >
