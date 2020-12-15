@@ -1,38 +1,47 @@
 tags:
   - Reviews Analytics
 summary: Qualitative evolution
-description: Get the average note in a specific time range
+description: |
+  This endpoint lets you view the qualitative evolution of the **reviews rating** for all of your businesses
+  subscribed to **Review Management**. The API returns the reviews average rating by bucket (time range).
+
+  You can use the following filters:
+    - by date (analytics before and/or after a date)
 parameters:
   - $ref: '../../components/index.yml#/parameters/query_review_bucket'
   - $ref: '../../components/index.yml#/parameters/query_review_cumulative'
+  - $ref: '../../components/index.yml#/parameters/query_review_update_date__gte'
+  - $ref: '../../components/index.yml#/parameters/query_review_update_date__lte'
+
 responses:
   200:
     description: OK
     content:
       application/json:
         schema:
-          allOf:
-            - type: object
+            type: array
+            items:
+              type: object
               properties:
-                ReviewQualitativeEvaluation:
-                  description: Qualitative evaluation of the review from the server
-                  type: object
-                  properties:
-                    date:
-                      type: string
-                      format: datetime
-                      example: '2019-11-29'
-                    added:
-                      type: integer
-                      example: 50
-                    average:
-                      type: number
-                      format: float
-                      example: 4.54
-                    cum_sum:
-                      type: number
-                      format: float
-                      example: 50.0
+                date:
+                  type: string
+                  format: datetype
+                  description: Start date of the bucket
+                  example: '2019-11-29'
+                average:
+                  type: number
+                  format: float
+                  example: 4.54
+                  description: Average rating.
+                added:
+                  type: integer
+                  description: Number of reviews added during the current bucket.
+                  example: 50
+                cum_sum:
+                  type: number
+                  format: float
+                  description: Cumulative sum of the number of reviews.
+                  example: 70
   401:
     $ref: '../../components/index.yml#/responses/401'
   403:

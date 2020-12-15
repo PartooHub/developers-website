@@ -1,0 +1,34 @@
+tags:
+  - Reviews Analytics
+summary: Statistics
+description: |
+  This endpoint let you view the global reviews statistics for all your businesses subscribed to
+  **Presence Management**.
+
+  You can use the following filters:
+  - by partner (google_my_business, facebook, tripadvisor)
+  - by date (statistics before and/or after a date)
+
+  The response is aggregated according to the previously selected filters.
+
+  In order to get analytics evolution overtime returned by specific time range, please refer to
+  **Qualitative Evolution** and **Quantitative Evolution** endpoints.
+
+parameters:
+  - $ref: '../../components/index.yml#/parameters/query_partner'
+  - $ref: '../../components/index.yml#/parameters/query_review_update_date__gte'
+  - $ref: '../../components/index.yml#/parameters/query_review_update_date__lte'
+
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/index.yml#/schemas/ReviewsStatisticsResponse'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
+  404:
+    $ref: '../../components/index.yml#/responses/404'

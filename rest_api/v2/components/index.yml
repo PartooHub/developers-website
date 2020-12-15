@@ -432,6 +432,76 @@ schemas:
         $ref: '#/schemas/ReviewId'
       parent_id:
         $ref: '#/schemas/ParentId'
+  ReviewsStatisticsResponse:
+    type: object
+    properties:
+      answer_time:
+        type: number
+        format: float
+        description: |
+          Average reviews answer time in seconds. Only measured for reviews with a comment from Google My Business
+          partner.
+          It returns the time between the update date of a review and the creation date of its comments.
+        example: 10493.90997409
+      average:
+        type: number
+        format: float
+        description: |
+          Average reviews rating.
+        maximum: 5
+        minimum: 0
+        example: 3.0394
+      treated:
+        type: number
+        format: integer
+        description: |
+          Total number of treated reviews.
+        example: 9
+      not_treated:
+        type: number
+        format: integer
+        description: |
+          Total number of non treated reviews.
+        example: 10
+      answered:
+        type: number
+        format: integer
+        description: |
+          Total number of answered reviews (reviews with a comment).
+        example: 8
+      satisfied:
+        type: number
+        format: integer
+        description: |
+          Total number of reviews of type *satisfied*.
+
+          *Satisfied* reviews are defined by a rating of 4 or more for google_my_business and tripadvisor or recommended
+          for facebook.
+        example: 10
+      neutral:
+        type: number
+        format: integer
+        description: |
+          Total number of reviews of type *neutral*.
+
+          *Neutral* reviews are defined by a rating of 3 for google_my_business and tripadvisor.
+        example: 6
+      dissatisfied:
+        type: number
+        format: integer
+        description: |
+          Total number of reviews of type *dissatisfied*.
+
+          *Dissatisfied* reviews are defined by a rating of 2 or less for google_my_business and tripadvisor
+          or not recommended for facebook.
+        example: 3
+      total:
+        type: number
+        format: integer
+        description: |
+          Total number of reviews.
+        example: 19
+
   Review:
     description: Business Review on partner
     type: object
@@ -3032,15 +3102,25 @@ parameters:
     name: bucket
     schema:
       type: string
+      default: 'week'
       enum: ['day', 'week', 'month', 'year']
-    description: Defining the time range of a data bucket
+    description: |
+      Defining the time range of a data bucket.
+
+      This will determine the precision of the returned data. For example, if you choose `day`, you will receive the
+      cumulative sum of the number of reviews for each day.
   query_review_cumulative:
     in: query
     name: cumulative
     schema:
       type: string
+      default: 'true'
       enum: ['true', 'false']
-    description: mark if the queried data accumulated from the former data
+    description: |
+      If `cumulative` = `false`, return the average rating of reviews from the current bucket only.
+
+      If `cumulative` = `true`, return the average rating of reviews from all the buckets until the current one
+      (included). The cumulative representation show the evolution of the average rating over time.
   query_analytics_date__gte:
     in: query
     name: filter_date__gte
@@ -3066,22 +3146,22 @@ parameters:
     description: |
       Filter by `update_date`
 
-      Return all the reviews whose `update_date` is grater than the given date
+      Return all the reviews whose `update_date` >= `given_date`.
     schema:
       type: string
       format: datetime
-      example: 2017-08-01T00:00:00
+      example: "2017-08-01T00:00:00"
   query_review_update_date__lte:
     in: query
     name: update_date__lte
     description: |
       Filter by `update_date`
 
-      Return all the reviews whose `update_date` is lower than the given date.
+      Return all the reviews whose `update_date` <= `given_date`.
     schema:
       type: string
       format: datetime
-      example: 2017-08-02T00:00:00
+      example: "2017-08-02T00:00:00"
   query_partner__in:
     in: query
     name: partner__in
@@ -3091,6 +3171,22 @@ parameters:
       items:
         $ref: '#/schemas/ReviewPublisherLabel'
       example: google_my_business,facebook
+  query_partner:
+    in: query
+    name: partner
+    description: |
+      Filter by `partner`
+
+      Return all the reviews from `partner`.
+    schema:
+      type: string
+      description: Publisher label
+      enum:
+        - google_my_business
+        - facebook
+        - tripadvisor
+      default: google_my_business
+    example: facebook
   query_gmb_rating__in:
     in: query
     name: gmb_rating__in
@@ -3398,6 +3494,7 @@ parameters:
       <p>Country for which available attributes will be fetched - use ISO 3166 alpha2 code ("FR", "EN", "IT").
       <p>If country is not specified, attributes available in all countries will be returned.
     example: "FR"
+
 responses:
   400:
     description: Your request is incorrect

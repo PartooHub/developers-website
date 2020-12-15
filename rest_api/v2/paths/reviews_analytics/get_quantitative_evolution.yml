@@ -1,7 +1,14 @@
 tags:
   - Reviews Analytics
 summary: Quantitative evolution
-description: Get the sum note in a specific time range
+description: |
+  This endpoint lets you view the quantitative evolution of the **number of reviews** for all of your businesses
+  subscribed to **Review Management**. The API returns the cumulative sum of the number of reviews by bucket
+  (time range) selected overtime.
+
+  You can use the following filters:
+    - by date (analytics before and/or after a date)
+
 parameters:
   - $ref: '../../components/index.yml#/parameters/query_review_bucket'
   - $ref: '../../components/index.yml#/parameters/query_review_update_date__gte'
@@ -12,27 +19,29 @@ responses:
     content:
       application/json:
         schema:
-          allOf:
-            - type: object
+            type: array
+            items:
+              type: object
               properties:
-                ReviewQualitativeEvaluation:
-                  type: object
-                  properties:
-                    date:
-                      type: string
-                      format: string
-                      example: '2019-11-29'
-                    added:
-                      type: integer
-                      example: 50
-                    previous_sum:
-                      type: number
-                      format: float
-                      example: 0
-                    cum_sum:
-                      type: number
-                      format: float
-                      example: 50
+                date:
+                  type: string
+                  format: datetype
+                  description: Start date of the bucket
+                  example: '2019-11-29'
+                added:
+                  type: integer
+                  description: Number of reviews added during the current bucket.
+                  example: 50
+                previous_sum:
+                  type: number
+                  description: Cumulative sum of the number of reviews for the previous bucket.
+                  format: float
+                  example: 20
+                cum_sum:
+                  type: number
+                  format: float
+                  description: Cumulative sum of the number of reviews.
+                  example: 70
   400:
     $ref: '../../components/index.yml#/responses/400'
   401:
