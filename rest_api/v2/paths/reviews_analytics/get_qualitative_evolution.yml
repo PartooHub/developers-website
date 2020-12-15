@@ -7,9 +7,15 @@ description: |
 
   You can use the following filters:
     - by date (analytics before and/or after a date)
+    - by businesses (businesses id in list or not in list)
+    - by keywords
+
 parameters:
   - $ref: '../../components/index.yml#/parameters/query_review_bucket'
   - $ref: '../../components/index.yml#/parameters/query_review_cumulative'
+  - $ref: '../../components/index.yml#/parameters/query_review_partner'
+  - $ref: '../../components/index.yml#/parameters/query_review_business__in'
+  - $ref: '../../components/index.yml#/parameters/query_keywords'
   - $ref: '../../components/index.yml#/parameters/query_review_update_date__gte'
   - $ref: '../../components/index.yml#/parameters/query_review_update_date__lte'
 

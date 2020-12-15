@@ -3121,6 +3121,17 @@ parameters:
 
       If `cumulative` = `true`, return the average rating of reviews from all the buckets until the current one
       (included). The cumulative representation show the evolution of the average rating over time.
+  query_review_business__in:
+    in: query
+    name: business__in
+    description: |
+      Filter by business ids
+
+      Return the reviews of the businesses given in list.
+    schema:
+      type: array
+      items:
+        $ref: '#/schemas/BusinessId'
   query_analytics_date__gte:
     in: query
     name: filter_date__gte
@@ -3147,6 +3158,11 @@ parameters:
       Filter by `update_date`
 
       Return all the reviews whose `update_date` >= `given_date`.
+
+      For example : `update_date__gte=2019-01-01T00:00:00` will returns all reviews from the first january of 2019
+      until today.
+
+      **Note** : The update dates are stored in UTC.
     schema:
       type: string
       format: datetime
@@ -3158,6 +3174,11 @@ parameters:
       Filter by `update_date`
 
       Return all the reviews whose `update_date` <= `given_date`.
+
+      For example : `update_date__lte=2020-01-01T00:00:00` will returns all reviews from the date of the first review
+      until the first january of 2020.
+
+      **Note** : The update dates are stored in UTC.
     schema:
       type: string
       format: datetime
@@ -3171,7 +3192,7 @@ parameters:
       items:
         $ref: '#/schemas/ReviewPublisherLabel'
       example: google_my_business,facebook
-  query_partner:
+  query_review_partner:
     in: query
     name: partner
     description: |
