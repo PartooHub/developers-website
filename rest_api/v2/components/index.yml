@@ -97,6 +97,67 @@ schemas:
   ActionsDrivingDirections:
     type: integer
     description: Customers who request directions to your business
+  ApiKeys:
+    id:
+      type: integer
+      example: 3245
+    label:
+      type: string
+      example: "API key name"
+      description: "Name given to recognize the Api key"
+    expiration_date:
+      type: string
+      pattern: "yyyy-mm-dd"
+      example: "2022-06-05"
+      description: "Must be at least the day after today. If you want it to expire today you must revoke it. You can set it to null."
+    ApiKey:
+      type: object
+      properties:
+        id:
+          $ref: '#/schemas/ApiKeys/id'
+        label:
+          $ref: '#/schemas/ApiKeys/label'
+        user_id:
+          $ref: '#/schemas/UserId'
+        user_name:
+          $ref: '#/schemas/UserName'
+        user_role:
+          $ref: '#/schemas/Role'
+        disabled:
+          type: boolean
+          example: false
+          description: "Is true if someone revoked the key."
+        expiration_date:
+          $ref: '#/schemas/ApiKeys/expiration_date'
+        last_used_at:
+          type: string
+          pattern: date
+          example: "2019-08-22 11:46:38.914467+00"
+        created_by:
+          $ref: '#/schemas/UserId'
+        created_by_name:
+          description: "First name and last name concatenated of the user that created the key"
+          type: string
+          example: "John Smith"
+        created_at:
+          type: string
+          pattern: date
+          example: "2018-03-12 11:49:03.399475+00"
+        revoked_by:
+          $ref: '#/schemas/UserId'
+        revoked_by_name:
+          description: "First name and last name concatenated of the user that revoked the key"
+          type: string
+          example: "John Smith"
+        revoked_at:
+          type: string
+          pattern: date
+          example: "2020-10-20 11:46:38.914467+00"
+    Status:
+      type: string
+      example: 'active'
+      description: Filter api_keys by status. A key is inactive when expired or disabled.
+      enum: ['active', 'inactive', 'disabled', 'expired']
   AnalyticsDate:
     type: datetime
     description: First day of the aggregation
@@ -509,7 +570,7 @@ schemas:
     example: Corner shop
   BusinessCleanName:
     deprecated: True
-    description: <code>It will be removed in November 2020</code> <br />The clean name of the business (typically the brand name) used for Apple, Foursquare and Justacote (french only) partners. This should not contain the city name nor any additional descriptive items
+    description: <code>It will be removed by November 2020</code> <br />The clean name of the business (typically the brand name) used for Apple, Foursquare and Justacote (French only) partners. This should not contain the city name nor any additional descriptive items
     type: string
     minLength: 1
     examples: Partoo
@@ -536,7 +597,7 @@ schemas:
   BusinessNationalIdentificationNumber:
     description: |
       <p>The National Identification Number of the business
-      <p> It's a unique number under which the business is registered in a specific country. For example, in France, it's SIRET code or for Ireland it's the CRO
+      <p> It describes a unique number for which the business is registered in a specific country. For example, in France, it's SIRET code or for Ireland it's the CRO
     type: string
   BusinessCategories:
     description: A list of category ids mapped to the business. At least one category needs to be provided. For more information see Categories section
@@ -563,13 +624,13 @@ schemas:
     example: 47.870341
   BusinessStatus:
     description: |
-      <p>Defines the current status of the business. `Open` indicates the business is up and running. `Closed` means that the business has definitely closed it's activity. For temporarily closed businesses please use the <code>specific_hours</code></p>
+      <p>Defines the current status of the business. `Open` indicates the business is up and running. `Closed` means that the business has definitely closed. For temporarily closed businesses please use the <code>specific_hours</code></p>
     type: string
     enum: [open, closed]
     default: open
     example: open
   BusinessWebsite:
-    description: The business's own website url or the main url of the company.
+    description: The business own website url or the main url of the company.
     type: string
     format: uri
     example: https://www.corner-shop.co/
@@ -613,9 +674,14 @@ schemas:
     type: string
     example: lorem ipsum
   BusinessOrgId:
-    description: The organisation's unique identifier at Partoo. During onboarding, Partoo creates an organisation where all your businesses will be aggregated
+    description: The organisation unique identifier at Partoo. During onboarding, Partoo creates an organisation where all your businesses will be aggregated
     type: integer
     example: 42
+  BusinessCreateContacts:
+    description: Specify how the clients can reach the persons in charge of the business in case they have questions.
+    type: array
+    items:
+      $ref: '#/schemas/ContactWithPhone'
   BusinessContacts:
     description: Specify how the clients can reach the persons in charge of the business in case they have questions.
     type: array
@@ -717,7 +783,7 @@ schemas:
         format: float
         example: 1409925979.5
       modified:
-        description: Timestamp (in seconds) of the business last modification. Doesn’t take into account changes to the Custom Fields or related objects.
+        description: Timestamp (in seconds) of the business last modification. It doesn’t take into account changes to the Custom Fields or related objects.
         type: number
         format: float
         example: 1561335111.681374
@@ -1091,6 +1157,10 @@ schemas:
   UserPhone:
     description: User phone number
     type: string
+  UserName:
+    description: User first name and last name concatenated. Can be null if it's your org integration api key.
+    type: string
+    example: Perceval de Galles
   UserFirstName:
     description: User first name
     type: string
@@ -1239,6 +1309,26 @@ schemas:
   Contact:
     description: Business contact
     type: object
+    properties:
+      name:
+        description: Contact full name
+        type: string
+        example: Hubert Bonisseur de la Bath
+      email:
+        description: Contact email
+        type: string
+        format: email
+        example: hubert@oss117.fr
+      phone_numbers:
+        description: Contact phone numbers - Preferably in the format E.164 ('+33302060628' instead of '0302060628')
+        type: array
+        items:
+          type: string
+        example: ['+33302060628']
+  ContactWithPhone:
+    description: Business contact
+    type: object
+    required: phone_numbers
     properties:
       name:
         description: Contact full name
@@ -1453,10 +1543,6 @@ schemas:
         description: Id of the custom field
         type: integer
       order:
-        description: >
-          Describes where the custom field is displayed on the Business Edit view of the Partoo App
-          inside the ”Custom Field” section (/app/business/edit#<business id>)
-          <p> The lower the value, the higher the field will be placed.
         type: integer
     discriminator:
       propertyName: type
@@ -1532,7 +1618,7 @@ schemas:
     description: |
       <p>Custom Fields set for this Business
       <p>They represent configurable fields that can be defined in addition to the normal business fields proposed by Partoo.
-      They are unique to the organisation and can be entitrly adapted to the company's needs.
+      They are unique to the organisation and should suit your company needs.
     type: object
     properties:
       custom_fields_name:
@@ -1739,9 +1825,6 @@ schemas:
             description: ID of the custom field.
             type: integer
           order:
-            description: >
-              Describes where the custom field is displayed on the Business Edit view of the Partoo App inside
-              the ”Custom Field” section (/app/business/edit#)
             type: integer
         discriminator:
           propertyName: type
@@ -2265,7 +2348,8 @@ schemas:
     description: >
       <p>The deletion of a custom field or the update of its metadata can have impacts on custom fields which are already set for businesses.
       <ul>
-        <li>If <code>forced_update</code> is set to false, only no destructive updates/deletions will be performed. If the modification is destructive, an exception will be returned with the list of new constraints which are not respected by some businesses.
+        <li>If <code>forced_update</code> is set to false, updates/deletions will be performed only if they are non destructive. 
+        If some businesses would be impacted by the update/deletion, an exception will be returned
         <li>If <code>forced_update</code> is set to true, destructive modification will be performed and businesses values will be deleted accordingly.
     type: boolean
     default: false
@@ -2342,7 +2426,9 @@ schemas:
       order:
         $ref:  '#/schemas/CustomFieldOrder'
   CustomFieldOrders:
-    description: Describes where the custom fields are displayed on the Business Edit view of the Partoo App
+    description: >
+      <p>On the Business Edit view of the Partoo App, custom fields will be displayed depending on their order. 
+      <p>The lowest number will be the first.
     type: array
     items:
         $ref: '#/schemas/CustomFieldOrdersObject'
@@ -2535,7 +2621,7 @@ schemas:
       forced_update:
         $ref:  '#/schemas/CustomFieldForcedUpdate'
   CustomFieldId:
-    description: Id of the custom field, received when creating it
+    description: Id of the custom field
     type: integer
     example: 42
   CustomFieldBusinessesCount:
@@ -2652,8 +2738,7 @@ schemas:
     example: 'Delivery'
   AttributeOrder:
     type: integer
-    description:  Order in the which in the Attribute will be displayed on the Business Edit view of the Partoo App
-    example: '1'
+    example: 1
   Attribute:
     type: object
     properties:
@@ -2671,7 +2756,6 @@ schemas:
     example: "Services disponibles"
   AttributesGroupOrder:
     type: Integer
-    description: Order in the which in the Attribute Group will be displayed on the Business Edit view of the Partoo App
     example: 5
   AttributesGroup:
     type: object
@@ -3301,7 +3385,7 @@ parameters:
       type: string
       enum: ['LIVE','PARTOO_PENDING', 'PARTOO_PENDING_DELETE', 'PROCESSING', 'REJECTED', 'PARTOO_SCHEDULED', 'PARTOO_ERROR']
     required: false
-    description: Filter Google Posts based on it's state.
+    description: Filter Google Posts based on its state.
   query_google_post_topic_type:
     in: query
     name: topic_type
@@ -3309,7 +3393,7 @@ parameters:
       type: string
       enum: ['NEWS', 'EVENT', 'OFFER', 'ALERT']
     required: false
-    description: Filter Google Posts based on it's type.
+    description: Filter Google Posts based on its type.
   query_google_post_topic_type_in:
     in: query
     name: topic_type__in
