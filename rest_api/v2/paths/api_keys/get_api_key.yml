@@ -1,0 +1,27 @@
+summary: Read one API key
+deprecated: false
+description: Given an API key ID, this endpoint gives you information about one key.
+operationId: getApiKey
+tags:
+  - ApiKeys
+parameters:
+  - in: query
+    name: key_id
+    schema:
+      $ref: '../../components/index.yml#/schemas/ApiKeys/ApiKey/properties/id'
+    description: Key ID
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/index.yml#/schemas/ApiKeys/ApiKey'
+  400:
+    $ref: '../../components/index.yml#/responses/400'
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
+  404:
+    $ref: '../../components/index.yml#/responses/404'
