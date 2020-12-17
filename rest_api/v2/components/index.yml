@@ -136,6 +136,7 @@ schemas:
         created_by:
           $ref: '#/schemas/UserId'
         created_by_name:
+          description: "First name and last name concatenated of the user that created the key"
           type: string
           example: "John Smith"
         created_at:
@@ -145,6 +146,7 @@ schemas:
         revoked_by:
           $ref: '#/schemas/UserId'
         revoked_by_name:
+          description: "First name and last name concatenated of the user that revoked the key"
           type: string
           example: "John Smith"
         revoked_at:
@@ -940,7 +942,7 @@ schemas:
     description: User phone number
     type: string
   UserName:
-    description: User first name and last name concatenated
+    description: User first name and last name concatenated. Can be null if it's your org integration api key.
     type: string
     example: Perceval de Galles
   UserFirstName:
