@@ -1,7 +1,6 @@
 summary: List user API keys
 deprecated: false
-description: This endpoint let you list all the API keys.
-  You need to have rights to access those API keys.
+description: This endpoint lets you list all the API keys you have access to.
 operationId: getApiKeys
 tags:
   - ApiKeys

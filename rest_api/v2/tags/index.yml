@@ -1,6 +1,5 @@
 - name: ApiKeys
   description: >
-    ⚠️ **This section is deprecated and is going to be sunset on March 1st, 2020**
     In this section you will have all the operation to create/list/revoke api keys
     that can be used to authenticate user either on the REST API or on the JS API.
 - name: Connection Tokens
@@ -96,7 +95,7 @@
   description: >
     <p>All operations available on Custom Fields metadata : creation, update and deletion of custom fields.
     <p>⚠️ <b>What are Custom fields ?</b>
-    <p>Custom Fields allow Enterprise Administrators to add custom data fields to businesses in Partoo / Localoo under different formats (List, Text, Number…) 
+    <p>Custom Fields allow Enterprise Administrators to add custom data fields to businesses in Partoo / Localoo under different formats (List, Text, Number…)
     in order to create a central datahub for local information. These fields can be used to:
     <li>Automatically feed other tools (Store locator, website, CRM, Chatbot...) from Partoo / Localoo.
     <li>Allow local users to fill custom fields in order to transmit data from local to central.
