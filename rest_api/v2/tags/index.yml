@@ -1,7 +1,8 @@
 - name: ApiKeys
   description: >
-    In this section you will have all the operation to create/list/revoke api keys
+    In this section you will have all the operation to list/information/revoke/update api keys
     that can be used to authenticate user either on the REST API or on the JS API.
+    A user has access to it's own api keys. Only ORG_ADMIN and PROVIDER users can access api keys type BOT.
 - name: Connection Tokens
   description: >
     In this section you will have all the operations to create/check/revoke connection tokens

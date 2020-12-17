@@ -1,7 +1,6 @@
 summary: Read one API key
 deprecated: false
-description: Given an API key ID, this endpoint gives you information about that key.
-  You need to have the right permission to access this API key.
+description: Given an API key ID, this endpoint gives you information about one key.
 operationId: getApiKey
 tags:
   - ApiKeys

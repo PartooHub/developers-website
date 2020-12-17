@@ -1,7 +1,6 @@
 summary: Update API keys
 deprecated: false
-description: This endpoint let you update API keys.
-  You need to have rights to access those API keys.
+description: This endpoint lets you update API keys you have access to.
 operationId: updateApiKeys
 tags:
   - ApiKeys

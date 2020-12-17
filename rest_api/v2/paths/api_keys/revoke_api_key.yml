@@ -1,5 +1,5 @@
 summary: Revoke API key
-description: This endpoint let you revoke an API key. You need to have rights to access this API key.
+description: This endpoint lets you revoke an API key you have access to.
 operationId: revokeApiKey
 tags:
   - ApiKeys
