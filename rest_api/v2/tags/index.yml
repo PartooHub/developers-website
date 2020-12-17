@@ -15,14 +15,6 @@
   description: >
     <p>A <code>business</code> object contains all the details related to a local store. All the businesses created will be grouped under your <code>organisation</code>. The organisation is created at the onboarding phase, by Partoo.
     <p>In this section, is explained how a business can be created, updated or retrieved.
-    <p>⚠️ <b>What are Custom fields ?</b>
-    <p>Custom Fields allow Enterprise Administrators to add custom data fields to Partoo / Localoo under different formats (List, Text, Number…) in order to create a central datahub for local information and to:
-    <li> Use this data to automatically feed other tools (Store locator, website, CRM, Chatbot...) from Partoo / Localoo
-    <li>Allow local users to fill custom fields in order to transmit data from local to central
-    <p>The APIs will allow you only to read the already defined permissions, the creation and editing APIs will be enabled at a later date (or say why they can't Post and Put them)
-    <p>They can be configured at an org level only through contacting your dedicated Customer Success Manager.
-    <p>Once created, Custom Fields values can be updated like any other business field.
-    <p>See business fields endpoints for more details about custom fields.
 - name: Business Fields
   description: >
     These endpoints give you the list of all the fields that are available for the business / organization / provider, grouped by section.
@@ -51,10 +43,26 @@
     All the operations to subscribe/unsuscribe businesses to Partoo products.
     You need to have the role `PROVIDER` to be able to perform those operations.
 - name: Reviews
-  description: All operations available on reviews
+  description: |
+    Partoo centralises all businesses reviews from Google, Facebook and TripAdvisor platforms.
+
+    ⚠️ This feature is available only for businesses subscribed to Review Management. ⚠️
+
+    The reviews are fetched once per day (over night), therefore a it is expected to have a delay of maximum 24h.
+    The Partoo APIs enable a simple way of replying to any new reviews, update an existing reply or delete a reply.
+    A review can have one of the following status:
+    - `treated`: has a reply/comment or it was manually marked as treated in the Partoo UI
+    - `not-treated`: it doesn't have a reply/comment and it was not manually marked as treated in the Partoo UI
+    - `deleted`: the review was removed by the user on the original platfrom.
+
+    **Note:** the review itself cannot be altered nor deleted via the APIs.
+
 - name: Reply Templates
   description: |
-    All operations available on review reply templates.
+    Reply templates allow business managers to gain time in replying to the reviews,
+    via a predefined answer which can be easily selected and sent.
+
+    ⚠️ This feature is available only for businesses subscribed to Review Management. ⚠️
 
     Reply templates are not meant to be used outside the Partoo application.
     For this reason it is not possible to access a _formatted_ template, with prefilled placeholders from the API.
@@ -72,3 +80,36 @@
     <p>⚠️ SMS send functionality cannot be tested in Sandbox env.
 - name: Presence Analytics
   description: All operations available on Presence Management analytics
+- name: Google Post
+  description: |
+    <b>⚠️Feature only available for small and midsize businesses (SMBs)⚠️</b>
+
+    Google Posts is a feature that allows businesses to create and share announcements, offers,
+    new or popular items in stock, or event details directly with the customers.
+    The post will appear on Google Search and Maps, which will boost the results for the business.
+
+    When a business is connected to a Google My Business location (action performed in Partoo app on
+    <a href="https://app.partoo.co/knowledge/connections">Partner Connection</a> page),
+    all the Google Posts will be automatically imported.
+    When a business is disconnected the Google Posts published on Google will be deleted from Partoo database.
+- name: Custom Fields
+  description: >
+    <p>All operations available on Custom Fields metadata : creation, update and deletion of custom fields.
+    <p>⚠️ <b>What are Custom fields ?</b>
+    <p>Custom Fields allow Enterprise Administrators to add custom data fields to businesses in Partoo / Localoo under different formats (List, Text, Number…) 
+    in order to create a central datahub for local information. These fields can be used to:
+    <li>Automatically feed other tools (Store locator, website, CRM, Chatbot...) from Partoo / Localoo.
+    <li>Allow local users to fill custom fields in order to transmit data from local to central.
+    <p>Once created, Custom Fields values can be updated like any other business field.
+    <p>To handle custom fields values for businesses, <a href="#tag/Businesses">see business endpoints</a>.
+    <p>To recover the list of custom fields available for a business <a href="#operation/getBusinessFieldsForOrg">see GET business fields endpoint</a>.
+# TODO: For attributes release
+#- name: GMB Attributes
+#  description: >
+#    <p>Get all Google My Business Attributes available for a Category in a given language. </p>
+#    <p>⚠️ <b>What are Google Attributes ?</b>
+#    <p>Google My Business Attributes are highly visible statements about your business that appear on your Google My Business listing.
+#    <p>They indicate things like Payment Options, Amenities, Accessibility and Highlights.
+#    <p>Does a business provide parking? Does it have a fireplace? Can customers pay with a debit card?
+#    <p>To recover attributes values set for a business, <a href="#operation/getBusinessAttributes">see get attributes business endpoints</a>.
+#    <p>To handle attributes values for businesses, <a href="#operation/postBusinessAttributes">see set attributes business endpoints</a>.
