@@ -25,6 +25,28 @@ responses:
       application/json:
         schema:
             type: array
+            example:
+              [
+              {
+                date: '2019-11-29',
+                added: 50,
+                previous_sum: 20,
+                cum_sum: 70
+              },
+              {
+                date: '2019-12-05',
+                added: 34,
+                previous_sum: 70,
+                cum_sum: 104
+              },
+              {
+                date: '2019-12-12',
+                added: 4,
+                previous_sum: 104,
+                cum_sum: 108
+              }
+              ]
+
             items:
               type: object
               properties:
@@ -32,21 +54,17 @@ responses:
                   type: string
                   format: datetype
                   description: Start date of the bucket
-                  example: '2019-11-29'
                 added:
                   type: integer
                   description: Number of reviews added during the current bucket.
-                  example: 50
                 previous_sum:
                   type: number
                   description: Cumulative sum of the number of reviews for the previous bucket.
                   format: float
-                  example: 20
                 cum_sum:
                   type: number
                   format: float
                   description: Cumulative sum of the number of reviews.
-                  example: 70
   400:
     $ref: '../../components/index.yml#/responses/400'
   401:
