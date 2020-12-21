@@ -3261,7 +3261,7 @@ parameters:
     in: query
     name: partner
     description: |
-      Filter by `partner`
+      Filter by partner
 
       Return all the reviews from `partner`.
     schema:
