@@ -3172,8 +3172,8 @@ parameters:
     description: |
       Defining the time range of a data bucket.
 
-      This will determine the precision of the returned data. For example, if you choose `day`, you will receive the
-      cumulative sum of the number of reviews for each day.
+      This will determine the precision of the returned data. For example, if you choose `day`, you will receive the 
+      number of reviews for each day.
   query_review_cumulative:
     in: query
     name: cumulative
