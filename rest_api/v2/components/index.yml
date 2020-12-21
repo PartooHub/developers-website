@@ -3240,7 +3240,7 @@ parameters:
 
       Return all the reviews whose `update_date` <= `given_date`.
 
-      For example : `update_date__lte=2020-01-01T00:00:00` will returns all reviews from the date of the first review
+      For example : `update_date__lte=2020-01-01T00:00:00` will return all reviews from the date of the first review
       until the first january of 2020.
 
       **Note** : The update dates are stored in UTC.
