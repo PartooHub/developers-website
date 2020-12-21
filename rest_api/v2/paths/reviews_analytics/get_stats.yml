@@ -3,7 +3,7 @@ tags:
 summary: Statistics
 description: |
   This endpoint let you view the global reviews statistics for all your businesses subscribed to
-  **Presence Management**.
+  **Review Management**.
 
   You can use the following filters:
     - by partner (google_my_business, facebook, tripadvisor)
