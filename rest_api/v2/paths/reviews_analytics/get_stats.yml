@@ -6,7 +6,6 @@ description: |
   **Review Management**.
 
   You can use the following filters:
-    - by partner (google_my_business, facebook, tripadvisor)
     - by date (statistics before and/or after a date)
     - by businesses (businesses id in list or not in list)
     - by keywords
@@ -17,7 +16,6 @@ description: |
   **Qualitative Evolution** and **Quantitative Evolution** endpoints.
 
 parameters:
-  - $ref: '../../components/index.yml#/parameters/query_review_partner'
   - $ref: '../../components/index.yml#/parameters/query_review_business__in'
   - $ref: '../../components/index.yml#/parameters/query_keywords'
   - $ref: '../../components/index.yml#/parameters/query_review_update_date__gte'

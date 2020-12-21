@@ -13,7 +13,6 @@ description: |
 parameters:
   - $ref: '../../components/index.yml#/parameters/query_review_bucket'
   - $ref: '../../components/index.yml#/parameters/query_review_cumulative'
-  - $ref: '../../components/index.yml#/parameters/query_review_partner'
   - $ref: '../../components/index.yml#/parameters/query_review_business__in'
   - $ref: '../../components/index.yml#/parameters/query_keywords'
   - $ref: '../../components/index.yml#/parameters/query_review_update_date__gte'

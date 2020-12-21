@@ -3257,22 +3257,6 @@ parameters:
       items:
         $ref: '#/schemas/ReviewPublisherLabel'
       example: google_my_business,facebook
-  query_review_partner:
-    in: query
-    name: partner
-    description: |
-      Filter by partner
-
-      Return all the reviews from `partner`.
-    schema:
-      type: string
-      description: Publisher label
-      enum:
-        - google_my_business
-        - facebook
-        - tripadvisor
-      default: google_my_business
-    example: facebook
   query_gmb_rating__in:
     in: query
     name: gmb_rating__in
