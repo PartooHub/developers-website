@@ -1221,7 +1221,12 @@ schemas:
         items:
           $ref: '#/schemas/Product'
       business_ids:
-        description: (useful only if you user has `BUSINESS_MANAGER` role) List of businesses ids the user can access
+        description: |
+          Populated only for BUSINESS_MANAGER role.
+
+          List of businesses ids the user can access.
+
+          Note: For a reliable way of getting all the businesses the user can access, use [operation/searchBusinesses](https://developers.partoo.co/rest_api/v2/#operation/searchBusinesses).
         type: array
         items:
           $ref: '#/schemas/BusinessId'
