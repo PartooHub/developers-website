@@ -110,6 +110,15 @@ schemas:
       pattern: "yyyy-mm-dd"
       example: "2022-06-05"
       description: "Must be at least the day after today. If you want it to expire today you must revoke it. You can set it to null."
+    ip_whitelist:
+          description: |
+            List of IP or CIDR network notations to which API Key calls are restricted.
+
+            Empty list means no restriction.
+          type: array
+          items: 
+            type: string
+          example: ["172.16.0.0/12", "127.0.0.1"]
     ApiKey:
       type: object
       properties:
@@ -153,6 +162,8 @@ schemas:
           type: string
           pattern: date
           example: "2020-10-20 11:46:38.914467+00"
+        ip_whitelist:
+          $ref: "#/schemas/ApiKeys/ip_whitelist"
     Status:
       type: string
       example: 'active'
