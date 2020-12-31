@@ -20,6 +20,8 @@ requestBody:
             $ref: '../../components/index.yml#/schemas/ApiKeys/label'
           expiration_date:
             $ref: '../../components/index.yml#/schemas/ApiKeys/expiration_date'
+          ip_whitelist:
+            $ref: '../../components/index.yml#/schemas/ApiKeys/ip_whitelist'
 responses:
   200:
     description: OK
