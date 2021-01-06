@@ -97,6 +97,78 @@ schemas:
   ActionsDrivingDirections:
     type: integer
     description: Customers who request directions to your business
+  ApiKeys:
+    id:
+      type: integer
+      example: 3245
+    label:
+      type: string
+      example: "API key name"
+      description: "Name given to recognize the Api key"
+    expiration_date:
+      type: string
+      pattern: "yyyy-mm-dd"
+      example: "2022-06-05"
+      description: "Must be at least the day after today. If you want it to expire today you must revoke it. You can set it to null."
+    ip_whitelist:
+          description: |
+            List of IP or CIDR network notations to which API Key calls are restricted.
+
+            Empty list means no restriction.
+          type: array
+          items: 
+            type: string
+          example: ["172.16.0.0/12", "127.0.0.1"]
+    ApiKey:
+      type: object
+      properties:
+        id:
+          $ref: '#/schemas/ApiKeys/id'
+        label:
+          $ref: '#/schemas/ApiKeys/label'
+        user_id:
+          $ref: '#/schemas/UserId'
+        user_name:
+          $ref: '#/schemas/UserName'
+        user_role:
+          $ref: '#/schemas/Role'
+        disabled:
+          type: boolean
+          example: false
+          description: "Is true if someone revoked the key."
+        expiration_date:
+          $ref: '#/schemas/ApiKeys/expiration_date'
+        last_used_at:
+          type: string
+          pattern: date
+          example: "2019-08-22 11:46:38.914467+00"
+        created_by:
+          $ref: '#/schemas/UserId'
+        created_by_name:
+          description: "First name and last name concatenated of the user that created the key"
+          type: string
+          example: "John Smith"
+        created_at:
+          type: string
+          pattern: date
+          example: "2018-03-12 11:49:03.399475+00"
+        revoked_by:
+          $ref: '#/schemas/UserId'
+        revoked_by_name:
+          description: "First name and last name concatenated of the user that revoked the key"
+          type: string
+          example: "John Smith"
+        revoked_at:
+          type: string
+          pattern: date
+          example: "2020-10-20 11:46:38.914467+00"
+        ip_whitelist:
+          $ref: "#/schemas/ApiKeys/ip_whitelist"
+    Status:
+      type: string
+      example: 'active'
+      description: Filter api_keys by status. A key is inactive when expired or disabled.
+      enum: ['active', 'inactive', 'disabled', 'expired']
   AnalyticsDate:
     type: datetime
     description: First day of the aggregation
@@ -616,6 +688,11 @@ schemas:
     description: The organisation unique identifier at Partoo. During onboarding, Partoo creates an organisation where all your businesses will be aggregated
     type: integer
     example: 42
+  BusinessCreateContacts:
+    description: Specify how the clients can reach the persons in charge of the business in case they have questions.
+    type: array
+    items:
+      $ref: '#/schemas/ContactWithPhone'
   BusinessContacts:
     description: Specify how the clients can reach the persons in charge of the business in case they have questions.
     type: array
@@ -1091,6 +1168,10 @@ schemas:
   UserPhone:
     description: User phone number
     type: string
+  UserName:
+    description: User first name and last name concatenated. Can be null if it's your org integration api key.
+    type: string
+    example: Perceval de Galles
   UserFirstName:
     description: User first name
     type: string
@@ -1140,7 +1221,12 @@ schemas:
         items:
           $ref: '#/schemas/Product'
       business_ids:
-        description: (useful only if you user has `BUSINESS_MANAGER` role) List of businesses ids the user can access
+        description: |
+          Populated only for BUSINESS_MANAGER role.
+
+          List of businesses ids the user can access.
+
+          Note: For a reliable way of getting all the businesses the user can access, use [operation/searchBusinesses](https://developers.partoo.co/rest_api/v2/#operation/searchBusinesses).
         type: array
         items:
           $ref: '#/schemas/BusinessId'
@@ -1239,6 +1325,26 @@ schemas:
   Contact:
     description: Business contact
     type: object
+    properties:
+      name:
+        description: Contact full name
+        type: string
+        example: Hubert Bonisseur de la Bath
+      email:
+        description: Contact email
+        type: string
+        format: email
+        example: hubert@oss117.fr
+      phone_numbers:
+        description: Contact phone numbers - Preferably in the format E.164 ('+33302060628' instead of '0302060628')
+        type: array
+        items:
+          type: string
+        example: ['+33302060628']
+  ContactWithPhone:
+    description: Business contact
+    type: object
+    required: phone_numbers
     properties:
       name:
         description: Contact full name
