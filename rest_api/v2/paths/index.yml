@@ -58,6 +58,17 @@
 /authorize/revoke:
   post:
     $ref: ./authorize/post_revoke.yml
+/api_keys:
+  get:
+    $ref: ./api_keys/get_api_keys.yml
+/api_keys/{api_key_id}:
+  get:
+    $ref: ./api_keys/get_api_key.yml
+  put:
+    $ref: ./api_keys/update_api_keys.yml
+/api_keys/revoke/{api_key_id}:
+  post:
+    $ref: ./api_keys/revoke_api_key.yml
 
 
 # GOOGLE POST endpoints
@@ -89,6 +100,9 @@
     $ref: ./reviews/delete_reply.yml
 
 # REVIEWS ANALYTICS endpoints
+/reviews/get_stats:
+  get:
+    $ref: ./reviews_analytics/get_stats.yml
 /reviews/qualitative-evolution:
   get:
     $ref: ./reviews_analytics/get_qualitative_evolution.yml
@@ -162,13 +176,11 @@
 /business/{business_id}/unsubscribe:
   post:
     $ref: ./business/post_unsubscribe.yml
-# TODO: For attributes release
-#/business/{business_id}/attributes:
-#  get:
-#    $ref: ./business/get_attributes.yml
-#  post:
-#    $ref: ./business/post_attributes.yml
-
+/business/{business_id}/attributes:
+  get:
+    $ref: ./business/get_attributes.yml
+  post:
+    $ref: ./business/post_attributes.yml
 
 # Business Fields endpoint
 /business/{business_id}/business_fields:
@@ -241,8 +253,7 @@
   post:
     $ref: ./custom_fields/post_order.yml
 
-# TODO: For attributes release
 # GMB Attributes endpoints
-#/attributes/list:
-#  get:
-#    $ref: ./attributes/get.yml
+/attributes/list:
+  get:
+    $ref: ./attributes/get.yml

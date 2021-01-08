@@ -1,8 +1,8 @@
 - name: ApiKeys
   description: >
-    ⚠️ **This section is deprecated and is going to be sunset on March 1st, 2020**
-    In this section you will have all the operation to create/list/revoke api keys
+    In this section you will have all the operation to list/information/revoke/update api keys
     that can be used to authenticate user either on the REST API or on the JS API.
+    A user has access to it's own api keys. Only ORG_ADMIN and PROVIDER users can access api keys type BOT.
 - name: Connection Tokens
   description: >
     In this section you will have all the operations to create/check/revoke connection tokens
@@ -96,20 +96,19 @@
   description: >
     <p>All operations available on Custom Fields metadata : creation, update and deletion of custom fields.
     <p>⚠️ <b>What are Custom fields ?</b>
-    <p>Custom Fields allow Enterprise Administrators to add custom data fields to businesses in Partoo / Localoo under different formats (List, Text, Number…) 
+    <p>Custom Fields allow Enterprise Administrators to add custom data fields to businesses in Partoo / Localoo under different formats (List, Text, Number…)
     in order to create a central datahub for local information. These fields can be used to:
     <li>Automatically feed other tools (Store locator, website, CRM, Chatbot...) from Partoo / Localoo.
     <li>Allow local users to fill custom fields in order to transmit data from local to central.
     <p>Once created, Custom Fields values can be updated like any other business field.
     <p>To handle custom fields values for businesses, <a href="#tag/Businesses">see business endpoints</a>.
     <p>To recover the list of custom fields available for a business <a href="#operation/getBusinessFieldsForOrg">see GET business fields endpoint</a>.
-# TODO: For attributes release
-#- name: GMB Attributes
-#  description: >
-#    <p>Get all Google My Business Attributes available for a Category in a given language. </p>
-#    <p>⚠️ <b>What are Google Attributes ?</b>
-#    <p>Google My Business Attributes are highly visible statements about your business that appear on your Google My Business listing.
-#    <p>They indicate things like Payment Options, Amenities, Accessibility and Highlights.
-#    <p>Does a business provide parking? Does it have a fireplace? Can customers pay with a debit card?
-#    <p>To recover attributes values set for a business, <a href="#operation/getBusinessAttributes">see get attributes business endpoints</a>.
-#    <p>To handle attributes values for businesses, <a href="#operation/postBusinessAttributes">see set attributes business endpoints</a>.
+- name: GMB Attributes
+  description: >
+    <p>Get all Google My Business Attributes available for a Category in a given language. </p>
+    <p>⚠️ <b>What are Google Attributes ?</b>
+    <p>Google My Business Attributes are highly visible statements about your business that appear on your Google My Business listing.
+    <p>They indicate things like Payment Options, Amenities, Accessibility and Highlights.
+    <p>Does a business provide parking? Does it have a fireplace? Can customers pay with a debit card?
+    <p>To recover attributes values set for a business, <a href="#operation/getBusinessAttributes">see get attributes business endpoints</a>.
+    <p>To handle attributes values for businesses, <a href="#operation/postBusinessAttributes">see set attributes business endpoints</a>.
