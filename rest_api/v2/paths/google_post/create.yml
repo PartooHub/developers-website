@@ -33,6 +33,13 @@ requestBody:
             $ref: '../../components/index.yml#/schemas/GooglePostCallToActionType'
           call_to_action_url:
             $ref: '../../components/index.yml#/schemas/GooglePostCallToActionUrl'
+          use_business_url:
+            description: |
+              To use the business url of the business instead of a specific one for a `call_to_action_url`.
+
+              In case of bulk creations, the business url of each businesses will be use for its specific Google Post
+            type: boolean
+            example: false
           scheduled_start_time:
             description: |
               Date when the Google Post will be published.
