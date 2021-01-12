@@ -124,7 +124,7 @@ This event happens when then user has successfully updated contact of his/her bu
 .. warning::
 	This is a none blocking callback
 
-**Event id:** ``business_address_updated``.
+**Event id:** ``business_contact_updated``.
 
 **Event data:** a JS object
 
@@ -138,7 +138,7 @@ This event happens when then user has successfully updated the description of hi
 .. warning::
 	This is a none blocking callback
 
-**Event id:** ``business_address_updated``.
+**Event id:** ``business_description_updated``.
 
 **Event data:** a JS object
 
