@@ -763,6 +763,11 @@ schemas:
     type: array
     items:
       $ref: '#/schemas/Contact'
+  BusinessContactsCreate:
+    description: Specify how the clients can reach the persons in charge of the business in case they have questions.
+    type: array
+    items:
+      $ref: '#/schemas/ContactPhoneMandatory'
   GroupId:
     description: The id of the group the business belongs to. An organisation can have multiple groups that contain one or more businesses. A business can belong to only one group.
     type: integer
@@ -1402,6 +1407,26 @@ schemas:
         example: hubert@oss117.fr
       phone_numbers:
         description: Contact phone numbers - Preferably in the format E.164 ('+33302060628' instead of '0302060628')
+        type: array
+        items:
+          type: string
+        example: ['+33302060628']
+  ContactPhoneMandatory:
+    description: Business contact
+    type: object
+    properties:
+      name:
+        description: Contact full name
+        type: string
+        example: Hubert Bonisseur de la Bath
+      email:
+        description: Contact email
+        type: string
+        format: email
+        example: hubert@oss117.fr
+      phone_numbers:
+        description: ⚠️ <strong>Starting from the 15th of July 2021, the phone number field will become mandatory to create a business</strong></br>
+          Contact phone numbers - Preferably in the format E.164 ('+33302060628' instead of '0302060628')
         type: array
         items:
           type: string
