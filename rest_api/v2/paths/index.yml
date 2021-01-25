@@ -100,7 +100,7 @@
     $ref: ./reviews/delete_reply.yml
 
 # REVIEWS ANALYTICS endpoints
-/reviews/get_stats:
+/reviews/stats:
   get:
     $ref: ./reviews_analytics/get_stats.yml
 /reviews/qualitative-evolution:
