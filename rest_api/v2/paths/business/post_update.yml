@@ -71,9 +71,9 @@ requestBody:
           national_identification_number:
             $ref: '../../components/index.yml#/schemas/BusinessNationalIdentificationNumber'
           videos:
-            $ref: '../../components/index.yml#/schemas/BusinessVideos'
+            $ref: '../../components/index.yml#/schemas/BusinessVideosDeprecated'
           news:
-            $ref: '../../components/index.yml#/schemas/BusinessNews'
+            $ref: '../../components/index.yml#/schemas/BusinessNewsDeprecated'
           custom_fields:
             $ref: '../../components/index.yml#/schemas/CustomFields.Update'
 responses:

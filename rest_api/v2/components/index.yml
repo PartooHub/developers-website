@@ -732,7 +732,21 @@ schemas:
     items:
       type: string
       format: uri
+  BusinessVideosDeprecated:
+    description: ⚠️ <strong>On the 15th of July 2021, this parameter will be removed</strong></br>
+     Business videos URLs
+    deprecated: true
+    type: array
+    items:
+      type: string
+      format: uri
   BusinessNews:
+    deprecated: true
+    type: array
+    items:
+      $ref: '#/schemas/News'
+  BusinessNewsDeprecated:
+    description: ⚠️ <strong>On the 15th of July 2021, this parameter will be removed</strong></br>
     deprecated: true
     type: array
     items:
@@ -933,7 +947,8 @@ schemas:
         $ref: '#/schemas/BusinessVideos'
       siret:
         deprecated: true
-        description: Business SIRET (for french businesses)
+        description:
+         Business SIRET (for french businesses)
         type: string
       news:
         $ref: '#/schemas/BusinessNews'
@@ -1023,13 +1038,14 @@ schemas:
       custom_fields:
         $ref: '#/schemas/CustomFields.Array'
       videos:
-        $ref: '#/schemas/BusinessVideos'
+        $ref: '#/schemas/BusinessVideosDeprecated'
       siret:
         deprecated: true
-        description: Business SIRET (for french businesses)
+        description: ⚠️ <strong>On the 15th of July 2021, this parameter will be removed</strong></br>
+         Business SIRET (for french businesses)
         type: string
       news:
-        $ref: '#/schemas/BusinessNews'
+        $ref: '#/schemas/BusinessNewsDeprecated'
       promos:
         $ref: '#/schemas/BusinessPromos'
   Attributes.Field.Base:
@@ -3137,7 +3153,8 @@ parameters:
         - "True"
         - "False"
     required: false
-    description: Filter by current subscription to `review_management`
+    description: ⚠️ <strong>On the 15th of July 2021, this parameter will be removed</strong></br>
+     Filter by current subscription to `review_management`
   query_filter_by_business_subscription_to_presence_management:
     in: query
     deprecated: true
@@ -3148,7 +3165,8 @@ parameters:
         - "True"
         - "False"
     required: false
-    description: Filter by current subscription to `presence_management
+    description: ⚠️ <strong>On the 15th of July 2021, this parameter will be removed</strong></br>
+     Filter by current subscription to `presence_management
   query_business__in:
     in: query
     name: business__in
