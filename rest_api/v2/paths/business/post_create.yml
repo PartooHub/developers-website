@@ -62,7 +62,7 @@ requestBody:
           specific_hours:
             $ref: '../../components/index.yml#/schemas/SpecificHours'
           contacts:
-            $ref: '../../components/index.yml#/schemas/BusinessContacts'
+            $ref: '../../components/index.yml#/schemas/BusinessContactsCreate'
           photos:
             $ref: '../../components/index.yml#/schemas/Photos'
           national_identification_number:
