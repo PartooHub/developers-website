@@ -31,14 +31,29 @@ The deployment is done using [ansible](https://github.com/PartooHub/partoo/tree/
 
 ## Running project locally
 
-### Using yarn
+### JS SDK - documentation
+Setup the evnironement
+```shell script
+virtualenv -p python3 venv  # install the venv if you don't have it
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+Run the project
+```shell script
+source venv/bin/activate  # if it's not activated already
+make html  
+```
+The open in the browser the generated files from ~/developers/_build/html/js_sdk/index.html 
+
+### REST API - documentation
+Using yarn:
 ```shell script
 yarn
 yarn watch  # will start a server on port http://127.0.0.1:8080
 ```
 
-### Using npm
-
+Using npm:
 ```shell script
 npm install
 npm run watch  # will start a server on port http://127.0.0.1:8080
