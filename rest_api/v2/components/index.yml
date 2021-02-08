@@ -660,7 +660,8 @@ schemas:
     type: string
     example: Paris
   BusinessCountry:
-    description: Business country - use ISO 3166 alpha2 code (i.e. use “FR” for France)
+    description: ⚠️ <strong>Starting from the 15th of July 2021, the country code field must respect the ISO 3166 alpha2 code</strong></br>
+      Business country - use ISO 3166 alpha2 code (i.e. use “FR” for France)
     type: string
     example: FR
   BusinessRegion:
@@ -1422,7 +1423,8 @@ schemas:
         format: email
         example: hubert@oss117.fr
       phone_numbers:
-        description: Contact phone numbers - Preferably in the format E.164 ('+33302060628' instead of '0302060628')
+        description: ⚠️ <strong>Starting from the 15th of July 2021, the phone number field will become mandatory and respect the ISO standard E.164</strong></br>
+          Contact phone numbers - Preferably in the format E.164 ('+33302060628' instead of '0302060628')
         type: array
         items:
           type: string
@@ -1441,7 +1443,7 @@ schemas:
         format: email
         example: hubert@oss117.fr
       phone_numbers:
-        description: ⚠️ <strong>Starting from the 15th of July 2021, the phone number field will become mandatory to create a business</strong></br>
+        description: ⚠️ <strong>Starting from the 15th of July 2021, the phone number field will become mandatory and respect the ISO standard E.164</strong></br>
           Contact phone numbers - Preferably in the format E.164 ('+33302060628' instead of '0302060628')
         type: array
         items:
