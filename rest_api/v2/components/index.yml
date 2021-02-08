@@ -651,7 +651,8 @@ schemas:
     example: Corner shop
   BusinessCleanName:
     deprecated: True
-    description: <code>It will be removed in July 2021</code> <br />The clean name of the business (typically the brand name) used for Apple, Foursquare and Justacote (French only) partners. This should not contain the city name nor any additional descriptive items
+    description: ⚠️ <strong>It will be removed on July 15th, 2021.</strong></br>
+      The clean name of the business (typically the brand name) used for Apple, Foursquare and Justacote (French only) partners. This should not contain the city name nor any additional descriptive items
     type: string
     minLength: 1
     examples: Partoo
@@ -774,12 +775,14 @@ schemas:
     type: integer
     example: 42
   BusinessContacts:
-    description: Specify how the clients can reach the persons in charge of the business in case they have questions.
+    description: Specify how the clients can reach the persons in charge of the business in case they have questions.</br>
+      ⚠️ <strong>Modifications on contact's nested fields applied from 15th of July 2021.</strong>
     type: array
     items:
       $ref: '#/schemas/Contact'
   BusinessContactsCreate:
-    description: Specify how the clients can reach the persons in charge of the business in case they have questions.
+    description: Specify how the clients can reach the persons in charge of the business in case they have questions.</br>
+       ⚠️ <strong>Modifications on contact's nested fields applied from 15th of July 2021.</strong>
     type: array
     items:
       $ref: '#/schemas/ContactPhoneMandatory'
@@ -3120,7 +3123,8 @@ parameters:
       type: string
     required: false
     deprecated: true
-    description:  <p><code>It will be removed in July 2021</code>. Filter by clean name.</p>
+    description: ⚠️ <strong>It will be removed on July 15th, 2021.</strong></br>
+      Filter by clean name.
   query_filter_by_country:
     in: query
     name: country
