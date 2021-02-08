@@ -651,7 +651,7 @@ schemas:
     example: Corner shop
   BusinessCleanName:
     deprecated: True
-    description: <code>It will be removed by November 2020</code> <br />The clean name of the business (typically the brand name) used for Apple, Foursquare and Justacote (French only) partners. This should not contain the city name nor any additional descriptive items
+    description: <code>It will be removed in July 2021</code> <br />The clean name of the business (typically the brand name) used for Apple, Foursquare and Justacote (French only) partners. This should not contain the city name nor any additional descriptive items
     type: string
     minLength: 1
     examples: Partoo
@@ -3118,7 +3118,7 @@ parameters:
       type: string
     required: false
     deprecated: true
-    description:  <p><code>It will be removed in November 2020</code>. Filter by clean name.</p>
+    description:  <p><code>It will be removed in July 2021</code>. Filter by clean name.</p>
   query_filter_by_country:
     in: query
     name: country
