@@ -1,7 +1,9 @@
 summary: Search categories
 tags:
   - Categories
-description: ⚠️ <strong>This endpoint is deprecated and is going to be sunset on July 15th, 2021. Please use /categories instead</strong></br>
+description: >
+  ❗<strong>This endpoint is deprecated and is going to be sun-set on July 15th, 2021.</strong> <br />
+  Please use /categories instead</strong></br>
   This endpoint lets you search through Partoo categories.
 deprecated: true
 operationId: searchCategories

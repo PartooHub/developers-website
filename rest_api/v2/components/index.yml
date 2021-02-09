@@ -651,7 +651,8 @@ schemas:
     example: Corner shop
   BusinessCleanName:
     deprecated: True
-    description: <code>It will be removed by November 2020</code> <br />The clean name of the business (typically the brand name) used for Apple, Foursquare and Justacote (French only) partners. This should not contain the city name nor any additional descriptive items
+    description: ❗️<strong>Will be removed on July 15th, 2021.</strong></br>
+      The clean name of the business (typically the brand name) used for Apple, Foursquare and Justacote (French only) partners. This should not contain the city name nor any additional descriptive items
     type: string
     minLength: 1
     examples: Partoo
@@ -660,7 +661,8 @@ schemas:
     type: string
     example: Paris
   BusinessCountry:
-    description: Business country - use ISO 3166 alpha2 code (i.e. use “FR” for France)
+    description: ❗<strong>Will have to respect the ISO 3166 alpha2 from July 15th, 2021.</strong></br>
+      Business country - use ISO 3166 alpha2 code (i.e. use “FR” for France)
     type: string
     example: FR
   BusinessRegion:
@@ -733,7 +735,7 @@ schemas:
       type: string
       format: uri
   BusinessVideosDeprecated:
-    description: ⚠️ <strong>On the 15th of July 2021, this parameter will be removed</strong></br>
+    description: ❗️<strong>Will be removed on July 15th, 2021.</strong></br>
      Business videos URLs
     deprecated: true
     type: array
@@ -746,7 +748,7 @@ schemas:
     items:
       $ref: '#/schemas/News'
   BusinessNewsDeprecated:
-    description: ⚠️ <strong>On the 15th of July 2021, this parameter will be removed</strong></br>
+    description: ❗️<strong>Will be removed on July 15th, 2021.</strong></br>
     deprecated: true
     type: array
     items:
@@ -773,12 +775,14 @@ schemas:
     type: integer
     example: 42
   BusinessContacts:
-    description: Specify how the clients can reach the persons in charge of the business in case they have questions.
+    description: Specify how the clients can reach the persons in charge of the business in case they have questions.</br>
+      ❗️ <strong>Modifications on nested fields applied from July 15th, 2021.</strong>
     type: array
     items:
       $ref: '#/schemas/Contact'
   BusinessContactsCreate:
-    description: Specify how the clients can reach the persons in charge of the business in case they have questions.
+    description: Specify how the clients can reach the persons in charge of the business in case they have questions.</br>
+       ❗️ <strong>Modifications on nested fields applied from July 15th, 2021.</strong>
     type: array
     items:
       $ref: '#/schemas/ContactPhoneMandatory'
@@ -1041,7 +1045,7 @@ schemas:
         $ref: '#/schemas/BusinessVideosDeprecated'
       siret:
         deprecated: true
-        description: ⚠️ <strong>On the 15th of July 2021, this parameter will be removed</strong></br>
+        description: ❗️<strong>Will be removed on July 15th, 2021.</strong></br>
          Business SIRET (for french businesses)
         type: string
       news:
@@ -1422,7 +1426,8 @@ schemas:
         format: email
         example: hubert@oss117.fr
       phone_numbers:
-        description: Contact phone numbers - Preferably in the format E.164 ('+33302060628' instead of '0302060628')
+        description: ❗<strong>Will become mandatory and will have to respect the ISO standard E.164 from the July 15th, 2021.</strong></br>
+          Contact phone numbers - Preferably in the format E.164 ('+33302060628' instead of '0302060628')
         type: array
         items:
           type: string
@@ -1441,7 +1446,7 @@ schemas:
         format: email
         example: hubert@oss117.fr
       phone_numbers:
-        description: ⚠️ <strong>Starting from the 15th of July 2021, the phone number field will become mandatory to create a business</strong></br>
+        description: ❗<strong>Will become mandatory and will have to respect the ISO standard E.164 from the July 15th, 2021.</strong></br>
           Contact phone numbers - Preferably in the format E.164 ('+33302060628' instead of '0302060628')
         type: array
         items:
@@ -3118,7 +3123,8 @@ parameters:
       type: string
     required: false
     deprecated: true
-    description:  <p><code>It will be removed in November 2020</code>. Filter by clean name.</p>
+    description: ❗️<strong>Will be removed on July 15th, 2021.</strong></br>
+      Filter by clean name.
   query_filter_by_country:
     in: query
     name: country
@@ -3153,7 +3159,7 @@ parameters:
         - "True"
         - "False"
     required: false
-    description: ⚠️ <strong>On the 15th of July 2021, this parameter will be removed</strong></br>
+    description: ❗️<strong>Will be removed on July 15th, 2021.</strong></br>
      Filter by current subscription to `review_management`
   query_filter_by_business_subscription_to_presence_management:
     in: query
@@ -3165,7 +3171,7 @@ parameters:
         - "True"
         - "False"
     required: false
-    description: ⚠️ <strong>On the 15th of July 2021, this parameter will be removed</strong></br>
+    description: ❗️<strong>Will be removed on July 15th, 2021.</strong></br>
      Filter by current subscription to `presence_management
   query_business__in:
     in: query

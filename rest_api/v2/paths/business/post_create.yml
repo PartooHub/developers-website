@@ -2,7 +2,6 @@ tags:
   - Businesses
 summary: Create business
 description: >
-  ⚠️ <strong>Starting from the 15th of July 2021, the phone number field will become mandatory to create a business</strong></br>
   This API allows the creation of a new business in the context of your organisation.
 operationId: createBusiness
 requestBody:
@@ -68,9 +67,9 @@ requestBody:
           national_identification_number:
             $ref: '../../components/index.yml#/schemas/BusinessNationalIdentificationNumber'
           videos:
-            $ref: '../../components/index.yml#/schemas/BusinessVideos'
+            $ref: '../../components/index.yml#/schemas/BusinessVideosDeprecated'
           news:
-            $ref: '../../components/index.yml#/schemas/BusinessNews'
+            $ref: '../../components/index.yml#/schemas/BusinessNewsDeprecated'
 responses:
   200:
     description: OK
