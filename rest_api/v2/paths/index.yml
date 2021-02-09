@@ -221,8 +221,8 @@
   get:
     $ref: ./category/get_by_id.yml
 /categories:
- get:
-   $ref: ./category/get_categories.yml
+  get:
+    $ref: ./category/get_categories.yml
 
 # ADDRESS endpoints
 /address/street_type:
