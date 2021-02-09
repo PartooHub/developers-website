@@ -1,7 +1,7 @@
 summary: List user API keys
 deprecated: true
 description: >
-  ⚠️ **This endpoint is deprecated and is going to be sun-set on July 15th, 2021**
+  ❗**This endpoint is deprecated and is going to be sun-set on July 15th, 2021.** <br />
   This endpoint let you list all the current valid tokens for a given user.
   You need to have `READ` access to this user.
 operationId: listAPIKeys

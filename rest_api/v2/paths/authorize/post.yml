@@ -3,7 +3,7 @@ tags:
 summary: Generate API key
 deprecated: true
 description: >
-  ⚠️ **This endpoint is deprecated and is going to be sun-set on July 15th, 2021**
+  ❗<strong>This endpoint is deprecated and is going to be sun-set on July 15th, 2021.</strong> <br />
   This endpoint lets you generate an API key either permanent (ie. will work until revoked)
   or consumable (ie. will work only for one connection).
   If you are generating the API key to log your user in the JS API, it is preferable to generate consumable api key.
