@@ -1,0 +1,32 @@
+getBusinessInfoResponse:
+  type: object
+  properties:
+    publisher_name:
+      type: object
+      properties:
+        state:
+          type: object
+          properties:
+            count:
+              type: integer
+            publishers_business:
+              type: array
+              items:
+                type: object
+                properties:
+                  business_formatted_address:
+                    type: string
+                  business_name:
+                    type: string
+                  error_type:
+                    $ref: '#/error_type'
+                  business_url:
+                    type: string
+                  business_id:
+                    type: string
+
+
+
+error_type:
+  type: enum
+  enum: [ 'PUBLISHER_CONNEXION','USER_INPUT' , 'USER_INPUT', 'EXTERNAL' ]

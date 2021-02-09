@@ -1,0 +1,36 @@
+business_id_in_query:
+  in: query
+  $ref: '../index.yml#/parameters/business_id'
+
+state:
+  type: enum
+  enum: [ 'success','pending' , 'to_configure' ]
+
+getBusinessInfoParams:
+  - business_id:
+    $ref: '#/business_id_in_query'
+
+  - publisher_names:
+    in: query
+    name: publisher_names
+    required: false
+    description: List of requested publisher names
+    schema:
+      type: array
+      items:
+        type: string
+      example: facebook,google_my_business
+
+
+  - states:
+    in: query
+    name: states
+    required: false
+    description: List of the requested states
+    schema:
+      type: array
+      items:
+        $ref: '#/state'
+      example: success,to_configure,pending
+
+

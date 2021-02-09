@@ -232,6 +232,11 @@
   get:
     $ref: ./address/get_number_supplement.yml
 
+# Presence endpoints
+/publisher_states/business_info:
+  get:
+    $ref: ./presence/get_business_info.yml
+
 # PRESENCE ANALYTICS endpoints
 /presence_analytics:
   get:
