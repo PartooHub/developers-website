@@ -1544,32 +1544,6 @@ schemas:
     description: the exact phone number we would have sent the invitation(s) to
     example: '0701020304'
 
-  AddressStreetType:
-    description: Street type object
-    type: object
-    properties:
-      value:
-        description: Street type value
-        type: string
-        example: street
-      label:
-        description: Street type label
-        type: string
-        example: Street
-
-  AddressNumberSupplement:
-    description: Number supplement object
-    type: object
-    properties:
-      value:
-        description: Number supplement value
-        type: string
-        example: bis
-      label:
-        description: Number supplement label
-        type: string
-        example: Bis
-
   CustomFields.Array:
     description: |
       <p>Custom Fields set for this Business
@@ -2934,13 +2908,6 @@ schemas:
                 type: string
                 example: "is required"
 parameters:
-  query_filter_by_country_required:
-    in: query
-    name: country
-    required: true
-    schema:
-      type: string
-    description: Filter by country - use ISO 3166 alpha2 code (i.e. use “FR” for France)
   business_id:
     in: path
     name: business_id

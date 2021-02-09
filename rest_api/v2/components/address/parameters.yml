@@ -1,0 +1,7 @@
+query_filter_by_country_required:
+  in: query
+  name: country
+  required: true
+  schema:
+    type: string
+  description: Filter by country - use ISO 3166 alpha2 code (i.e. use “FR” for France)

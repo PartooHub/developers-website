@@ -1,0 +1,25 @@
+AddressStreetType:
+  description: Street type object
+  type: object
+  properties:
+    value:
+      description: Street type value
+      type: string
+      example: street
+    label:
+      description: Street type label
+      type: string
+      example: Street
+
+AddressNumberSupplement:
+  description: Number supplement object
+  type: object
+  properties:
+    value:
+      description: Number supplement value
+      type: string
+      example: bis
+    label:
+      description: Number supplement label
+      type: string
+      example: Bis

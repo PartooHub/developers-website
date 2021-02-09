@@ -5,7 +5,7 @@ description: >
   This endpoint lets retrieve street types for a given country.
 operationId: getStreetTypes
 parameters:
-  - $ref: '../../components/index.yml#/parameters/query_filter_by_country_required'
+  - $ref: '../../components/address/parameters.yml#/query_filter_by_country_required'
 responses:
   200:
     description: OK
@@ -15,7 +15,7 @@ responses:
           type: array
           description: List of street types
           items:
-            $ref: '../../components/index.yml#/schemas/AddressStreetType'
+            $ref: '../../components/address/schemas.yml#/AddressStreetType'
   400:
     $ref: '../../components/index.yml#/responses/400'
   401:
