@@ -236,6 +236,9 @@
 /publisher_states/business_info:
   get:
     $ref: ./presence/get_business_info.yml
+/publisher_states/businesses_info:
+  get:
+    $ref: ./presence/get_businesses_info.yml
 
 # PRESENCE ANALYTICS endpoints
 /presence_analytics:

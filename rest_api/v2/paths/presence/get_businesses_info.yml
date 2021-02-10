@@ -1,0 +1,43 @@
+summary: BusinessesInfo
+description: |
+  Method to retrieve paginated businesses information given a publisher and the state on this publisher
+
+  Can be filtered by:
+  - Business IDs
+
+operationId: getBusinessesInfo
+tags:
+  - Presence
+parameters:
+  $ref: '../../components/presence/parameters.yml#/getBusinessesInfoParams'
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/presence/schemas.yml#/getBusinessesInfoResponse'
+        examples:
+          publisher_name=facebook&state=success&page=1:
+            value:
+              facebook:
+                success:
+                  count: 2
+                  max_page: 1
+                  page: 1
+                  publishers_business:
+                    - business_formatted_address: 55 Rue du Faubourg Saint-Honoré, 75008 Paris
+                      business_name: Le Palais de L'Élysée
+                      error_type: None
+                      business_url: http://facebook/elysee
+                      business_id: 56465qz56d4q65zd4
+                    - business_formatted_address: 1 Rue du Général de Gaulle, 52330 Colombey-les-Deux-Églises
+                      business_name: La Boisserie
+                      error_type: USER_INPUT
+                      business_url: http://facebook/boisserie
+                      business_id: qz4d8qz4d68q4z6d4
+
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'
