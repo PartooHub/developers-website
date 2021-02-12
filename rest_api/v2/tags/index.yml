@@ -78,6 +78,8 @@
   description: >
     All operations related to the Review Booster product.
     <p>⚠️ SMS send functionality cannot be tested in Sandbox env.
+- name: Presence
+  description: All operations available on Presence Listing Page
 - name: Presence Analytics
   description: All operations available on Presence Management analytics
 - name: Google Post
