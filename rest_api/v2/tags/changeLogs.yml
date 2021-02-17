@@ -27,7 +27,7 @@ description: >
           </ul>
           </li>
           <li>‘clean_name’, ‘video’, ‘siret’ and ‘news’ fields will be removed from params and from response</li>
-          <li>‘subscribed_to_pm’ and ‘subscribed_to_pm’ will be removed from params</li>
+          <li>‘subscribed_to_pm’ and ‘subscribed_to_rm’ will be removed from params</li>
           <li>‘contacts[0].phone_numbers’ param becomes mandatory and must contain the country code</li>
           <li>‘country’ will expect standardized code format</li>
         </ul>
