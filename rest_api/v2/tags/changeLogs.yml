@@ -1,6 +1,6 @@
 name: Change Log
 description: >
-    <h2>17/02/2021</h2>
+    <h2>Upcoming changes</h2>
     <ul>
       <li><h3>Categories (DEPRECATION)</h3>
         <p>GET <a href="https://developers.partoo.co/rest_api/v2/#operation/searchCategories">/v2/category/search</a> will be <b><i>deprecated on July 15th 2021</i></b>. In order to search through Partoo categories, you need to migrate to <a href="https://developers.partoo.co/rest_api/v2/#operation/getCategories">/v2/categories</a> offering more advanced filtering options.</p>
@@ -26,17 +26,21 @@ description: >
             <li>POST <a href="https://developers.partoo.co/rest_api/v2/#operation/updateBusiness">/v2/business/{business_id}</a></li>
           </ul>
           </li>
-          <li>‘clean_name’, ‘video’, ‘siret’ and ‘news’ fields will be removed from params and from response</li>
-          <li>‘subscribed_to_pm’ and ‘subscribed_to_rm’ will be removed from params</li>
-          <li>‘contacts[0].phone_numbers’ param becomes mandatory and must contain the country code</li>
-          <li>‘country’ will expect standardized code format</li>
+          <li>
+            Impacted fields:
+            <ul>
+              <li>‘clean_name’, ‘video’, ‘siret’ and ‘news’ fields will be removed from params and from response</li>
+              <li>‘subscribed_to_pm’ and ‘subscribed_to_rm’ will be removed from params</li>
+              <li>‘contacts[0].phone_numbers’ param becomes mandatory and must contain the country code</li>
+              <li>‘country’ will expect standardized code format</li>
+            </ul>
+          </li>
         </ul>
       </li>
     </ul>
 
     <!-- TEMPLATE
 
-      <h2>--/--/----</h2>
       <ul>
         <li><h3>Title</h3>
           <ul>
