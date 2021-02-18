@@ -662,7 +662,7 @@ schemas:
     example: Paris
   BusinessCountry:
     description: ❗<strong>Will have to respect the ISO 3166 alpha2 from July 15th, 2021.</strong></br>
-      Business country - use ISO 3166 alpha2 code (i.e. use “FR” for France)
+      Business country - Preferably in the ISO 3166 alpha2 code format (i.e. use “FR” for France instead of "fr")
     type: string
     example: FR
   BusinessRegion:
@@ -2940,7 +2940,7 @@ parameters:
     required: true
     schema:
       type: string
-    description: Filter by country - use ISO 3166 alpha2 code (i.e. use “FR” for France)
+    description: Filter by country - ISO 3166 alpha2 code (i.e. “FR” for France)
   business_id:
     in: path
     name: business_id
@@ -3131,7 +3131,7 @@ parameters:
     schema:
       type: string
     required: false
-    description: Filter by country - use ISO 3166 alpha2 code (i.e. use “FR” for France)
+    description: Filter by country - ISO 3166 alpha2 code (i.e. “FR” for France)
   query_filter_by_business_promo:
     in: query
     name: has_promo
