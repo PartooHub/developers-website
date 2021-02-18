@@ -1,0 +1,56 @@
+name: Change Log
+description: >
+    <h2>Upcoming changes</h2>
+    <ul>
+      <li><h3>Categories (DEPRECATION)</h3>
+        <p>GET <a href="https://developers.partoo.co/rest_api/v2/#operation/searchCategories">/v2/category/search</a> will be <b><i>deprecated on July 15th 2021</i></b>. In order to search through Partoo categories, you need to migrate to <a href="https://developers.partoo.co/rest_api/v2/#operation/getCategories">/v2/categories</a> offering more advanced filtering options.</p>
+      </li>
+      <li><h3>API keys used to login users (DEPRECATION)</h3>
+        <ul>
+          <li>For security reasons, the following routes will be deprecated on <b><i>July 15th 2021</b></i>:</li>
+          <ul>
+            <li>POST <a href="https://developers.partoo.co/rest_api/v2/#operation/generateAPIKey">/v2/authorize</a></li>
+            <li>GET <a href="https://developers.partoo.co/rest_api/v2/#operation/listAPIKeys">/v2/authorize/list</a></li>
+            <li>POST <a href="https://developers.partoo.co/rest_api/v2/#operation/revokeAPIKey">/v2/authorize/revoke</a></li>
+          </ul>
+          <li>You need to migrate to <a href="https://developers.partoo.co/rest_api/v2/#tag/Connection-Tokens">/v2/connection/generate_token</a> route, which has a similar signature to the deprecated authorize endpoints.</li>
+        </ul>
+      </li>
+      <li><h3>Business endpoints (UPDATES AND DEPRECATION)</h3>
+        <ul>
+          <li>To improve business data consistency and its diffusion on directories, the following endpoints will be impacted by multiples changes on <b><i>July 15th 2021</i></b>.
+          <ul>
+            <li>GET <a href="https://developers.partoo.co/rest_api/v2/#operation/searchBusinesses">/v2/business</a></li>
+            <li>POST <a href="https://developers.partoo.co/rest_api/v2/#operation/createBusiness">/v2/business</a></li>
+            <li>GET <a href="https://developers.partoo.co/rest_api/v2/#operation/getBusiness">/v2/business/{business_id}</a></li>
+            <li>POST <a href="https://developers.partoo.co/rest_api/v2/#operation/updateBusiness">/v2/business/{business_id}</a></li>
+          </ul>
+          </li>
+          <li>
+            Impacted fields:
+            <ul>
+              <li>‘clean_name’, ‘video’, ‘siret’ and ‘news’ fields will be removed from params and from response</li>
+              <li>‘subscribed_to_pm’ and ‘subscribed_to_rm’ will be removed from params</li>
+              <li>‘contacts[0].phone_numbers’ param becomes mandatory and must contain the country code</li>
+              <li>‘country’ will expect standardized code format</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <!-- TEMPLATE
+
+      <ul>
+        <li><h3>Title</h3>
+          <ul>
+            <li>Description</li>
+            <ul>
+              <li>Change ...</li>
+              <li>Change ...</li>
+              <li>Change ...</li>
+            </ul>
+          </ul>
+        </li>
+      </ul>
+    -->

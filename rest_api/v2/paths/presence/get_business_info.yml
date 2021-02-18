@@ -1,0 +1,46 @@
+summary: BusinessInfo
+description: |
+  Method to retrieve business information given a publisher and the state on this publisher
+
+  Can be filtered by:
+  - The state of the publisher
+  - The name of the publisher
+
+operationId: getBusinessInfo
+tags:
+  - Presence
+parameters:
+  $ref: '../../components/presence/parameters.yml#/getBusinessInfoParams'
+responses:
+  200:
+    description: OK
+    content:
+      application/json:
+        schema:
+          $ref: '../../components/presence/schemas.yml#/getBusinessInfoResponse'
+        examples:
+          business_id=56465qz56d4q65zd4:
+            value:
+              facebook:
+                success:
+                  count: 1
+                  publishers_business:
+                    - business_formatted_address: 55 Rue du Faubourg Saint-Honoré, 75008 Paris
+                      business_name: Le Palais de L'Élysée
+                      error_type: None
+                      business_url: http://facebook/elysee
+                      business_id: 56465qz56d4q65zd4
+              google_my_business:
+                to_configure:
+                  count: 1
+                  publishers_business:
+                    - business_formatted_address: 55 Rue du Faubourg Saint-Honoré, 75008 Paris
+                      business_name: Le Palais de L'Élysée
+                      error_type: USER_INPUT
+                      business_url: http://google/elysee
+                      business_id: 56465qz56d4q65zd4
+
+  401:
+    $ref: '../../components/index.yml#/responses/401'
+  403:
+    $ref: '../../components/index.yml#/responses/403'

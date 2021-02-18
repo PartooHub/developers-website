@@ -221,8 +221,8 @@
   get:
     $ref: ./category/get_by_id.yml
 /categories:
- get:
-   $ref: ./category/get_categories.yml
+  get:
+    $ref: ./category/get_categories.yml
 
 # ADDRESS endpoints
 /address/street_type:
@@ -231,6 +231,14 @@
 /address/number_supplement:
   get:
     $ref: ./address/get_number_supplement.yml
+
+# Presence endpoints
+/publisher_states/business_info:
+  get:
+    $ref: ./presence/get_business_info.yml
+/publisher_states/businesses_info:
+  get:
+    $ref: ./presence/get_businesses_info.yml
 
 # PRESENCE ANALYTICS endpoints
 /presence_analytics:
