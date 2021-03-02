@@ -32,11 +32,7 @@ requestBody:
           region:
             $ref: '../../components/index.yml#/schemas/BusinessRegion'
           categories:
-            description: Array of categories ids
-            type: array
-            minItems: 1
-            items:
-              type: string
+            $ref: '../../components/index.yml#/schemas/BusinessCategories'
           code:
             $ref: '../../components/index.yml#/schemas/BusinessCode'
           status:
