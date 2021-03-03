@@ -74,7 +74,7 @@
   description: |
     Categories describe your business and has a huge impact on its discoverability on directories.
     For each business, you will need to pass at least one category id (example: <i>"gcid:restaurant"</i>) and up to 10.
-    Please note that the order you pass to business.categories array is important, <b>the first category id</b> should correspond to <b>the most relevant category</b> for your business.
+    Please note that the order you pass to business.categories array is important: <b>the first category id</b> should correspond to <b>the most relevant category</b> for your business.
 
     You can find below all available operations that will let you get more information about categories you can use on Partoo:
 - name: Address
