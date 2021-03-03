@@ -116,7 +116,7 @@ schemas:
 
             Empty list means no restriction.
           type: array
-          items: 
+          items:
             type: string
           example: ["172.16.0.0/12", "127.0.0.1"]
     ApiKey:
@@ -211,7 +211,7 @@ schemas:
     example: 42
   CategorySqlGmbId:
     type: string
-    description: Google My Business Category Id ( unique )
+    description: Unique category id. This is the id you should pass in business.categories array when creating/updating a business
     example: 'gcid:climbing_gym'
   CategorySqlName:
     type: object
@@ -683,8 +683,10 @@ schemas:
       <p> It describes a unique number for which the business is registered in a specific country. For example, in France, it's SIRET code or for Ireland it's the CRO
     type: string
   BusinessCategories:
-    description: A list of category ids mapped to the business. At least one category needs to be provided. For more information see Categories section
+    required: true
+    description: A list of category ids mapped to the business. At least one category needs to be provided. For more information see [Categories section](https://developers.partoo.co/rest_api/v2/#tag/Categories)
     type: array
+    example: ['gcid:restaurant', 'gcid:fast_food_restaurant', 'gcid:hamburger_restaurant']
   BusinessLatitude:
     description: Latitude. Decimals are separated by a dot and not by a comma.
     type: number
@@ -1001,6 +1003,8 @@ schemas:
         $ref: '#/schemas/BusinessRegion'
       country:
         $ref: '#/schemas/BusinessCountry'
+      categories:
+        $ref: '#/schemas/BusinessCategories'
       time_slot_reference:
         $ref: '#/schemas/TimeSlotReference'
       open_hours:
@@ -2455,7 +2459,7 @@ schemas:
     description: >
       <p>The deletion of a custom field or the update of its metadata can have impacts on custom fields which are already set for businesses.
       <ul>
-        <li>If <code>forced_update</code> is set to false, updates/deletions will be performed only if they are non destructive. 
+        <li>If <code>forced_update</code> is set to false, updates/deletions will be performed only if they are non destructive.
         If some businesses would be impacted by the update/deletion, an exception will be returned
         <li>If <code>forced_update</code> is set to true, destructive modification will be performed and businesses values will be deleted accordingly.
     type: boolean
@@ -2534,8 +2538,9 @@ schemas:
         $ref:  '#/schemas/CustomFieldOrder'
   CustomFieldOrders:
     description: >
-      <p>On the Business Edit view of the Partoo App, custom fields will be displayed depending on their order. 
-      <p>The lowest number will be the first.
+      On the Business Edit view of the Partoo App, custom fields will be displayed depending on their order.
+      </br>
+      The lowest number will be the first.
     type: array
     items:
         $ref: '#/schemas/CustomFieldOrdersObject'
@@ -3212,7 +3217,7 @@ parameters:
     description: |
       Defining the time range of a data bucket.
 
-      This will determine the precision of the returned data. For example, if you choose `day`, you will receive the 
+      This will determine the precision of the returned data. For example, if you choose `day`, you will receive the
       number of reviews for each day.
   query_review_cumulative:
     in: query
