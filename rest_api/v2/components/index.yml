@@ -380,18 +380,29 @@ schemas:
       - review_management
     properties:
       presence_management:
-        type: boolean
+        $ref: '#/schemas/SubscriptionActive'
         description: Is business subscribed to Presence Management
       review_management:
-        type: boolean
+        $ref: '#/schemas/SubscriptionActive'
         description: Is business subscribed to Review Management
       review_booster:
-        type: boolean
+        $ref: '#/schemas/SubscriptionActive'
         description: Is business subscribed to Review Booster
     example:
-      presence_management: true
-      review_management: true
-      review_booster: false
+      presence_management:
+        active: true
+      review_management:
+        active: true
+      review_booster:
+         active: false
+  SubscriptionActive:
+    type: object
+    required:
+      - active
+    propeties:
+      active:
+        type: boolean
+        description: Product has been activated
   ReviewId:
     type: integer
     description: Review id
