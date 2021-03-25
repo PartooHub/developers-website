@@ -1352,6 +1352,14 @@ schemas:
         $ref: '#/schemas/UserStatus'
       keywords:
         $ref: '#/schemas/Keywords'
+      created_at:
+        description: Timestamp representing the date the user was created
+        type: timestamp
+        example: 1615299414
+      shadow_user_id:
+        description: Used internally at Partoo
+        type: string
+        example: ""
   TimeSlotReference:
     description: Default time period, can be used to set open hours of a day
     type: array
