@@ -346,6 +346,15 @@ schemas:
       - BUSINESS_MANAGER
       - PUBLISHER
     example: BUSINESS_MANAGER
+  RoleWithoutProvider:
+    description: User role in the application
+    type: string
+    enum:
+      - ORG_ADMIN
+      - GROUP_MANAGER
+      - BUSINESS_MANAGER
+      - PUBLISHER
+    example: BUSINESS_MANAGER
   Lang:
     description: Available language in the application
     type: string
