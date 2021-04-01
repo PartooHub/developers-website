@@ -36,7 +36,7 @@ requestBody:
           phone:
             $ref: '../../components/index.yml#/schemas/UserPhone'
           role:
-            $ref: '../../components/index.yml#/schemas/Role'
+            $ref: '../../components/index.yml#/schemas/RoleWithoutProvider'
           sidebar_products:
             type: array
             items:
