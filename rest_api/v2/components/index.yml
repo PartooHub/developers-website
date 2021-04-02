@@ -648,6 +648,17 @@ schemas:
     description: Organisation provider
     type: string
     example: partoo
+  OrgHasGooglePost:
+    description: Organisation has subscribed Google Post
+    type: boolean
+  OrgDisplayGooglePost:
+    description: Organisation can display Google Post
+    type: boolean
+  OrgType:
+    description: Organisation type
+    type: string
+    enum: [small_medium_business, enterprise]
+    default: small_medium_business
   Org:
     description: Organisation
     type: object
@@ -660,6 +671,12 @@ schemas:
         $ref:  '#/schemas/OrgAlias'
       provider:
         $ref:  '#/schemas/OrgProvider'
+      type:
+        $ref:  '#/schemas/OrgType'
+      has_google_post:
+        $ref:  '#/schemas/OrgHasGooglePost'
+      display_google_post:
+        $ref:  '#/schemas/OrgDisplayGooglePost'
   BusinessId:
     description: Business id
     type: string
