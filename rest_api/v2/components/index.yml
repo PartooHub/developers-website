@@ -704,7 +704,9 @@ schemas:
     type: string
   BusinessCategories:
     required: true
-    description: A list of category ids mapped to the business. At least one category needs to be provided. For more information see [Categories section](https://developers.partoo.co/rest_api/v2/#tag/Categories)
+    description: |
+      ❗<strong>Old category ids (format: ‘5109c3a237zdc544d8e267378’) will not be accepted anymore from Oct 15th, 2021. Please migrate to new category ids by this date (format: ‘gcid:climbing_gym’)</strong></br>
+      A list of category ids mapped to the business. At least one category needs to be provided. For more information see [Categories section](https://developers.partoo.co/rest_api/v2/#tag/Categories)
     type: array
     example: ['gcid:restaurant', 'gcid:fast_food_restaurant', 'gcid:hamburger_restaurant']
   BusinessLatitude:
