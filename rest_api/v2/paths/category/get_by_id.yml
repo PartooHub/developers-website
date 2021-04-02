@@ -8,6 +8,10 @@ parameters:
   - in: path
     required: true
     name: category_id
+    type: strings
+    description: |
+      ❗<strong>Old category ids (format: ‘5109c3a237zdc544d8e267378’) will not be accepted anymore from Oct 15th, 2021. Please migrate to new category ids by this date (format: ‘gcid:climbing_gym’)</strong>
+    example:  gcid:climbing_gym
     schema:
       $ref: '../../components/index.yml#/schemas/CategoryId'
   - $ref: '../../components/index.yml#/parameters/query_category_lang'
