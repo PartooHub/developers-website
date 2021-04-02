@@ -3,7 +3,10 @@ description: >
     <h2>Upcoming changes</h2>
     <ul>
       <li><h3>Categories (DEPRECATION)</h3>
-        <p>GET <a href="https://developers.partoo.co/rest_api/v2/#operation/searchCategories">/v2/category/search</a> will be <b><i>deprecated on July 15th 2021</i></b>. In order to search through Partoo categories, you need to migrate to <a href="https://developers.partoo.co/rest_api/v2/#operation/getCategories">/v2/categories</a> offering more advanced filtering options.</p>
+        <ul>
+          <li>GET <a href="https://developers.partoo.co/rest_api/v2/#operation/searchCategories">/v2/category/search</a> will be <b><i>deprecated on July 15th 2021</i></b>. In order to search through Partoo categories, you need to migrate to <a href="https://developers.partoo.co/rest_api/v2/#operation/getCategories">/v2/categories</a> offering more advanced filtering options.</li>
+          <li>Old category ids (format: ‘5109c3a237zdc544d8e267378’) <b>will not be accepted</b> anymore from <b>Oct 15th, 2021</b> when creating/updating businesses or in Categories endpoints requests. Please migrate to new category ids by this date (format: ‘gcid:climbing_gym’). Available categories can be found using this <a href="https://developers.partoo.co/rest_api/v2/#operation/getCategories">endpoint</a>.</li>
+        </ul>
       </li>
       <li><h3>API keys used to login users (DEPRECATION)</h3>
         <ul>
