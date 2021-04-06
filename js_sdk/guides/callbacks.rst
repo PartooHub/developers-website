@@ -280,7 +280,7 @@ This event happens when a use click on a `No Business` button.
 
 .. _callbacks_go_to_edit_callback:
 
-Presence Managament go to edit click
+Presence Management go to edit click
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This event happens when a use click on a `Edit` link in the presence management view that should redirect him to business edit view.
@@ -292,14 +292,14 @@ This event happens when a use click on a `Edit` link in the presence management 
 
 .. _callbacks_go_to_partner_connection_callback:
 
-Presence Managament go to partner connection click
+Presence Management go to partner connection click
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This event happens when a use click on a `Edit` link in the presence management view that should redirect him to connection view.
 
 .. code-block:: javascript
 
-	partooPage.on('pm_view_go_to_edit_click', function() { /* the code you want to be executed on click */});
+	partooPage.on('pm_view_go_to_partner_connection_click', function() { /* the code you want to be executed on click */});
 
 
 .. include:: ../utils/intercom.rst
