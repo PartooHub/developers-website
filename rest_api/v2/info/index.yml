@@ -20,15 +20,15 @@ description: |
   ## Security Disclaimer
   **The Partoo Rest API is meant to be used only from a server that you control.** The API Key should **never** be transmitted
   to the front-end, and should be kept secret.
-  If you require to make calls from a front-end, you should proxy them by a server that you control, that will add the API Key.
+  If you need to make calls from a front-end, you should proxy them by a server that you control, that will add the API Key.
 
   ## Environments
-  We provide two public environments, **Production** and **Sandbox**.
-  - **Production** is where your final data should be.
+  We provide two public environments, **Sandbox** and **Production**.
   - **Sandbox** is a playground environment for you to test your API integration without having to worry about side effects.
+  - **Production** is where your "real" data should live. Changes made there are propagated to publishers.
 
   Some functionalities are disabled in Sandbox, to avoid having a production impact:
-  - Business data will not be sent to the different publishers as GMB, Facebook, etc.
+  - Business data will not be sent to the different publishers such as GMB, Facebook, etc.
   - It's not possible to import GMB and Facebook account listings.
   - There's no real reviews data, or real analytics data. The account starts empty, but can be filled by fake data if needed. For this, contact you Partoo Account Manager.
 
@@ -41,7 +41,7 @@ description: |
   From there, you can call any route that your user has access to. To know the exact API endpoint to use, you can click
   on the route url above the "Response samples", and this will give you the urls for Production and Sandbox.
 
-  If you require an UI access to Sandbox, ask your Partoo Account Manager to give you one. Beware that Sandbox environment will be empty by default,
+  If you need a UI access to Sandbox, ask your Partoo Account Manager for one. Be aware, Sandbox environment is empty by default,
   and has limited functionalities.
 
   Once you're confident that your integration is production ready, ask your Partoo Account Manager for a user access in Production,
