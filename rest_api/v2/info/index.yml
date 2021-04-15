@@ -18,9 +18,9 @@ description: |
   # Getting started
 
   ## Security Disclaimer
-  **The Partoo Rest API is meant to be used only from a server that you control.** The API Key should **never** be transmitted
-  to the front-end, and should be kept secret.
-  If you need to make calls from a front-end, you should proxy them by a server that you control, that will add the API Key.
+  **The Partoo Rest API is meant to be used only from a server that you control.** You'll need an API Key in order to make API calls,
+  and you should treat this key as secret as a password. The API Key should **never** be transmitted to or included into the front-end.
+  If you need to make calls from a front-end, you should proxy them by a server that you control, that will add your API Key.
 
   ## Environments
   We provide two public environments, **Sandbox** and **Production**.
