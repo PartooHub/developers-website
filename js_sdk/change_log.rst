@@ -3,6 +3,10 @@ Change Log
 
 You can find below the changes made on the JS API order by descending date.
 
+2021-05: Major change
+---------------------------------
+  - because of third party cookies policy, the Partoo JS SDK is now using JWT token to keep the user logged instead of session cookie.
+
 2019-03-20: Minor changes
 ---------------------------------
 

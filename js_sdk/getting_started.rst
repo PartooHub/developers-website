@@ -38,6 +38,8 @@ You first need to add a ``div`` in your HTML where the Partoo App Iframe is goin
 
     <div id="your-specific-id"></div>
 
+⚠️ The id of your ``div`` can't be called ``partoo-iframe`` because we're already used it in our integration.
+
 Then to display you first Partoo App view inside your HTML page:
 
 .. code-block:: javascript

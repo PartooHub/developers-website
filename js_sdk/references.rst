@@ -52,10 +52,6 @@ Set options to override some behaviour on Partoo App.
 **login** (connectionToken: `string`)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-.. warning::
-    There are known issues with Safari.
-    If your are developing an integration for Safari, please make sure to check :ref:`safari_integration_limits`.
-
 Log user on Partoo App using the ``connectionToken`` and redirects to the ``startPage`` defined in `Options object`_.
 
 **Parameters:**
