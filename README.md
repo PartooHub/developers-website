@@ -50,11 +50,11 @@ The open in the browser the generated files from ~/developers/_build/html/js_sdk
 Using yarn:
 ```shell script
 yarn
-yarn watch  # will start a server on port http://127.0.0.1:8080
+yarn watch  # will start a server on port http://127.0.0.1:8081
 ```
 
 Using npm:
 ```shell script
 npm install
-npm run watch  # will start a server on port http://127.0.0.1:8080
+npm run watch  # will start a server on port http://127.0.0.1:8081
 ```
