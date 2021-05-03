@@ -7,7 +7,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "watch": "redoc-cli serve rest_api/v2/index.yml -w true --options.expandResponses=\"200,201\" --options.jsonSampleExpandLevel=all",
+    "watch": "redoc-cli serve rest_api/v2/index.yml -p 8081 -w true --options.expandResponses=\"200,201\" --options.jsonSampleExpandLevel=all",
     "build": "redoc-cli bundle rest_api/v2/index.yml -t template.hbs -o rest_api/v2/redoc-static.html --options.expandResponses=\"200,201\" --options.jsonSampleExpandLevel=all"
   },
   "dependencies": {

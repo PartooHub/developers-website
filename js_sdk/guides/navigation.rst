@@ -75,7 +75,7 @@ You can integrate this page by doing:
 
 .. code-block:: javascript
 
-    var partooPage = Partoo('partoo-container', {});
+    var partooPage = Partoo.init('partoo-container', {});
 
     // if you want to pre-fill some inputs in the Lab form
     var seedData = {
@@ -96,7 +96,7 @@ You can integrate this page by doing:
 
 **Available callbacks**
 
-The are 4 available callbacks:
+There are 4 available callbacks:
  - Lab create button callback :ref:`callbacks_lab_create_callback`
  - Lab sign up button callback :ref:`callbacks_lab_sign_up_callback`
  - Lab login button callback :ref:`callbacks_lab_login_callback`
@@ -113,7 +113,7 @@ You can integrate this page by doing:
 
 .. code-block:: javascript
 
-    var partooPage = Partoo('partoo-container', {});
+    var partooPage = Partoo.init('partoo-container', {});
     var userToken = 'serverSideGeneratedToken';
 
     partooPage.login(userToken); // authentication is mandatory access add page
@@ -141,7 +141,7 @@ You can integrate this page by doing:
 
 .. code-block:: javascript
 
-    var partooPage = Partoo('partoo-container', {});
+    var partooPage = Partoo.init('partoo-container', {});
     var userToken = 'serverSideGeneratedToken';
 
     partooPage.login(userToken); // authentication is mandatory access add page
@@ -166,7 +166,7 @@ You can integrate this page by doing:
 
 .. code-block:: javascript
 
-    var partooPage = Partoo('partoo-container', {});
+    var partooPage = Partoo.init('partoo-container', {});
     var userToken = 'serverSideGeneratedToken';
 
     partooPage.login(userToken); // authentication is mandatory access add page
@@ -178,7 +178,7 @@ You can integrate this page by doing:
 
 **Available callbacks**
 
-The is 1 available callback:
+There is 1 available callback:
  - Business created callback :ref:`callbacks_business_created_callback`
 
 .. _pages_integration_analytics_page:
@@ -192,7 +192,7 @@ You can integrate this page by doing:
 
 .. code-block:: javascript
 
-    var partooPage = Partoo('partoo-container', {});
+    var partooPage = Partoo.init('partoo-container', {});
     var userToken = 'serverSideGeneratedToken';
 
     partooPage.login(userToken); // authentication is mandatory access add page
@@ -213,7 +213,7 @@ You can integrate this page by doing:
 
 .. code-block:: javascript
 
-    var partooPage = Partoo('partoo-container', {});
+    var partooPage = Partoo.init('partoo-container', {});
     var userToken = 'serverSideGeneratedToken';
 
     partooPage.login(userToken); // authentication is mandatory access add page
@@ -221,7 +221,7 @@ You can integrate this page by doing:
 
 **Available callbacks**
 
-The are 2 available callbacks:
+There are 2 available callbacks:
  - Go to edit click callback :ref:`callbacks_go_to_edit_callback`
  - Go to partner connection click callback :ref:`callbacks_go_to_partner_connection_callback`
 
@@ -236,7 +236,7 @@ You can integrate this page by doing:
 
 .. code-block:: javascript
 
-    var partooPage = Partoo('partoo-container', {});
+    var partooPage = Partoo.init('partoo-container', {});
     var userToken = 'serverSideGeneratedToken';
 
     partooPage.login(userToken); // authentication is mandatory access add page
@@ -257,7 +257,7 @@ You can integrate this page by doing:
 
 .. code-block:: javascript
 
-    var partooPage = Partoo('partoo-container', {});
+    var partooPage = Partoo.init('partoo-container', {});
     var userToken = 'serverSideGeneratedToken';
 
     partooPage.login(userToken); // authentication is mandatory access add page
@@ -278,7 +278,7 @@ You can integrate this page by doing:
 
 .. code-block:: javascript
 
-    var partooPage = Partoo('partoo-container', {});
+    var partooPage = Partoo.init('partoo-container', {});
     var userToken = 'serverSideGeneratedToken';
 
     partooPage.login(userToken); // authentication is mandatory access add page
@@ -299,7 +299,7 @@ You can integrate this page by doing:
 
 .. code-block:: javascript
 
-    var partooPage = Partoo('partoo-container', {});
+    var partooPage = Partoo.init('partoo-container', {});
     var userToken = 'serverSideGeneratedToken';
 
     partooPage.login(userToken); // authentication is mandatory access add page
@@ -320,7 +320,7 @@ You can integrate this page by doing:
 
 .. code-block:: javascript
 
-    var partooPage = Partoo('partoo-container', {});
+    var partooPage = Partoo.init('partoo-container', {});
     var userToken = 'serverSideGeneratedToken';
 
     partooPage.login(userToken); // authentication is mandatory access add page
