@@ -20,7 +20,7 @@ requestBody:
             $ref: '../../../components/index.yml#/schemas/BusinessId'
           target_phone:
             type: string
-            description: Customer phone number
+            description: "Customer phone number, with the country calling code. Eg: +33601020304"
           target_name:
             type: string
             description: Customer fullname
