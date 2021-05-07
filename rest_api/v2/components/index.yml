@@ -680,7 +680,7 @@ schemas:
   BusinessId:
     description: Business id
     type: string
-    example: 5409c35a97bbc544d8e26737,7bbc544d8e25409c35a96737
+    example: 5409c35a97bbc544d8e26737
   BusinessName:
     description: The name of the business (POI) as it will appear on the publishing platforms
     type: string
